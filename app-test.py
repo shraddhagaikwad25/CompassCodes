@@ -24791,16 +24791,20 @@ def district_portal_signup_(districtid):
             todaydf.rename(columns={'Cumulative':'Count','Count':'COUNTS'},inplace=True)
             
     temp={'month':{
-        'count':sum(monthdf['COUNTS']),
-        'graph_data':list(monthdf['Count'])},
-          'week':{
-              'count':sum(weekdf['COUNTS']),
-              'graph_data':list(weekdf['Count'])
-          },
-          'today':{
-              'count':sum(todaydf['COUNTS']),
-              'graph_data':list(todaydf['Count'])                  
-          }}
+    'count':sum(monthdf['COUNTS']),
+    'y-axis':list(monthdf['Count']),
+    'x-axis':list(monthdf['DATE'])    
+    },
+    'week':{
+        'count':sum(weekdf['COUNTS']),
+        'y-axis':list(weekdf['Count']),                    
+        'x-axis':list(weekdf['DATE'])
+    },
+    'today':{
+            'count':sum(todaydf['COUNTS']),
+            'y-axis':list(todaydf['Count']),                    
+            'x-axis':list(todaydf['HOUR_OF_THE_DAY'])                  
+        }}
     return json.dumps(temp)
         
         
@@ -24920,15 +24924,20 @@ def district_portal_practice_(districtid):
                 
     temp={'month':{
     'count':sum(monthdf['COUNTS']),
-    'graph_data':list(monthdf['Count'])},
-      'week':{
-          'count':sum(weekdf['COUNTS']),
-          'graph_data':list(weekdf['Count'])
-      },
-      'today':{
-          'count':sum(todaydf['COUNTS']),
-          'graph_data':list(todaydf['Count'])                  
-      }}
+    'y-axis':list(monthdf['Count']),
+    'x-axis':list(monthdf['DATE'])
+    
+    },
+    'week':{
+        'count':sum(weekdf['COUNTS']),
+        'y-axis':list(weekdf['Count']),                    
+        'x-axis':list(weekdf['DATE'])
+    },
+    'today':{
+            'count':sum(todaydf['COUNTS']),
+            'y-axis':list(todaydf['Count']),                    
+            'x-axis':list(todaydf['HOUR_OF_THE_DAY'])                  
+        }}
     return json.dumps(temp)
                 
             
@@ -25012,17 +25021,17 @@ def district_portal_rating_(districtid):
     #                                                                                                                   'RATING':'DATE'})
 
             monthdf=last_30_dates_df.merge(all_rating_data,how='left',on='DATE').fillna(0)
-            month_average=math.ceil(round(monthdf['RATING'].mean(),1))
+            month_average=round(monthdf['RATING'].mean(),1)
 
             weekdf=last_7_dates_df.merge(all_rating_data,how='left',on='DATE').fillna(0)
-            week_average=math.ceil(round(weekdf['RATING'].mean(),1))       
+            week_average=round(weekdf['RATING'].mean(),1)       
 
             last_24_hr_rating=all_rating_data[all_rating_data['RATING_DATE']>=last_24_hr].reset_index(drop=True)
 
             if last_24_hr_rating.empty:
                 today_average=0            
             else:
-                today_average=math.ceil(round(last_24_hr_rating['RATING'].mean(),1))
+                today_average=round(last_24_hr_rating['RATING'].mean(),1)
     #             last_24_hr_rating_df=last_24_hr_rating.groupby('HOUR_OF_THE_DAY')['USER_ID'].count().reset_index().rename(columns={'USER_ID':'Count'})
     #             todaydf=_24_hr_df.merge(last_24_hr_rating_df,how='left',on='HOUR_OF_THE_DAY').fillna(0)
 
@@ -25083,7 +25092,8 @@ def district_portal_comment_(districtid):
         comments_data=pd.DataFrame(list(db.audio_feedback.aggregate([{'$match':{'$and':[
             {'USER._id':{'$in':all_user_district}},
             {'COMMENT':{'$nin':['',None,'null','NULL',' ']}},
-            {'RATING':{'$in':[4,5]}}
+            {'RATING':{'$in':[4,5]}},
+            {'COMMENT':{'$nin':['Write a feedback (optional)','n/a','N/A','N/a','n/A']}}
         ]}},
              {'$project':{
                  '_id':0,
@@ -25266,15 +25276,20 @@ def district_portal_tunein_(districtid):
                     
     temp={'month':{
     'count':sum(monthdf['COUNTS']),
-    'graph_data':list(monthdf['Count'])},
-      'week':{
-          'count':sum(weekdf['COUNTS']),
-          'graph_data':list(weekdf['Count'])
-      },
-      'today':{
-          'count':sum(todaydf['COUNTS']),
-          'graph_data':list(todaydf['Count'])                  
-      }}
+    'y-axis':list(monthdf['Count']),
+    'x-axis':list(monthdf['DATE'])
+    
+    },
+    'week':{
+        'count':sum(weekdf['COUNTS']),
+        'y-axis':list(weekdf['Count']),                    
+        'x-axis':list(weekdf['DATE'])
+    },
+    'today':{
+            'count':sum(todaydf['COUNTS']),
+            'y-axis':list(todaydf['Count']),                    
+            'x-axis':list(todaydf['HOUR_OF_THE_DAY'])                  
+        }}
     return json.dumps(temp)
 
 
@@ -25529,6 +25544,7 @@ def narrator_profile_(id):
                             {'USER.IS_DISABLED':{"$ne":'Y'}},
                                         {"AUDIO_ID.PROGRAM_ID.PROGRAM_ID" : {'$nin':[1,2,3,4,5,6,7,8]}},
                             {'COMMENT':{'$exists':1}},
+                            {'COMMENT':{'$nin':['Write a feedback (optional)','n/a','N/A','N/a','n/A']}},
                             # {'COMMENT':{"$not":{"$regex":" ",'$options':'i'}}},
                             {'COMMENT':{"$ne":""}},
                             {'RATING':{'$in':[4,5]}}
@@ -25600,10 +25616,4 @@ def Practice_streak():
 
 if __name__ == '__main__':
    app.run()
-
-
-
-
-
-
 
