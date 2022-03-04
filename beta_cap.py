@@ -1,3 +1,5 @@
+#anubhav
+
 from flask import (
     Flask,
     g,
@@ -50,15 +52,11 @@ from textblob import TextBlob
 from nltk.corpus import stopwords
 from dateutil.relativedelta import relativedelta
 import math
-
 # stop = stopwords.words('english')
 
 app = Flask(__name__)
 CORS(app)
 
-# Beta server credentials
-client_beta = MongoClient('mongodb://adminIE:CtZh5Nqp8Qn9LHUDx2GH@54.184.165.106:27017/')
-db_beta=client_beta.compass_beta
 
 
 
@@ -224,7 +222,6 @@ disdic={
     '6045e4e007ead7744b125864':'South Summit School District',
     '60eea965ae7de54f57abf234':'Southfield Public Schools',
     '5f2609807a1c0000950bb46a':'Springfield Public School',
-    '5f2609807a1c0000950bb46a':'Springfield Public Schools',
     '6045e4e007ead7744b125865':'Sudbury Public Schools',
     '6045e4e107ead7744b125866':'Tooele County School District',
     '60a7b03831afdba383052726':'United Way Of Santa Barbara',
@@ -272,9 +269,9 @@ def word_freq(product,rating,startdate,enddate):
         rating=[int(rating)]
     myDatetimestrt = dateutil.parser.parse(date1)
     myDatetimeend = dateutil.parser.parse(date2)
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     collection = db.audio_feedback
     user=[
@@ -538,11 +535,11 @@ def word_freq(product,rating,startdate,enddate):
 
 @app.route('/user_stats/<email>/<cemail>')
 def com_user_stat(email,cemail):
-    # mongo_uri = "mongodb://admin:" + urllib.parse.quote("F5tMazRj47cYqm33e") + "@52.41.36.115:27017/"
+    # mongo_uri = "mongodb://admin:" + urllib.parse.quote("CtZh5Nqp8Qn9LHUDx2GH") + "@54.184.165.106:27017/"
     # client = pymongo.MongoClient(mongo_uri)
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     collection = db.audio_track_master
     dateStr = "2020-08-01T00:00:00.000Z"
@@ -639,7 +636,7 @@ def User_practice_cards():
     # client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     # db=client.compass_beta
 
-    client = MongoClient('mongodb://admin:F5tMazRj47cYqm33e@52.41.36.115:27017/')
+    client = MongoClient('mongodb://admin:CtZh5Nqp8Qn9LHUDx2GH@54.184.165.106:27017/')
     db=client.compass
 
     collection = db.audio_track_master
@@ -1118,9 +1115,9 @@ def User_practice_cards():
 
 @app.route('/bubble_dataframe.csv')
 def buble_district12():
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -1201,9 +1198,9 @@ def buble_district12():
         result.append(sorted_df)
     buubleusercount = pd.concat(result)
     ######family ########
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -1292,9 +1289,9 @@ def buble_district12():
     mergeucfc12["totaluser"]=mergeucfc12["usercount"]+mergeucfc12["usercount19"]
     finmerge=mergeucfc12[["NAME_DISTRICT_x","MONTH_x","idu","totaluser","famcount"]]
     ###ACTIVE USER
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -1350,9 +1347,9 @@ def buble_district12():
     # buubleactuser
     finmergeu=pd.merge(finmerge, buubleactuser, how='left', left_on='idu', right_on='acuid')
     ###ACTIVE FAMILY
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -1410,9 +1407,9 @@ def buble_district12():
     finmergeufo=finmergeuf[["NAME_DISTRICT_x","MONTH_x","USER ENGAGEMENT","FAMILY ENGAGEMENT"]]
     finmergeufo=finmergeufo.fillna(0)
     finmergeufo=finmergeufo.loc[:,~finmergeufo.columns.duplicated()]
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     # dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -1440,9 +1437,9 @@ def buble_district12():
     df1111=pd.DataFrame(merge1211)
     df1111=df1111.sort_values(by=['NAME_DISTRICT'], ascending=True)
     DISPRACTO=df1111[["NAME_DISTRICT","PRACTICE"]]
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     # dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -1491,9 +1488,9 @@ def buble_district12():
 
 @app.route('/campaignstatapi')
 def campaignapi():
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     collection = db.campaign_data
     query=[{'$match':{'$and':[
@@ -1595,9 +1592,9 @@ def campaignapi():
 @app.route('/school_search_id')
 
 def school_search_id():
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     collection = db.user_master
     query=[
@@ -1639,9 +1636,9 @@ def school_search_id():
 
 @app.route('/school_search_name/')
 def school_search_():
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     collection = db.user_master
     query=[
@@ -1677,9 +1674,9 @@ def school_search_():
 
 @app.route('/_executive_dashbaord_')
 def _excecutivecount_():
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     collection = db["school_master"]
     query = {}
@@ -1692,8 +1689,8 @@ def _excecutivecount_():
     dfum1=pd.DataFrame(dfum)
     comadd=1299-len(dfum1)
     username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
 
     database = client["compass"]
 
@@ -1939,7 +1936,6 @@ def schpuc(districtid):
     '6045e4e007ead7744b125864':'South Summit School District',
     '60eea965ae7de54f57abf234':'Southfield Public Schools',
     '5f2609807a1c0000950bb46a':'Springfield Public School',
-    '5f2609807a1c0000950bb46a':'Springfield Public Schools',
     '6045e4e007ead7744b125865':'Sudbury Public Schools',
     '6045e4e107ead7744b125866':'Tooele County School District',
     '60a7b03831afdba383052726':'United Way Of Santa Barbara',
@@ -1955,9 +1951,9 @@ def schpuc(districtid):
     '6045e4d207ead7744b12584c':'White River School District',
     '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
     '5f2609807a1c0000950bb45d':'Youngstown'}
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection = db.user_master
     district=disdic[districtid]
@@ -2131,7 +2127,6 @@ def schppcfamily(districtid):
     '6045e4e007ead7744b125864':'South Summit School District',
     '60eea965ae7de54f57abf234':'Southfield Public Schools',
     '5f2609807a1c0000950bb46a':'Springfield Public School',
-    '5f2609807a1c0000950bb46a':'Springfield Public Schools',
     '6045e4e007ead7744b125865':'Sudbury Public Schools',
     '6045e4e107ead7744b125866':'Tooele County School District',
     '60a7b03831afdba383052726':'United Way Of Santa Barbara',
@@ -2147,9 +2142,9 @@ def schppcfamily(districtid):
     '6045e4d207ead7744b12584c':'White River School District',
     '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
     '5f2609807a1c0000950bb45d':'Youngstown'}
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection = db.audio_track_master
     collection1 = db.user_master
@@ -2346,7 +2341,6 @@ def schwisepc(districtid):
     '6045e4e007ead7744b125864':'South Summit School District',
     '60eea965ae7de54f57abf234':'Southfield Public Schools',
     '5f2609807a1c0000950bb46a':'Springfield Public School',
-    '5f2609807a1c0000950bb46a':'Springfield Public Schools',
     '6045e4e007ead7744b125865':'Sudbury Public Schools',
     '6045e4e107ead7744b125866':'Tooele County School District',
     '60a7b03831afdba383052726':'United Way Of Santa Barbara',
@@ -2362,9 +2356,9 @@ def schwisepc(districtid):
     '6045e4d207ead7744b12584c':'White River School District',
     '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
     '5f2609807a1c0000950bb45d':'Youngstown'}
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection = db.audio_track_master
     collection1 = db.user_master
@@ -2562,7 +2556,6 @@ def schwiseuc(districtid):
     '6045e4e007ead7744b125864':'South Summit School District',
     '60eea965ae7de54f57abf234':'Southfield Public Schools',
     '5f2609807a1c0000950bb46a':'Springfield Public School',
-    '5f2609807a1c0000950bb46a':'Springfield Public Schools',
     '6045e4e007ead7744b125865':'Sudbury Public Schools',
     '6045e4e107ead7744b125866':'Tooele County School District',
     '60a7b03831afdba383052726':'United Way Of Santa Barbara',
@@ -2578,9 +2571,9 @@ def schwiseuc(districtid):
     '6045e4d207ead7744b12584c':'White River School District',
     '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
     '5f2609807a1c0000950bb45d':'Youngstown'}
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection = db.user_master
     district=disdic[districtid]
@@ -2751,7 +2744,6 @@ def monthwisepc(districtid):
     '6045e4e007ead7744b125864':'South Summit School District',
     '60eea965ae7de54f57abf234':'Southfield Public Schools',
     '5f2609807a1c0000950bb46a':'Springfield Public School',
-    '5f2609807a1c0000950bb46a':'Springfield Public Schools',
     '6045e4e007ead7744b125865':'Sudbury Public Schools',
     '6045e4e107ead7744b125866':'Tooele County School District',
     '60a7b03831afdba383052726':'United Way Of Santa Barbara',
@@ -2767,9 +2759,9 @@ def monthwisepc(districtid):
     '6045e4d207ead7744b12584c':'White River School District',
     '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
     '5f2609807a1c0000950bb45d':'Youngstown'}
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection = db.audio_track_master
     district=disdic[districtid]
@@ -2960,7 +2952,6 @@ def user_practice_90days(districtid):
     '6045e4e007ead7744b125864':'South Summit School District',
     '60eea965ae7de54f57abf234':'Southfield Public Schools',
     '5f2609807a1c0000950bb46a':'Springfield Public School',
-    '5f2609807a1c0000950bb46a':'Springfield Public Schools',
     '6045e4e007ead7744b125865':'Sudbury Public Schools',
     '6045e4e107ead7744b125866':'Tooele County School District',
     '60a7b03831afdba383052726':'United Way Of Santa Barbara',
@@ -2983,9 +2974,9 @@ def user_practice_90days(districtid):
     tod1= today1+ timedelta(hours=4)
     start1= tod1-timedelta(days=90)
     
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection = db.audio_track_master
     district=disdic[districtid]
@@ -3167,8 +3158,7 @@ def user_logins_90days(districtid):
     '123':'Skillman',
     '6045e4e007ead7744b125864':'South Summit School District',
     '60eea965ae7de54f57abf234':'Southfield Public Schools',
-    '5f2609807a1c0000950bb46a':'Springfield Public School',
-    '5f2609807a1c0000950bb46a':'Springfield Public Schools',
+    '5f2609807a1c0000950bb46a':'Springfield Public School',    
     '6045e4e007ead7744b125865':'Sudbury Public Schools',
     '6045e4e107ead7744b125866':'Tooele County School District',
     '60a7b03831afdba383052726':'United Way Of Santa Barbara',
@@ -3190,9 +3180,9 @@ def user_logins_90days(districtid):
     tod1= today1+ timedelta(hours=4)
     start1= tod1-timedelta(days=90)
     
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection = db.login_logs
     district=disdic[districtid]
@@ -3377,7 +3367,7 @@ def topusers_practice(districtid):
     '6045e4e007ead7744b125864':'South Summit School District',
     '60eea965ae7de54f57abf234':'Southfield Public Schools',
     '5f2609807a1c0000950bb46a':'Springfield Public School',
-    '5f2609807a1c0000950bb46a':'Springfield Public Schools',
+    
     '6045e4e007ead7744b125865':'Sudbury Public Schools',
     '6045e4e107ead7744b125866':'Tooele County School District',
     '60a7b03831afdba383052726':'United Way Of Santa Barbara',
@@ -3394,9 +3384,9 @@ def topusers_practice(districtid):
     '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
     '5f2609807a1c0000950bb45d':'Youngstown'}
 
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection = db.audio_track_master
     district=disdic[districtid]
@@ -3601,7 +3591,6 @@ def district_count_cards(districtid):
     '6045e4e007ead7744b125864':'South Summit School District',
     '60eea965ae7de54f57abf234':'Southfield Public Schools',
     '5f2609807a1c0000950bb46a':'Springfield Public School',
-    '5f2609807a1c0000950bb46a':'Springfield Public Schools',
     '6045e4e007ead7744b125865':'Sudbury Public Schools',
     '6045e4e107ead7744b125866':'Tooele County School District',
     '60a7b03831afdba383052726':'United Way Of Santa Barbara',
@@ -3620,9 +3609,9 @@ def district_count_cards(districtid):
     from datetime import datetime
     from datetime import timedelta
     
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection1 = db.user_master
     collection2=db.audio_track_master
@@ -3965,7 +3954,6 @@ def district_user_table_teacher(districtid):
     '6045e4e007ead7744b125864':'South Summit School District',
     '60eea965ae7de54f57abf234':'Southfield Public Schools',
     '5f2609807a1c0000950bb46a':'Springfield Public School',
-    '5f2609807a1c0000950bb46a':'Springfield Public Schools',
     '6045e4e007ead7744b125865':'Sudbury Public Schools',
     '6045e4e107ead7744b125866':'Tooele County School District',
     '60a7b03831afdba383052726':'United Way Of Santa Barbara',
@@ -3982,9 +3970,9 @@ def district_user_table_teacher(districtid):
     '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
     '5f2609807a1c0000950bb45d':'Youngstown'}
     
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
 
     
@@ -4222,7 +4210,6 @@ def district_user_table_parents(districtid):
     '6045e4e007ead7744b125864':'South Summit School District',
     '60eea965ae7de54f57abf234':'Southfield Public Schools',
     '5f2609807a1c0000950bb46a':'Springfield Public School',
-    '5f2609807a1c0000950bb46a':'Springfield Public Schools',
     '6045e4e007ead7744b125865':'Sudbury Public Schools',
     '6045e4e107ead7744b125866':'Tooele County School District',
     '60a7b03831afdba383052726':'United Way Of Santa Barbara',
@@ -4239,9 +4226,9 @@ def district_user_table_parents(districtid):
     '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
     '5f2609807a1c0000950bb45d':'Youngstown'}
     
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     from datetime import datetime
     
@@ -4478,7 +4465,6 @@ def monthwisepcsuper(districtid):
     '6045e4e007ead7744b125864':'South Summit School District',
     '60eea965ae7de54f57abf234':'Southfield Public Schools',
     '5f2609807a1c0000950bb46a':'Springfield Public School',
-    '5f2609807a1c0000950bb46a':'Springfield Public Schools',
     '6045e4e007ead7744b125865':'Sudbury Public Schools',
     '6045e4e107ead7744b125866':'Tooele County School District',
     '60a7b03831afdba383052726':'United Way Of Santa Barbara',
@@ -4494,9 +4480,9 @@ def monthwisepcsuper(districtid):
     '6045e4d207ead7744b12584c':'White River School District',
     '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
     '5f2609807a1c0000950bb45d':'Youngstown'}
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection = db.audio_track_master
     district=disdic[districtid]
@@ -4836,8 +4822,7 @@ def district_school_table(districtid):
     '123':'Skillman',
     '6045e4e007ead7744b125864':'South Summit School District',
     '60eea965ae7de54f57abf234':'Southfield Public Schools',
-    '5f2609807a1c0000950bb46a':'Springfield Public School',
-    '5f2609807a1c0000950bb46a':'Springfield Public Schools',
+    '5f2609807a1c0000950bb46a':'Springfield Public School',    
     '6045e4e007ead7744b125865':'Sudbury Public Schools',
     '6045e4e107ead7744b125866':'Tooele County School District',
     '60a7b03831afdba383052726':'United Way Of Santa Barbara',
@@ -4854,9 +4839,9 @@ def district_school_table(districtid):
     '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
     '5f2609807a1c0000950bb45d':'Youngstown'}
     
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
 
     
@@ -5103,8 +5088,7 @@ def heat_district(districtid):
     '123':'Skillman',
     '6045e4e007ead7744b125864':'South Summit School District',
     '60eea965ae7de54f57abf234':'Southfield Public Schools',
-    '5f2609807a1c0000950bb46a':'Springfield Public School',
-    '5f2609807a1c0000950bb46a':'Springfield Public Schools',
+    '5f2609807a1c0000950bb46a':'Springfield Public School',    
     '6045e4e007ead7744b125865':'Sudbury Public Schools',
     '6045e4e107ead7744b125866':'Tooele County School District',
     '60a7b03831afdba383052726':'United Way Of Santa Barbara',
@@ -5121,9 +5105,9 @@ def heat_district(districtid):
     '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
     '5f2609807a1c0000950bb45d':'Youngstown'}
     import collections
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection = db.audio_track_master
     collection2=db.user_master
@@ -5371,8 +5355,7 @@ def heat_district_family_active(districtid):
     '123':'Skillman',
     '6045e4e007ead7744b125864':'South Summit School District',
     '60eea965ae7de54f57abf234':'Southfield Public Schools',
-    '5f2609807a1c0000950bb46a':'Springfield Public School',
-    '5f2609807a1c0000950bb46a':'Springfield Public Schools',
+    '5f2609807a1c0000950bb46a':'Springfield Public School',    
     '6045e4e007ead7744b125865':'Sudbury Public Schools',
     '6045e4e107ead7744b125866':'Tooele County School District',
     '60a7b03831afdba383052726':'United Way Of Santa Barbara',
@@ -5389,9 +5372,9 @@ def heat_district_family_active(districtid):
     '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
     '5f2609807a1c0000950bb45d':'Youngstown'}
     import collections
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection = db.audio_track_master
     collection2=db.user_master
@@ -5637,8 +5620,7 @@ def heat_district_teachers_active(districtid):
     '123':'Skillman',
     '6045e4e007ead7744b125864':'South Summit School District',
     '60eea965ae7de54f57abf234':'Southfield Public Schools',
-    '5f2609807a1c0000950bb46a':'Springfield Public School',
-    '5f2609807a1c0000950bb46a':'Springfield Public Schools',
+    '5f2609807a1c0000950bb46a':'Springfield Public School',    
     '6045e4e007ead7744b125865':'Sudbury Public Schools',
     '6045e4e107ead7744b125866':'Tooele County School District',
     '60a7b03831afdba383052726':'United Way Of Santa Barbara',
@@ -5655,9 +5637,9 @@ def heat_district_teachers_active(districtid):
     '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
     '5f2609807a1c0000950bb45d':'Youngstown'}
     import collections
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection = db.audio_track_master
     collection2=db.user_master
@@ -5904,8 +5886,7 @@ def heat_district_teachers_prac(districtid):
     '123':'Skillman',
     '6045e4e007ead7744b125864':'South Summit School District',
     '60eea965ae7de54f57abf234':'Southfield Public Schools',
-    '5f2609807a1c0000950bb46a':'Springfield Public School',
-    '5f2609807a1c0000950bb46a':'Springfield Public Schools',
+    '5f2609807a1c0000950bb46a':'Springfield Public School',    
     '6045e4e007ead7744b125865':'Sudbury Public Schools',
     '6045e4e107ead7744b125866':'Tooele County School District',
     '60a7b03831afdba383052726':'United Way Of Santa Barbara',
@@ -5922,9 +5903,9 @@ def heat_district_teachers_prac(districtid):
     '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
     '5f2609807a1c0000950bb45d':'Youngstown'}
     import collections
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection = db.audio_track_master
     collection2=db.user_master
@@ -6169,8 +6150,7 @@ def heat_district_family_prac(districtid):
     '123':'Skillman',
     '6045e4e007ead7744b125864':'South Summit School District',
     '60eea965ae7de54f57abf234':'Southfield Public Schools',
-    '5f2609807a1c0000950bb46a':'Springfield Public School',
-    '5f2609807a1c0000950bb46a':'Springfield Public Schools',
+    '5f2609807a1c0000950bb46a':'Springfield Public School',    
     '6045e4e007ead7744b125865':'Sudbury Public Schools',
     '6045e4e107ead7744b125866':'Tooele County School District',
     '60a7b03831afdba383052726':'United Way Of Santa Barbara',
@@ -6187,9 +6167,9 @@ def heat_district_family_prac(districtid):
     '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
     '5f2609807a1c0000950bb45d':'Youngstown'}
     import collections
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection = db.audio_track_master
     collection2=db.user_master
@@ -6444,7 +6424,6 @@ def heatmap_prac_district(districtid):
     '6045e4e007ead7744b125864':'South Summit School District',
     '60eea965ae7de54f57abf234':'Southfield Public Schools',
     '5f2609807a1c0000950bb46a':'Springfield Public School',
-    '5f2609807a1c0000950bb46a':'Springfield Public Schools',
     '6045e4e007ead7744b125865':'Sudbury Public Schools',
     '6045e4e107ead7744b125866':'Tooele County School District',
     '60a7b03831afdba383052726':'United Way Of Santa Barbara',
@@ -6461,9 +6440,9 @@ def heatmap_prac_district(districtid):
     '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
     '5f2609807a1c0000950bb45d':'Youngstown'}
     import collections
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection = db.audio_track_master
     collection2=db.user_master
@@ -6618,9 +6597,9 @@ def heatmap_prac_district(districtid):
 
 @app.route('/portal_new_api/<smcategory>')
 def portal_new_api(smcategory):    
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     collection = db.school_master
     from bson.objectid import ObjectId
@@ -6791,9 +6770,9 @@ def portal_new_api(smcategory):
 # ==================ADMINPORTALSADHNA
 @app.route('/adminportalcards/<userid>')
 def district_school_table_teacher(userid):
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
 
 
@@ -6803,20 +6782,23 @@ def district_school_table_teacher(userid):
     collection5=db.login_logs
     collection1=db.audio_track_master
     collection3=db.subscription_master
-
+    #     district=disdic[districtid]
+    #     myDatetime1 = dateutil.parser.parse(startdate)
+    #     myDatetime2 = dateutil.parser.parse(enddate)
     from datetime import datetime
-#     userid='603fcb95f4a96870c8c8cce9'
-#     csy_first_date='2021-08-01'
 
     df0 = DataFrame(list(collection.aggregate([
         {"$match":{'$and': [{"_id" : ObjectId(""+userid+"")}]}},
         {'$project':{'_id':1,"EMAIL_ID" : 1,'district_admin':'$IS_DISTRICT_ADMIN','school_admin':'$IS_ADMIN'}}])))
+#     print(df0)
 
 
 
     if 'district_admin' not in df0.columns:
         df0['district_admin']=0
 
+    # if df0[df0['district_admin']=='Y']:
+    #     if 'Y' in df0['district_admin'][0]:
     if df0['district_admin'][0]=='Y':
         uemail = df0["EMAIL_ID"].to_list()
 
@@ -6824,16 +6806,15 @@ def district_school_table_teacher(userid):
         {"$match":{'$and': [
         {"ADMIN_EMAIL" : {"$in" : uemail}}]}},
         {'$project':{'_id':1,"ADMIN_EMAIL" : 1}}])))
-    #         print(df00)
+#         print(df00)
 
 
         if df00.empty==True:
-            data={'Result':0}   
-            print(data)
-    #         return json.dumps(data)
+            data={'Result':0}        
+            return json.dumps(data)
         else:
             disid = df00["_id"].to_list()
-    #             print(disid)
+#             print(disid)
 
             df1=DataFrame(list(collection.aggregate([{"$match":
                 {'$and': [
@@ -6844,9 +6825,9 @@ def district_school_table_teacher(userid):
              {"INCOMPLETE_SIGNUP":{"$ne":"Y"}},
              { 'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
              { 'USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-    #                 {"IS_DISTRICT_ADMIN" : "Y"},
+#                 {"IS_DISTRICT_ADMIN" : "Y"},
                            {'IS_ADMIN':'Y'},
-    #                      {"_id" : ObjectId("5f32fef3c32deb1ed8a46378")},
+#                      {"_id" : ObjectId("5f32fef3c32deb1ed8a46378")},
              {'EMAIL_ID':{'$ne':''}},
              {'schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
              {'schoolId.BLOCKED_BY_CAP':{'$exists':False}},
@@ -6858,11 +6839,11 @@ def district_school_table_teacher(userid):
              'State':{'$first':'$schoolId.STATE'},'INIVITES':{'$sum':'$INVITES_ASSIGNED'},'EMAIL':{'$first':'$EMAIL_ID'},'admin':{'$first':'$IS_ADMIN'},'district_admin':{'$first':'$IS_DISTRICT_ADMIN'},'ROLE':{'$first':'$ROLE_ID.ROLE_id'}}},
              {'$project':{'_id':1,'sid':'$sid','ADMIN':'$admin','district_admin':'$district_admin','EMAIL_ID':'$EMAIL','INIVITES':'$INIVITES'}}])))
 
-
+#             print(df1)
             if df1.empty==True:
-                data={'Result':0}   
-                print(data)
-    #             return json.dumps(data)
+                data={'Result':0}        
+                return json.dumps(data)
+
             df5=DataFrame(list(collection.aggregate([{"$match":
                  {'$and': [
 
@@ -6884,11 +6865,11 @@ def district_school_table_teacher(userid):
                  {'$group':{'_id':'$DISTRICT_ID._id','teacher':{'$sum':1},'school_name':{'$first':'$schoolId.NAME'},'date':{'$min':{"$dateToString": { "format": "%Y-%m-%d", "date":'$CREATED_DATE'}}},'country':{'$first':'$schoolId.COUNTRY'},
                  'State':{'$first':'$schoolId.STATE'},'INIVITES':{'$first':'$INVITES_ASSIGNED'},'city':{'$first':'$schoolId.CITY'},'admin':{'$first':'$IS_ADMIN'},'ROLE':{'$first':'$ROLE_ID.ROLE_id'}}},
                  {'$project':{'_id':1,'teacher':'$teacher'}}])))
-    #             print("df5",df5)
-
+#             print("df5",df5)
+            
             if df5.empty == True:
                 df5 = df5.append({'_id': disid[0], 'teacher': 0}, ignore_index=True)
-
+                
             df2=DataFrame(list(collection4.aggregate([
              {"$match":
              {'$and': [
@@ -6915,13 +6896,11 @@ def district_school_table_teacher(userid):
 
              {'$project':{'_id':1,'user_id':'$ID','invited_user':{'$size':'$invited_user'},'accepted':'$accepted'}}
              ])))
-
-
-
+            
             if df2.empty == True:
                 df2 = df2.append({'_id': disid[0], 'user_id': 0,'invited_user':0,'accepted':0}, ignore_index=True)
-
-    # #             print("df2",df2)
+            
+#             print("df2",df2)
 
             df3=DataFrame(list(collection1.aggregate([
              {"$match":
@@ -6948,7 +6927,7 @@ def district_school_table_teacher(userid):
 
             if df3.empty == True:
                 df3 = df3.append({'_id': disid[0], 'teacher_practice': 0,'Total_Mindful_Minutes':0}, ignore_index=True)
-
+            
             df6=DataFrame(list(collection5.aggregate([
              {"$match":
              {'$and': [
@@ -6960,7 +6939,6 @@ def district_school_table_teacher(userid):
              { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
              { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
              {'USER_ID.EMAIL_ID':{'$ne':''}},
-                 
              {'LAST_LOGGED_IN':{"$gte":  csy_first_date()}},
              {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
              {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
@@ -6971,11 +6949,11 @@ def district_school_table_teacher(userid):
              {'$group':{'_id':'$USER_ID.DISTRICT_ID._id','pc':{'$sum':1},
              'LAST_LOGGED_IN':{'$max':{"$dateToString": { "format": "%Y-%m-%d", "date":'$LAST_LOGGED_IN'}}},}},
              {'$project':{'_id':1,'login_history':'$pc'}}])))
-
+            
             if df6.empty == True:
                 df6 = df6.append({'_id': disid[0], 'login_history': 0}, ignore_index=True)
 
-    #             print("df6",df6)
+#             print("df6",df6)
             df4 = DataFrame(list(collection3.aggregate([
             {"$match":
             {'$and': [
@@ -6997,24 +6975,23 @@ def district_school_table_teacher(userid):
             {'$project':{'_id':1,'Subscription_expire_date':'$subsdate','SUBSCRIPTION_DATE':'$startdate',
                          'MODE_OF_PAYMENT':'$MODE_OF_PAYMENT'}},
             ])))
-
+            
             if df4.empty == True:
                 df4 = df4.append({'_id': disid[0], 'Subscription_expire_date': 0,'SUBSCRIPTION_DATE': 0,'MODE_OF_PAYMENT': 0}, ignore_index=True)
+            
+#             print("df4",df4)
 
-    #       #         df__=pd.merge(df1,df2, how='left', on='_id')
-            df__=pd.merge(df5,df2,how='right', on='_id')
-
-    #         dfff=pd.merge(df__,df,how='left', on='_id')
-            dfff=pd.merge(df__,df3,how='left', on='_id')
+#             df__=pd.merge(df1,df2, how='left', on='_id')
+            dfff=pd.merge(df2,df5,how='left', on='_id')
             dff=pd.merge(dfff,df3, how='left', on='_id')
             dffff=pd.merge(dff,df4, how='left', on='_id')
             df=pd.merge(dffff,df6, how='left', on='_id')
+
             df=df.fillna(0)
             df=df.astype(int, errors='ignore')
-            print(df)
-
-    #             df['remaining']=df['INIVITES']-df['invited_user']
-            df['remaining']=df1['INIVITES']-df['accepted'].sum()
+            
+#             df['remaining']=df['INIVITES']-df['invited_user']
+            df['remaining']=df1['INIVITES']-df['accepted']
 
             remaining=[0]
             try:
@@ -7023,7 +7000,7 @@ def district_school_table_teacher(userid):
                 remaining=[0]
             login_history=[0]
             try:
-                login_history=df6['_id'][0]
+                login_history=df['login_history']
             except:
                 login_history=[0]
 
@@ -7036,37 +7013,37 @@ def district_school_table_teacher(userid):
 
             INIVITES=[0]
             try:
-                INIVITES=df1['INIVITES'][0]
+                INIVITES=df1['INIVITES']
             except:
                 INIVITES=[0]
 
             pc=[0]
             try:
-                pc=df['teacher_practice_x'].sum()
+                pc=df['teacher_practice']
             except:
                 pc=[0]
 
             teacher=[0]
             try:
-                teacher=df5['teacher'].sum()
+                teacher=df['teacher']
             except:
                 teacher=[0]
 
             mm=[0]
             try:
-                mm=df['Total_Mindful_Minutes_x'].sum()
+                mm=df['Total_Mindful_Minutes']
             except:
                 mm=[0]
 
             expire=[0]
             try:
-                expire=df['Subscription_expire_date'][0]
+                expire=df['Subscription_expire_date']
             except:
                 expire=[0]
 
             start=[0]
             try:
-                start=df['SUBSCRIPTION_DATE'][0]
+                start=df['SUBSCRIPTION_DATE']
             except:
                 start=[0]
 
@@ -7079,26 +7056,25 @@ def district_school_table_teacher(userid):
 
             accepted=[0]
             try:
-                accepted=df['accepted'].sum()
+                accepted=df['accepted']
             except:
                 accepted=[0]
 
             sent=[0]
             try:
-                sent=df['invited_user'].sum()
+                sent=df['invited_user']
             except:
                 sent=[0]
 
-            data={"Invite_sent":str(sent),"invite_accepted":str(accepted),
-          "payment_Mode":'OFFLINE',
-            "Subscription_start_date":str(start),"Subscription_expire_date":str(expire),"Total_invites":str(INIVITES),
-            'Remaining_invites':str(abs(remaining[0])),'EMAIL':str(Email[0]),'Total_teachers':str(teacher),'practice_count':str(pc),'mindful_minutes':str(mm)
-                , 'login_history':str(login_history)
-                 }
-            print('district_data')
-    #         return json.dumps(data)
-            print(data)
 
+            #     print(lc)
+
+            data={"Invite_sent":str(sent[0]),"invite_accepted":str(accepted[0]),"payment_Mode":'OFFLINE',
+            "Subscription_start_date":str(start[0]),"Subscription_expire_date":str(expire[0]),"Total_invites":str(INIVITES[0]),
+            'Remaining_invites':str(abs(remaining[0])),'EMAIL':str(Email[0]),'Total_teachers':str(teacher[0]),'practice_count':str(pc[0]),'mindful_minutes':str(mm[0])
+                , 'login_history':str(login_history[0])}   
+            print('district_data')
+            return json.dumps(data)
     else:
 
         df1=DataFrame(list(collection.aggregate([{"$match":
@@ -7110,7 +7086,7 @@ def district_school_table_teacher(userid):
                     { 'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
                     { 'USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
 
-    #                        {'IS_ADMIN':'Y'},
+#                        {'IS_ADMIN':'Y'},
                      {"_id" : ObjectId(""+userid+"")},
                      {'EMAIL_ID':{'$ne':''}},
 
@@ -7123,18 +7099,13 @@ def district_school_table_teacher(userid):
                 {'$group':{'_id':'$schoolId._id','sid':{'$addToSet':'$schoolId._id'},'school_name':{'$first':'$schoolId.NAME'},'date':{'$min':{"$dateToString": { "format": "%Y-%m-%d", "date":'$CREATED_DATE'}}},'country':{'$first':'$schoolId.COUNTRY'},
                           'State':{'$first':'$schoolId.STATE'},'INIVITES':{'$first':'$INVITES_ASSIGNED'},'EMAIL':{'$first':'$EMAIL_ID'},'admin':{'$first':'$IS_ADMIN'},'ROLE':{'$first':'$ROLE_ID.ROLE_id'}}},
                 {'$project':{'_id':1,'sid':'$sid','ADMIN':'$admin','EMAIL_ID':'$EMAIL','INIVITES':'$INIVITES'}}])))
-
         if df1.empty==True:
-            data={'Result':0} 
-            print(data)
-
-    #         return json.dumps(data)
+            data={'Result':0}        
+            return json.dumps(data)
 
         if df1['_id'][0]==None:
-            data={'Result':0}
-            print(data)
-    #         return json.dumps(data)
-
+            data={'Result':0}        
+            return json.dumps(data)
         else:
             schoolid=str(df1['_id'][0])
 
@@ -7158,15 +7129,12 @@ def district_school_table_teacher(userid):
                                    {'EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
                                      {'EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
                  ]}},
-                    {'$group':{'_id':'$_id','teacher':{'$sum':1},'school_name':{'$first':'$schoolId.NAME'},'date':{'$min':{"$dateToString": { "format": "%Y-%m-%d", "date":'$CREATED_DATE'}}},'country':{'$first':'$schoolId.COUNTRY'},
+                    {'$group':{'_id':'$schoolId._id','teacher':{'$sum':1},'school_name':{'$first':'$schoolId.NAME'},'date':{'$min':{"$dateToString": { "format": "%Y-%m-%d", "date":'$CREATED_DATE'}}},'country':{'$first':'$schoolId.COUNTRY'},
                               'State':{'$first':'$schoolId.STATE'},'INIVITES':{'$first':'$INVITES_ASSIGNED'},'city':{'$first':'$schoolId.CITY'},'admin':{'$first':'$IS_ADMIN'},'ROLE':{'$first':'$ROLE_ID.ROLE_id'}}},
                     {'$project':{'_id':1,'teacher':'$teacher'}}])))
-
-            user_id = df5['_id'].tolist()
-
+            
             if df5.empty == True:
-                df5 = df5.append({'_id': schoolid[0], 'teacher': 0}, ignore_index=True)
-
+                df5 = df5.append({'_id': disid[0], 'teacher': 0}, ignore_index=True)
 
             df2=DataFrame(list(collection4.aggregate([
              {"$match":
@@ -7177,22 +7145,27 @@ def district_school_table_teacher(userid):
                          {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
                         { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
                         { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
+
                          {'USER_ID.EMAIL_ID':{'$ne':''}},
-                   {'USER_ID.EMAIL_ID':{'$ne':''}},{'USER_ID._id':{'$in':user_id}},
-                    {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+        #                 {"USER_ID._id" : ObjectId("5f2e12f3592000521523721a")},
+
+
+                   {'USER_ID.EMAIL_ID':{'$ne':''}},
+                         {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
                      {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-                    {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                    {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
+                                   {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                                     {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
                  ]}},
-                {'$group':{'_id':'$USER_ID._id','ID':{'$addToSet':'$USER_ID._id'},'invited_user':{'$addToSet':'$INVITED_USER_ID._id'},
-                                   'accepted' :  {'$sum' : {'$cond': [ {'$eq': [ '$STATUS', 'Y' ] }, 1, 0 ] } },}},
+                    {'$group':{'_id':'$USER_ID.schoolId._id','ID':{'$addToSet':'$USER_ID._id'},'invited_user':{'$addToSet':'$INVITED_USER_ID._id'},
+                               'accepted' :  {'$sum' : {'$cond': [ {'$eq': [ '$STATUS', 'Y' ] }, 1, 0 ] } },}},
 
-                {'$project':{'_id':1,'user_id':'$ID','invited_user':{'$size':'$invited_user'},'accepted':'$accepted'}}
-                                          ])))
-
+                          {'$project':{'_id':1,'user_id':'$ID','invited_user':{'$size':'$invited_user'},'accepted':'$accepted'}}
+                                      ])))
+            
             if df2.empty == True:
-                df2 = df2.append({'_id': schoolid[0], 'user_id': 0,'invited_user':0,'accepted':0}, ignore_index=True)
-
+                df2 = df2.append({'_id': disid[0], 'user_id': 0,'invited_user':0,'accepted':0}, ignore_index=True)
+                
+                
             df3=DataFrame(list(collection1.aggregate([
              {"$match":
                  {'$and': [
@@ -7202,31 +7175,29 @@ def district_school_table_teacher(userid):
                          {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
                         { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
                         { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-                    {'USER_ID.schoolId._id':ObjectId(""+schoolid+"")},                     
-            {'USER_ID.EMAIL_ID':{'$ne':''}},
-            {'MODIFIED_DATE':{"$gte": csy_first_date()}},
+
+                         {'USER_ID.EMAIL_ID':{'$ne':''}},
+
+                     {'MODIFIED_DATE':{"$gte": csy_first_date()}},
 
                          {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
                      {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
                                    {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
                                      {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
                  ]}},
-            {'$group':{'_id':'$USER_ID._id','pc':{'$sum':1},'last_practice_date_q1':{'$max':{"$dateToString": { "format": "%Y-%m-%d", "date":'$MODIFIED_DATE'}}},
-            'Total_Mindful_Minutes':{"$sum":{"$round":[{"$divide":[{"$subtract":['$CURSOR_END','$cursorStart']}, 60]},0]}}}},
-
-            {'$project':{'_id':1,'teacher_practice':'$pc','Total_Mindful_Minutes':'$Total_Mindful_Minutes'}}])))
+                    {'$group':{'_id':'$USER_ID.schoolId._id','pc':{'$sum':1},'last_practice_date_q1':{'$max':{"$dateToString": { "format": "%Y-%m-%d", "date":'$MODIFIED_DATE'}}},
+                              'Total_Mindful_Minutes':{"$sum":{"$round":[{"$divide":[{"$subtract":['$CURSOR_END','$cursorStart']}, 60]},0]}}}},
+                          {'$project':{'_id':1,'teacher_practice':'$pc','Total_Mindful_Minutes':'$Total_Mindful_Minutes'}}])))
 
             if df3.empty == True:
-                df3 = df3.append({'_id': schoolid[0], 'teacher_practice': 0,'Total_Mindful_Minutes':0}, ignore_index=True)
-
-    #         print(df3)
+                df3 = df3.append({'_id': disid[0], 'teacher_practice': 0,'Total_Mindful_Minutes':0}, ignore_index=True)
+                
             df6=DataFrame(list(db.login_tracking.aggregate([
              {"$match":
                  {'$and': [
                       {'USER_ID.ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
                         {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
                           {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
-                     {'USER_ID._id':{'$in':user_id}},
                          {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
                         { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
                         { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
@@ -7240,12 +7211,12 @@ def district_school_table_teacher(userid):
                                    {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
                                      {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
                  ]}},
-                    {'$group':{'_id':'$USER_ID._id','pc':{'$sum':1},'LAST_LOGGED_IN':{'$max':{"$dateToString": { "format": "%Y-%m-%d", "date":'$LAST_LOGGED_IN'}}},
+                    {'$group':{'_id':'$USER_ID.schoolId._id','pc':{'$sum':1},'LAST_LOGGED_IN':{'$max':{"$dateToString": { "format": "%Y-%m-%d", "date":'$LAST_LOGGED_IN'}}},
                              }},
                           {'$project':{'_id':1,'login_history':'$pc'}}])))
-
+            
             if df6.empty == True:
-                df6 = df6.append({'_id': schoolid[0], 'login_history': 0}, ignore_index=True)
+                df6 = df6.append({'_id': disid[0], 'login_history': 0}, ignore_index=True)
 
             df4 = DataFrame(list(collection3.aggregate([
             {"$match":
@@ -7253,7 +7224,6 @@ def district_school_table_teacher(userid):
                          {'USER_ID.ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
                         {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
                           {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
-                     {'USER_ID._id':{'$in':user_id}},
                          {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
                         { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
                         { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},   
@@ -7263,18 +7233,15 @@ def district_school_table_teacher(userid):
                                    {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
                                      {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
                  ]}},
-                    {'$group':{'_id':'$USER_ID._id','MODE_OF_PAYMENT':{'$first':'$MODE_OF_PAYMENT'},'startdate':{'$first':{"$dateToString": { "format": "%Y-%m-%d", "date":'$SUBSCRIPTION_DATE'}}},'subsdate':{'$max':{"$dateToString": { "format": "%Y-%m-%d", "date":'$SUBSCRIPTION_EXPIRE_DATE'}}}}},
+                    {'$group':{'_id':'$USER_ID.schoolId._id','MODE_OF_PAYMENT':{'$first':'$MODE_OF_PAYMENT'},'startdate':{'$first':{"$dateToString": { "format": "%Y-%m-%d", "date":'$SUBSCRIPTION_DATE'}}},'subsdate':{'$max':{"$dateToString": { "format": "%Y-%m-%d", "date":'$SUBSCRIPTION_EXPIRE_DATE'}}}}},
                           {'$project':{'_id':1,'Subscription_expire_date':'$subsdate','SUBSCRIPTION_DATE':'$startdate','MODE_OF_PAYMENT':'$MODE_OF_PAYMENT'}},
                            ])))
-
+            
             if df4.empty == True:
-                df4 = df4.append({'_id': schoolid[0], 'Subscription_expire_date': 0,'SUBSCRIPTION_DATE': 0,'MODE_OF_PAYMENT': 0}, ignore_index=True)
-
-    #         df__=pd.merge(df1,df2, how='left', on='_id')
-            df__=pd.merge(df5,df2,how='right', on='_id')
-
-    #         dfff=pd.merge(df__,df,how='left', on='_id')
-            dfff=pd.merge(df__,df3,how='left', on='_id')
+                df4 = df4.append({'_id': disid[0], 'Subscription_expire_date': 0,'SUBSCRIPTION_DATE': 0,'MODE_OF_PAYMENT': 0}, ignore_index=True)
+            
+            df__=pd.merge(df1,df2, how='left', on='_id')
+            dfff=pd.merge(df__,df5,how='left', on='_id')
             dff=pd.merge(dfff,df3, how='left', on='_id')
             dffff=pd.merge(dff,df4, how='left', on='_id')
             df=pd.merge(dffff,df6, how='left', on='_id')
@@ -7282,8 +7249,8 @@ def district_school_table_teacher(userid):
             df=df.astype(int, errors='ignore')
             print(df)
 
-    #             df['remaining']=df['INIVITES']-df['invited_user']
-            df['remaining']=df1['INIVITES']-df['accepted'].sum()
+#             df['remaining']=df['INIVITES']-df['invited_user']
+            df['remaining']=df1['INIVITES']-df['accepted']
 
             remaining=[0]
             try:
@@ -7292,50 +7259,50 @@ def district_school_table_teacher(userid):
                 remaining=[0]
             login_history=[0]
             try:
-                login_history=df6['_id'][0]
+                login_history=df['login_history']
             except:
                 login_history=[0]
 
 
             Email=[0]
             try:
-                Email=df1['EMAIL_ID']
+                Email=df['EMAIL_ID']
             except:
                 Email=[0]
 
             INIVITES=[0]
             try:
-                INIVITES=df1['INIVITES'][0]
+                INIVITES=df['INIVITES']
             except:
                 INIVITES=[0]
 
             pc=[0]
             try:
-                pc=df['teacher_practice_x'].sum()
+                pc=df['teacher_practice']
             except:
                 pc=[0]
 
             teacher=[0]
             try:
-                teacher=df5['teacher'].sum()
+                teacher=df['teacher']
             except:
                 teacher=[0]
 
             mm=[0]
             try:
-                mm=df['Total_Mindful_Minutes_x'].sum()
+                mm=df['Total_Mindful_Minutes']
             except:
                 mm=[0]
 
             expire=[0]
             try:
-                expire=df['Subscription_expire_date'][0]
+                expire=df['Subscription_expire_date']
             except:
                 expire=[0]
 
             start=[0]
             try:
-                start=df['SUBSCRIPTION_DATE'][0]
+                start=df['SUBSCRIPTION_DATE']
             except:
                 start=[0]
 
@@ -7348,602 +7315,25 @@ def district_school_table_teacher(userid):
 
             accepted=[0]
             try:
-                accepted=df['accepted'].sum()
+                accepted=df['accepted']
             except:
                 accepted=[0]
 
             sent=[0]
             try:
-                sent=df['invited_user'].sum()
+                sent=df['invited_user']
             except:
                 sent=[0]
 
-            data={"Invite_sent":str(sent),"invite_accepted":str(accepted),
-          "payment_Mode":str(mode[0]),
-            "Subscription_start_date":str(start),"Subscription_expire_date":str(expire),"Total_invites":str(INIVITES),
-            'Remaining_invites':str(abs(remaining[0])),'EMAIL':str(Email[0]),'Total_teachers':str(teacher),'practice_count':str(pc),'mindful_minutes':str(mm)
-                , 'login_history':str(login_history)
-                 }
 
+        #     print(lc)
 
-
-    #         data={"Invite_sent":str(sent[0]),"invite_accepted":str(accepted[0]),"payment_Mode":str(mode[0]),
-    # #         "Subscription_start_date":str(start[0]),"Subscription_expire_date":str(expire[0]),"Total_invites":str(INIVITES[0]),
-    # #         'Remaining_invites':str(abs(remaining[0])),'EMAIL':str(Email[0]),'Total_teachers':str(teacher[0]),'practice_count':str(pc[0]),'mindful_minutes':str(mm[0])
-    # #             , 'login_history':str(login_history[0])
-    #              }
-
+            data={"Invite_sent":str(sent[0]),"invite_accepted":str(accepted[0]),"payment_Mode":str(mode[0]),
+            "Subscription_start_date":str(start[0]),"Subscription_expire_date":str(expire[0]),"Total_invites":str(INIVITES[0]),
+            'Remaining_invites':str(abs(remaining[0])),'EMAIL':str(Email[0]),'Total_teachers':str(teacher[0]),'practice_count':str(pc[0]),'mindful_minutes':str(mm[0])
+                , 'login_history':str(login_history[0])}
+            print('school_data')
             return json.dumps(data)
-
-
-
-
-
-
-#     username = urllib.parse.quote_plus('admin')
-#     password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-#     client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
-#     db=client.compass
-
-
-#     collection2=db.school_master
-#     collection=db.user_master
-#     collection4=db.invite_master
-#     collection5=db.login_logs
-#     collection1=db.audio_track_master
-#     collection3=db.subscription_master
-#     #     district=disdic[districtid]
-#     #     myDatetime1 = dateutil.parser.parse(startdate)
-#     #     myDatetime2 = dateutil.parser.parse(enddate)
-#     from datetime import datetime
-
-#     df0 = DataFrame(list(collection.aggregate([
-#         {"$match":{'$and': [{"_id" : ObjectId(""+userid+"")}]}},
-#         {'$project':{'_id':1,"EMAIL_ID" : 1,'district_admin':'$IS_DISTRICT_ADMIN','school_admin':'$IS_ADMIN'}}])))
-# #     print(df0)
-
-
-
-#     if 'district_admin' not in df0.columns:
-#         df0['district_admin']=0
-
-#     # if df0[df0['district_admin']=='Y']:
-#     #     if 'Y' in df0['district_admin'][0]:
-#     if df0['district_admin'][0]=='Y':
-#         uemail = df0["EMAIL_ID"].to_list()
-
-#         df00 = DataFrame(list(db.district_master.aggregate([
-#         {"$match":{'$and': [
-#         {"ADMIN_EMAIL" : {"$in" : uemail}}]}},
-#         {'$project':{'_id':1,"ADMIN_EMAIL" : 1}}])))
-# #         print(df00)
-
-
-#         if df00.empty==True:
-#             data={'Result':0}        
-#             return json.dumps(data)
-#         else:
-#             disid = df00["_id"].to_list()
-# #             print(disid)
-
-#             df1=DataFrame(list(collection.aggregate([{"$match":
-#                 {'$and': [
-#                  {"DISTRICT_ID._id" : {"$in" : disid}},
-#         #             {'ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
-#              {"IS_DISABLED":{"$ne":"Y"}},
-#              {"IS_BLOCKED":{"$ne":"Y"}},
-#              {"INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-#              { 'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#              { 'USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-# #                 {"IS_DISTRICT_ADMIN" : "Y"},
-#                            {'IS_ADMIN':'Y'},
-# #                      {"_id" : ObjectId("5f32fef3c32deb1ed8a46378")},
-#              {'EMAIL_ID':{'$ne':''}},
-#              {'schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#              {'schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-#              {'EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-#              {'EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
-
-#              ]}},
-#              {'$group':{'_id':'$DISTRICT_ID._id','sid':{'$addToSet':'$schoolId._id'},'school_name':{'$first':'$schoolId.NAME'},'date':{'$min':{"$dateToString": { "format": "%Y-%m-%d", "date":'$CREATED_DATE'}}},'country':{'$first':'$schoolId.COUNTRY'},
-#              'State':{'$first':'$schoolId.STATE'},'INIVITES':{'$sum':'$INVITES_ASSIGNED'},'EMAIL':{'$first':'$EMAIL_ID'},'admin':{'$first':'$IS_ADMIN'},'district_admin':{'$first':'$IS_DISTRICT_ADMIN'},'ROLE':{'$first':'$ROLE_ID.ROLE_id'}}},
-#              {'$project':{'_id':1,'sid':'$sid','ADMIN':'$admin','district_admin':'$district_admin','EMAIL_ID':'$EMAIL','INIVITES':'$INIVITES'}}])))
-
-# #             print(df1)
-#             if df1.empty==True:
-#                 data={'Result':0}        
-#                 return json.dumps(data)
-
-#             df5=DataFrame(list(collection.aggregate([{"$match":
-#                  {'$and': [
-
-#                  {'ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
-#                  {"IS_DISABLED":{"$ne":"Y"}},
-#                  {"IS_BLOCKED":{"$ne":"Y"}},
-#                  {"INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-#                  { 'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#                  { 'USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-#         #                 {'schoolId._id':ObjectId(""+schoolid+"")},                 
-#         #                    {'IS_ADMIN':'Y'},
-#                  {'EMAIL_ID':{'$ne':''}},
-#                  {'schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#                  {'schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-#                  {'EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-#                  {'EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
-#                  {'DISTRICT_ID._id':{"$in" : disid}}
-#                  ]}},
-#                  {'$group':{'_id':'$DISTRICT_ID._id','teacher':{'$sum':1},'school_name':{'$first':'$schoolId.NAME'},'date':{'$min':{"$dateToString": { "format": "%Y-%m-%d", "date":'$CREATED_DATE'}}},'country':{'$first':'$schoolId.COUNTRY'},
-#                  'State':{'$first':'$schoolId.STATE'},'INIVITES':{'$first':'$INVITES_ASSIGNED'},'city':{'$first':'$schoolId.CITY'},'admin':{'$first':'$IS_ADMIN'},'ROLE':{'$first':'$ROLE_ID.ROLE_id'}}},
-#                  {'$project':{'_id':1,'teacher':'$teacher'}}])))
-# #             print("df5",df5)
-            
-#             if df5.empty == True:
-#                 df5 = df5.append({'_id': disid[0], 'teacher': 0}, ignore_index=True)
-                
-#             df2=DataFrame(list(collection4.aggregate([
-#              {"$match":
-#              {'$and': [
-
-#              {'USER_ID.ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
-#              {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
-#              {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
-#              {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-#              { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#              { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-#              {'USER_ID.EMAIL_ID':{'$ne':''}},
-#             #                 {"USER_ID._id" : ObjectId("5f2e12f3592000521523721a")},
-
-
-#              {'USER_ID.EMAIL_ID':{'$ne':''}},
-#              {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#              {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-#              {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-#              {'USER_ID.DISTRICT_ID._id':{"$in" : disid}},
-#              {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
-#                  ]}},
-#              {'$group':{'_id':'$USER_ID.DISTRICT_ID._id','ID':{'$addToSet':'$USER_ID._id'},'invited_user':{'$addToSet':'$INVITED_USER_ID._id'},
-#              'accepted' :  {'$sum' : {'$cond': [ {'$eq': [ '$STATUS', 'Y' ] }, 1, 0 ] } },}},
-
-#              {'$project':{'_id':1,'user_id':'$ID','invited_user':{'$size':'$invited_user'},'accepted':'$accepted'}}
-#              ])))
-            
-#             if df2.empty == True:
-#                 df2 = df2.append({'_id': disid[0], 'user_id': 0,'invited_user':0,'accepted':0}, ignore_index=True)
-            
-# #             print("df2",df2)
-
-#             df3=DataFrame(list(collection1.aggregate([
-#              {"$match":
-#              {'$and': [
-
-#              {'USER_ID.ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
-#              {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
-#              {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
-#              {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-#              { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#              { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-#              {'USER_ID.EMAIL_ID':{'$ne':''}},
-#              {'MODIFIED_DATE':{"$gte": csy_first_date()}},
-
-#              {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#              {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-#              {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-#              {'USER_ID.DISTRICT_ID._id':{"$in" : disid}},
-#              {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
-#              ]}},
-#              {'$group':{'_id':'$USER_ID.DISTRICT_ID._id','pc':{'$sum':1},'last_practice_date_q1':{'$max':{"$dateToString": { "format": "%Y-%m-%d", "date":'$MODIFIED_DATE'}}},
-#              'Total_Mindful_Minutes':{"$sum":{"$round":[{"$divide":[{"$subtract":['$CURSOR_END','$cursorStart']}, 60]},0]}}}},
-#              {'$project':{'_id':1,'teacher_practice':'$pc','Total_Mindful_Minutes':'$Total_Mindful_Minutes'}}])))
-
-#             if df3.empty == True:
-#                 df3 = df3.append({'_id': disid[0], 'teacher_practice': 0,'Total_Mindful_Minutes':0}, ignore_index=True)
-            
-#             df6=DataFrame(list(collection5.aggregate([
-#              {"$match":
-#              {'$and': [
-
-#              {'USER_ID.ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
-#              {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
-#              {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
-#              {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-#              { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#              { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-#              {'USER_ID.EMAIL_ID':{'$ne':''}},
-#              {'LAST_LOGGED_IN':{"$gte":  csy_first_date()}},
-#              {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#              {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-#              {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-#              {'USER_ID.DISTRICT_ID._id':{"$in" : disid}},
-#              {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
-#              ]}},
-#              {'$group':{'_id':'$USER_ID.DISTRICT_ID._id','pc':{'$sum':1},
-#              'LAST_LOGGED_IN':{'$max':{"$dateToString": { "format": "%Y-%m-%d", "date":'$LAST_LOGGED_IN'}}},}},
-#              {'$project':{'_id':1,'login_history':'$pc'}}])))
-            
-#             if df6.empty == True:
-#                 df6 = df6.append({'_id': disid[0], 'login_history': 0}, ignore_index=True)
-
-# #             print("df6",df6)
-#             df4 = DataFrame(list(collection3.aggregate([
-#             {"$match":
-#             {'$and': [
-
-#             {'USER_ID.ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
-#             {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
-#             {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
-#             {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-#             { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#             { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},   
-#             {'USER_ID.EMAIL_ID':{'$ne':''}},                                                 
-#             {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#             {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-#             {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-#             {'USER_ID.DISTRICT_ID._id':{"$in" : disid}},
-#             {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
-#             ]}},
-#             {'$group':{'_id':'$USER_ID.DISTRICT_ID._id','MODE_OF_PAYMENT':{'$first':'$MODE_OF_PAYMENT'},'startdate':{'$first':{"$dateToString": { "format": "%Y-%m-%d", "date":'$SUBSCRIPTION_DATE'}}},'subsdate':{'$max':{"$dateToString": { "format": "%Y-%m-%d", "date":'$SUBSCRIPTION_EXPIRE_DATE'}}}}},
-#             {'$project':{'_id':1,'Subscription_expire_date':'$subsdate','SUBSCRIPTION_DATE':'$startdate',
-#                          'MODE_OF_PAYMENT':'$MODE_OF_PAYMENT'}},
-#             ])))
-            
-#             if df4.empty == True:
-#                 df4 = df4.append({'_id': disid[0], 'Subscription_expire_date': 0,'SUBSCRIPTION_DATE': 0,'MODE_OF_PAYMENT': 0}, ignore_index=True)
-            
-# #             print("df4",df4)
-
-# #             df__=pd.merge(df1,df2, how='left', on='_id')
-#             dfff=pd.merge(df2,df5,how='left', on='_id')
-#             dff=pd.merge(dfff,df3, how='left', on='_id')
-#             dffff=pd.merge(dff,df4, how='left', on='_id')
-#             df=pd.merge(dffff,df6, how='left', on='_id')
-
-#             df=df.fillna(0)
-#             df=df.astype(int, errors='ignore')
-            
-# #             df['remaining']=df['INIVITES']-df['invited_user']
-#             df['remaining']=df1['INIVITES']-df['accepted']
-
-#             remaining=[0]
-#             try:
-#                 remaining=df['remaining']
-#             except:
-#                 remaining=[0]
-#             login_history=[0]
-#             try:
-#                 login_history=df['login_history']
-#             except:
-#                 login_history=[0]
-
-
-#             Email=[0]
-#             try:
-#                 Email=df1['EMAIL_ID']
-#             except:
-#                 Email=[0]
-
-#             INIVITES=[0]
-#             try:
-#                 INIVITES=df1['INIVITES']
-#             except:
-#                 INIVITES=[0]
-
-#             pc=[0]
-#             try:
-#                 pc=df['teacher_practice']
-#             except:
-#                 pc=[0]
-
-#             teacher=[0]
-#             try:
-#                 teacher=df['teacher']
-#             except:
-#                 teacher=[0]
-
-#             mm=[0]
-#             try:
-#                 mm=df['Total_Mindful_Minutes']
-#             except:
-#                 mm=[0]
-
-#             expire=[0]
-#             try:
-#                 expire=df['Subscription_expire_date']
-#             except:
-#                 expire=[0]
-
-#             start=[0]
-#             try:
-#                 start=df['SUBSCRIPTION_DATE']
-#             except:
-#                 start=[0]
-
-#             mode=[0]
-#             try:
-#                 mode=df['MODE_OF_PAYMENT']
-#             except:
-#                 mode=[0]
-
-
-#             accepted=[0]
-#             try:
-#                 accepted=df['accepted']
-#             except:
-#                 accepted=[0]
-
-#             sent=[0]
-#             try:
-#                 sent=df['invited_user']
-#             except:
-#                 sent=[0]
-
-
-#             #     print(lc)
-
-#             data={"Invite_sent":str(sent[0]),"invite_accepted":str(accepted[0]),"payment_Mode":'OFFLINE',
-#             "Subscription_start_date":str(start[0]),"Subscription_expire_date":str(expire[0]),"Total_invites":str(INIVITES[0]),
-#             'Remaining_invites':str(abs(remaining[0])),'EMAIL':str(Email[0]),'Total_teachers':str(teacher[0]),'practice_count':str(pc[0]),'mindful_minutes':str(mm[0])
-#                 , 'login_history':str(login_history[0])}   
-#             print('district_data')
-#             return json.dumps(data)
-#     else:
-
-#         df1=DataFrame(list(collection.aggregate([{"$match":
-#              {'$and': [
-#     #             {'ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
-#                     {"IS_DISABLED":{"$ne":"Y"}},
-#                       {"IS_BLOCKED":{"$ne":"Y"}},
-#                      {"INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-#                     { 'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#                     { 'USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-
-# #                        {'IS_ADMIN':'Y'},
-#                      {"_id" : ObjectId(""+userid+"")},
-#                      {'EMAIL_ID':{'$ne':''}},
-
-#                      {'schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#                  {'schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-
-#                                {'EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-#                                  {'EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
-#              ]}},
-#                 {'$group':{'_id':'$schoolId._id','sid':{'$addToSet':'$schoolId._id'},'school_name':{'$first':'$schoolId.NAME'},'date':{'$min':{"$dateToString": { "format": "%Y-%m-%d", "date":'$CREATED_DATE'}}},'country':{'$first':'$schoolId.COUNTRY'},
-#                           'State':{'$first':'$schoolId.STATE'},'INIVITES':{'$first':'$INVITES_ASSIGNED'},'EMAIL':{'$first':'$EMAIL_ID'},'admin':{'$first':'$IS_ADMIN'},'ROLE':{'$first':'$ROLE_ID.ROLE_id'}}},
-#                 {'$project':{'_id':1,'sid':'$sid','ADMIN':'$admin','EMAIL_ID':'$EMAIL','INIVITES':'$INIVITES'}}])))
-#         if df1.empty==True:
-#             data={'Result':0}        
-#             return json.dumps(data)
-
-#         if df1['_id'][0]==None:
-#             data={'Result':0}        
-#             return json.dumps(data)
-#         else:
-#             schoolid=str(df1['_id'][0])
-
-#         #     print(schoolid)
-#             df5=DataFrame(list(collection.aggregate([{"$match":
-#                  {'$and': [
-#                     {'ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
-#                         {"IS_DISABLED":{"$ne":"Y"}},
-#                           {"IS_BLOCKED":{"$ne":"Y"}},
-#                          {"INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-#                         { 'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#                         { 'USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-#                         {'schoolId._id':ObjectId(""+schoolid+"")},
-#         #                    {'IS_ADMIN':'Y'},
-
-#                          {'EMAIL_ID':{'$ne':''}},
-
-#                          {'schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#                      {'schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-
-#                                    {'EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-#                                      {'EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
-#                  ]}},
-#                     {'$group':{'_id':'$schoolId._id','teacher':{'$sum':1},'school_name':{'$first':'$schoolId.NAME'},'date':{'$min':{"$dateToString": { "format": "%Y-%m-%d", "date":'$CREATED_DATE'}}},'country':{'$first':'$schoolId.COUNTRY'},
-#                               'State':{'$first':'$schoolId.STATE'},'INIVITES':{'$first':'$INVITES_ASSIGNED'},'city':{'$first':'$schoolId.CITY'},'admin':{'$first':'$IS_ADMIN'},'ROLE':{'$first':'$ROLE_ID.ROLE_id'}}},
-#                     {'$project':{'_id':1,'teacher':'$teacher'}}])))
-            
-#             if df5.empty == True:
-#                 df5 = df5.append({'_id': disid[0], 'teacher': 0}, ignore_index=True)
-
-#             df2=DataFrame(list(collection4.aggregate([
-#              {"$match":
-#                  {'$and': [
-#                       {'USER_ID.ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
-#                         {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
-#                           {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
-#                          {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-#                         { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#                         { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-
-#                          {'USER_ID.EMAIL_ID':{'$ne':''}},
-#         #                 {"USER_ID._id" : ObjectId("5f2e12f3592000521523721a")},
-
-
-#                    {'USER_ID.EMAIL_ID':{'$ne':''}},
-#                          {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#                      {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-#                                    {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-#                                      {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
-#                  ]}},
-#                     {'$group':{'_id':'$USER_ID.schoolId._id','ID':{'$addToSet':'$USER_ID._id'},'invited_user':{'$addToSet':'$INVITED_USER_ID._id'},
-#                                'accepted' :  {'$sum' : {'$cond': [ {'$eq': [ '$STATUS', 'Y' ] }, 1, 0 ] } },}},
-
-#                           {'$project':{'_id':1,'user_id':'$ID','invited_user':{'$size':'$invited_user'},'accepted':'$accepted'}}
-#                                       ])))
-            
-#             if df2.empty == True:
-#                 df2 = df2.append({'_id': disid[0], 'user_id': 0,'invited_user':0,'accepted':0}, ignore_index=True)
-                
-                
-#             df3=DataFrame(list(collection1.aggregate([
-#              {"$match":
-#                  {'$and': [
-#                       {'USER_ID.ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
-#                         {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
-#                           {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
-#                          {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-#                         { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#                         { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-
-#                          {'USER_ID.EMAIL_ID':{'$ne':''}},
-
-#                      {'MODIFIED_DATE':{"$gte": csy_first_date()}},
-
-#                          {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#                      {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-#                                    {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-#                                      {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
-#                  ]}},
-#                     {'$group':{'_id':'$USER_ID.schoolId._id','pc':{'$sum':1},'last_practice_date_q1':{'$max':{"$dateToString": { "format": "%Y-%m-%d", "date":'$MODIFIED_DATE'}}},
-#                               'Total_Mindful_Minutes':{"$sum":{"$round":[{"$divide":[{"$subtract":['$CURSOR_END','$cursorStart']}, 60]},0]}}}},
-#                           {'$project':{'_id':1,'teacher_practice':'$pc','Total_Mindful_Minutes':'$Total_Mindful_Minutes'}}])))
-
-#             if df3.empty == True:
-#                 df3 = df3.append({'_id': disid[0], 'teacher_practice': 0,'Total_Mindful_Minutes':0}, ignore_index=True)
-                
-#             df6=DataFrame(list(db.login_tracking.aggregate([
-#              {"$match":
-#                  {'$and': [
-#                       {'USER_ID.ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
-#                         {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
-#                           {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
-#                          {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-#                         { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#                         { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-
-#                          {'USER_ID.EMAIL_ID':{'$ne':''}},
-
-#                      {'CREATED_DATE':{"$gte":  csy_first_date()}},
-
-#                          {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#                      {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-#                                    {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-#                                      {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
-#                  ]}},
-#                     {'$group':{'_id':'$USER_ID.schoolId._id','pc':{'$sum':1},'LAST_LOGGED_IN':{'$max':{"$dateToString": { "format": "%Y-%m-%d", "date":'$LAST_LOGGED_IN'}}},
-#                              }},
-#                           {'$project':{'_id':1,'login_history':'$pc'}}])))
-            
-#             if df6.empty == True:
-#                 df6 = df6.append({'_id': disid[0], 'login_history': 0}, ignore_index=True)
-
-#             df4 = DataFrame(list(collection3.aggregate([
-#             {"$match":
-#                  {'$and': [
-#                          {'USER_ID.ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
-#                         {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
-#                           {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
-#                          {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-#                         { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#                         { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},   
-#                          {'USER_ID.EMAIL_ID':{'$ne':''}},                     
-#                          {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#                      {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-#                                    {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-#                                      {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
-#                  ]}},
-#                     {'$group':{'_id':'$USER_ID.schoolId._id','MODE_OF_PAYMENT':{'$first':'$MODE_OF_PAYMENT'},'startdate':{'$first':{"$dateToString": { "format": "%Y-%m-%d", "date":'$SUBSCRIPTION_DATE'}}},'subsdate':{'$max':{"$dateToString": { "format": "%Y-%m-%d", "date":'$SUBSCRIPTION_EXPIRE_DATE'}}}}},
-#                           {'$project':{'_id':1,'Subscription_expire_date':'$subsdate','SUBSCRIPTION_DATE':'$startdate','MODE_OF_PAYMENT':'$MODE_OF_PAYMENT'}},
-#                            ])))
-            
-#             if df4.empty == True:
-#                 df4 = df4.append({'_id': disid[0], 'Subscription_expire_date': 0,'SUBSCRIPTION_DATE': 0,'MODE_OF_PAYMENT': 0}, ignore_index=True)
-            
-#             df__=pd.merge(df1,df2, how='left', on='_id')
-#             dfff=pd.merge(df__,df5,how='left', on='_id')
-#             dff=pd.merge(dfff,df3, how='left', on='_id')
-#             dffff=pd.merge(dff,df4, how='left', on='_id')
-#             df=pd.merge(dffff,df6, how='left', on='_id')
-#             df=df.fillna(0)
-#             df=df.astype(int, errors='ignore')
-#             print(df)
-
-# #             df['remaining']=df['INIVITES']-df['invited_user']
-#             df['remaining']=df1['INIVITES']-df['accepted']
-
-#             remaining=[0]
-#             try:
-#                 remaining=df['remaining']
-#             except:
-#                 remaining=[0]
-#             login_history=[0]
-#             try:
-#                 login_history=df['login_history']
-#             except:
-#                 login_history=[0]
-
-
-#             Email=[0]
-#             try:
-#                 Email=df['EMAIL_ID']
-#             except:
-#                 Email=[0]
-
-#             INIVITES=[0]
-#             try:
-#                 INIVITES=df['INIVITES']
-#             except:
-#                 INIVITES=[0]
-
-#             pc=[0]
-#             try:
-#                 pc=df['teacher_practice']
-#             except:
-#                 pc=[0]
-
-#             teacher=[0]
-#             try:
-#                 teacher=df['teacher']
-#             except:
-#                 teacher=[0]
-
-#             mm=[0]
-#             try:
-#                 mm=df['Total_Mindful_Minutes']
-#             except:
-#                 mm=[0]
-
-#             expire=[0]
-#             try:
-#                 expire=df['Subscription_expire_date']
-#             except:
-#                 expire=[0]
-
-#             start=[0]
-#             try:
-#                 start=df['SUBSCRIPTION_DATE']
-#             except:
-#                 start=[0]
-
-#             mode=[0]
-#             try:
-#                 mode=df['MODE_OF_PAYMENT']
-#             except:
-#                 mode=[0]
-
-
-#             accepted=[0]
-#             try:
-#                 accepted=df['accepted']
-#             except:
-#                 accepted=[0]
-
-#             sent=[0]
-#             try:
-#                 sent=df['invited_user']
-#             except:
-#                 sent=[0]
-
-
-#         #     print(lc)
-
-#             data={"Invite_sent":str(sent[0]),"invite_accepted":str(accepted[0]),"payment_Mode":str(mode[0]),
-#             "Subscription_start_date":str(start[0]),"Subscription_expire_date":str(expire[0]),"Total_invites":str(INIVITES[0]),
-#             'Remaining_invites':str(abs(remaining[0])),'EMAIL':str(Email[0]),'Total_teachers':str(teacher[0]),'practice_count':str(pc[0]),'mindful_minutes':str(mm[0])
-#                 , 'login_history':str(login_history[0])}
-#             print('school_data')
-#             return json.dumps(data)
 
 
 
@@ -7955,9 +7345,9 @@ def monthwiseadminpc(userid):
     
     
     
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection = db.audio_track_master
     collection1 = db.user_master
@@ -8056,9 +7446,9 @@ def monthwiseadminpc(userid):
 
 @app.route('/admintable/<userid>')
 def admin_table(userid):
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
 
     collection1 = db.user_master.aggregate([{"$match":
@@ -8230,7 +7620,7 @@ def calendarpractice():
 #     password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
 #     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
 #     db=client.compass_beta
-    client = MongoClient('mongodb://admin:F5tMazRj47cYqm33e@52.41.36.115:27017/')
+    client = MongoClient('mongodb://admin:CtZh5Nqp8Qn9LHUDx2GH@54.184.165.106:27017/')
     db=client.compass
 
     collection2=db.class_master
@@ -8461,9 +7851,10 @@ def calendarpractice():
 
 @app.route('/adminportal__table/<userid>')
 def admin_portal_table(userid):
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
 
     collection2=db.school_master
@@ -8473,14 +7864,12 @@ def admin_portal_table(userid):
     collection1=db.audio_track_master
     collection3=db.subscription_master
 
-    from datetime import datetime,date
-#     csy_first_date='2021-8-1'
+    from datetime import datetime
 
-#     userid='603fcb95f4a96870c8c8cce9'
     df0 = DataFrame(list(collection.aggregate([
         {"$match":{'$and': [{"_id" : ObjectId(""+userid+"")}]}},
         {'$project':{'_id':1,"EMAIL_ID" : 1,'district_admin':'$IS_DISTRICT_ADMIN'}}])))
-    #     print(df0)
+#     print(df0)
 
 
 
@@ -8497,15 +7886,14 @@ def admin_portal_table(userid):
         {"$match":{'$and': [
         {"ADMIN_EMAIL" : {"$in" : uemail}}]}},
         {'$project':{'_id':1,"ADMIN_EMAIL" : 1}}])))
-    #         print(df00)
+#         print(df00)
 
         if df00.empty==True:
             temp={'Result':0}
-            print(temp)
-    #         return json.dumps(temp, default=str)
+            return json.dumps(temp, default=str)
         else:
             disid = df00["_id"].to_list()
-    #             print("disid",disid)
+#             print("disid",disid)
 
 
             df1=DataFrame(list(db.user_master.aggregate([{"$match":
@@ -8538,11 +7926,10 @@ def admin_portal_table(userid):
 
             if df1.empty==True:
                 temp={'Result':0}
-                print(temp)
-    #             return json.dumps(temp, default=str)
+                return json.dumps(temp, default=str)
             else:
                 userid = df1["_id"].to_list()
-    #                 print("userid",len(userid))
+#                 print("userid",len(userid))
 
             df5=DataFrame(list(db.user_master.aggregate([{"$match":
             {'$and': [
@@ -8568,7 +7955,7 @@ def admin_portal_table(userid):
             {'$project':{'_id': "$_id",'ADMIN':'$IS_ADMIN','INIVITES':'$INVITES_ASSIGNED'}}])))
 
             user_id = list(df5["_id"])
-    #             print("user_id",len(user_id))
+#             print("user_id",len(user_id))
 
 
             df2=DataFrame(list(db.invite_master.aggregate([
@@ -8603,8 +7990,8 @@ def admin_portal_table(userid):
             df2_N = df2[df2["accepted"] == "N"]
             user_id1 = list(df2["_id"])
             user_id2 = list(df2_Y["_id"])
-    #             print("user_id1",len(user_id1))
-    #             print("user_id2",len(user_id2))
+#             print("user_id1",len(user_id1))
+#             print("user_id2",len(user_id2))
 
 
             df3=DataFrame(list(db.audio_track_master.aggregate([
@@ -8620,7 +8007,7 @@ def admin_portal_table(userid):
 
             {'USER_ID.EMAIL_ID':{'$ne':''}},
 
-            {'MODIFIED_DATE':{"$gte": csy_first_date}},
+            {'MODIFIED_DATE':{"$gte": csy_first_date()}},
 
             {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
             {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
@@ -8651,7 +8038,7 @@ def admin_portal_table(userid):
 
             {'USER_ID.EMAIL_ID':{'$ne':''}},
 
-            {'MODIFIED_DATE':{"$gte":csy_first_date }},
+            {'MODIFIED_DATE':{"$gte":csy_first_date() }},
 
             {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
             {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
@@ -8681,7 +8068,7 @@ def admin_portal_table(userid):
         #         //             {'USER_ID.IS_PORTAL':'Y'},
             {'USER_ID.EMAIL_ID':{'$ne':''}},
 
-            {'LAST_LOGGED_IN':{"$gte": csy_first_date}},
+            {'LAST_LOGGED_IN':{"$gte": csy_first_date()}},
         #         //              {'EMAIL_ID':{'$regex':'broward','$options':'i'}},
             {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
             {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
@@ -8745,12 +8132,12 @@ def admin_portal_table(userid):
 
             temp = {"INVITE_SENT" : final_df.to_numpy().tolist(), "INVITE_ACCEPTED" : final_df1.to_numpy().tolist()}
             print('district_data',len(final_df),len(final_df1))
-    #         return json.dumps(temp, default=str)
-
+            return json.dumps(temp, default=str)
+    
     else:
         username = urllib.parse.quote_plus('admin')
-        password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-        client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+        password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+        client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
         db=client.compass
 
         # username = urllib.parse.quote_plus('adminIE')                                     #SwitchedToBeta
@@ -8789,8 +8176,7 @@ def admin_portal_table(userid):
 
         if df1.empty==True:
             temp={'Result':0}
-            print(temp)
-    #         return json.dumps(temp, default=str)
+            return json.dumps(temp, default=str)
 
         else:
             schoolid=str(df1['_id'][0])
@@ -8856,7 +8242,7 @@ def admin_portal_table(userid):
             df2_N = df2[df2["accepted"] == "N"]
             user_id1 = list(df2["_id"])
             user_id2 = list(df2_Y["_id"])
-
+            
 
             df3=DataFrame(list(db.audio_track_master.aggregate([
             {"$match":
@@ -8870,8 +8256,8 @@ def admin_portal_table(userid):
                                 { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
 
                                  {'USER_ID.EMAIL_ID':{'$ne':''}},
-            {'MODIFIED_DATE':{"$gte": datetime(2021,8,1)}},
-    #         {'MODIFIED_DATE':{"$gte": csy_first_date()}},
+
+            {'MODIFIED_DATE':{"$gte": csy_first_date()}},
 
                                  {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
                              {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
@@ -8902,7 +8288,7 @@ def admin_portal_table(userid):
 
                                  {'USER_ID.EMAIL_ID':{'$ne':''}},
 
-            {'MODIFIED_DATE':{"$gte":csy_first_date }},
+            {'MODIFIED_DATE':{"$gte":csy_first_date() }},
 
                                  {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
                              {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
@@ -8933,7 +8319,7 @@ def admin_portal_table(userid):
         #         //             {'USER_ID.IS_PORTAL':'Y'},
                                  {'USER_ID.EMAIL_ID':{'$ne':''}},
 
-                         {'LAST_LOGGED_IN':{"$gte": csy_first_date}},
+                         {'LAST_LOGGED_IN':{"$gte": csy_first_date()}},
         #         //              {'EMAIL_ID':{'$regex':'broward','$options':'i'}},
                                  {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
                              {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
@@ -8998,541 +8384,6 @@ def admin_portal_table(userid):
             print('school_data',len(final_df),len(final_df1))
             return json.dumps(temp, default=str)
 
-
-# def admin_portal_table(userid):
-    
-#     username = urllib.parse.quote_plus('admin')
-#     password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-#     client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
-#     db=client.compass
-
-#     collection2=db.school_master
-#     collection=db.user_master
-#     collection4=db.invite_master
-#     collection5=db.login_logs
-#     collection1=db.audio_track_master
-#     collection3=db.subscription_master
-
-#     from datetime import datetime
-
-#     df0 = DataFrame(list(collection.aggregate([
-#         {"$match":{'$and': [{"_id" : ObjectId(""+userid+"")}]}},
-#         {'$project':{'_id':1,"EMAIL_ID" : 1,'district_admin':'$IS_DISTRICT_ADMIN'}}])))
-# #     print(df0)
-
-
-
-#     if 'district_admin' not in df0.columns:
-#         df0['district_admin']=0
-
-#     # if df0[df0['district_admin']=='Y']:
-#     #     if 'Y' in df0['district_admin'][0]:
-#     if df0['district_admin'][0]=='Y':
-
-#         uemail = df0["EMAIL_ID"].to_list()
-
-#         df00 = DataFrame(list(db.district_master.aggregate([
-#         {"$match":{'$and': [
-#         {"ADMIN_EMAIL" : {"$in" : uemail}}]}},
-#         {'$project':{'_id':1,"ADMIN_EMAIL" : 1}}])))
-# #         print(df00)
-
-#         if df00.empty==True:
-#             temp={'Result':0}
-#             return json.dumps(temp, default=str)
-#         else:
-#             disid = df00["_id"].to_list()
-# #             print("disid",disid)
-
-
-#             df1=DataFrame(list(db.user_master.aggregate([{"$match":
-#             {'$and': [
-#             {"DISTRICT_ID._id" : {"$in" : disid}},
-#             #             {'ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
-#             {"IS_DISABLED":{"$ne":"Y"}},
-#             {"IS_BLOCKED":{"$ne":"Y"}},
-#             {"INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-#             { 'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#             { 'USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-
-#             #                    {'IS_ADMIN':'Y'},
-#     #         {"_id" : ObjectId(""+userid+"")},
-#             {'EMAIL_ID':{'$ne':''}},
-
-#             {'schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#             {'schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-
-#             {'EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-#             {'EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
-#             ]}},
-#             # {'$group':{'_id':'$schoolId._id','sid':{'$addToSet':'$schoolId._id'},'school_name':{'$first':'$schoolId.NAME'},
-#             #            'date':{'$min':{"$dateToString": { "format": "%Y-%m-%d", "date":'$CREATED_DATE'}}},
-#             #            'country':{'$first':'$schoolId.COUNTRY'},
-#             # 'State':{'$first':'$schoolId.STATE'},'INIVITES':{'$first':'$INVITES_ASSIGNED'},
-#             #            'EMAIL':{'$first':'$EMAIL_ID'},'admin':{'$first':'$IS_ADMIN'},'ROLE':{'$first':'$ROLE_ID.ROLE_id'}}},
-
-#             {'$project':{'_id':1}}])))
-
-#             if df1.empty==True:
-#                 temp={'Result':0}
-#                 return json.dumps(temp, default=str)
-#             else:
-#                 userid = df1["_id"].to_list()
-# #                 print("userid",len(userid))
-
-#             df5=DataFrame(list(db.user_master.aggregate([{"$match":
-#             {'$and': [
-#             {'_id':{"$in" : userid}},
-#             {'DISTRICT_ID._id':{"$in" : disid}},
-#             {'ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
-#             {"IS_DISABLED":{"$ne":"Y"}},
-#             {"IS_BLOCKED":{"$ne":"Y"}},
-#             {"INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-#             { 'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#             { 'USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-#              {'EMAIL_ID':{'$ne':''}},
-#              {'schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#              {'schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-
-#              {'EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-
-#              {'EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
-#             ]}},
-#             # {'$group':{'_id':'$schoolId._id','teacher':{'$sum':1},'school_name':{'$first':'$schoolId.NAME'},'date':{'$min':{"$dateToString": { "format": "%Y-%m-%d", "date":'$CREATED_DATE'}}},'country':{'$first':'$schoolId.COUNTRY'},
-#             # 'State':{'$first':'$schoolId.STATE'},'INIVITES':{'$first':'$INVITES_ASSIGNED'},'city':{'$first':'$schoolId.CITY'},'admin':{'$first':'$IS_ADMIN'},'ROLE':{'$first':'$ROLE_ID.ROLE_id'}}},
-
-#             {'$project':{'_id': "$_id",'ADMIN':'$IS_ADMIN','INIVITES':'$INVITES_ASSIGNED'}}])))
-
-#             user_id = list(df5["_id"])
-# #             print("user_id",len(user_id))
-
-
-#             df2=DataFrame(list(db.invite_master.aggregate([
-#             {"$match":
-#             {'$and': [
-
-#             {'USER_ID._id' : {"$in" : user_id }},
-#             {'USER_ID.DISTRICT_ID._id':{"$in" : disid}},
-#             {'USER_ID.ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
-#             {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
-#             {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
-#             {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-#             { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#             { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-#             # //             {'USER_ID.IS_PORTAL':'Y'},
-#             {'USER_ID.EMAIL_ID':{'$ne':''}},      
-#             # //              {'EMAIL_ID':{'$regex':'broward','$options':'i'}},
-#              {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#              {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-#              {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},         
-#              {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
-#             ]}},
-#             # {'$group':{'_id':'$USER_ID.schoolId._id','ID':{'$addToSet':'$USER_ID._id'},
-#             # 'invited_user':{'$addToSet':'$INVITED_USER_ID._id'},
-#             # 'accepted' :  {'$sum' : {'$cond': [ {'$eq': [ '$STATUS', 'Y' ] }, 1, 0 ] } },}},
-
-#             {'$project':{'_id':'$INVITED_USER_ID._id',"User_Name" : "$INVITED_USER_ID.USER_NAME",
-#                          "EMAIL_ID" : '$INVITED_USER_ID.EMAIL_ID','accepted':'$STATUS'}}
-#             ])))
-
-#             df2_Y = df2[df2["accepted"] == "Y"]
-#             df2_N = df2[df2["accepted"] == "N"]
-#             user_id1 = list(df2["_id"])
-#             user_id2 = list(df2_Y["_id"])
-# #             print("user_id1",len(user_id1))
-# #             print("user_id2",len(user_id2))
-
-
-#             df3=DataFrame(list(db.audio_track_master.aggregate([
-#             {"$match":
-#             {'$and': [
-#             {'USER_ID._id' : {"$in" : user_id1 }},
-#             {'USER_ID.ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
-#             {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
-#             {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
-#             {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-#             { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#             { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-
-#             {'USER_ID.EMAIL_ID':{'$ne':''}},
-
-#             {'MODIFIED_DATE':{"$gte": csy_first_date()}},
-
-#             {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#             {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-#             {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-#             {'USER_ID.DISTRICT_ID._id':{"$in" : disid}},
-#             {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
-#             ]}},
-#             {'$group':{'_id':'$USER_ID._id','pc':{'$sum':1},'last_practice_date_q1':{'$max':{"$dateToString": { "format": "%Y-%m-%d", "date":'$MODIFIED_DATE'}}},
-#             'Total_Mindful_Minutes':{"$sum":{"$round":[{"$divide":[{"$subtract":['$CURSOR_END','$cursorStart']}, 60]},0]}}}},
-#             {'$project':{'_id':1,'teacher_practice':'$pc','Total_Mindful_Minutes':'$Total_Mindful_Minutes','last_practice_date':'$last_practice_date_q1'}}])))
-
-#             if df3.empty:
-#                 df3=pd.DataFrame(columns=['_id','teacher_practice','Total_Mindful_Minutes','last_practice_date'])
-#                 df3['_id']=df2['_id'].copy()
-#             df3.fillna(0,inplace=True)
-
-#             df4=DataFrame(list(db.audio_track_master.aggregate([
-#             {"$match":
-#             {'$and': [
-#             {'USER_ID._id' : {"$in" : user_id2 }},
-
-#             {'USER_ID.ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
-#             {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
-#             {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
-#             {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-#             { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#             { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-
-#             {'USER_ID.EMAIL_ID':{'$ne':''}},
-
-#             {'MODIFIED_DATE':{"$gte":csy_first_date() }},
-
-#             {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#             {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-#             {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-#             {'USER_ID.DISTRICT_ID._id':{"$in" : disid}},
-#             {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
-#             ]}},
-#             {'$group':{'_id':'$USER_ID._id','pc':{'$sum':1},'last_practice_date_q1':{'$max':{"$dateToString": { "format": "%Y-%m-%d", "date":'$MODIFIED_DATE'}}},
-#             'Total_Mindful_Minutes':{"$sum":{"$round":[{"$divide":[{"$subtract":['$CURSOR_END','$cursorStart']}, 60]},0]}}}},
-#             {'$project':{'_id':1,'teacher_practice':'$pc','Total_Mindful_Minutes':'$Total_Mindful_Minutes','last_practice_date':'$last_practice_date_q1'}}])))
-
-#             if df4.empty:
-#                 df4=pd.DataFrame(columns=['_id','teacher_practice','Total_Mindful_Minutes','last_practice_date'])
-#                 df4['_id']=df2_Y['_id'].copy()
-#             df4.fillna(0,inplace=True)
-
-#             df6=DataFrame(list(db.login_logs.aggregate([
-#             {"$match":
-#             {'$and': [
-#             {'USER_ID._id' : {"$in" : user_id1 }},
-#             {'USER_ID.ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
-#             {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
-#             {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
-#             {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-#             { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#             { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-#         #         //             {'USER_ID.IS_PORTAL':'Y'},
-#             {'USER_ID.EMAIL_ID':{'$ne':''}},
-
-#             {'LAST_LOGGED_IN':{"$gte": csy_first_date()}},
-#         #         //              {'EMAIL_ID':{'$regex':'broward','$options':'i'}},
-#             {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#             {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-#             {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-#             {'USER_ID.DISTRICT_ID._id':{"$in" : disid}},
-#             {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
-#             ]}},
-#             # {'$group':{'_id':'$USER_ID._id','pc':{'$sum':1},'LAST_LOGGED_IN':{'$max':{"$dateToString": { "format": "%Y-%m-%d", "date":'$LAST_LOGGED_IN'}}},
-#             # }},
-#             {'$project':{'_id':'$USER_ID._id','LAST_LOGGED_IN':{"$dateToString": { "format": "%Y-%m-%d", "date":'$LAST_LOGGED_IN'}}}}])))
-
-#             if df6.empty:
-#                 df6=pd.DataFrame(columns=['_id','LAST_LOGGED_IN'])
-#                 df6['_id']=df2['_id'].copy()
-#             df6.fillna(0,inplace=True)
-
-#             df7 = DataFrame(list(db.login_logs.aggregate([
-#             {"$match":
-#             {'$and': [   
-#             {'USER_ID._id' : {"$in" : user_id2 }},
-#             {'USER_ID.ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
-#             {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
-#             {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
-#             {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-#             { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#             { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-
-#             {'USER_ID.EMAIL_ID':{'$ne':''}},
-
-#         #                      {'LAST_LOGGED_IN':{"$gte": datetime(2020,8,1)}},
-#             # //              {'EMAIL_ID':{'$regex':'broward','$options':'i'}},
-#             {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#             {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-#             {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-#             {'USER_ID.DISTRICT_ID._id':{"$in" : disid}},
-#             {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
-#             ]}},
-#             # {'$group':{'_id':'$USER_ID._id','pc':{'$sum':1},'LAST_LOGGED_IN':{'$max':{"$dateToString": { "format": "%Y-%m-%d", "date":'$LAST_LOGGED_IN'}}},
-#             # }},
-#             {'$project':{'_id':'$USER_ID._id','LAST_LOGGED_IN':{"$dateToString": { "format": "%Y-%m-%d", "date":'$LAST_LOGGED_IN'}}}}])))
-
-#             if df7.empty:
-#                 df7=pd.DataFrame(columns=['_id','LAST_LOGGED_IN'])
-#                 df7['_id']=df2_Y['_id'].copy()
-#             df7.fillna(0,inplace=True)
-
-#             df01=pd.merge(df5,df2,how='right', on='_id')
-#             df02=pd.merge(df01,df3,how='left', on='_id')
-#             df03=pd.merge(df02,df6,how='left', on='_id')
-#             # dff=pd.merge(dfff,df3, how='left', on='_id')
-#             final_df = df03.fillna(0)
-#             final_df = final_df[['_id','User_Name', 'EMAIL_ID','last_practice_date','LAST_LOGGED_IN','teacher_practice','Total_Mindful_Minutes']]
-#             final_df.columns = ['USER_ID','USER_NAME', 'EMAIL_ID','LAST_PRACTICE_DATE','LAST_LOGIN_DATE','PRACTICE_SESSIONS','MINDFUL_MINUTES']
-
-#             df11=pd.merge(df5,df2_Y,how='right', on='_id')
-#             df22=pd.merge(df11,df4,how='left', on='_id')
-#             df33=pd.merge(df22,df7,how='left', on='_id')
-#             final_df1 = df33.fillna(0)
-#             final_df1 = final_df1[['_id','User_Name', 'EMAIL_ID','last_practice_date','LAST_LOGGED_IN','teacher_practice','Total_Mindful_Minutes']]
-#             final_df1.columns = ['USER_ID','USER_NAME', 'EMAIL_ID','LAST_PRACTICE_DATE','LAST_LOGIN_DATE','PRACTICE_SESSIONS','MINDFUL_MINUTES']
-
-#             temp = {"INVITE_SENT" : final_df.to_numpy().tolist(), "INVITE_ACCEPTED" : final_df1.to_numpy().tolist()}
-#             print('district_data',len(final_df),len(final_df1))
-#             return json.dumps(temp, default=str)
-    
-#     else:
-#         username = urllib.parse.quote_plus('admin')
-#         password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-#         client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
-#         db=client.compass
-
-#         # username = urllib.parse.quote_plus('adminIE')                                     #SwitchedToBeta
-#         # password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-#         # client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
-#         # db=client.compass_beta
-
-#         from datetime import datetime
-
-#         df1=DataFrame(list(db.user_master.aggregate([{"$match":
-#         {'$and': [
-#         #             {'ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
-#         {"IS_DISABLED":{"$ne":"Y"}},
-#         {"IS_BLOCKED":{"$ne":"Y"}},
-#         {"INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-#                         { 'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#                         { 'USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-
-#         #                    {'IS_ADMIN':'Y'},
-#                 {"_id" : ObjectId(""+userid+"")},
-#                          {'EMAIL_ID':{'$ne':''}},
-
-#                          {'schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#                      {'schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-
-#                                    {'EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-#                                      {'EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
-#         ]}},
-#         # {'$group':{'_id':'$schoolId._id','sid':{'$addToSet':'$schoolId._id'},'school_name':{'$first':'$schoolId.NAME'},
-#         #            'date':{'$min':{"$dateToString": { "format": "%Y-%m-%d", "date":'$CREATED_DATE'}}},
-#         #            'country':{'$first':'$schoolId.COUNTRY'},
-#         # 'State':{'$first':'$schoolId.STATE'},'INIVITES':{'$first':'$INVITES_ASSIGNED'},
-#         #            'EMAIL':{'$first':'$EMAIL_ID'},'admin':{'$first':'$IS_ADMIN'},'ROLE':{'$first':'$ROLE_ID.ROLE_id'}}},
-
-#         {'$project':{'_id':'$schoolId._id'}}])))
-
-#         if df1.empty==True:
-#             temp={'Result':0}
-#             return json.dumps(temp, default=str)
-
-#         else:
-#             schoolid=str(df1['_id'][0])
-
-#         #     print(schoolid)
-#             df5=DataFrame(list(db.user_master.aggregate([{"$match":
-#             {'$and': [
-#             {'ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
-#             {"IS_DISABLED":{"$ne":"Y"}},
-#             {"IS_BLOCKED":{"$ne":"Y"}},
-#             {"INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-#                                 { 'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#                                 { 'USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-#             {'schoolId._id':ObjectId(""+schoolid+"")},
-#             #                    {'IS_ADMIN':'Y'},
-
-#                                  {'EMAIL_ID':{'$ne':''}},
-
-#                                  {'schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#                              {'schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-
-#                                            {'EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-#                                              {'EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
-#             ]}},
-#             # {'$group':{'_id':'$schoolId._id','teacher':{'$sum':1},'school_name':{'$first':'$schoolId.NAME'},'date':{'$min':{"$dateToString": { "format": "%Y-%m-%d", "date":'$CREATED_DATE'}}},'country':{'$first':'$schoolId.COUNTRY'},
-#             # 'State':{'$first':'$schoolId.STATE'},'INIVITES':{'$first':'$INVITES_ASSIGNED'},'city':{'$first':'$schoolId.CITY'},'admin':{'$first':'$IS_ADMIN'},'ROLE':{'$first':'$ROLE_ID.ROLE_id'}}},
-
-#             {'$project':{'_id': "$_id",'ADMIN':'$IS_ADMIN','INIVITES':'$INVITES_ASSIGNED'}}])))
-
-#             user_id = list(df5["_id"])
-
-
-#             df2=DataFrame(list(db.invite_master.aggregate([
-#             {"$match":
-#             {'$and': [
-#                 {'USER_ID._id' : {"$in" : user_id }},
-#                           {'USER_ID.ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
-#             {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
-#             {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
-#             {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-#                                 { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#                                 { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-#             # //             {'USER_ID.IS_PORTAL':'Y'},
-#             {'USER_ID.EMAIL_ID':{'$ne':''}},
-#             #                 {"USER_ID._id" : ObjectId("5f2e12f3592000521523721a")},
-
-
-#             # //              {'EMAIL_ID':{'$regex':'broward','$options':'i'}},
-#                                  {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#                              {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-#                                            {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-#                                              {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
-#             ]}},
-#             # {'$group':{'_id':'$USER_ID.schoolId._id','ID':{'$addToSet':'$USER_ID._id'},
-#             # 'invited_user':{'$addToSet':'$INVITED_USER_ID._id'},
-#             # 'accepted' :  {'$sum' : {'$cond': [ {'$eq': [ '$STATUS', 'Y' ] }, 1, 0 ] } },}},
-
-#             {'$project':{'_id':'$INVITED_USER_ID._id',"User_Name" : "$INVITED_USER_ID.USER_NAME",
-#                          "EMAIL_ID" : '$INVITED_USER_ID.EMAIL_ID','accepted':'$STATUS'}}
-#             ])))
-
-#             df2_Y = df2[df2["accepted"] == "Y"]
-#             df2_N = df2[df2["accepted"] == "N"]
-#             user_id1 = list(df2["_id"])
-#             user_id2 = list(df2_Y["_id"])
-            
-
-#             df3=DataFrame(list(db.audio_track_master.aggregate([
-#             {"$match":
-#             {'$and': [
-#             {'USER_ID._id' : {"$in" : user_id1 }},
-#             {'USER_ID.ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
-#             {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
-#             {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
-#             {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-#                                 { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#                                 { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-
-#                                  {'USER_ID.EMAIL_ID':{'$ne':''}},
-
-#             {'MODIFIED_DATE':{"$gte": csy_first_date()}},
-
-#                                  {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#                              {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-#                                            {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-#                                              {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
-#             ]}},
-#             {'$group':{'_id':'$USER_ID._id','pc':{'$sum':1},
-#                        'last_practice_date_q1':{'$max':{"$dateToString": { "format": "%Y-%m-%d", "date":'$MODIFIED_DATE'}}},
-#             'Total_Mindful_Minutes':{"$sum":{"$round":[{"$divide":[{"$subtract":['$CURSOR_END','$cursorStart']}, 60]},0]}}}},
-#             {'$project':{'_id':1,'teacher_practice':'$pc','Total_Mindful_Minutes':'$Total_Mindful_Minutes',
-#                         'last_practice_date':'$last_practice_date_q1'}}])))
-
-#             if df3.empty:
-#                 df3=pd.DataFrame(columns=['_id','teacher_practice','Total_Mindful_Minutes','last_practice_date'])
-#                 df3['_id']=df2['_id'].copy()
-#             df3.fillna(0,inplace=True)
-
-#             df4=DataFrame(list(db.audio_track_master.aggregate([
-#             {"$match":
-#             {'$and': [
-#             {'USER_ID._id' : {"$in" : user_id2 }},
-#             {'USER_ID.ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
-#             {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
-#             {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
-#             {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-#                                 { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#                                 { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-
-#                                  {'USER_ID.EMAIL_ID':{'$ne':''}},
-
-#             {'MODIFIED_DATE':{"$gte":csy_first_date() }},
-
-#                                  {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#                              {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-#                                            {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-#                                              {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
-#             ]}},
-#             {'$group':{'_id':'$USER_ID._id','pc':{'$sum':1},
-#                        'last_practice_date_q1':{'$max':{"$dateToString": { "format": "%Y-%m-%d", "date":'$MODIFIED_DATE'}}},
-#             'Total_Mindful_Minutes':{"$sum":{"$round":[{"$divide":[{"$subtract":['$CURSOR_END','$cursorStart']}, 60]},0]}}}},
-#             {'$project':{'_id':1,'teacher_practice':'$pc','Total_Mindful_Minutes':'$Total_Mindful_Minutes',
-#                         'last_practice_date':'$last_practice_date_q1'}}])))
-
-#             if df4.empty:
-#                 df4=pd.DataFrame(columns=['_id','teacher_practice','Total_Mindful_Minutes','last_practice_date'])
-#                 df4['_id']=df2_Y['_id'].copy()
-#             df4.fillna(0,inplace=True)
-
-#             df6=DataFrame(list(db.login_logs.aggregate([
-#             {"$match":
-#             {'$and': [
-#             {'USER_ID._id' : {"$in" : user_id1 }},
-#             {'USER_ID.ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
-#             {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
-#             {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
-#             {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-#                                 { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#                                 { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-#         #         //             {'USER_ID.IS_PORTAL':'Y'},
-#                                  {'USER_ID.EMAIL_ID':{'$ne':''}},
-
-#                          {'LAST_LOGGED_IN':{"$gte": csy_first_date()}},
-#         #         //              {'EMAIL_ID':{'$regex':'broward','$options':'i'}},
-#                                  {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#                              {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-#                                            {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-#                                              {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
-#             ]}},
-#             # {'$group':{'_id':'$USER_ID._id','pc':{'$sum':1},'LAST_LOGGED_IN':{'$max':{"$dateToString": { "format": "%Y-%m-%d", "date":'$LAST_LOGGED_IN'}}},
-#             # }},
-#             {'$project':{'_id':'$USER_ID._id','LAST_LOGGED_IN':{"$dateToString": { "format": "%Y-%m-%d", "date":'$LAST_LOGGED_IN'}}}}])))
-
-#             if df6.empty:
-#                 df6=pd.DataFrame(columns=['_id','LAST_LOGGED_IN'])
-#                 df6['_id']=df2['_id'].copy()
-#             df6.fillna(0,inplace=True)
-
-#             df7 = DataFrame(list(db.login_logs.aggregate([
-#             {"$match":
-#             {'$and': [
-#             {'USER_ID._id' : {"$in" : user_id2 }},
-#             {'USER_ID.ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
-#             {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
-#             {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
-#             {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-#                                 { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#                                 { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-
-#                                  {'USER_ID.EMAIL_ID':{'$ne':''}},
-
-#         #                      {'LAST_LOGGED_IN':{"$gte": datetime(2020,8,1)}},
-#             # //              {'EMAIL_ID':{'$regex':'broward','$options':'i'}},
-#                                  {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#                              {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-#                                            {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-#                                              {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
-#             ]}},
-#             # {'$group':{'_id':'$USER_ID._id','pc':{'$sum':1},'LAST_LOGGED_IN':{'$max':{"$dateToString": { "format": "%Y-%m-%d", "date":'$LAST_LOGGED_IN'}}},
-#             # }},
-#             {'$project':{'_id':'$USER_ID._id','LAST_LOGGED_IN':{"$dateToString": { "format": "%Y-%m-%d", "date":'$LAST_LOGGED_IN'}}}}])))
-
-#             if df7.empty:
-#                 df7=pd.DataFrame(columns=['_id','LAST_LOGGED_IN'])
-#                 df7['_id']=df2_Y['_id'].copy()
-#             df7.fillna(0,inplace=True)
-
-#             df01=pd.merge(df5,df2,how='right', on='_id')
-#             df02=pd.merge(df01,df3,how='left', on='_id')
-#             df03=pd.merge(df02,df6,how='left', on='_id')
-#             # dff=pd.merge(dfff,df3, how='left', on='_id')
-#             final_df = df03.fillna(0)
-#             final_df = final_df[['_id','User_Name', 'EMAIL_ID','last_practice_date','LAST_LOGGED_IN','teacher_practice','Total_Mindful_Minutes']]
-#             final_df.columns = ['USER_ID','USER_NAME', 'EMAIL_ID','LAST_PRACTICE_DATE','LAST_LOGIN_DATE','PRACTICE_SESSIONS','MINDFUL_MINUTES']
-
-
-#             df11=pd.merge(df5,df2_Y,how='right', on='_id')
-#             df22=pd.merge(df11,df4,how='left', on='_id')
-#             df33=pd.merge(df22,df7,how='left', on='_id')
-#             final_df1 = df33.fillna(0)
-#             final_df1 = final_df1[['_id','User_Name', 'EMAIL_ID','last_practice_date','LAST_LOGGED_IN','teacher_practice','Total_Mindful_Minutes']]
-#             final_df1.columns = ['USER_ID','USER_NAME', 'EMAIL_ID','LAST_PRACTICE_DATE','LAST_LOGIN_DATE','PRACTICE_SESSIONS','MINDFUL_MINUTES']
-
-#             temp = {"INVITE_SENT" : final_df.to_numpy().tolist(), "INVITE_ACCEPTED" : final_df1.to_numpy().tolist()}
-#             print('school_data',len(final_df),len(final_df1))
-#             return json.dumps(temp, default=str)
-
         
 # admin_portal_table("5f33c1c3418467201938f2e3")
 
@@ -9542,9 +8393,9 @@ def admin_portal_table(userid):
 
 @app.route('/adminstatscards/<userid>')
 def admin_stats_cards(userid):
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     collection2=db.school_master
     collection=db.user_master
@@ -9804,9 +8655,9 @@ def admin_stats_cards(userid):
 
 @app.route('/upcomingpractice/<userid>')
 def upcoming_practice(userid):
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     collection = db.audio_track_master
     collection3=db.class_master
@@ -10361,9 +9212,9 @@ def upcoming_practice(userid):
 # ===================
 @app.route('/bubbleoverall')
 def buble_district():
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -10444,9 +9295,9 @@ def buble_district():
         result.append(sorted_df)
     buubleusercount = pd.concat(result)
     ######family ########
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -10535,9 +9386,9 @@ def buble_district():
     mergeucfc12["totaluser"]=mergeucfc12["usercount"]+mergeucfc12["usercount19"]
     finmerge=mergeucfc12[["NAME_DISTRICT_x","MONTH_x","idu","totaluser","famcount"]]
     ###ACTIVE USER
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -10593,9 +9444,9 @@ def buble_district():
     # buubleactuser
     finmergeu=pd.merge(finmerge, buubleactuser, how='left', left_on='idu', right_on='acuid')
     ###ACTIVE FAMILY
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -10653,9 +9504,9 @@ def buble_district():
     finmergeufo=finmergeuf[["NAME_DISTRICT_x","MONTH_x","USER ENGAGEMENT","FAMILY ENGAGEMENT"]]
     finmergeufo=finmergeufo.fillna(0)
     finmergeufo=finmergeufo.loc[:,~finmergeufo.columns.duplicated()]
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     # dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -10683,9 +9534,9 @@ def buble_district():
     df1111=pd.DataFrame(merge1211)
     df1111=df1111.sort_values(by=['NAME_DISTRICT'], ascending=True)
     DISPRACTO=df1111[["NAME_DISTRICT","PRACTICE"]]
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     # dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -10769,9 +9620,9 @@ def buble_district():
     mergeucfc12["totaluser"]=mergeucfc12["usercount"]+mergeucfc12["usercount19"]
     finmerge=mergeucfc12[["NAME_DISTRICT_x","MONTH_x","idu","totaluser","famcount"]]
     ###ACTIVE USER
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -10827,9 +9678,9 @@ def buble_district():
     # buubleactuser
     finmergeu=pd.merge(finmerge, buubleactuser, how='left', left_on='idu', right_on='acuid')
     ###ACTIVE FAMILY
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -10887,9 +9738,9 @@ def buble_district():
     finmergeufo=finmergeuf[["NAME_DISTRICT_x","MONTH_x","USER ENGAGEMENT","FAMILY ENGAGEMENT"]]
     finmergeufo=finmergeufo.fillna(0)
     finmergeufo=finmergeufo.loc[:,~finmergeufo.columns.duplicated()]
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     # dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -10917,9 +9768,9 @@ def buble_district():
     df1111=pd.DataFrame(merge1211)
     df1111=df1111.sort_values(by=['NAME_DISTRICT'], ascending=True)
     DISPRACTO=df1111[["NAME_DISTRICT","PRACTICE"]]
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     # dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -11020,7 +9871,7 @@ def schdistrict(disid):
     '5f2609807a1c0000950bb470':'San Leandro Unified School District',
     '5f2609807a1c0000950bb477':'Sarasota County',
     '5f2609807a1c0000950bb473':'Skillman Foundation',
-    '5f2609807a1c0000950bb46a':'Springfield Public Schools',
+    
     '5f2609807a1c0000950bb468':'Utah Board of Education',
     '5f698b826451a9089d7d4008':'Wayne Metro',
     '5f2609807a1c0000950bb45b':'Westfield Public School District',
@@ -11028,9 +9879,9 @@ def schdistrict(disid):
     '5ffd8176469a86e28635f512':'Chula Vista Elementary School District',
     '5f2609807a1c0000950bb45d':'Youngstown'}
 
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -11120,8 +9971,8 @@ def schdistrict(disid):
     # buubleusercount
     ######family ########
     # username = urllib.parse.quote_plus('admin')
-    # password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    # client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    # password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    # client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -11217,9 +10068,9 @@ def schdistrict(disid):
     finmerge=mergeucfc12[["NAME_DISTRICT_x","MONTH_x","idu","totaluser","famcount"]]
     # finmerge
     ###ACTIVE USER
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -11273,9 +10124,9 @@ def schdistrict(disid):
     # buubleactuser
     finmergeu=pd.merge(finmerge, buubleactuser, how='left', left_on='idu', right_on='acuid')
     ###ACTIVE FAMILY
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -11339,9 +10190,9 @@ def schdistrict(disid):
     finmergeufo=finmergeuf[["NAME_DISTRICT_x","MONTH_x","USER ENGAGEMENT","FAMILY ENGAGEMENT"]]
     finmergeufo=finmergeufo.fillna(0)
     finmergeufo=finmergeufo.loc[:,~finmergeufo.columns.duplicated()]
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     # dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -11370,9 +10221,9 @@ def schdistrict(disid):
     # print("check1")
     df1111=df1111.sort_values(by=['NAME_DISTRICT'], ascending=True)
     DISPRACTO=df1111[["NAME_DISTRICT","PRACTICE"]]
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     # dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -11431,9 +10282,9 @@ def schdistrict(disid):
 def UWBA_heatmap_prac():
 
     import collections
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection = db.audio_track_master
     collection2=db.user_master
@@ -11553,9 +10404,9 @@ def UWBA_heatmap_prac():
 @app.route('/uwba_schoolwisefamilypracticecount_/')
 def UWBA_schppcfamily():
 
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass  
     collection = db.audio_track_master
     collection1 = db.user_master
@@ -11627,9 +10478,9 @@ def UWBA_schppcfamily():
 @app.route('/uwba_schoolwisefamilycount_/')
 def uwba__schpuc():
    
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection= db.user_master
 #     district=disdic[districtid]
@@ -11685,9 +10536,9 @@ def uwba__schpuc():
 @app.route('/uwba_schoolwisepracticecounttop20_/')
 def uwbachwisepc():
     
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection = db.audio_track_master
     collection1 = db.user_master
@@ -11759,9 +10610,9 @@ def uwbachwisepc():
 @app.route('/uwba_top20userspractisinginfo_/')
 def uwba__topusers_practice():
     
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection = db.audio_track_master
 #     district=disdic[districtid]
@@ -11848,9 +10699,9 @@ def uwba__topusers_practice():
 @app.route('/uwba_schoolwiseusercounttop20_/')
 def uwba__schwiseuc():
    
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass  
     collection = db.user_master
 #     district=disdic[districtid]
@@ -11902,9 +10753,9 @@ def uwba__schwiseuc():
 @app.route('/monthwisepracticeuwba')
 def uwba__monthwisepc():
     
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection = db.audio_track_master
 #     district=disdic[districtid]
@@ -11974,9 +10825,9 @@ def uwba_count_cards():
     from datetime import datetime
     from datetime import timedelta
     
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection1 = db.user_master
     collection2=db.audio_track_master
@@ -12208,9 +11059,9 @@ def uwba_count_cards():
 def portal_newd2_test_api(smcategory):   
     from flask import request
     username123 = request.args.get('name')
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     collection = db.school_master
     print(smcategory,"uadhauisdhaiusdasu") 
@@ -12382,9 +11233,9 @@ def portal_newd2_test_api(smcategory):
 def portal_newd2_api(smcategory):   
     from flask import request
     username123 = request.args.get('name')
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     collection = db.school_master
     print(smcategory,"uadhauisdhaiusdasu") 
@@ -12556,9 +11407,9 @@ def portal_newd2_api(smcategory):
 
 @app.route('/portal_test_new_api/<smcategory>')
 def portal_testing_new_api(smcategory):    
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     collection = db.school_master
     from bson.objectid import ObjectId
@@ -12764,7 +11615,7 @@ def schdistrictCUM(disid):
     '5f2609807a1c0000950bb470':'San Leandro Unified School District',
     '5f2609807a1c0000950bb477':'Sarasota County',
     '5f2609807a1c0000950bb473':'Skillman Foundation',
-    '5f2609807a1c0000950bb46a':'Springfield Public Schools',
+    
     '5f2609807a1c0000950bb468':'Utah Board of Education',
     '5f698b826451a9089d7d4008':'Wayne Metro',
     '5f2609807a1c0000950bb45b':'Westfield Public School District',
@@ -12790,9 +11641,9 @@ def schdistrictCUM(disid):
     '6023a76f9e8e623753fc3060':'San Jose Unified School District',
     '6023a7949e8e623753fc3061':'Wasatch County School District'}
 
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -12888,8 +11739,8 @@ def schdistrictCUM(disid):
     # buubleusercount
     ######family ########
     # username = urllib.parse.quote_plus('admin')
-    # password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    # client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    # password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    # client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -12996,9 +11847,9 @@ def schdistrictCUM(disid):
 
 
     ###ACTIVE USER
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-02-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -13035,9 +11886,9 @@ def schdistrictCUM(disid):
 
 
     ###ACTIVE USER
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-03-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -13074,9 +11925,9 @@ def schdistrictCUM(disid):
 
 
     ###ACTIVE USER
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-04-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -13113,9 +11964,9 @@ def schdistrictCUM(disid):
 
 
     ###ACTIVE USER
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-05-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -13152,9 +12003,9 @@ def schdistrictCUM(disid):
 
 
     ###ACTIVE USER
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-06-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -13191,9 +12042,9 @@ def schdistrictCUM(disid):
 
 
     ###ACTIVE USER
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-07-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -13230,9 +12081,9 @@ def schdistrictCUM(disid):
 
 
     ###ACTIVE USER
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-08-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -13269,9 +12120,9 @@ def schdistrictCUM(disid):
 
 
     ###ACTIVE USER
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-09-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -13308,9 +12159,9 @@ def schdistrictCUM(disid):
 
 
     ###ACTIVE USER
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-10-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -13347,9 +12198,9 @@ def schdistrictCUM(disid):
 
 
     ###ACTIVE USER
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-11-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -13386,9 +12237,9 @@ def schdistrictCUM(disid):
 
 
     ###ACTIVE USER
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-12-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -13425,9 +12276,9 @@ def schdistrictCUM(disid):
 
 
     ###ACTIVE USER
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2021-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -13500,9 +12351,9 @@ def schdistrictCUM(disid):
     # In[31]:
 
 
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-02-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -13539,9 +12390,9 @@ def schdistrictCUM(disid):
 
 
     ###ACTIVE USER
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-03-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -13578,9 +12429,9 @@ def schdistrictCUM(disid):
 
 
     ###ACTIVE USER
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-04-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -13617,9 +12468,9 @@ def schdistrictCUM(disid):
 
 
     ###ACTIVE USER
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-05-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -13656,9 +12507,9 @@ def schdistrictCUM(disid):
 
 
     ###ACTIVE USER
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-06-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -13695,9 +12546,9 @@ def schdistrictCUM(disid):
 
 
     ###ACTIVE USER
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-07-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -13734,9 +12585,9 @@ def schdistrictCUM(disid):
 
 
     ###ACTIVE USER
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-08-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -13773,9 +12624,9 @@ def schdistrictCUM(disid):
 
 
     ###ACTIVE USER
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-09-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -13812,9 +12663,9 @@ def schdistrictCUM(disid):
 
 
     ###ACTIVE USER
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-10-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -13851,9 +12702,9 @@ def schdistrictCUM(disid):
 
 
     ###ACTIVE USER
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-11-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -13890,9 +12741,9 @@ def schdistrictCUM(disid):
 
 
     ###ACTIVE USER
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2020-12-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -13929,9 +12780,9 @@ def schdistrictCUM(disid):
 
 
     ###ACTIVE USER
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dateStr = "2021-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -13975,8 +12826,8 @@ def schdistrictCUM(disid):
 
     # ###ACTIVE FAMILY
     # username = urllib.parse.quote_plus('admin')
-    # password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    # client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    # password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    # client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     # db=client.compass
     # dateStr = "2020-01-01T00:00:00.000Z"
     # myDatetime = dateutil.parser.parse(dateStr)
@@ -14046,9 +12897,9 @@ def schdistrictCUM(disid):
     finmergeufo=finmergeuf[["NAME_DISTRICT_x","MONTH_x","USER ENGAGEMENT","FAMILY ENGAGEMENT"]]
     finmergeufo=finmergeufo.fillna(0)
     finmergeufo=finmergeufo.loc[:,~finmergeufo.columns.duplicated()]
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     # dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -14077,9 +12928,9 @@ def schdistrictCUM(disid):
     # print("check1")
     df1111=df1111.sort_values(by=['NAME_DISTRICT'], ascending=True)
     DISPRACTO=df1111[["NAME_DISTRICT","PRACTICE"]]
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     # dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -14143,8 +12994,8 @@ def school_search_tunein(name):
     # database = client["compass"]
 
     username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     database = client.compass
 
     collection = database["user_master"]
@@ -14526,7 +13377,7 @@ def school_search_tunein(name):
 
 @app.route('/sub_detail_table/<dates>/<type>')
 def SUBSCRIPTION_DETAIL_TABLE(dates,type):
-    mongo_uri = "mongodb://admin:" + urllib.parse.quote("F5tMazRj47cYqm33e") + "@52.41.36.115:27017/"
+    mongo_uri = "mongodb://admin:" + urllib.parse.quote("CtZh5Nqp8Qn9LHUDx2GH") + "@54.184.165.106:27017/"
     client = pymongo.MongoClient(mongo_uri)
     db = client.compass
     mydoc = db.subscription_master.aggregate([
@@ -14655,9 +13506,9 @@ def SUBSCRIPTION_DETAIL_TABLE(dates,type):
 
 @app.route('/Tran_detail_table/<dates>/<type>')
 def TRANSACTION_DETAIL_TABLE(dates,type):
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     dfdb = DataFrame(list(db.subscription_master.aggregate([
         {"$match":{
@@ -14772,9 +13623,9 @@ def TRANSACTION_DETAIL_TABLE(dates,type):
 
 @app.route('/Don_detail_table/<dates>/<type>')
 def DONATION_DETAIL_TABLE(dates,type):
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     payment_df1 = DataFrame(list(db.campaign_payment.aggregate([
         {"$match":{
@@ -14887,9 +13738,9 @@ def DONATION_DETAIL_TABLE(dates,type):
 
 @app.route('/activityfeed/<userid>/<lower>/<upper>')
 def user_activity_feed(userid,lower,upper):
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
 
     collection = db.user_master.aggregate([
@@ -15911,9 +14762,9 @@ def user_activity_feed(userid,lower,upper):
 
 @app.route('/districtactivityfeed/<districtid>/<lower>/<upper>')
 def dis_activity_feed(districtid,lower,upper):
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     district=disdic[districtid]
     collection = db.user_master.aggregate([
@@ -16498,7 +15349,7 @@ def narrator_practice_data():
     # client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     # db=client.compass_beta
 
-    client = MongoClient('mongodb://admin:F5tMazRj47cYqm33e@52.41.36.115:27017/')
+    client = MongoClient('mongodb://admin:CtZh5Nqp8Qn9LHUDx2GH@54.184.165.106:27017/')
     db=client.compass
 
     collection1 = db.audio_track_master_2018_2019.aggregate([
@@ -16575,309 +15426,240 @@ def narrator_practice_data():
 # narratorprofile api copy for testing purpose only connected with beta_server.
 
 
-@app.route('/narratorprofileb1/<id>')
-def narrator_profile_(id):
-    import datetime
-    from textblob import TextBlob, Word, Blobber
-    client = MongoClient('mongodb://adminIE:CtZh5Nqp8Qn9LHUDx2GH@54.184.165.106:27017/')
-    db=client.compass_beta
-    collection = db.narrator_profile.aggregate([
-            {"$match":
-            {"$and":[{'_id':{"$eq":ObjectId(""+id+"")}}]}}
+# @app.route('/narratorprofileb1/<id>')
+# def narrator_profile_(id): 
+#     import datetime
+#     from textblob import TextBlob, Word, Blobber
 
-            ])
+#     username = urllib.parse.quote_plus('adminIE')
+#     password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+#     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
+#     db=client.compass_beta
 
-    df= DataFrame(list(collection)).fillna(0)
-    if 'NARRATOR_IMAGE_2' not in df.columns:
-        df['NARRATOR_IMAGE_2']=''    
-    else:
-        df=df
+#     collection = db.narrator_profile.aggregate([
+#         {"$match":
+#         {"$and":[{'_id':{"$eq":ObjectId(""+id+"")}}]}}
 
-    df['NARRATOR_DESCRIPITION']=df['NARRATOR_DESCRIPITION'].replace({0:''})
-    narrator_list=df["_id"].tolist()
+#         ])
+#     df= DataFrame(list(collection)).fillna(0)
+#     df['NARRATOR_DESCRIPITION']=df['NARRATOR_DESCRIPITION'].replace({0:''})
+# #     print(df)
+    
+#     narrator_list=df["_id"].tolist()
+#     df1= pd.read_csv("old_practice.csv")
+#     df1=df1[df1["NARRAROR"]==id]
 
-    collection2 = db.audio_track_master.aggregate([
+#     df2= pd.read_csv("new_practice.csv")
+#     df2=df2[df2["NARRAROR"]==id]
+#     practice = df1.append(df2, ignore_index=True)
+#     if practice.empty == True:
+#         plays="0"
+#         since="0"
+#     else:    
+#         plays=int(sum(practice["Total"]))
+#         since=practice.MODIFIED_DATE.min()
+#     collection3=db.audio_feedback.aggregate([{"$match":{'$and':[
+#             {"AUDIO_ID.NARRATOR_ID._id":{
+#                         "$in":narrator_list
+#                     }},
+#                     { 'USER.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+#                     {'USER.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+#                     {'USER.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
+#                     {'USER.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
+#                             {"AUDIO_ID.PROGRAM_ID.PROGRAM_ID" : {'$nin':[1,2,3,4,5,6,7,8]}},
+#                     {'USER.IS_DISABLED':{"$ne":'Y'}},
+#                     {'RATING':{"$ne":0}}
+#                     ]}},
+#                     {"$group": {"_id":"null", 'RATING': {"$avg":"$RATING"} } }
+#                     ,
+#                     {"$project":{"_id":0,'RATING':{"$round":["$RATING",1]}}},
+#                                             ])
+#     df033= list(collection3)
+#     df33= pd.DataFrame.from_dict(df033).fillna(0)
+#     if df33.empty == True:
+#         n_rating=0
+#     else:
+#         n_rating=df33["RATING"][0]
+#     info={"name":str(df["NARRATOR_NAME"][0]),"email":str(df["NARRATOR_EMAIL"][0]) ,"place":str(df["PLACE"][0]),"image":str(df["PROFILE_IMAGE"][0]),"image2":str(df["NARRATOR_IMAGE_2"][0]),"desc":str(df["NARRATOR_DESCRIPITION"][0]),
+#         "plays":int(plays),"since":str(since),"rating":n_rating}
+#     df4=practice.groupby(["PROGRAM_NAME"]).sum().reset_index()
+#     if df4.empty == True:
+#         featuring_in=[]
+#         Top_mindfultrack_in=[]
+#         recent_comment=[]
+#     else:
+#         collection4=db.audio_feedback.aggregate([{"$match":{'$and':[
+#                 {"AUDIO_ID.NARRATOR_ID._id":{
+#                             "$in":narrator_list
 
-        {"$match":{
-            '$and':[{ 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                    {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                        {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
-            {'USER_ID.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
-            {'USER_ID.IS_DISABLED':{"$ne":'Y'}},
-            {'USER_ID.IS_BLOCKED':{"$ne":'Y'}},
-                                {"PROGRAM_AUDIO_ID.PROGRAM_ID.PROGRAM_ID" : {'$nin':[1,2,3,4,5,6,7,8]}},
-            {'USER_ID.schoolId.NAME':{'$not':{"$regex":'Blocked','$options':'i'}}},
-            {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':0}},
-            {'USER_ID.schoolId.NAME':{'$not':{"$regex":'test','$options':'i'}}},
-                    {'PROGRAM_AUDIO_ID.NARRATOR_ID._id':ObjectId(str(id))}
-            ]}},
-            {"$group":{"_id":{"AUDIO_TITLE":"$PROGRAM_AUDIO_ID.AUDIO_TITLE",
-                        "PROGRAM_NAME":"$PROGRAM_AUDIO_ID.PROGRAM_ID.PROGRAM_NAME",
-                              "NARRATOR":"$PROGRAM_AUDIO_ID.NARRATOR_ID._id"},
+#                         }},
+#                         { 'USER.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+#                         {'USER.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+#                         {'USER.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
+#                         {'USER.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
+#                                 {"AUDIO_ID.PROGRAM_ID.PROGRAM_ID" : {'$nin':[1,2,3,4,5,6,7,8]}},
+#                         {'USER.IS_DISABLED':{"$ne":'Y'}},
+#                         {'RATING':{"$ne":0}}
+#                         ]}},
+#                         {"$group":{"_id":"$AUDIO_ID.PROGRAM_ID.PROGRAM_NAME","RATING":{"$avg":"$RATING"}}}
+#                         ,
+#                         {"$project":{"_id":0,"PROGRAM_NAME":"$_id","RATING":1}},
+#                                                 ])
+#         df05= list(collection4)
+#         df5= pd.DataFrame.from_dict(df05).fillna(0)
+#         if df5.empty == True:
+#             df5["PROGRAM_NAME"]="0"
+#             df5["RATING"]=0
+#             featuring=pd.merge(df4,df5,on="PROGRAM_NAME",how="left").fillna(0)
+#             featuring["RATING"]=0
+#             featuring1=featuring[["PROGRAM_NAME","Total","RATING"]]
+#         else:
+#             df5=df5.round(decimals=1)   
+#             featuring=pd.merge(df4,df5,on="PROGRAM_NAME",how="left").fillna(0)
+#             featuring1=featuring[["PROGRAM_NAME","Total","RATING"]]
+#         featuring2=featuring1.nlargest(3, "Total")
+#         if featuring2.empty:
+#             featuring2=pd.DataFrame(index=[0], columns=['PROGRAM_NAME','Total','RATING'])
 
-        #                         "PROGRAM_ID":{"$first":"$PROGRAM_AUDIO_ID.PROGRAM_ID.PROGRAM_ID"},
+#         featuring2["PROGRAM_NAME"].fillna("",inplace=True)
+#         featuring2["Total"].fillna(0,inplace=True)
+#         featuring2["RATING"].fillna(0,inplace=True)
 
-                        'count':{'$sum':1},
-                    'MODIFIED_DATE':{"$min":'$MODIFIED_DATE'}}},
-        {'$project':{'_id':0,
-                        'MODIFIED_DATE':{ "$dateToString": { "format": "%Y-%m-%d", "date":"$MODIFIED_DATE"}},
-                    "AUDIO_TITLE":"$_id.AUDIO_TITLE" ,
-                    "PROGRAM_NAME":"$_id.PROGRAM_NAME",
-                    "NARRAROR":"$_id.NARRATOR",
-                    "Total":"$count",
-        #                      "PROGRAM_ID":"$PROGRAM_ID"
-            }
-            }])
+#         featuring_in=featuring2.to_dict("records")
+#         collection5=db.audio_feedback.aggregate([{"$match":{'$and':[
+#                 {"AUDIO_ID.NARRATOR_ID._id":{
+#                             "$in":narrator_list
 
-    df02= list(collection2)
-    practice= DataFrame(df02)
-
-    if practice.empty == True:
-        plays="0"
-        since="0"
-    else:    
-        plays=int(sum(practice["Total"]))
-        since=practice.MODIFIED_DATE.min()
-    collection3=db.audio_feedback.aggregate([{"$match":{'$and':[
-        {"AUDIO_ID.NARRATOR_ID._id":{
-                    "$in":narrator_list
-                }},
-                { 'USER.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                {'USER.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                {'USER.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
-                {'USER.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
-                        {"AUDIO_ID.PROGRAM_ID.PROGRAM_ID" : {'$nin':[1,2,3,4,5,6,7,8]}},
-                {'USER.IS_DISABLED':{"$ne":'Y'}},
-                {'RATING':{"$ne":0}}
-                ]}},
-                {"$group": {"_id":"null", 'RATING': {"$avg":"$RATING"} } }
-                ,
-                {"$project":{"_id":0,'RATING':{"$round":["$RATING",1]}}}
-                                            ])
-    df033= list(collection3)
-    df33= pd.DataFrame.from_dict(df033).fillna(0)
-
-    if df33.empty == True:
-        n_rating=0
-    else:
-        n_rating=df33["RATING"][0]
-    info={"name":str(df["NARRATOR_NAME"][0]),"email":str(df["NARRATOR_EMAIL"][0]) ,"place":str(df["PLACE"][0]),"image":str(df["PROFILE_IMAGE"][0]),"image2":str(df["NARRATOR_IMAGE_2"][0]),"desc":str(df["NARRATOR_DESCRIPITION"][0]),
-            "plays":int(plays),"since":str(since),"rating":n_rating}
-
-    if practice.empty:
-        featuring_in=[]
-        Top_mindfultrack_in=[]
-        recent_comment=[]
-    else:
-        df4=practice.groupby(["PROGRAM_NAME"]).sum().reset_index()
-        if df4.empty == True:
-            featuring_in=[]
-            Top_mindfultrack_in=[]
-            recent_comment=[]
-        else:
-            collection4=db.audio_feedback.aggregate([{"$match":{'$and':[
-                    {"AUDIO_ID.NARRATOR_ID._id":{
-                                "$in":narrator_list
-
-                            }},
-                            { 'USER.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                            {'USER.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                            {'USER.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
-                            {'USER.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
-                                    {"AUDIO_ID.PROGRAM_ID.PROGRAM_ID" : {'$nin':[1,2,3,4,5,6,7,8]}},
-                            {'USER.IS_DISABLED':{"$ne":'Y'}},
-                            {'RATING':{"$ne":0}}
-                            ]}},
-                            {"$group":{"_id":"$AUDIO_ID.PROGRAM_ID.PROGRAM_NAME","RATING":{"$avg":"$RATING"}}}
-                            ,
-                            {"$project":{"_id":0,"PROGRAM_NAME":"$_id","RATING":1}},
-                                                    ])
-            df05= list(collection4)
-            df5= pd.DataFrame.from_dict(df05).fillna(0)
-
-            if df5.empty == True:
-                df5["PROGRAM_NAME"]=""
-                df5["RATING"]=0
-                featuring=pd.merge(df4,df5,on="PROGRAM_NAME",how="left").fillna(0)
-                featuring["RATING"]=0
-                featuring1=featuring[["PROGRAM_NAME","Total","RATING"]]
-
-
-            else:
-                df5=df5.round(decimals=1)   
-                featuring=pd.merge(df4,df5,on="PROGRAM_NAME",how="left").fillna(0)
-                featuring1=featuring[["PROGRAM_NAME","Total","RATING"]]                
-            featuring2=featuring1.nlargest(3, "Total")
-
-            if featuring2.empty:
-
-                featuring2=pd.DataFrame(index=[0], columns=['PROGRAM_NAME','Total','RATING'])
-
-
-            featuring2["PROGRAM_NAME"].fillna("",inplace=True)
-            featuring2["Total"].fillna(0,inplace=True)
-            featuring2["RATING"].fillna(0,inplace=True)
-
-            featuring_in=featuring2.to_dict("records")
-
-
-            collection5=db.audio_feedback.aggregate([{"$match":{'$and':[
-
-            {"AUDIO_ID.NARRATOR_ID._id":{
-                        "$in":narrator_list
-
-                    }},
-                    { 'USER.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                    {'USER.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                    {'USER.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
-                    {'USER.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
-                                {"AUDIO_ID.PROGRAM_ID.PROGRAM_ID" : {'$nin':[1,2,3,4,5,6,7,8]}},
-                    {'USER.IS_DISABLED':{"$ne":'Y'}},
-                    {'RATING':{"$ne":0}}
-                    ]}},
-                    {"$group":{"_id":{"PROGRAM_NAME":"$AUDIO_ID.PROGRAM_ID.PROGRAM_NAME","AUDIO_TITLE":"$AUDIO_ID.AUDIO_TITLE"}
-                            ,"RATING":{"$avg":"$RATING"}}}
-                    ,
-                    {"$project":{"_id":0,"PROGRAM_NAME":"$_id.PROGRAM_NAME","AUDIO_TITLE":"$_id.AUDIO_TITLE","RATING":1}}
-
-                                            ])
-            df07= list(collection5)
-            df7= pd.DataFrame.from_dict(df07).fillna(0)
-
-
-            if df7.empty and practice.empty:
-                df7["PROGRAM_NAME"]=""
-                df7["AUDIO_TITLE"]=""
-                df7["RATING"]="0"
-                mindfultrack=df7
-                mindfultrack['Total']=0
-                mindfultrack1=mindfultrack[["AUDIO_TITLE","PROGRAM_NAME","Total","RATING"]]          
-            elif df7.empty==False and practice.empty:
-                df7=df7.round(decimals=1)
-                mindfultrack=df7
-                mindfultrack['Total']=0
-                mindfultrack1=mindfultrack[["AUDIO_TITLE","PROGRAM_NAME","Total","RATING"]]
-            elif df7.empty and practice.empty==False:
-                df6=practice.groupby(["AUDIO_TITLE","PROGRAM_NAME"]).sum().reset_index()
-                mindfultrack=df6
-                mindfultrack['Total']=0
-                mindfultrack['RATING']=0
-                mindfultrack1=mindfultrack[["AUDIO_TITLE","PROGRAM_NAME","Total","RATING"]]
-            else:
-                df6=practice.groupby(["AUDIO_TITLE","PROGRAM_NAME"]).sum().reset_index()
-                df7=df7.round(decimals=1)
-                mindfultrack=pd.merge(df6,df7,on=["AUDIO_TITLE","PROGRAM_NAME"],how="right")
-            #             mindfultrack['RATING']=mindfultrack['RATING'].fillna('NO_Rating')
-                mindfultrack1=mindfultrack[["AUDIO_TITLE","PROGRAM_NAME","Total","RATING"]]
-
-
-            mindfultrack2=mindfultrack1.nlargest(3, "Total")
-            mindfultrack2.reset_index(drop=True, inplace=True)
-            
-            dfimage=pd.DataFrame()
-            for i in range(len(mindfultrack2.index)):
-                collection = db.programs_audio.aggregate([{"$match":{"AUDIO_TITLE":mindfultrack2["AUDIO_TITLE"][i],
-                                                                     "PROGRAM_ID.PROGRAM_ID" : {'$nin':[1,2,3,4,5,6,7,8]},
-                                                                    "PROGRAM_ID.PROGRAM_NAME":mindfultrack2["PROGRAM_NAME"][i]}},
-                                                        {"$project":{"AUDIO_ID":"$_id","_id" : 0,"AUDIO_TITLE":"$AUDIO_TITLE",
-                                                                    "PROGRAM_NAME":"$PROGRAM_ID.PROGRAM_NAME",
-                                                        "CLASSROOM_IMAGE_URL":"$CLASSROOM_IMAGE_URL",
-                                                        "IMAGE_URL":"$IMAGE_URL","AUDIO_NAME" : "$AUDIO_NAME"}}
-                                                        ])
-                dfimage1= DataFrame(list(collection))
-                dfimage=dfimage.append(dfimage1)
-            dfimage.reset_index(drop=True, inplace=True)
-            dfimage["VIDEO_ID"] = dfimage['AUDIO_NAME']
-            dfimage["VIDEO_ID"] = dfimage[dfimage['AUDIO_NAME'].str.contains("=")]['AUDIO_NAME'].str.split('=').str[1]
-            dfimage["VIDEO_ID"].fillna(dfimage['AUDIO_NAME'], inplace=True)
-            conditions  = [dfimage["VIDEO_ID"] != dfimage['AUDIO_NAME'], dfimage["VIDEO_ID"] == dfimage['AUDIO_NAME']]
-            choices     = [1, 0]
-            dfimage["IS_VIDEO"] = np.select(conditions, choices)
-            dfimage = dfimage.drop(['AUDIO_NAME'], axis=1)
+#                         }},
+#                         { 'USER.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+#                         {'USER.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+#                         {'USER.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
+#                         {'USER.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
+#                                     {"AUDIO_ID.PROGRAM_ID.PROGRAM_ID" : {'$nin':[1,2,3,4,5,6,7,8]}},
+#                         {'USER.IS_DISABLED':{"$ne":'Y'}},
+#                         {'RATING':{"$ne":0}}
+#                         ]}},
+#                         {"$group":{"_id":{"PROGRAM_NAME":"$AUDIO_ID.PROGRAM_ID.PROGRAM_NAME","AUDIO_TITLE":"$AUDIO_ID.AUDIO_TITLE"}
+#                                 ,"RATING":{"$avg":"$RATING"}}}
+#                         ,
+#                         {"$project":{"_id":0,"PROGRAM_NAME":"$_id.PROGRAM_NAME","AUDIO_TITLE":"$_id.AUDIO_TITLE","RATING":1}},
+#                                                 ])
+#         df07= list(collection5)
+#         df7= pd.DataFrame.from_dict(df07).fillna(0)
+#         df6=practice.groupby(["AUDIO_TITLE","PROGRAM_NAME"]).sum().reset_index()
+#         if df7.empty == True:
+#             df7["PROGRAM_NAME"]="0"
+#             df7["AUDIO_TITLE"]="0"
+#             df7["RATING"]="0"
+#             mindfultrack=pd.merge(df6,df7,on=["AUDIO_TITLE","PROGRAM_NAME"],how="left")
+#             mindfultrack["RATING"]=0
+#             mindfultrack1=mindfultrack[["AUDIO_TITLE","PROGRAM_NAME","Total","RATING"]]
+#         else:
+#             df7=df7.round(decimals=1)
+#             mindfultrack=pd.merge(df6,df7,on=["AUDIO_TITLE","PROGRAM_NAME"],how="right")
+#     #             mindfultrack['RATING']=mindfultrack['RATING'].fillna('NO_Rating')
+#             mindfultrack1=mindfultrack[["AUDIO_TITLE","PROGRAM_NAME","Total","RATING"]]
+#         mindfultrack2=mindfultrack1.nlargest(3, "Total")
+#         mindfultrack2.reset_index(drop=True, inplace=True)
+#         dfimage=pd.DataFrame()
+#         for i in range(len(mindfultrack2.index)):
+#             collection = db.programs_audio.aggregate([{"$match":{"AUDIO_TITLE":mindfultrack2["AUDIO_TITLE"][i],
+#                                                                  "PROGRAM_ID.PROGRAM_ID" : {'$nin':[1,2,3,4,5,6,7,8]},
+#                                                                 "PROGRAM_ID.PROGRAM_NAME":mindfultrack2["PROGRAM_NAME"][i]}},
+#                                                     {"$project":{"AUDIO_ID":"$_id","_id" : 0,"AUDIO_TITLE":"$AUDIO_TITLE",
+#                                                                 "PROGRAM_NAME":"$PROGRAM_ID.PROGRAM_NAME",
+#                                                     "CLASSROOM_IMAGE_URL":"$CLASSROOM_IMAGE_URL",
+#                                                     "IMAGE_URL":"$IMAGE_URL","AUDIO_NAME" : "$AUDIO_NAME"}}
+#                                                     ])
+#             dfimage1= DataFrame(list(collection))
+#             dfimage=dfimage.append(dfimage1)
+#         dfimage.reset_index(drop=True, inplace=True)
+#         dfimage["VIDEO_ID"] = dfimage['AUDIO_NAME']
+#         dfimage["VIDEO_ID"] = dfimage[dfimage['AUDIO_NAME'].str.contains("=")]['AUDIO_NAME'].str.split('=').str[1]
+#         dfimage["VIDEO_ID"].fillna(dfimage['AUDIO_NAME'], inplace=True)
+#         conditions  = [dfimage["VIDEO_ID"] != dfimage['AUDIO_NAME'], dfimage["VIDEO_ID"] == dfimage['AUDIO_NAME']]
+#         choices     = [1, 0]
+#         dfimage["IS_VIDEO"] = np.select(conditions, choices)
+#         dfimage = dfimage.drop(['AUDIO_NAME'], axis=1)
 
 
 
-            mindfultrack0=pd.merge(mindfultrack2,dfimage,on=["AUDIO_TITLE","PROGRAM_NAME"],how="left").fillna(0)
-            if mindfultrack0.empty:
-                mindfultrack0=pd.DataFrame(index=[0], columns=['AUDIO_ID','AUDIO_TITLE','PROGRAM_NAME','Total','RATING','IMAGE_URL',"CLASSROOM_IMAGE_URL",'VIDEO_ID','IS_VIDEO'])
-            mindfultrack0=mindfultrack0.nlargest(3, "Total") #############
-            mindfultrack0["AUDIO_TITLE"].fillna("",inplace=True)
-            mindfultrack0["PROGRAM_NAME"].fillna("",inplace=True)
-            mindfultrack0["Total"].fillna(0,inplace=True)
-            mindfultrack0["RATING"].fillna(0,inplace=True)
-            mindfultrack0["IMAGE_URL"].fillna("",inplace=True)
-            mindfultrack0["CLASSROOM_IMAGE_URL"].fillna("",inplace=True)
-            mindfultrack0["VIDEO_ID"].fillna("",inplace=True)
-            mindfultrack0["IS_VIDEO"].fillna(0,inplace=True)
+#         mindfultrack0=pd.merge(mindfultrack2,dfimage,on=["AUDIO_TITLE","PROGRAM_NAME"],how="left").fillna(0)
+#         if mindfultrack0.empty:
+#             mindfultrack0=pd.DataFrame(index=[0], columns=['AUDIO_ID','AUDIO_TITLE','PROGRAM_NAME','Total','RATING','IMAGE_URL',"CLASSROOM_IMAGE_URL",'VIDEO_ID','IS_VIDEO'])
+#         mindfultrack0=mindfultrack0.nlargest(3, "Total") #############
+#         mindfultrack0["AUDIO_TITLE"].fillna("",inplace=True)
+#         mindfultrack0["PROGRAM_NAME"].fillna("",inplace=True)
+#         mindfultrack0["Total"].fillna(0,inplace=True)
+#         mindfultrack0["RATING"].fillna(0,inplace=True)
+#         mindfultrack0["IMAGE_URL"].fillna("",inplace=True)
+#         mindfultrack0["CLASSROOM_IMAGE_URL"].fillna("",inplace=True)
+#         mindfultrack0["VIDEO_ID"].fillna("",inplace=True)
+#         mindfultrack0["IS_VIDEO"].fillna(0,inplace=True)
 
-            Top_mindfultrack_in=mindfultrack0.to_dict("records")
-            collection3=db.audio_feedback.aggregate([{"$match":{'$and':[
-                    {"AUDIO_ID.NARRATOR_ID._id":{
-                                "$in":narrator_list
+#         Top_mindfultrack_in=mindfultrack0.to_dict("records")
+#         collection3=db.audio_feedback.aggregate([{"$match":{'$and':[
+#                 {"AUDIO_ID.NARRATOR_ID._id":{
+#                             "$in":narrator_list
 
-                            }},
-                            { 'USER.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                            {'USER.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                            {'USER.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
-                            {'USER.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
-                            {'USER.IS_DISABLED':{"$ne":'Y'}},
-                                        {"AUDIO_ID.PROGRAM_ID.PROGRAM_ID" : {'$nin':[1,2,3,4,5,6,7,8]}},
-                            {'COMMENT':{'$exists':1}},
-                            {'COMMENT':{"$not":{"$regex":" ",'$options':'i'}}},
-                            {'COMMENT':{"$ne":""}},
-                            {'RATING':{'$in':[4,5]}}
+#                         }},
+#                         { 'USER.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+#                         {'USER.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+#                         {'USER.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
+#                         {'USER.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
+#                         {'USER.IS_DISABLED':{"$ne":'Y'}},
+#                                     {"AUDIO_ID.PROGRAM_ID.PROGRAM_ID" : {'$nin':[1,2,3,4,5,6,7,8]}},
+#                         {'COMMENT':{'$exists':1}},
+#                         {'COMMENT':{"$not":{"$regex":" ",'$options':'i'}}},
+#                         {'COMMENT':{"$ne":""}},
 
-                            ]}},
-                            {"$project":{"_id":0,"USER_NAME":"$USER.USER_NAME","USER_PROFILE" : "$USER.IMAGE_URL" ,
-                                         "PROGRAM_NAME":"$AUDIO_ID.PROGRAM_ID.PROGRAM_NAME",
-                                        'MODIFIED_DATE':{ "$dateToString": { "format": "%Y-%m-%d", "date":"$MODIFIED_DATE"}}, "RATING":1,"COMMENT":1,
-                                        "AUDIO_TITLE":"$AUDIO_ID.AUDIO_TITLE","NARRATOR":"$AUDIO_ID.NARRATEDBY"}},
-                            {"$sort":{'MODIFIED_DATE':-1}},{"$limit":30}
-                                                    ])
-            df03= list(collection3)
-            df3= pd.DataFrame.from_dict(df03).fillna(0)
+#                         ]}},
+#                         {"$project":{"_id":0,"USER_NAME":"$USER.USER_NAME","USER_PROFILE" : "$USER.IMAGE_URL" ,
+#                                      "PROGRAM_NAME":"$AUDIO_ID.PROGRAM_ID.PROGRAM_NAME",
+#                                     'MODIFIED_DATE':{ "$dateToString": { "format": "%Y-%m-%d", "date":"$MODIFIED_DATE"}}, "RATING":1,"COMMENT":1,
+#                                     "AUDIO_TITLE":"$AUDIO_ID.AUDIO_TITLE","NARRATOR":"$AUDIO_ID.NARRATEDBY"}},
+#                         {"$sort":{'MODIFIED_DATE':-1}},{"$limit":30}
+#                                                 ])
+#         df03= list(collection3)
+#         df3= pd.DataFrame.from_dict(df03).fillna(0)
+#         if df3.empty==True:
+#             recent_comment=[]
+#         else:
 
-            if df3.empty==True:
-                recent_comment=[]
-            else:
-                df3['COMMENT_LENGTH']=[len(i) for i in list(df3['COMMENT'])]
-                df3=df3[df3['COMMENT_LENGTH']>=30].reset_index(drop=True)
-                if 'USER_PROFILE' not in df3.columns:
-                    df3['USER_PROFILE']=""
-                else:
-                    df3
 
-            #####################sentiment_analysis##################
+#             if 'USER_PROFILE' not in df3.columns:
+#                 df3['USER_PROFILE']=""
+#             else:
+#                 df3
 
-                spec_chars = ["!",'"',"#","%","&","'","(",")",
-                            "*","+",",","-",".","/",":",";","<",
-                            "=",">","?","@","[","\\","]","^","_",
-                            "`","{","|","}","~","–","\n"]
-                df3['sentiment'] = df3.COMMENT.apply(lambda x: TextBlob(str(x)).sentiment.polarity)
-                df10=df3[df3["sentiment"]>= 0.30]
-                # current_Date = (datetime.datetime.today()- timedelta(60)).strftime ('%Y-%m-%d')
-                df10=df10.sort_values(by="MODIFIED_DATE")
-                recent_comment=df10[["USER_NAME","MODIFIED_DATE","RATING","COMMENT","USER_PROFILE"]].to_dict("records")
 
-        collection4 = db.narrator_profile.aggregate([
-            {"$match":
-            {"$and":[{'_id':{"$ne":ObjectId(id)}}]}},
-            {"$project":{"_id":0,"NARRATOR_ID":"$_id","NARRATOR_NAME":"$NARRATOR_NAME","NARRATOR_IMAGE":"$NARRATOR_IMAGE"}}
+#         #####################sentiment_analysis##################
+#             spec_chars = ["!",'"',"#","%","&","'","(",")",
+#                         "*","+",",","-",".","/",":",";","<",
+#                         "=",">","?","@","[","\\","]","^","_",
+#                         "`","{","|","}","~","–","\n"]
+#             df3['sentiment'] = df3.COMMENT.apply(lambda x: TextBlob(str(x)).sentiment.polarity)
+#             df10=df3[df3["sentiment"]>= 0.30]
+#             # current_Date = (datetime.datetime.today()- timedelta(60)).strftime ('%Y-%m-%d')
+#             df10=df10.sort_values(by="MODIFIED_DATE")
+#             recent_comment=df10[["USER_NAME","MODIFIED_DATE","RATING","COMMENT","USER_PROFILE"]].to_dict("records")
+#     collection4 = db.narrator_profile.aggregate([
+#         {"$match":
+#         {"$and":[{'_id':{"$ne":ObjectId(id)}}]}},
+#         {"$project":{"_id":0,"NARRATOR_NAME":"$NARRATOR_NAME","NARRATOR_IMAGE":"$NARRATOR_IMAGE","NARRATOR_IMAGE_2" :"$NARRATOR_IMAGE_2"}}
 
-            ])
-        df11= DataFrame(list(collection4)).fillna(0)
+#         ])
+#     df11= DataFrame(list(collection4)).fillna(0)
+#     if df11.empty:
+#         df11=pd.DataFrame(index=[0], columns=['NARRATOR_NAME','NARRATOR_IMAGE'])
 
-        if df11.empty:
-            df11=pd.DataFrame(index=[0], columns=["NARRATOR_ID",'NARRATOR_NAME','NARRATOR_IMAGE'])
-
-        df11["NARRATOR_NAME"].fillna("",inplace=True)
-        df11["NARRATOR_IMAGE"].fillna("",inplace=True)
-        other_narrator=df11.to_dict("records")
-
-        temp={"info":info,"featuring_in":featuring_in,"Top_mindfultrack_in":Top_mindfultrack_in,
-
-              "recent_comment":recent_comment,"other_narrators":other_narrator}
-        return json.dumps(temp, default=str)
+#     df11["NARRATOR_NAME"].fillna("",inplace=True)
+#     df11["NARRATOR_IMAGE"].fillna("",inplace=True)
+#     df11["NARRATOR_IMAGE_2"].fillna("",inplace=True)
+#     other_narrator=df11.to_dict("records")
+#     temp={"info":info,"featuring_in":featuring_in,"Top_mindfultrack_in":Top_mindfultrack_in,
+#           "recent_comment":recent_comment,"other_narrators":other_narrator}
+#     return json.dumps(temp, default=str)
 # <<<<<<<<<<<<<<<<========================================>>>>>>>>>>>>>>>>>
 
 
@@ -16891,7 +15673,7 @@ def narrator_profile(id):
     # client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     # db=client.compass_beta
 
-    client = MongoClient('mongodb://admin:F5tMazRj47cYqm33e@52.41.36.115:27017/')
+    client = MongoClient('mongodb://admin:CtZh5Nqp8Qn9LHUDx2GH@54.184.165.106:27017/')
     db=client.compass
 
     collection = db.narrator_profile.aggregate([
@@ -17123,9 +15905,9 @@ def narrator_profile(id):
 
 @app.route('/rtusercount')
 def realtimeusercount():
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     collection = db.audio_track_master
     query4=[{"$match":{
@@ -17176,9 +15958,9 @@ def realtimeusercount():
 
 @app.route('/rtmapcount')
 def realtimemaprcount():
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     collection = db.audio_track_master
     query4=[{"$match":{
@@ -17275,9 +16057,9 @@ def realtimemaprcount():
 
 @app.route('/rtlausdmapcount')
 def realtimelausdmaprcount():
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     collection = db.audio_track_master
     query4=[{"$match":{
@@ -17379,9 +16161,9 @@ def realtimelausdmaprcount():
 @app.route('/userpracticelist/<userid>/<classid>')
 def user_practice_list(userid,classid): 
 
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
 
     collection = db.user_master.aggregate([
@@ -17525,9 +16307,9 @@ def user_practice_list(userid,classid):
 @app.route('/practiceprogress/<schoolid>/<startdate>/<enddate>')
 def practice_progress(schoolid,startdate,enddate):
     import datetime
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     startdate= dateutil.parser.parse(str(startdate))
     enddat= dateutil.parser.parse(str(enddate))
@@ -17854,9 +16636,9 @@ def practice_progress_table(schoolid,table_type,startdate,enddate):
     enddat= dateutil.parser.parse(str(enddate))
     enddate=datetime.datetime.combine(enddat,datetime.time.max)
 #     import datetime
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
 
     # username = urllib.parse.quote_plus('adminIE')                                     #SwitchedToBeta
@@ -18007,7 +16789,6 @@ def practice_progress_table(schoolid,table_type,startdate,enddate):
 
 
 # practice_progress_table('5f2bcaabba0be61b0c1e10e8','not_practining','2021-8-1','2022-2-25')
-# 
 
 
 # practice_progress_table('5f2bca1fba0be61b0c1cb7e5',"total_user",'2021-8-1','2022-2-18')
@@ -18020,7 +16801,7 @@ def present_feeds_practice_data():
     # client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     # db=client.compass_beta
 
-    client = MongoClient('mongodb://admin:F5tMazRj47cYqm33e@52.41.36.115:27017/')
+    client = MongoClient('mongodb://admin:CtZh5Nqp8Qn9LHUDx2GH@54.184.165.106:27017/')
     db=client.compass
 
     collection = db.audio_track_master.aggregate([
@@ -18077,7 +16858,7 @@ def present_feeds():
     # client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     # db=client.compass_beta
 
-    client = MongoClient('mongodb://admin:F5tMazRj47cYqm33e@52.41.36.115:27017/')
+    client = MongoClient('mongodb://admin:CtZh5Nqp8Qn9LHUDx2GH@54.184.165.106:27017/')
     db=client.compass
 
 
@@ -18215,9 +16996,9 @@ def present_feeds():
 @app.route('/adminstatsprogram_practice/<name>')
 
 def prog_prac_admin(name):
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
 
     collection = db.user_master
@@ -18373,9 +17154,9 @@ def prog_prac_admin(name):
 #Active User Trend by Program CSY
 @app.route('/adminstatsprogram_user/<name>')
 def prog_user_admin(name):
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
 
     collection = db.user_master
@@ -18531,9 +17312,9 @@ def prog_user_admin(name):
 @app.route("/feedback_rating/<admin_id>")
  
 def feedback_rating(admin_id):
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
 
     # username = urllib.parse.quote_plus('adminIE')                                     #SwitchedToBeta
@@ -18702,9 +17483,9 @@ def wordcloud(adminid):
 #     enddate= dateutil.parser.parse(str(enddate))+timedelta(days=1)
     
     
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
 
 
@@ -18915,9 +17696,9 @@ def wordcloud(adminid):
 
 @app.route('/school_practice_mindful_minutes/<userid>')
 def schoolpracticemindfulsessions(userid):
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     
     # username = urllib.parse.quote_plus('adminIE')                                     #SwitchedToBeta
@@ -19087,9 +17868,9 @@ def schoolpracticemindfulsessions(userid):
 @app.route('/adminstatstuneindonut/<userid>')
 
 def tunein_donut_card(userid):
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
 
     # username = urllib.parse.quote_plus('adminIE')                                     #SwitchedToBeta
@@ -19257,9 +18038,9 @@ def tunein_donut_card(userid):
 
 @app.route('/adminstatstuneingraph/<userid>')
 def tune_in_admin_graph(userid):
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
 
     # username = urllib.parse.quote_plus('adminIE')                                     #SwitchedToBeta
@@ -19430,9 +18211,9 @@ def tune_in_admin_graph(userid):
 
 @app.route('/usertuneinhisgraph/<userid>/<classid>')
 def tune_in_user_graph(userid,classid):
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     from datetime import datetime
 #     startdate= dateutil.parser.parse(str(startdate))
@@ -19564,9 +18345,9 @@ def tune_in_user_graph(userid,classid):
 
 @app.route('/usertuneincards/<userid>/<classid>')
 def tunein_user_card(userid,classid):
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     collection = db.tune_in_audio_track_detail
     collection2=db.user_master
@@ -19720,7 +18501,7 @@ def omstable():
     # client = MongoClient('mongodb://adminIE:CtZh5Nqp8Qn9LHUDx2GH@54.184.165.106:27017/')     #BETA
     # db=client.compass_beta  
 
-    client = MongoClient('mongodb://admin:F5tMazRj47cYqm33e@52.41.36.115:27017/')   #LIVE
+    client = MongoClient('mongodb://admin:CtZh5Nqp8Qn9LHUDx2GH@54.184.165.106:27017/')   #LIVE
     db=client.compass
 
 
@@ -19816,9 +18597,9 @@ def omstable():
 # ############################# TUNE IN SEND DETAILS
 
 def tunein_user_table(userid,classid):
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     collection = db.tune_in_audio_track_detail
     collection2=db.user_master
@@ -20025,7 +18806,7 @@ def teacher_feeds():
     # client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     # db=client.compass_beta
 
-    client = MongoClient('mongodb://admin:F5tMazRj47cYqm33e@52.41.36.115:27017/')
+    client = MongoClient('mongodb://admin:CtZh5Nqp8Qn9LHUDx2GH@54.184.165.106:27017/')
     db=client.compass
 
     collectionpa = db.programs_audio.aggregate([
@@ -20170,7 +18951,7 @@ def narrator_profile_classroom(id):
     # client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     # db=client.compass_beta
 
-    client = MongoClient('mongodb://admin:F5tMazRj47cYqm33e@52.41.36.115:27017/')
+    client = MongoClient('mongodb://admin:CtZh5Nqp8Qn9LHUDx2GH@54.184.165.106:27017/')
     db=client.compass
 
     collection = db.narrator_profile.aggregate([
@@ -20407,8 +19188,8 @@ def admin_cto(schoolid):
     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
 
     #     username = urllib.parse.quote_plus('admin')
-    #     password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    #     client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    #     password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    #     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
 
     db=client.compass   
 
@@ -20549,9 +19330,9 @@ def admin_cto(schoolid):
 
 @app.route('/district_manageinvitetable/<userid>')
 def admin_portal_table_super_admin(userid):
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
 
     collection2=db.school_master
@@ -20809,9 +19590,9 @@ def admin_portal_table_super_admin(userid):
 
 @app.route('/district_manage_invite/<userid>')
 def district_manage_invites(userid):
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
 
 
@@ -20958,9 +19739,9 @@ def district_manage_invites(userid):
         
 @app.route('/school_practice_mindful_minutes_new/<userid>')
 def schoolpracticemindfulsessions_new(userid):
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     
     if len(userid)<10:
@@ -21126,9 +19907,9 @@ def schoolpracticemindfulsessions_new(userid):
 
 @app.route('/adminstatsprogram_practice_new/<name>')
 def prog_prac_admin_new(name):
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     if len(name)<10:
         data={'Result':0}
@@ -21285,9 +20066,9 @@ def prog_prac_admin_new(name):
 
 @app.route("/feedback_rating_new/<admin_id>") 
 def feedback_rating_new(admin_id):
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
 
     # username = urllib.parse.quote_plus('adminIE')                                     #SwitchedToBeta
@@ -21457,9 +20238,9 @@ def wordcloud_new(adminid):
     #     startdate= dateutil.parser.parse(str(startdate))
     #     enddate= dateutil.parser.parse(str(enddate))+timedelta(days=1)
     
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
 
     # username = urllib.parse.quote_plus('adminIE')                                     #SwitchedToBeta
@@ -21685,8 +20466,8 @@ def wordcloud_new(adminid):
 @app.route('/districtlive_user/<districtid>')
 def live_user_district(districtid):
     username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username,password))
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))
     db=client.compass
     district=disdic[districtid]
 
@@ -21764,9 +20545,9 @@ def live_user_district(districtid):
 def heat_district_(districtid,startdate,enddate):
     
     import collections
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection = db.audio_track_master
     collection2=db.user_master
@@ -21921,9 +20702,9 @@ def user_practice_90days_(districtid,startdate,enddate):
     tod1= today1+ timedelta(hours=4)
     start1= tod1-timedelta(days=90)
     
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection = db.audio_track_master
     district=disdic[districtid]
@@ -22148,9 +20929,9 @@ def user_practice_90days_(districtid,startdate,enddate):
 @app.route('/monthwisepracticedistrict_oct13_/<districtid>/<startdate>/<enddate>')
 def monthwisepc_(districtid,startdate,enddate):
     
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection = db.audio_track_master
     district=disdic[districtid]
@@ -22411,9 +21192,9 @@ def monthwisepc_(districtid,startdate,enddate):
 @app.route('/schoolwiseusercounttop20_oct13_/<districtid>/<startdate>/<enddate>')
 def schwiseucc_(districtid,startdate,enddate):
 
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection = db.user_master
     district=disdic[districtid]
@@ -22648,9 +21429,9 @@ def schwiseucc_(districtid,startdate,enddate):
 
 @app.route('/schoolwisepracticecounttop20_oct13_/<districtid>/<startdate>/<enddate>')
 def schwisepc_(districtid,startdate,enddate):
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection = db.user_master
     district=disdic[districtid]
@@ -22843,9 +21624,9 @@ def schwisepc_(districtid,startdate,enddate):
 
 @app.route('/top20userspractisinginfo_oct13_/<districtid>/<startdate>/<enddate>')
 def topusers_practice_(districtid,startdate,enddate):
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection = db.audio_track_master
     district=disdic[districtid]
@@ -22942,9 +21723,9 @@ def topusers_practice_(districtid,startdate,enddate):
 
 @app.route('/districtschooltable_oct13_/<districtid>/<startdate>/<enddate>')
 def district_school_table_(districtid,startdate,enddate):
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
 
     collection2=db.school_master
@@ -23134,9 +21915,9 @@ def district_school_table_(districtid,startdate,enddate):
 @app.route('/districtusertableteacher_oct13_/<districtid>/<startdate>/<enddate>')
 def district_user_table_teacher_(districtid,startdate,enddate):
 
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
 
     
@@ -23352,9 +22133,9 @@ def district_user_table_teacher_(districtid,startdate,enddate):
 @app.route('/districtusertableparent_oct13_/<districtid>/<startdate>/<enddate>')
 def district_user_table_parent_(districtid,startdate,enddate):
 
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
 
     
@@ -23573,9 +22354,9 @@ def district_count_cards_(districtid,startdate,enddate):
     from datetime import datetime
     from datetime import timedelta
     
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection1 = db.user_master
     collection2=db.audio_track_master
@@ -24063,9 +22844,9 @@ def district_count_cards_(districtid,startdate,enddate):
 @app.route('/districtheatmappracfamily_oct13_/<districtid>/<startdate>/<enddate>')
 def heat_district_family_prac_(districtid,startdate,enddate):
     import collections
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection = db.audio_track_master
     collection2=db.user_master
@@ -24214,9 +22995,9 @@ def heat_district_family_prac_(districtid,startdate,enddate):
 @app.route('/districtheatmappracteacher_oct13_/<districtid>/<startdate>/<enddate>')
 def heat_district_teachers_prac_(districtid,startdate,enddate):
     import collections
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection = db.audio_track_master
     collection2=db.user_master
@@ -24364,9 +23145,9 @@ def heat_district_teachers_prac_(districtid,startdate,enddate):
 @app.route('/districtheatmappractice_oct13_/<districtid>/<startdate>/<enddate>')
 def heatmap_prac_district_(districtid,startdate,enddate):   
     import collections
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection = db.audio_track_master
     collection2=db.user_master
@@ -24515,9 +23296,9 @@ def heatmap_prac_district_(districtid,startdate,enddate):
 @app.route('/teachersdistrictheatmap_oct13_/<districtid>/<startdate>/<enddate>')
 def heat_district_teachers_active_(districtid,startdate,enddate):
     import collections
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection = db.audio_track_master
     collection2=db.user_master
@@ -24667,9 +23448,9 @@ def heat_district_teachers_active_(districtid,startdate,enddate):
 def heat_district_family_active_(districtid,startdate,enddate):
     
     import collections
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection = db.audio_track_master
     collection2=db.user_master
@@ -24816,9 +23597,9 @@ def heat_district_family_active_(districtid,startdate,enddate):
 
 @app.route('/districtfeedbackrating_csy/<districtid>/<startdate>/<enddate>')
 def dis_schoolrating_csy__(districtid,startdate,enddate):
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     collection = db.audio_feedback
     district=disdic[districtid]
@@ -24893,9 +23674,9 @@ def dis_sentiment_pie(districtid,startdate,enddate):
     d1 = today.strftime("%Y-%m-%d")
     # myDatetimestrt = dateutil.parser.parse(date1)
     # myDatetimeend = dateutil.parser.parse(date2)
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     collection = db.audio_feedback
     district=disdic[districtid]
@@ -24990,9 +23771,9 @@ def dis_sentiment_pie_table(districtid,table_type,startdate,enddate):
     d1 = today.strftime("%Y-%m-%d")
     # myDatetimestrt = dateutil.parser.parse(date1)
     # myDatetimeend = dateutil.parser.parse(date2)
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     collection = db.audio_feedback
     district=disdic[districtid]
@@ -25076,9 +23857,9 @@ def dis_sentiment_pie_table(districtid,table_type,startdate,enddate):
 
 @app.route('/90daystable/<districtid>/<startdate>')
 def district_Date_table(districtid,startdate):
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
 
     
@@ -25229,9 +24010,9 @@ def last_practice_90days_(districtid):
     tod1= today1+ timedelta(hours=4)
     start1= tod1-timedelta(days=90)
     
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass 
     collection = db.audio_track_master
     district=disdic[districtid]
@@ -25446,9 +24227,9 @@ def last_practice_90days_(districtid):
 @app.route('/active_teachers_on_School_Search/<idd>/<chart_type>')
 def active_teachers_school_search(idd,chart_type):
 
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass
     collection= db.audio_track_master
     school=idd
@@ -25912,12 +24693,13 @@ def active_teachers_school_search(idd,chart_type):
 
 
 
-# <<<<<<<<<<<<---------districtportalapi on beta ---------------------->>>>>>>>>>
+
+
+# <<<<<<<<<<<<---------districtportalapi on live ---------------------->>>>>>>>>>
 @app.route('/districtportalsignup/<districtid>')
 def district_portal_signup_(districtid):
-    # Beta server credentials
-    client_beta = MongoClient('mongodb://adminIE:CtZh5Nqp8Qn9LHUDx2GH@54.184.165.106:27017/')
-    db_beta=client_beta.compass_beta
+    client = MongoClient('mongodb://admin:CtZh5Nqp8Qn9LHUDx2GH@54.184.165.106:27017/')
+    db=client.compass
 
     # Getting district id name from inserted district
     district=disdic[districtid]
@@ -25932,7 +24714,7 @@ def district_portal_signup_(districtid):
     last_7_dates_df=pd.DataFrame({'DATE':last_7_dates})
     _24_hr_df=pd.DataFrame({'HOUR_OF_THE_DAY':list(range(1,25))})
 
-    all_user_district=list(db_beta.user_master.aggregate([{"$match":{
+    all_user_district=list(db.user_master.aggregate([{"$match":{
              '$and':[{ 'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
                        {'EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
                          {'EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
@@ -25944,7 +24726,7 @@ def district_portal_signup_(districtid):
               {'schoolId.BLOCKED_BY_CAP':{'$exists':0}},
                {'schoolId.NAME':{'$not':{"$regex":'Test','$options':'i'}}},
                 {'schoolId._id':{'$in':
-                                db_beta.school_master.distinct('_id',{'$and':[
+                                db.school_master.distinct('_id',{'$and':[
                                     {'CATEGORY':{'$regex':district,'$options':'i'}},
                                     {'IS_PORTAL':'Y'}
                                 ]})
@@ -25959,12 +24741,16 @@ def district_portal_signup_(districtid):
     if len(all_user_district)==0:
         monthdf=last_30_dates_df
         monthdf['Count']=0
+        monthdf['COUNTS']=0
         weekdf=last_7_dates_df
         weekdf['Count']=0
+        weekdf['COUNTS']=0
         todaydf=_24_hr_df
         todaydf['Count']=0
+        todaydf['COUNTS']=0
+
     else:
-        all_signup_data=pd.DataFrame(db_beta.user_master.aggregate([{'$match':{'$and':[{'_id':{'$in':
+        all_signup_data=pd.DataFrame(db.user_master.aggregate([{'$match':{'$and':[{'_id':{'$in':
                                                                           all_user_district
                                                                           }}]}},                                          
                                                {'$project':{
@@ -25998,6 +24784,8 @@ def district_portal_signup_(districtid):
         if last_24_hr_signups.empty:
             todaydf=_24_hr_df
             todaydf['Count']=0
+            todaydf['COUNTS']=0
+            
         else:
             last_24_hr_signups_df=last_24_hr_signups.groupby('HOUR_OF_THE_DAY')['USER_ID'].count().reset_index().rename(columns={'USER_ID':'Count'})
             todaydf=_24_hr_df.merge(last_24_hr_signups_df,how='left',on='HOUR_OF_THE_DAY').fillna(0)
@@ -26005,24 +24793,28 @@ def district_portal_signup_(districtid):
             todaydf.rename(columns={'Cumulative':'Count','Count':'COUNTS'},inplace=True)
             
     temp={'month':{
-        'count':sum(monthdf['COUNTS']),
-        'graph_data':list(monthdf['Count'])},
-          'week':{
-              'count':sum(weekdf['COUNTS']),
-              'graph_data':list(weekdf['Count'])
-          },
-          'today':{
-              'count':sum(todaydf['COUNTS']),
-              'graph_data':list(todaydf['Count'])                  
-          }}
+    'count':sum(monthdf['COUNTS']),
+    'y-axis':list(monthdf['Count']),
+    'x-axis':list(monthdf['DATE'])    
+    },
+    'week':{
+        'count':sum(weekdf['COUNTS']),
+        'y-axis':list(weekdf['Count']),                    
+        'x-axis':list(weekdf['DATE'])
+    },
+    'today':{
+            'count':sum(todaydf['COUNTS']),
+            'y-axis':list(todaydf['Count']),                    
+            'x-axis':list(todaydf['HOUR_OF_THE_DAY'])                  
+        }}
     return json.dumps(temp)
         
         
 @app.route('/districtportalpractice/<districtid>') 
 def district_portal_practice_(districtid):
-    # Beta server credentials
-    client_beta = MongoClient('mongodb://adminIE:CtZh5Nqp8Qn9LHUDx2GH@54.184.165.106:27017/')
-    db_beta=client_beta.compass_beta
+    client = MongoClient('mongodb://admin:CtZh5Nqp8Qn9LHUDx2GH@54.184.165.106:27017/')
+    db=client.compass
+
     # Getting district id name from inserted district
     district=disdic[districtid]
     #  time frames
@@ -26037,7 +24829,7 @@ def district_portal_practice_(districtid):
     last_7_dates_df=pd.DataFrame({'DATE':last_7_dates})
     _24_hr_df=pd.DataFrame({'HOUR_OF_THE_DAY':list(range(1,25))})
 
-    all_user_district=list(db_beta.user_master.aggregate([{"$match":{
+    all_user_district=list(db.user_master.aggregate([{"$match":{
              '$and':[{ 'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
                        {'EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
                          {'EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
@@ -26049,7 +24841,7 @@ def district_portal_practice_(districtid):
               {'schoolId.BLOCKED_BY_CAP':{'$exists':0}},
                {'schoolId.NAME':{'$not':{"$regex":'Test','$options':'i'}}},
                 {'schoolId._id':{'$in':
-                                db_beta.school_master.distinct('_id',{'$and':[
+                                db.school_master.distinct('_id',{'$and':[
                                     {'CATEGORY':{'$regex':district,'$options':'i'}},
                                     {'IS_PORTAL':'Y'}
                                 ]})
@@ -26065,12 +24857,16 @@ def district_portal_practice_(districtid):
     if len(all_user_district)==0:
         monthdf=last_30_dates_df
         monthdf['Count']=0
+        monthdf['COUNTS']=0
         weekdf=last_7_dates_df
         weekdf['Count']=0
+        weekdf['COUNTS']=0
         todaydf=_24_hr_df
         todaydf['Count']=0
+        todaydf['COUNTS']=0
+
     else:
-        all_practice_data=pd.DataFrame(db_beta.audio_track_master.aggregate([{'$match':{'$and':[{'USER_ID._id':{'$in':
+        all_practice_data=pd.DataFrame(db.audio_track_master.aggregate([{'$match':{'$and':[{'USER_ID._id':{'$in':
                                                                       all_user_district
                                                                       }},
 
@@ -26087,10 +24883,14 @@ def district_portal_practice_(districtid):
         if all_practice_data.empty:
             monthdf=last_30_dates_df
             monthdf['Count']=0
+            monthdf['COUNTS']=0
             weekdf=last_7_dates_df
             weekdf['Count']=0
+            weekdf['COUNTS']=0
             todaydf=_24_hr_df
             todaydf['Count']=0
+            todaydf['COUNTS']=0
+
         else:
 
             utc_aware_practice = all_practice_data['PRACTICE'].dt.tz_localize('UTC')
@@ -26116,6 +24916,7 @@ def district_portal_practice_(districtid):
             if last_24_hr_practice.empty:
                 todaydf=_24_hr_df
                 todaydf['Count']=0
+                todaydf['COUNTS']=0
             else:
                 last_24_hr_practice_df=last_24_hr_practice.groupby('HOUR_OF_THE_DAY')['USER_ID'].count().reset_index().rename(columns={'USER_ID':'Count'})
                 todaydf=_24_hr_df.merge(last_24_hr_practice_df,how='left',on='HOUR_OF_THE_DAY').fillna(0)
@@ -26125,24 +24926,29 @@ def district_portal_practice_(districtid):
                 
     temp={'month':{
     'count':sum(monthdf['COUNTS']),
-    'graph_data':list(monthdf['Count'])},
-      'week':{
-          'count':sum(weekdf['COUNTS']),
-          'graph_data':list(weekdf['Count'])
-      },
-      'today':{
-          'count':sum(todaydf['COUNTS']),
-          'graph_data':list(todaydf['Count'])                  
-      }}
+    'y-axis':list(monthdf['Count']),
+    'x-axis':list(monthdf['DATE'])
+    
+    },
+    'week':{
+        'count':sum(weekdf['COUNTS']),
+        'y-axis':list(weekdf['Count']),                    
+        'x-axis':list(weekdf['DATE'])
+    },
+    'today':{
+            'count':sum(todaydf['COUNTS']),
+            'y-axis':list(todaydf['Count']),                    
+            'x-axis':list(todaydf['HOUR_OF_THE_DAY'])                  
+        }}
     return json.dumps(temp)
                 
             
 
 @app.route('/districtportalrating/<districtid>')  
 def district_portal_rating_(districtid):
-    # Beta server credentials
-    client_beta = MongoClient('mongodb://adminIE:CtZh5Nqp8Qn9LHUDx2GH@54.184.165.106:27017/')
-    db_beta=client_beta.compass_beta
+    client = MongoClient('mongodb://admin:CtZh5Nqp8Qn9LHUDx2GH@54.184.165.106:27017/')
+    db=client.compass
+
     # Getting district id name from inserted district
     district=disdic[districtid]
     #  time frames
@@ -26157,7 +24963,7 @@ def district_portal_rating_(districtid):
     last_7_dates_df=pd.DataFrame({'DATE':last_7_dates})
     _24_hr_df=pd.DataFrame({'HOUR_OF_THE_DAY':list(range(1,25))})
 
-    all_user_district=list(db_beta.user_master.aggregate([{"$match":{
+    all_user_district=list(db.user_master.aggregate([{"$match":{
              '$and':[{ 'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
                        {'EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
                          {'EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
@@ -26169,7 +24975,7 @@ def district_portal_rating_(districtid):
               {'schoolId.BLOCKED_BY_CAP':{'$exists':0}},
                {'schoolId.NAME':{'$not':{"$regex":'Test','$options':'i'}}},
                 {'schoolId._id':{'$in':
-                                db_beta.school_master.distinct('_id',{'$and':[
+                                db.school_master.distinct('_id',{'$and':[
                                     {'CATEGORY':{'$regex':district,'$options':'i'}},
                                     {'IS_PORTAL':'Y'}
                                 ]})
@@ -26182,14 +24988,11 @@ def district_portal_rating_(districtid):
                            ]))[0].get('users')
 
     if len(all_user_district)==0:
-        monthdf=last_30_dates_df
-        monthdf['Count']=0
-        weekdf=last_7_dates_df
-        weekdf['Count']=0
-        todaydf=_24_hr_df
-        todaydf['Count']=0
+        month_average=0
+        week_average=0
+        today_average=0 
     else:
-        all_rating_data=pd.DataFrame(db_beta.audio_feedback.aggregate([{'$match':{'$and':[{'USER._id':{'$in':all_user_district}},
+        all_rating_data=pd.DataFrame(db.audio_feedback.aggregate([{'$match':{'$and':[{'USER._id':{'$in':all_user_district}},
     #                                                                         {'COMMENT':{'$nin':['',None,'null','NULL',' ']}},
                                                                             {'RATING':{'$in':[1,2,3,4,5]}},
                                                                             {'MODIFIED_DATE':{'$gte':csy_first_date()-relativedelta(months=2)}}             
@@ -26202,13 +25005,10 @@ def district_portal_rating_(districtid):
                                                        'DATE':{ '$dateToString': {'format': "%d-%m-%Y", 'date': "$MODIFIED_DATE" }} 
                                                        }}
                                                                        ]))
-        if all_rating_data.empty:
-            monthdf=last_30_dates_df
-            monthdf['Count']=0
-            weekdf=last_7_dates_df
-            weekdf['Count']=0
-            todaydf=_24_hr_df
-            todaydf['Count']=0
+        if all_rating_data.empty:            
+            month_average=0                
+            week_average=0
+            today_average=0
         else:
 
             utc_aware_rate = all_rating_data['RATING_DATE'].dt.tz_localize('UTC')
@@ -26223,17 +25023,17 @@ def district_portal_rating_(districtid):
     #                                                                                                                   'RATING':'DATE'})
 
             monthdf=last_30_dates_df.merge(all_rating_data,how='left',on='DATE').fillna(0)
-            month_average=math.ceil(round(monthdf['RATING'].mean(),1))
+            month_average=round(monthdf['RATING'].mean(),1)
 
             weekdf=last_7_dates_df.merge(all_rating_data,how='left',on='DATE').fillna(0)
-            week_average=math.ceil(round(weekdf['RATING'].mean(),1))       
+            week_average=round(weekdf['RATING'].mean(),1)       
 
             last_24_hr_rating=all_rating_data[all_rating_data['RATING_DATE']>=last_24_hr].reset_index(drop=True)
 
             if last_24_hr_rating.empty:
                 today_average=0            
             else:
-                today_average=math.ceil(round(last_24_hr_rating['RATING'].mean(),1))
+                today_average=round(last_24_hr_rating['RATING'].mean(),1)
     #             last_24_hr_rating_df=last_24_hr_rating.groupby('HOUR_OF_THE_DAY')['USER_ID'].count().reset_index().rename(columns={'USER_ID':'Count'})
     #             todaydf=_24_hr_df.merge(last_24_hr_rating_df,how='left',on='HOUR_OF_THE_DAY').fillna(0)
 
@@ -26246,9 +25046,9 @@ def district_portal_rating_(districtid):
         
 @app.route('/districtportalcomments/<districtid>')
 def district_portal_comment_(districtid):
-    # Beta server credentials
-    client_beta = MongoClient('mongodb://adminIE:CtZh5Nqp8Qn9LHUDx2GH@54.184.165.106:27017/')
-    db_beta=client_beta.compass_beta
+    client = MongoClient('mongodb://admin:CtZh5Nqp8Qn9LHUDx2GH@54.184.165.106:27017/')
+    db=client.compass
+
     # Getting district id name from inserted district
     district=disdic[districtid]
     #  time frames
@@ -26264,7 +25064,7 @@ def district_portal_comment_(districtid):
     last_7_dates_df=pd.DataFrame({'DATE':last_7_dates})
     _24_hr_df=pd.DataFrame({'HOUR_OF_THE_DAY':list(range(1,25))})
 
-    all_user_district=list(db_beta.user_master.aggregate([{"$match":{
+    all_user_district=list(db.user_master.aggregate([{"$match":{
              '$and':[{ 'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
                        {'EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
                          {'EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
@@ -26276,7 +25076,7 @@ def district_portal_comment_(districtid):
               {'schoolId.BLOCKED_BY_CAP':{'$exists':0}},
                {'schoolId.NAME':{'$not':{"$regex":'Test','$options':'i'}}},
                 {'schoolId._id':{'$in':
-                                db_beta.school_master.distinct('_id',{'$and':[
+                                db.school_master.distinct('_id',{'$and':[
                                     {'CATEGORY':{'$regex':district,'$options':'i'}},
                                     {'IS_PORTAL':'Y'}
                                 ]})
@@ -26291,10 +25091,11 @@ def district_portal_comment_(districtid):
     if len(all_user_district)==0:
         comment_data_for_use_table="NO INFO"
     else:
-        comments_data=pd.DataFrame(list(db_beta.audio_feedback.aggregate([{'$match':{'$and':[
+        comments_data=pd.DataFrame(list(db.audio_feedback.aggregate([{'$match':{'$and':[
             {'USER._id':{'$in':all_user_district}},
             {'COMMENT':{'$nin':['',None,'null','NULL',' ']}},
-            {'RATING':{'$in':[4,5]}}
+            {'RATING':{'$in':[4,5]}},
+            {'COMMENT':{'$nin':['Write a feedback (optional)','n/a','N/A','N/a','n/A']}}
         ]}},
              {'$project':{
                  '_id':0,
@@ -26321,7 +25122,7 @@ def district_portal_comment_(districtid):
                     PRACTICE_DAY.append(digit[0])
 
             comments_data['PRACTICE_DAY']=PRACTICE_DAY
-            comments_school_detail=pd.DataFrame(list(db_beta.user_master.aggregate([{'$match':{
+            comments_school_detail=pd.DataFrame(list(db.user_master.aggregate([{'$match':{
             '$and':[{'_id':{'$in':list(comments_data['USER_ID'])}}]
             }},
                      {'$project':{
@@ -26352,9 +25153,9 @@ def district_portal_comment_(districtid):
     
 @app.route('/districtportaltuneins/<districtid>')  
 def district_portal_tunein_(districtid):
-    # Beta server credentials
-    client_beta = MongoClient('mongodb://adminIE:CtZh5Nqp8Qn9LHUDx2GH@54.184.165.106:27017/')
-    db_beta=client_beta.compass_beta
+    client = MongoClient('mongodb://admin:CtZh5Nqp8Qn9LHUDx2GH@54.184.165.106:27017/')
+    db=client.compass
+
     # Getting district id name from inserted district
     district=disdic[districtid]
     #  time frames
@@ -26369,7 +25170,7 @@ def district_portal_tunein_(districtid):
     last_7_dates_df=pd.DataFrame({'DATE':last_7_dates})
     _24_hr_df=pd.DataFrame({'HOUR_OF_THE_DAY':list(range(1,25))})
 
-    all_user_district=list(db_beta.user_master.aggregate([{"$match":{
+    all_user_district=list(db.user_master.aggregate([{"$match":{
              '$and':[{ 'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
                        {'EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
                          {'EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
@@ -26381,7 +25182,7 @@ def district_portal_tunein_(districtid):
               {'schoolId.BLOCKED_BY_CAP':{'$exists':0}},
                {'schoolId.NAME':{'$not':{"$regex":'Test','$options':'i'}}},
                 {'schoolId._id':{'$in':
-                                db_beta.school_master.distinct('_id',{'$and':[
+                                db.school_master.distinct('_id',{'$and':[
                                     {'CATEGORY':{'$regex':district,'$options':'i'}},
                                     {'IS_PORTAL':'Y'}
                                 ]})
@@ -26396,27 +25197,33 @@ def district_portal_tunein_(districtid):
     if len(all_user_district)==0:        
         monthdf=last_30_dates_df
         monthdf['Count']=0
+        monthdf['COUNTS']=0
         weekdf=last_7_dates_df
         weekdf['Count']=0
+        weekdf['COUNTS']=0
         todaydf=_24_hr_df
         todaydf['Count']=0
+        todaydf['COUNTS']=0
     else:
         
-        email_ids=db_beta.user_master.distinct('EMAIL_ID',{'$and':[{'_id':{'$in':all_user_district}},
+        email_ids=db.user_master.distinct('EMAIL_ID',{'$and':[{'_id':{'$in':all_user_district}},
                                                 {'EMAIL_ID':{'$nin':['',' ']}}
                                                 
                                                 ]})
 
-        tune_in_parents=db_beta.tune_in_master.distinct('EMAIL',{'USER_ID.EMAIL_ID':{'$in':email_ids}})
+        tune_in_parents=db.tune_in_master.distinct('EMAIL',{'USER_ID.EMAIL_ID':{'$in':email_ids}})
         if len(tune_in_parents)==0:
-            monthdf=last_30_dates_df
+            monthdf=last_30_dates_df                
             monthdf['Count']=0
+            monthdf['COUNTS']=0
             weekdf=last_7_dates_df
             weekdf['Count']=0
+            weekdf['COUNTS']=0
             todaydf=_24_hr_df
             todaydf['Count']=0
+            todaydf['COUNTS']=0
         else:
-            all_practice_data=pd.DataFrame(db_beta.tune_in_audio_track_detail.aggregate([{'$match':{'$and':[{'INVITEE_EMAIL':{'$in':tune_in_parents}},
+            all_practice_data=pd.DataFrame(db.tune_in_audio_track_detail.aggregate([{'$match':{'$and':[{'INVITEE_EMAIL':{'$in':tune_in_parents}},
                                                                    {'MODIFIED_DATE':{'$gte':
                                                                                     csy_first_date()-relativedelta(months=2)}} 
                                                                                                ]}},                                           
@@ -26428,12 +25235,15 @@ def district_portal_tunein_(districtid):
                                                }}
                                                                ]))
             if all_practice_data.empty:
-                monthdf=last_30_dates_df
+                monthdf=last_30_dates_df                                    
                 monthdf['Count']=0
+                monthdf['COUNTS']=0
                 weekdf=last_7_dates_df
                 weekdf['Count']=0
+                weekdf['COUNTS']=0
                 todaydf=_24_hr_df
                 todaydf['Count']=0
+                todaydf['COUNTS']=0
             else:
 
                 utc_aware_practice = all_practice_data['PRACTICE'].dt.tz_localize('UTC')
@@ -26458,6 +25268,7 @@ def district_portal_tunein_(districtid):
                 if last_24_hr_practice.empty:
                     todaydf=_24_hr_df
                     todaydf['Count']=0
+                    todaydf['COUNTS']=0
                 else:
                     last_24_hr_practice_df=last_24_hr_practice.groupby('HOUR_OF_THE_DAY')['USER_ID'].count().reset_index().rename(columns={'USER_ID':'Count'})
                     todaydf=_24_hr_df.merge(last_24_hr_practice_df,how='left',on='HOUR_OF_THE_DAY').fillna(0)
@@ -26467,21 +25278,339 @@ def district_portal_tunein_(districtid):
                     
     temp={'month':{
     'count':sum(monthdf['COUNTS']),
-    'graph_data':list(monthdf['Count'])},
-      'week':{
-          'count':sum(weekdf['COUNTS']),
-          'graph_data':list(weekdf['Count'])
-      },
-      'today':{
-          'count':sum(todaydf['COUNTS']),
-          'graph_data':list(todaydf['Count'])                  
-      }}
+    'y-axis':list(monthdf['Count']),
+    'x-axis':list(monthdf['DATE'])
+    
+    },
+    'week':{
+        'count':sum(weekdf['COUNTS']),
+        'y-axis':list(weekdf['Count']),                    
+        'x-axis':list(weekdf['DATE'])
+    },
+    'today':{
+            'count':sum(todaydf['COUNTS']),
+            'y-axis':list(todaydf['Count']),                    
+            'x-axis':list(todaydf['HOUR_OF_THE_DAY'])                  
+        }}
     return json.dumps(temp)
 
 
 
 
-# <<<<<<<<<<<<<----------districtportalapi code ends here------------>>>>>>>>>>>>
+
+@app.route('/narratorprofileb1/<id>')
+def narrator_profile_(id):
+    import datetime
+    from textblob import TextBlob, Word, Blobber
+    client = MongoClient('mongodb://admin:CtZh5Nqp8Qn9LHUDx2GH@54.184.165.106:27017/')
+    db=client.compass
+    collection = db.narrator_profile.aggregate([
+            {"$match":
+            {"$and":[{'_id':{"$eq":ObjectId(""+id+"")}}]}}
+
+            ])
+
+    df= DataFrame(list(collection)).fillna(0)
+    if 'NARRATOR_IMAGE_2' not in df.columns:
+        df['NARRATOR_IMAGE_2']=''    
+    else:
+        df=df
+
+    df['NARRATOR_DESCRIPITION']=df['NARRATOR_DESCRIPITION'].replace({0:''})
+    narrator_list=df["_id"].tolist()
+
+    collection2 = db.audio_track_master.aggregate([
+
+        {"$match":{
+            '$and':[{ 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                    {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                        {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
+            {'USER_ID.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
+            {'USER_ID.IS_DISABLED':{"$ne":'Y'}},
+            {'USER_ID.IS_BLOCKED':{"$ne":'Y'}},
+                                {"PROGRAM_AUDIO_ID.PROGRAM_ID.PROGRAM_ID" : {'$nin':[1,2,3,4,5,6,7,8]}},
+            {'USER_ID.schoolId.NAME':{'$not':{"$regex":'Blocked','$options':'i'}}},
+            {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':0}},
+            {'USER_ID.schoolId.NAME':{'$not':{"$regex":'test','$options':'i'}}},
+                    {'PROGRAM_AUDIO_ID.NARRATOR_ID._id':ObjectId(str(id))}
+            ]}},
+            {"$group":{"_id":{"AUDIO_TITLE":"$PROGRAM_AUDIO_ID.AUDIO_TITLE",
+                        "PROGRAM_NAME":"$PROGRAM_AUDIO_ID.PROGRAM_ID.PROGRAM_NAME",
+                              "NARRATOR":"$PROGRAM_AUDIO_ID.NARRATOR_ID._id"},
+
+        #                         "PROGRAM_ID":{"$first":"$PROGRAM_AUDIO_ID.PROGRAM_ID.PROGRAM_ID"},
+
+                        'count':{'$sum':1},
+                    'MODIFIED_DATE':{"$min":'$MODIFIED_DATE'}}},
+        {'$project':{'_id':0,
+                        'MODIFIED_DATE':{ "$dateToString": { "format": "%Y-%m-%d", "date":"$MODIFIED_DATE"}},
+                    "AUDIO_TITLE":"$_id.AUDIO_TITLE" ,
+                    "PROGRAM_NAME":"$_id.PROGRAM_NAME",
+                    "NARRAROR":"$_id.NARRATOR",
+                    "Total":"$count",
+        #                      "PROGRAM_ID":"$PROGRAM_ID"
+            }
+            }])
+
+    df02= list(collection2)
+    practice= DataFrame(df02)
+
+    if practice.empty == True:
+        plays="0"
+        since="0"
+    else:    
+        plays=int(sum(practice["Total"]))
+        since=practice.MODIFIED_DATE.min()
+    collection3=db.audio_feedback.aggregate([{"$match":{'$and':[
+        {"AUDIO_ID.NARRATOR_ID._id":{
+                    "$in":narrator_list
+                }},
+                { 'USER.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                {'USER.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                {'USER.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
+                {'USER.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
+                        {"AUDIO_ID.PROGRAM_ID.PROGRAM_ID" : {'$nin':[1,2,3,4,5,6,7,8]}},
+                {'USER.IS_DISABLED':{"$ne":'Y'}},
+                {'RATING':{"$ne":0}}
+                ]}},
+                {"$group": {"_id":"null", 'RATING': {"$avg":"$RATING"} } }
+                ,
+                {"$project":{"_id":0,'RATING':{"$round":["$RATING",1]}}}
+                                            ])
+    df033= list(collection3)
+    df33= pd.DataFrame.from_dict(df033).fillna(0)
+
+    if df33.empty == True:
+        n_rating=0
+    else:
+        n_rating=df33["RATING"][0]
+    info={"name":str(df["NARRATOR_NAME"][0]),"email":str(df["NARRATOR_EMAIL"][0]) ,"place":str(df["PLACE"][0]),"image":str(df["PROFILE_IMAGE"][0]),"image2":str(df["NARRATOR_IMAGE_2"][0]),"desc":str(df["NARRATOR_DESCRIPITION"][0]),
+            "plays":int(plays),"since":str(since),"rating":n_rating}
+
+    if practice.empty:
+        featuring_in=[]
+        Top_mindfultrack_in=[]
+        recent_comment=[]
+    else:
+        df4=practice.groupby(["PROGRAM_NAME"]).sum().reset_index()
+        if df4.empty == True:
+            featuring_in=[]
+            Top_mindfultrack_in=[]
+            recent_comment=[]
+        else:
+            collection4=db.audio_feedback.aggregate([{"$match":{'$and':[
+                    {"AUDIO_ID.NARRATOR_ID._id":{
+                                "$in":narrator_list
+
+                            }},
+                            { 'USER.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                            {'USER.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                            {'USER.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
+                            {'USER.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
+                                    {"AUDIO_ID.PROGRAM_ID.PROGRAM_ID" : {'$nin':[1,2,3,4,5,6,7,8]}},
+                            {'USER.IS_DISABLED':{"$ne":'Y'}},
+                            {'RATING':{"$ne":0}}
+                            ]}},
+                            {"$group":{"_id":"$AUDIO_ID.PROGRAM_ID.PROGRAM_NAME","RATING":{"$avg":"$RATING"}}}
+                            ,
+                            {"$project":{"_id":0,"PROGRAM_NAME":"$_id","RATING":1}},
+                                                    ])
+            df05= list(collection4)
+            df5= pd.DataFrame.from_dict(df05).fillna(0)
+
+            if df5.empty == True:
+                df5["PROGRAM_NAME"]=""
+                df5["RATING"]=0
+                featuring=pd.merge(df4,df5,on="PROGRAM_NAME",how="left").fillna(0)
+                featuring["RATING"]=0
+                featuring1=featuring[["PROGRAM_NAME","Total","RATING"]]
+
+
+            else:
+                df5=df5.round(decimals=1)   
+                featuring=pd.merge(df4,df5,on="PROGRAM_NAME",how="left").fillna(0)
+                featuring1=featuring[["PROGRAM_NAME","Total","RATING"]]                
+            featuring2=featuring1.nlargest(3, "Total")
+
+            if featuring2.empty:
+
+                featuring2=pd.DataFrame(index=[0], columns=['PROGRAM_NAME','Total','RATING'])
+
+
+            featuring2["PROGRAM_NAME"].fillna("",inplace=True)
+            featuring2["Total"].fillna(0,inplace=True)
+            featuring2["RATING"].fillna(0,inplace=True)
+
+            featuring_in=featuring2.to_dict("records")
+
+
+            collection5=db.audio_feedback.aggregate([{"$match":{'$and':[
+
+            {"AUDIO_ID.NARRATOR_ID._id":{
+                        "$in":narrator_list
+
+                    }},
+                    { 'USER.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                    {'USER.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                    {'USER.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
+                    {'USER.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
+                                {"AUDIO_ID.PROGRAM_ID.PROGRAM_ID" : {'$nin':[1,2,3,4,5,6,7,8]}},
+                    {'USER.IS_DISABLED':{"$ne":'Y'}},
+                    {'RATING':{"$ne":0}}
+                    ]}},
+                    {"$group":{"_id":{"PROGRAM_NAME":"$AUDIO_ID.PROGRAM_ID.PROGRAM_NAME","AUDIO_TITLE":"$AUDIO_ID.AUDIO_TITLE"}
+                            ,"RATING":{"$avg":"$RATING"}}}
+                    ,
+                    {"$project":{"_id":0,"PROGRAM_NAME":"$_id.PROGRAM_NAME","AUDIO_TITLE":"$_id.AUDIO_TITLE","RATING":1}}
+
+                                            ])
+            df07= list(collection5)
+            df7= pd.DataFrame.from_dict(df07).fillna(0)
+
+
+            if df7.empty and practice.empty:
+                df7["PROGRAM_NAME"]=""
+                df7["AUDIO_TITLE"]=""
+                df7["RATING"]="0"
+                mindfultrack=df7
+                mindfultrack['Total']=0
+                mindfultrack1=mindfultrack[["AUDIO_TITLE","PROGRAM_NAME","Total","RATING"]]          
+            elif df7.empty==False and practice.empty:
+                df7=df7.round(decimals=1)
+                mindfultrack=df7
+                mindfultrack['Total']=0
+                mindfultrack1=mindfultrack[["AUDIO_TITLE","PROGRAM_NAME","Total","RATING"]]
+            elif df7.empty and practice.empty==False:
+                df6=practice.groupby(["AUDIO_TITLE","PROGRAM_NAME"]).sum().reset_index()
+                mindfultrack=df6
+                mindfultrack['Total']=0
+                mindfultrack['RATING']=0
+                mindfultrack1=mindfultrack[["AUDIO_TITLE","PROGRAM_NAME","Total","RATING"]]
+            else:
+                df6=practice.groupby(["AUDIO_TITLE","PROGRAM_NAME"]).sum().reset_index()
+                df7=df7.round(decimals=1)
+                mindfultrack=pd.merge(df6,df7,on=["AUDIO_TITLE","PROGRAM_NAME"],how="right")
+            #             mindfultrack['RATING']=mindfultrack['RATING'].fillna('NO_Rating')
+                mindfultrack1=mindfultrack[["AUDIO_TITLE","PROGRAM_NAME","Total","RATING"]]
+
+
+            mindfultrack2=mindfultrack1.nlargest(3, "Total")
+            mindfultrack2.reset_index(drop=True, inplace=True)
+            
+            dfimage=pd.DataFrame()
+            for i in range(len(mindfultrack2.index)):
+                collection = db.programs_audio.aggregate([{"$match":{"AUDIO_TITLE":mindfultrack2["AUDIO_TITLE"][i],
+                                                                     "PROGRAM_ID.PROGRAM_ID" : {'$nin':[1,2,3,4,5,6,7,8]},
+                                                                    "PROGRAM_ID.PROGRAM_NAME":mindfultrack2["PROGRAM_NAME"][i]}},
+                                                        {"$project":{"AUDIO_ID":"$_id","_id" : 0,"AUDIO_TITLE":"$AUDIO_TITLE",
+                                                                    "PROGRAM_NAME":"$PROGRAM_ID.PROGRAM_NAME",
+                                                        "CLASSROOM_IMAGE_URL":"$CLASSROOM_IMAGE_URL",
+                                                        "IMAGE_URL":"$IMAGE_URL","AUDIO_NAME" : "$AUDIO_NAME"}}
+                                                        ])
+                dfimage1= DataFrame(list(collection))
+                dfimage=dfimage.append(dfimage1)
+            dfimage.reset_index(drop=True, inplace=True)
+            dfimage["VIDEO_ID"] = dfimage['AUDIO_NAME']
+            dfimage["VIDEO_ID"] = dfimage[dfimage['AUDIO_NAME'].str.contains("=")]['AUDIO_NAME'].str.split('=').str[1]
+            dfimage["VIDEO_ID"].fillna(dfimage['AUDIO_NAME'], inplace=True)
+            conditions  = [dfimage["VIDEO_ID"] != dfimage['AUDIO_NAME'], dfimage["VIDEO_ID"] == dfimage['AUDIO_NAME']]
+            choices     = [1, 0]
+            dfimage["IS_VIDEO"] = np.select(conditions, choices)
+            dfimage = dfimage.drop(['AUDIO_NAME'], axis=1)
+
+
+
+            mindfultrack0=pd.merge(mindfultrack2,dfimage,on=["AUDIO_TITLE","PROGRAM_NAME"],how="left").fillna(0)
+            if mindfultrack0.empty:
+                mindfultrack0=pd.DataFrame(index=[0], columns=['AUDIO_ID','AUDIO_TITLE','PROGRAM_NAME','Total','RATING','IMAGE_URL',"CLASSROOM_IMAGE_URL",'VIDEO_ID','IS_VIDEO'])
+            mindfultrack0=mindfultrack0.nlargest(3, "Total") #############
+            mindfultrack0["AUDIO_TITLE"].fillna("",inplace=True)
+            mindfultrack0["PROGRAM_NAME"].fillna("",inplace=True)
+            mindfultrack0["Total"].fillna(0,inplace=True)
+            mindfultrack0["RATING"].fillna(0,inplace=True)
+            mindfultrack0["IMAGE_URL"].fillna("",inplace=True)
+            mindfultrack0["CLASSROOM_IMAGE_URL"].fillna("",inplace=True)
+            mindfultrack0["VIDEO_ID"].fillna("",inplace=True)
+            mindfultrack0["IS_VIDEO"].fillna(0,inplace=True)
+
+            Top_mindfultrack_in=mindfultrack0.to_dict("records")
+            collection3=db.audio_feedback.aggregate([{"$match":{'$and':[
+                    {"AUDIO_ID.NARRATOR_ID._id":{
+                                "$in":narrator_list
+
+                            }},
+                            { 'USER.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                            {'USER.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                            {'USER.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
+                            {'USER.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
+                            {'USER.IS_DISABLED':{"$ne":'Y'}},
+                                        {"AUDIO_ID.PROGRAM_ID.PROGRAM_ID" : {'$nin':[1,2,3,4,5,6,7,8]}},
+                            {'COMMENT':{'$exists':1}},
+                            {'COMMENT':{'$nin':['Write a feedback (optional)','n/a','N/A','N/a','n/A']}},
+                            # {'COMMENT':{"$not":{"$regex":" ",'$options':'i'}}},
+                            {'COMMENT':{"$ne":""}},
+                            {'RATING':{'$in':[4,5]}}
+
+                            ]}},                            
+                            {"$project":{"_id":0,"USER_NAME":"$USER.USER_NAME","USER_PROFILE" : "$USER.IMAGE_URL" ,
+                                                                    "PROGRAM_NAME":"$AUDIO_ID.PROGRAM_ID.PROGRAM_NAME",
+                                                                    'MODIFIED_DATE':"$MODIFIED_DATE", "RATING":'$RATING',"COMMENT":'$COMMENT',
+                                                                    "AUDIO_TITLE":"$AUDIO_ID.AUDIO_TITLE","NARRATOR":"$AUDIO_ID.NARRATEDBY"}},
+                                                        {"$sort":{'MODIFIED_DATE':-1}},{"$limit":30},
+                                                        {"$project":{"_id":0,"USER_NAME":"$USER_NAME","USER_PROFILE" : "$USER_PROFILE" ,
+                                                                    "PROGRAM_NAME":"$PROGRAM_NAME",
+                                                                    'MODIFIED_DATE':{ "$dateToString": { "format": "%Y-%m-%d", "date":"$MODIFIED_DATE"}}, 
+                                                            "RATING":'$RATING',"COMMENT":'$COMMENT',
+                                                                    "AUDIO_TITLE":"$AUDIO_TITLE","NARRATOR":"$NARRATEDBY"}}
+                                                                    ])
+            df03= list(collection3)
+            df3= pd.DataFrame.from_dict(df03).fillna(0)
+
+            if df3.empty==True:
+                recent_comment=[]
+            else:
+                df3['COMMENT_LENGTH']=[len(i) for i in list(df3['COMMENT'])]
+                df3=df3[df3['COMMENT_LENGTH']>=30].reset_index(drop=True)
+                if 'USER_PROFILE' not in df3.columns:
+                    df3['USER_PROFILE']=""
+                else:
+                    df3
+
+            #####################sentiment_analysis##################
+
+                spec_chars = ["!",'"',"#","%","&","'","(",")",
+                            "*","+",",","-",".","/",":",";","<",
+                            "=",">","?","@","[","\\","]","^","_",
+                            "`","{","|","}","~","–","\n"]
+                df3['sentiment'] = df3.COMMENT.apply(lambda x: TextBlob(str(x)).sentiment.polarity)
+                df10=df3[df3["sentiment"]>= 0.30]
+                # current_Date = (datetime.datetime.today()- timedelta(60)).strftime ('%Y-%m-%d')
+                # df10=df10.sort_values(by="MODIFIED_DATE")
+                recent_comment=df10[["USER_NAME","MODIFIED_DATE","RATING","COMMENT","USER_PROFILE"]].to_dict("records")
+
+        collection4 = db.narrator_profile.aggregate([
+            {"$match":
+            {"$and":[{'_id':{"$ne":ObjectId(id)}}]}},
+            {"$project":{"_id":0,"NARRATOR_ID":"$_id","NARRATOR_NAME":"$NARRATOR_NAME","NARRATOR_IMAGE":"$NARRATOR_IMAGE"}}
+
+            ])
+        df11= DataFrame(list(collection4)).fillna(0)
+        # print(df11)
+
+        if df11.empty:
+            df11=pd.DataFrame(index=[0], columns=["NARRATOR_ID",'NARRATOR_NAME','NARRATOR_IMAGE'])
+
+        df11["NARRATOR_NAME"].fillna("",inplace=True)
+        df11["NARRATOR_IMAGE"].fillna("",inplace=True)
+        other_narrator=df11.to_dict("records")
+
+        temp={"info":info,"featuring_in":featuring_in,"Top_mindfultrack_in":Top_mindfultrack_in,
+
+              "recent_comment":recent_comment,"other_narrators":other_narrator}
+        return json.dumps(temp, default=str)
+# <<<<<<<<<<<<<<<<========================================>>>>>>>>>>>>>>>>>
+
+
 
 @app.route('/School_Search')
 def Practice_streak():
@@ -26489,10 +25618,4 @@ def Practice_streak():
 
 if __name__ == '__main__':
    app.run()
-
-
-
-
-
-
 
