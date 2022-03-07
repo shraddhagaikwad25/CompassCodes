@@ -6770,7 +6770,7 @@ def portal_new_api(smcategory):
 
 # ==================ADMINPORTALSADHNA
 @app.route('/adminportalcards/<userid>')
-def district_school_table_teacher(userid):
+def admin_portal_card_teacher(userid):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
@@ -7146,7 +7146,7 @@ def district_school_table_teacher(userid):
                          {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
                         { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
                         { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-
+                        
                          {'USER_ID.EMAIL_ID':{'$ne':''}},
         #                 {"USER_ID._id" : ObjectId("5f2e12f3592000521523721a")},
 
@@ -7248,7 +7248,7 @@ def district_school_table_teacher(userid):
             df=pd.merge(dffff,df6, how='left', on='_id')
             df=df.fillna(0)
             df=df.astype(int, errors='ignore')
-            print(df)
+#             print(df)
 
 #             df['remaining']=df['INIVITES']-df['invited_user']
             df['remaining']=df1['INIVITES']-df['accepted']
@@ -7333,7 +7333,7 @@ def district_school_table_teacher(userid):
             "Subscription_start_date":str(start[0]),"Subscription_expire_date":str(expire[0]),"Total_invites":str(INIVITES[0]),
             'Remaining_invites':str(abs(remaining[0])),'EMAIL':str(Email[0]),'Total_teachers':str(teacher[0]),'practice_count':str(pc[0]),'mindful_minutes':str(mm[0])
                 , 'login_history':str(login_history[0])}
-            print('school_data')
+#             print('school_data')
             return json.dumps(data)
 
 
@@ -8138,10 +8138,10 @@ def admin_portal_table(userid):
             return json.dumps(temp, default=str)
     
     else:
-        username=urllib.parse.quote_plus('adminIE')
-        password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-        client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
-        db=client.compass_beta
+        username = urllib.parse.quote_plus('admin')
+        password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
+        client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+        db=client.compass
 
         # username = urllib.parse.quote_plus('adminIE')                                     #SwitchedToBeta
         # password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
@@ -8193,7 +8193,7 @@ def admin_portal_table(userid):
             {"INCOMPLETE_SIGNUP":{"$ne":"Y"}},
                                 { 'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
                                 { 'USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-            {'schoolId._id':ObjectId(""+schoolid+"")},
+            {'_id':ObjectId(""+userid+"")},
             #                    {'IS_ADMIN':'Y'},
 
                                  {'EMAIL_ID':{'$ne':''}},
@@ -8215,7 +8215,7 @@ def admin_portal_table(userid):
             df2=DataFrame(list(db.invite_master.aggregate([
             {"$match":
             {'$and': [
-                {'USER_ID._id' : {"$in" : user_id }},
+#                 {'USER_ID._id' : {"$in" : user_id }},
                           {'USER_ID.ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
             {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
             {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
@@ -8224,6 +8224,7 @@ def admin_portal_table(userid):
                                 { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
             # //             {'USER_ID.IS_PORTAL':'Y'},
             {'USER_ID.EMAIL_ID':{'$ne':''}},
+                 {'USER_ID.schoolId._id':ObjectId(""+schoolid+"")},
             #                 {"USER_ID._id" : ObjectId("5f2e12f3592000521523721a")},
 
 
@@ -8367,7 +8368,7 @@ def admin_portal_table(userid):
                 df7['_id']=df2_Y['_id'].copy()
             df7.fillna(0,inplace=True)
 
-            df01=pd.merge(df5,df2,how='right', on='_id')
+            df01=pd.merge(df5,df2,how='left', on='_id')
             df02=pd.merge(df01,df3,how='left', on='_id')
             df03=pd.merge(df02,df6,how='left', on='_id')
             # dff=pd.merge(dfff,df3, how='left', on='_id')
@@ -8384,9 +8385,8 @@ def admin_portal_table(userid):
             final_df1.columns = ['USER_ID','USER_NAME', 'EMAIL_ID','LAST_PRACTICE_DATE','LAST_LOGIN_DATE','PRACTICE_SESSIONS','MINDFUL_MINUTES']
 
             temp = {"INVITE_SENT" : final_df.to_numpy().tolist(), "INVITE_ACCEPTED" : final_df1.to_numpy().tolist()}
-            print('school_data',len(final_df),len(final_df1))
+#             print('school_data',len(final_df),len(final_df1))
             return json.dumps(temp, default=str)
-
         
 # admin_portal_table("5f33c1c3418467201938f2e3")
 
