@@ -236,7 +236,9 @@ disdic={
     '6045e4e207ead7744b125868':'Westford Public Schools',
     '6045e4d207ead7744b12584c':'White River School District',
     '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
-    '5f2609807a1c0000950bb45d':'Youngstown'}
+    '5f2609807a1c0000950bb45d':'Youngstown',
+    '62270ef9f5dd5353b9498b99':'San Bernardino County Superintendent of Schools'
+    }
 
 
 @app.route('/word_cloud_chart/<product>/<rating>/<startdate>/<enddate>')
@@ -25620,7 +25622,78 @@ def narrator_profile_(id):
         return json.dumps(temp, default=str)
 # <<<<<<<<<<<<<<<<========================================>>>>>>>>>>>>>>>>>
 
+# New Portal Api for dropdown
+# To get sub categories
+@app.route('/district_portal__/<districtid>')
+def district_portal__(districtid):
+    username=urllib.parse.quote_plus('adminIE')
+    password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    db=client.compass_beta
+    district=disdic[districtid]
 
+    all_user_district=DataFrame(list(db.school_master.aggregate([{"$match":{
+    '$and':[
+        {'CATEGORY':{'$regex':district, '$options':'i'}},{'SUB_CATEGORY':{'$exists':1}},
+        {'IS_PORTAL':'Y'}
+        ]}}, 
+                                                                 
+    {'$project':{'_id':None,
+    'SUB_CATEGORY':'$SUB_CATEGORY'                     
+    }}
+
+    ])))
+
+    if all_user_district.empty==True:
+        sub_category=[]
+    else:
+        sub_category=all_user_district['SUB_CATEGORY'].tolist()
+
+    data={'sub_category':sub_category}
+    return json.dumps(data)
+
+
+# to get schools of sub category
+@app.route('/district_portal_schools__/<districtid>/<sub_category>')
+def district_portal_schoolss_(districtid,sub_category):
+    username=urllib.parse.quote_plus('adminIE')
+    password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    db=client.compass_beta
+    district=disdic[districtid]
+    from bson.objectid import ObjectId
+
+    all_user_district=DataFrame(list(db.school_master.aggregate([{"$match":{
+    '$and':[
+        {'CATEGORY':{'$regex':district, '$options':'i'}},
+        {'SUB_CATEGORY':{'$exists':1}},
+        {'SUB_CATEGORY':{'$regex':sub_category, '$options':'i'}},
+        {'IS_PORTAL':'Y'}
+
+        ]}}, 
+
+    {'$project':{'_id':'$_id',
+    'School':'$NAME'  ,
+    'CATEGORY':'$CATEGORY'
+    }}
+
+    ])))
+
+    data=[] 
+    if all_user_district.empty==True:
+        schoolname=[]
+        schoolids=[]
+        data.append({'schoolname':schoolname, 'schoolid':schoolids})
+
+
+    else:
+
+        for i in range(len(all_user_district)):
+            data.append({'schoolname':all_user_district['School'][i], 'schoolid':str(all_user_district['_id'][i])})
+
+
+        final_data={'data':data}
+    return json.dumps(final_data)
 
 @app.route('/School_Search')
 def Practice_streak():
