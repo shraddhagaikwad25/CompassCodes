@@ -8140,15 +8140,15 @@ def admin_portal_table(userid):
             return json.dumps(temp, default=str)
     
     else:
-        username = urllib.parse.quote_plus('admin')
-        password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-        client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
-        db=client.compass
+        # username = urllib.parse.quote_plus('admin')
+        # password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
+        # client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+        # db=client.compass
 
-        # username = urllib.parse.quote_plus('adminIE')                                     #SwitchedToBeta
-        # password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-        # client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
-        # db=client.compass_beta
+        username = urllib.parse.quote_plus('adminIE')                                     #SwitchedToBeta
+        password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+        client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
+        db=client.compass_beta
 
         from datetime import datetime
 
@@ -24796,18 +24796,18 @@ def district_portal_signup_(districtid):
             
     temp={'month':{
     'count':sum(monthdf['COUNTS']),
-    'y-axis':list(monthdf['Count']),
-    'x-axis':list(monthdf['DATE'])    
+    'yaxis':list(monthdf['Count']),
+    'xaxis':list(monthdf['DATE'])    
     },
     'week':{
         'count':sum(weekdf['COUNTS']),
-        'y-axis':list(weekdf['Count']),                    
-        'x-axis':list(weekdf['DATE'])
+        'yaxis':list(weekdf['Count']),                    
+        'xaxis':list(weekdf['DATE'])
     },
     'today':{
             'count':sum(todaydf['COUNTS']),
-            'y-axis':list(todaydf['Count']),                    
-            'x-axis':list(todaydf['HOUR_OF_THE_DAY'])                  
+            'yaxis':list(todaydf['Count']),                    
+            'xaxis':list(todaydf['HOUR_OF_THE_DAY'])                  
         }}
     return json.dumps(temp)
         
@@ -24930,19 +24930,19 @@ def district_portal_practice_(districtid):
                 
     temp={'month':{
     'count':sum(monthdf['COUNTS']),
-    'y-axis':list(monthdf['Count']),
-    'x-axis':list(monthdf['DATE'])
+    'yaxis':list(monthdf['Count']),
+    'xaxis':list(monthdf['DATE'])
     
     },
     'week':{
         'count':sum(weekdf['COUNTS']),
-        'y-axis':list(weekdf['Count']),                    
-        'x-axis':list(weekdf['DATE'])
+        'yaxis':list(weekdf['Count']),                    
+        'xaxis':list(weekdf['DATE'])
     },
     'today':{
             'count':sum(todaydf['COUNTS']),
-            'y-axis':list(todaydf['Count']),                    
-            'x-axis':list(todaydf['HOUR_OF_THE_DAY'])                  
+            'yaxis':list(todaydf['Count']),                    
+            'xaxis':list(todaydf['HOUR_OF_THE_DAY'])                  
         }}
     return json.dumps(temp)
                 
@@ -25288,19 +25288,19 @@ def district_portal_tunein_(districtid):
                     
     temp={'month':{
     'count':sum(monthdf['COUNTS']),
-    'y-axis':list(monthdf['Count']),
-    'x-axis':list(monthdf['DATE'])
+    'yaxis':list(monthdf['Count']),
+    'xaxis':list(monthdf['DATE'])
     
     },
     'week':{
         'count':sum(weekdf['COUNTS']),
-        'y-axis':list(weekdf['Count']),                    
-        'x-axis':list(weekdf['DATE'])
+        'yaxis':list(weekdf['Count']),                    
+        'xaxis':list(weekdf['DATE'])
     },
     'today':{
             'count':sum(todaydf['COUNTS']),
-            'y-axis':list(todaydf['Count']),                    
-            'x-axis':list(todaydf['HOUR_OF_THE_DAY'])                  
+            'yaxis':list(todaydf['Count']),                    
+            'xaxis':list(todaydf['HOUR_OF_THE_DAY'])                  
         }}
     return json.dumps(temp)
 
