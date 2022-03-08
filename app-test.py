@@ -8365,7 +8365,7 @@ def admin_portal_table(userid):
                 df7['_id']=df2_Y['_id'].copy()
             df7.fillna(0,inplace=True)
 
-            df01=pd.merge(df5,df2,how='left', on='_id')
+            df01=pd.merge(df5,df2,how='right', on='_id')
             df02=pd.merge(df01,df3,how='left', on='_id')
             df03=pd.merge(df02,df6,how='left', on='_id')
             # dff=pd.merge(dfff,df3, how='left', on='_id')
