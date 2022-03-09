@@ -236,7 +236,8 @@ disdic={
     '6045e4e207ead7744b125868':'Westford Public Schools',
     '6045e4d207ead7744b12584c':'White River School District',
     '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
-    '5f2609807a1c0000950bb45d':'Youngstown'}
+    '5f2609807a1c0000950bb45d':'Youngstown',
+    '62270ef9f5dd5353b9498b99':'San Bernardino County Superintendent of Schools'}}
 
 
 @app.route('/word_cloud_chart/<product>/<rating>/<startdate>/<enddate>')
