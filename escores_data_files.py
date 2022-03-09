@@ -1366,6 +1366,5 @@ def escore_downloadsss():
 
     return json.dumps({'Status':'1','Published':'Yes'})
 
-if __name__=='__main__':
-    
+if __name__=='__main__':    
     app.run(host='172.31.58.47',port=5002)
