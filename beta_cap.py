@@ -25647,7 +25647,9 @@ def district_portal__(districtid):
     if all_user_district.empty==True:
         sub_category=[]
     else:
+#         all_user_district.sort_values(by=['SUB_CATEGORY'],ascending=False)
         sub_category=all_user_district['SUB_CATEGORY'].tolist()
+        sub_category.sort()
 
     data={'sub_category':sub_category}
     return json.dumps(data)
