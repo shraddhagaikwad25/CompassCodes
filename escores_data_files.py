@@ -1215,8 +1215,7 @@ def escore_downloadsss():
             
         return json.dumps(temp)
 
-    districtlist=[
-        '6045e4d007ead7744b125848', 
+    districtlist=['6045e4d007ead7744b125848', 
         '616d2865c35ee7525fb145d9',
         '6167fe41282c502e1077c12f',
         '6045e4d707ead7744b125854',            
@@ -1366,5 +1365,5 @@ def escore_downloadsss():
 
     return json.dumps({'Status':'1','Published':'Yes'})
 
-if __name__=='__main__':    
+if __name__=='__main__':
     app.run(host='172.31.58.47',port=5002)
