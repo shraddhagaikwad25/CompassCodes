@@ -25664,26 +25664,24 @@ def narrator_profile_(id):
                 # df10=df10.sort_values(by="MODIFIED_DATE")
                 recent_comment=df10[["USER_NAME","MODIFIED_DATE","RATING","COMMENT","USER_PROFILE"]].to_dict("records")
 
-        collection4 = db.narrator_profile.aggregate([
-            {"$match":
-            {"$and":[{'_id':{"$ne":ObjectId(id)}}]}},
-            {"$project":{"_id":0,"NARRATOR_ID":"$_id","NARRATOR_NAME":"$NARRATOR_NAME","NARRATOR_IMAGE":"$NARRATOR_IMAGE"}}
+    collection4 = db.narrator_profile.aggregate([
+        {"$match":
+        {"$and":[{'_id':{"$ne":ObjectId(id)}}]}},
+        {"$project":{"_id":0,"NARRATOR_ID":"$_id","NARRATOR_NAME":"$NARRATOR_NAME","NARRATOR_IMAGE":"$NARRATOR_IMAGE"}}
 
-            ])
-        df11= DataFrame(list(collection4)).fillna(0)
-        # print(df11)
+        ])
+    df11= DataFrame(list(collection4)).fillna(0)
+    # print(df11)
 
-        if df11.empty:
-            df11=pd.DataFrame(index=[0], columns=["NARRATOR_ID",'NARRATOR_NAME','NARRATOR_IMAGE'])
+    if df11.empty:
+        df11=pd.DataFrame(index=[0], columns=["NARRATOR_ID",'NARRATOR_NAME','NARRATOR_IMAGE'])
 
-        df11["NARRATOR_NAME"].fillna("",inplace=True)
-        df11["NARRATOR_IMAGE"].fillna("",inplace=True)
-        other_narrator=df11.to_dict("records")
+    df11["NARRATOR_NAME"].fillna("",inplace=True)
+    df11["NARRATOR_IMAGE"].fillna("",inplace=True)
+    other_narrator=df11.to_dict("records")
 
-        temp={"info":info,"featuring_in":featuring_in,"Top_mindfultrack_in":Top_mindfultrack_in,
-
-              "recent_comment":recent_comment,"other_narrators":other_narrator}
-        return json.dumps(temp, default=str)
+    temp={"info":info,"featuring_in":featuring_in,"Top_mindfultrack_in":Top_mindfultrack_in,"recent_comment":recent_comment,"other_narrators":other_narrator}
+    return json.dumps(temp, default=str)
 # <<<<<<<<<<<<<<<<========================================>>>>>>>>>>>>>>>>>
 
 
