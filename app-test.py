@@ -25622,7 +25622,7 @@ def narrator_profile_(id):
                             {'USER.IS_DISABLED':{"$ne":'Y'}},
                                         {"AUDIO_ID.PROGRAM_ID.PROGRAM_ID" : {'$nin':[1,2,3,4,5,6,7,8]}},
                             {'COMMENT':{'$exists':1}},
-                            {'COMMENT':{'$nin':['Write a feedback (optional)','n/a','N/A','N/a','n/A']}},
+                            {'COMMENT':{'$nin':['Write a feedback (optional)','n/a','N/A','N/a','n/A','N/A']}},
                             # {'COMMENT':{"$not":{"$regex":" ",'$options':'i'}}},
                             {'COMMENT':{"$ne":""}},
                             {'RATING':{'$in':[4,5]}}

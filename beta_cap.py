@@ -25103,7 +25103,7 @@ def district_portal_comment_(districtid):
             {'USER._id':{'$in':all_user_district}},
             {'COMMENT':{'$nin':['',None,'null','NULL',' ']}},
             {'RATING':{'$in':[4,5]}},
-            {'COMMENT':{'$nin':['Write a feedback (optional)','n/a','N/A','N/a','n/A']}}
+            {'COMMENT':{'$nin':['Write a feedback (optional)','n/a','N/A','N/a','n/A','N/A']}}
         ]}},
              {'$project':{
                  '_id':0,
