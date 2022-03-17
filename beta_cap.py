@@ -25620,7 +25620,7 @@ def narrator_profile_(id):
 # New Portal Api for dropdown
 # To get sub categories
 @app.route('/district_portal__/<districtid>')
-def district_portal__(districtid):
+def district_portal___(districtid):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
@@ -25633,20 +25633,18 @@ def district_portal__(districtid):
         {'IS_PORTAL':'Y'}
         ]}}, 
                                                                  
-    {'$project':{'_id':None,
-    'SUB_CATEGORY':'$SUB_CATEGORY'                     
-    }}
-
+    {'$group':{'_id':'$SUB_CATEGORY'  , 'schools':{'$sum':1}                   
+              }}
     ])))
 
     if all_user_district.empty==True:
-        sub_category=[]
+        idd=[]
     else:
-#         all_user_district.sort_values(by=['SUB_CATEGORY'],ascending=False)
-        sub_category=all_user_district['SUB_CATEGORY'].tolist()
-        sub_category.sort()
+        idd=all_user_district['_id'].tolist()
+        idd.sort()
 
-    data={'sub_category':sub_category}
+        
+    data={'idd':idd}
     return json.dumps(data)
 
 
