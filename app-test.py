@@ -99,6 +99,7 @@ def LSY_Date():
 
 
 disdic={
+    '62270ef9f5dd5353b9498b99':'San Bernardino County Superintendent of Schools',
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
     '6045e4d007ead7744b125848':'Adams 12 Five Star Schools',
     '616d2865c35ee7525fb145d9':'Addison Northwest School District',
@@ -1819,6 +1820,7 @@ def _excecutivecount_():
 @app.route('/schoolwisefamilycount/<districtid>')
 def schpuc(districtid):
     disdic={
+    '62270ef9f5dd5353b9498b99':'San Bernardino County Superintendent of Schools',
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
     "5f2609807a1c0000950bb459":"North Special School District",    
     '61af3b75870dba387bcd86cd':'Holyoke Public Schools',    
@@ -2010,6 +2012,7 @@ def schpuc(districtid):
 @app.route('/schoolwisefamilypracticecount/<districtid>')
 def schppcfamily(districtid):
     disdic={
+    '62270ef9f5dd5353b9498b99':'San Bernardino County Superintendent of Schools',
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
     "5f2609807a1c0000950bb459":"North Special School District",    
     '61af3b75870dba387bcd86cd':'Holyoke Public Schools',    
@@ -2224,6 +2227,7 @@ def schppcfamily(districtid):
 @app.route('/schoolwisepracticecounttop20/<districtid>')
 def schwisepc(districtid):
     disdic={       
+    '62270ef9f5dd5353b9498b99':'San Bernardino County Superintendent of Schools',
     '620f3d6132c6d4813f4c9887':'Jackson County Schools', 
     "5f2609807a1c0000950bb459":"North Special School District",
     '61af3b75870dba387bcd86cd':'Holyoke Public Schools',    
@@ -2439,6 +2443,7 @@ def schwisepc(districtid):
 @app.route('/schoolwiseusercounttop20/<districtid>')
 def schwiseuc(districtid):
     disdic={
+    '62270ef9f5dd5353b9498b99':'San Bernardino County Superintendent of Schools',
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
     "5f2609807a1c0000950bb459":"North Special School District",
     '61af3b75870dba387bcd86cd':'Holyoke Public Schools',    
@@ -2627,6 +2632,7 @@ def schwiseuc(districtid):
 @app.route('/monthwisepracticedistrict/<districtid>')
 def monthwisepc(districtid):
     disdic={
+    '62270ef9f5dd5353b9498b99':'San Bernardino County Superintendent of Schools',
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
     "5f2609807a1c0000950bb459":"North Special School District",
     '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
@@ -2835,6 +2841,7 @@ def monthwisepc(districtid):
 @app.route('/90daysuserpractising/<districtid>')
 def user_practice_90days(districtid):
     disdic={
+    '62270ef9f5dd5353b9498b99':'San Bernardino County Superintendent of Schools',
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
     "5f2609807a1c0000950bb459":"North Special School District",
     '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
@@ -3042,6 +3049,7 @@ def user_practice_90days(districtid):
 @app.route('/90daysuserloggedindetail/<districtid>')
 def user_logins_90days(districtid):
     disdic={
+    '62270ef9f5dd5353b9498b99':'San Bernardino County Superintendent of Schools',
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
     "5f2609807a1c0000950bb459":"North Special School District",
     '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
@@ -3250,6 +3258,7 @@ def user_logins_90days(districtid):
 @app.route('/top20userspractisinginfo/<districtid>')
 def topusers_practice(districtid):
     disdic={
+    '62270ef9f5dd5353b9498b99':'San Bernardino County Superintendent of Schools',
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
     "5f2609807a1c0000950bb459":"North Special School District",
     '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
@@ -3474,6 +3483,7 @@ def topusers_practice(districtid):
 @app.route('/districtcardsinfo/<districtid>')
 def district_count_cards(districtid):
     disdic={
+    '62270ef9f5dd5353b9498b99':'San Bernardino County Superintendent of Schools',
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
     "5f2609807a1c0000950bb459":"North Special School District",
     '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
@@ -3837,6 +3847,7 @@ def district_count_cards(districtid):
 @app.route('/districtusertableteacher/<districtid>')
 def district_user_table_teacher(districtid):
     disdic={
+    '62270ef9f5dd5353b9498b99':'San Bernardino County Superintendent of Schools',
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
     "5f2609807a1c0000950bb459":"North Special School District",    
     '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
@@ -4093,6 +4104,7 @@ def district_user_table_teacher(districtid):
 @app.route('/districtusertableparent/<districtid>')
 def district_user_table_parents(districtid):
     disdic={
+    '62270ef9f5dd5353b9498b99':'San Bernardino County Superintendent of Schools',
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
     "5f2609807a1c0000950bb459":"North Special School District",
     '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
@@ -4348,6 +4360,7 @@ def district_user_table_parents(districtid):
 @app.route('/monthwisepracticesuperadmin/<districtid>')
 def monthwisepcsuper(districtid):
     disdic={
+    '62270ef9f5dd5353b9498b99':'San Bernardino County Superintendent of Schools',
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
     "5f2609807a1c0000950bb459":"North Special School District",
     '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
@@ -4706,6 +4719,7 @@ def monthwisepcsuper(districtid):
 @app.route('/districtschooltable/<districtid>')
 def district_school_table(districtid):
     disdic={
+    '62270ef9f5dd5353b9498b99':'San Bernardino County Superintendent of Schools',
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
     "5f2609807a1c0000950bb459":"North Special School District",    
     '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
@@ -4972,6 +4986,7 @@ def district_school_table(districtid):
 
 def heat_district(districtid):
     disdic={
+    '62270ef9f5dd5353b9498b99':'San Bernardino County Superintendent of Schools',
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
     "5f2609807a1c0000950bb459":"North Special School District",    
     '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
@@ -5239,6 +5254,7 @@ def heat_district(districtid):
 
 def heat_district_family_active(districtid):
     disdic={
+    '62270ef9f5dd5353b9498b99':'San Bernardino County Superintendent of Schools',
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
     "5f2609807a1c0000950bb459":"North Special School District",    
     '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
@@ -5504,6 +5520,7 @@ def heat_district_family_active(districtid):
 
 def heat_district_teachers_active(districtid):
     disdic={
+    '62270ef9f5dd5353b9498b99':'San Bernardino County Superintendent of Schools',
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
     "5f2609807a1c0000950bb459":"North Special School District",    
     '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
@@ -5770,6 +5787,7 @@ def heat_district_teachers_active(districtid):
 @app.route('/districtheatmappracteacher/<districtid>')
 def heat_district_teachers_prac(districtid):
     disdic={
+    '62270ef9f5dd5353b9498b99':'San Bernardino County Superintendent of Schools',
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
     "5f2609807a1c0000950bb459":"North Special School District",
     '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
@@ -6034,6 +6052,7 @@ def heat_district_teachers_prac(districtid):
 @app.route('/districtheatmappracfamily/<districtid>')
 def heat_district_family_prac(districtid):
     disdic={
+    '62270ef9f5dd5353b9498b99':'San Bernardino County Superintendent of Schools',
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
     "5f2609807a1c0000950bb459":"North Special School District",
     '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
@@ -6307,6 +6326,7 @@ def heat_district_family_prac(districtid):
 
 def heatmap_prac_district(districtid):
     disdic={
+    '62270ef9f5dd5353b9498b99':'San Bernardino County Superintendent of Schools',
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
     "5f2609807a1c0000950bb459":"North Special School District",
     '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
@@ -9825,6 +9845,7 @@ def buble_district():
 @app.route('/bubble/<disid>/csv')
 def schdistrict(disid):  
     disdic={
+    '62270ef9f5dd5353b9498b99':'San Bernardino County Superintendent of Schools',
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
     "5f2609807a1c0000950bb459":"North Special School District",    
     '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
@@ -11569,6 +11590,7 @@ def portal_testing_new_api(smcategory):
 @app.route('/bubblecum/<disid>/csv')
 def schdistrictCUM(disid):  
     disdic={
+    '62270ef9f5dd5353b9498b99':'San Bernardino County Superintendent of Schools',
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
     "5f2609807a1c0000950bb459":"North Special School District",    
     '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
@@ -23707,6 +23729,7 @@ def dis_schoolrating_csy__(districtid,startdate,enddate):
         ])))
 
     user=df1['_id'].tolist() 
+#     print(user)
 
 
     df = DataFrame(list(collection.aggregate([
@@ -23724,14 +23747,17 @@ def dis_schoolrating_csy__(districtid,startdate,enddate):
            {'$sort':{'_id':-1}}
 
     ])))
+    if df.empty ==True:
+        temp={"donut": {"five": 0, "four": 0, "one": 0, "three": 0, "two": 0}}
+    else:
 
-    df['_id']=df['_id'].replace({5:'five', 4:'four',3:'three',2:'two',1:'one'})
+        df['_id']=df['_id'].replace({5:'five', 4:'four',3:'three',2:'two',1:'one'})
 
-    dff=df.set_index("_id")["count"].to_dict()
+        dff=df.set_index("_id")["count"].to_dict()
 
-    dff={str(k):int(v) for k,v in dff.items()}
+        dff={str(k):int(v) for k,v in dff.items()}
 
-    temp={"donut":dff}
+        temp={"donut":dff}
    
     return json.dumps(temp)
 
@@ -23803,29 +23829,32 @@ def dis_sentiment_pie(districtid,startdate,enddate):
     ]
     update=list(collection.aggregate(user))
     df=pd.DataFrame(update).fillna("no info")
-    text=df["COMMENT"].to_list()
-    df=df[['COMMENT']]
-    df = df.sample(frac=1.0).reset_index(drop=True)
-    for i in df['COMMENT'].tolist():
-        df = df[df.COMMENT.str.len()!=1] 
+    if df.empty == True:
+        word_chart={'donut':{'pos':0,'neg':0,'neu':0},'text':['pos','neg','neu']}
+    else:
+        text=df["COMMENT"].to_list()
+        df=df[['COMMENT']]
+        df = df.sample(frac=1.0).reset_index(drop=True)
+        for i in df['COMMENT'].tolist():
+            df = df[df.COMMENT.str.len()!=1] 
     
-    import nltk
-    nltk.download('vader_lexicon')
+        import nltk
+        nltk.download('vader_lexicon')
 
-    from nltk.sentiment.vader import SentimentIntensityAnalyzer
-    sia = SentimentIntensityAnalyzer()
-    df['Positivity'] = df['COMMENT'].apply(lambda x: sia.polarity_scores(x)['pos'])
-    df['Negativity'] = df['COMMENT'].apply(lambda x: sia.polarity_scores(x)['neg'])
-    df['Neutrality'] = df['COMMENT'].apply(lambda x: sia.polarity_scores(x)['neu'])
-    df['Compound'] = df['COMMENT'].apply(lambda x: sia.polarity_scores(x)['compound'])
-    pd.pandas.set_option('display.max_rows',None)  
-    neg=df[df['Compound']<0]
-    pos=df[df['Compound']>0]
-    neu=df[df['Compound']==0]
-    neg_sentiment=round(100*(len(neg)/(len(neu)+len(neg)+len(pos))),2)
-    pos_sentiment=round(100*(len(pos)/(len(neu)+len(neg)+len(pos))),2)
-    neu_sentiment=round(100*(len(neu)/(len(neu)+len(neg)+len(pos))),2)
-    word_chart={'donut':{'pos':pos_sentiment,'neg':neg_sentiment,'neu':neu_sentiment},'text':['pos','neg','neu']}
+        from nltk.sentiment.vader import SentimentIntensityAnalyzer
+        sia = SentimentIntensityAnalyzer()
+        df['Positivity'] = df['COMMENT'].apply(lambda x: sia.polarity_scores(x)['pos'])
+        df['Negativity'] = df['COMMENT'].apply(lambda x: sia.polarity_scores(x)['neg'])
+        df['Neutrality'] = df['COMMENT'].apply(lambda x: sia.polarity_scores(x)['neu'])
+        df['Compound'] = df['COMMENT'].apply(lambda x: sia.polarity_scores(x)['compound'])
+        pd.pandas.set_option('display.max_rows',None)  
+        neg=df[df['Compound']<0]
+        pos=df[df['Compound']>0]
+        neu=df[df['Compound']==0]
+        neg_sentiment=round(100*(len(neg)/(len(neu)+len(neg)+len(pos))),2)
+        pos_sentiment=round(100*(len(pos)/(len(neu)+len(neg)+len(pos))),2)
+        neu_sentiment=round(100*(len(neu)/(len(neu)+len(neg)+len(pos))),2)
+        word_chart={'donut':{'pos':pos_sentiment,'neg':neg_sentiment,'neu':neu_sentiment},'text':['pos','neg','neu']}
 
 #     print(df)
     
