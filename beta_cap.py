@@ -25644,7 +25644,7 @@ def district_portal___(districtid):
         idd.sort()
 
         
-    data={'idd':idd}
+    data={'sub_category':idd}
     return json.dumps(data)
 
 
