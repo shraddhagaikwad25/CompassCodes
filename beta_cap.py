@@ -25690,6 +25690,8 @@ def district_portal_schoolss_(districtid,sub_category):
         final_data={'data':data}
     return json.dumps(final_data)
 
+
+
 @app.route('/School_Search')
 def Practice_streak():
     return render_template('School_Search.html')
