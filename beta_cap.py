@@ -25602,7 +25602,7 @@ def narrator_profile_(id):
 
     collection4 = db.narrator_profile.aggregate([
         {"$match":
-        {"$and":[{'_id':{"$ne":ObjectId(id)}},
+        {"$and":[{'_id':{"$ne":ObjectId(id)}},        
         {'NARRATOR_NAME':{'$ne':'Multiple'}}
         
         ]}},
