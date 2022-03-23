@@ -25667,7 +25667,9 @@ def narrator_profile_(id):
 
     collection4 = db.narrator_profile.aggregate([
         {"$match":
-        {"$and":[{'_id':{"$ne":ObjectId(id)}}]}},
+        {"$and":[{'_id':{"$ne":ObjectId(id)}}
+        {'NARRATOR_NAME':{'$ne':'Multiple'}}
+        ]}},
         {"$project":{"_id":0,"NARRATOR_ID":"$_id","NARRATOR_NAME":"$NARRATOR_NAME","NARRATOR_IMAGE":"$NARRATOR_IMAGE"}}
 
         ])
