@@ -23597,10 +23597,10 @@ def heat_district_family_active_(districtid,startdate,enddate):
 
 @app.route('/districtfeedbackrating_csy/<districtid>/<startdate>/<enddate>')
 def dis_schoolrating_csy__(districtid,startdate,enddate):
-    username=urllib.parse.quote_plus('adminIE')
-    password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
-    db=client.compass_beta
+    username = urllib.parse.quote_plus('admin')
+    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
+    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    db=client.compass
     collection = db.audio_feedback
     district=disdic[districtid]
     myDatetime1 = dateutil.parser.parse(startdate)
@@ -23648,14 +23648,17 @@ def dis_schoolrating_csy__(districtid,startdate,enddate):
            {'$sort':{'_id':-1}}
 
     ])))
+    
+    if df.empty == True:
+        temp={"donut": {"five": 0, "four": 0, "one": 0, "three": 0, "two": 0}}
+    else:
+        df['_id']=df['_id'].replace({5:'five', 4:'four',3:'three',2:'two',1:'one'})
 
-    df['_id']=df['_id'].replace({5:'five', 4:'four',3:'three',2:'two',1:'one'})
+        dff=df.set_index("_id")["count"].to_dict()
 
-    dff=df.set_index("_id")["count"].to_dict()
+        dff={str(k):int(v) for k,v in dff.items()}
 
-    dff={str(k):int(v) for k,v in dff.items()}
-
-    temp={"donut":dff}
+        temp={"donut":dff}
    
     return json.dumps(temp)
 
