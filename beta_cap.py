@@ -23674,10 +23674,10 @@ def dis_sentiment_pie(districtid,startdate,enddate):
     d1 = today.strftime("%Y-%m-%d")
     # myDatetimestrt = dateutil.parser.parse(date1)
     # myDatetimeend = dateutil.parser.parse(date2)
-    username=urllib.parse.quote_plus('adminIE')
-    password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
-    db=client.compass_beta
+    username = urllib.parse.quote_plus('admin')
+    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
+    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    db=client.compass
     collection = db.audio_feedback
     district=disdic[districtid]
     myDatetime1 = dateutil.parser.parse(startdate)
@@ -23727,29 +23727,32 @@ def dis_sentiment_pie(districtid,startdate,enddate):
     ]
     update=list(collection.aggregate(user))
     df=pd.DataFrame(update).fillna("no info")
-    text=df["COMMENT"].to_list()
-    df=df[['COMMENT']]
-    df = df.sample(frac=1.0).reset_index(drop=True)
-    for i in df['COMMENT'].tolist():
-        df = df[df.COMMENT.str.len()!=1] 
-    
-    import nltk
-    nltk.download('vader_lexicon')
+    if df.empty ==True:
+        word_chart={'donut':{'pos':0,'neg':0,'neu':0},'text':['pos','neg','neu']}
+    else:
+        text=df["COMMENT"].to_list()
+        df=df[['COMMENT']]
+        df = df.sample(frac=1.0).reset_index(drop=True)
+        for i in df['COMMENT'].tolist():
+            df = df[df.COMMENT.str.len()!=1] 
 
-    from nltk.sentiment.vader import SentimentIntensityAnalyzer
-    sia = SentimentIntensityAnalyzer()
-    df['Positivity'] = df['COMMENT'].apply(lambda x: sia.polarity_scores(x)['pos'])
-    df['Negativity'] = df['COMMENT'].apply(lambda x: sia.polarity_scores(x)['neg'])
-    df['Neutrality'] = df['COMMENT'].apply(lambda x: sia.polarity_scores(x)['neu'])
-    df['Compound'] = df['COMMENT'].apply(lambda x: sia.polarity_scores(x)['compound'])
-    pd.pandas.set_option('display.max_rows',None)  
-    neg=df[df['Compound']<0]
-    pos=df[df['Compound']>0]
-    neu=df[df['Compound']==0]
-    neg_sentiment=round(100*(len(neg)/(len(neu)+len(neg)+len(pos))),2)
-    pos_sentiment=round(100*(len(pos)/(len(neu)+len(neg)+len(pos))),2)
-    neu_sentiment=round(100*(len(neu)/(len(neu)+len(neg)+len(pos))),2)
-    word_chart={'donut':{'pos':pos_sentiment,'neg':neg_sentiment,'neu':neu_sentiment},'text':['pos','neg','neu']}
+        import nltk
+        nltk.download('vader_lexicon')
+
+        from nltk.sentiment.vader import SentimentIntensityAnalyzer
+        sia = SentimentIntensityAnalyzer()
+        df['Positivity'] = df['COMMENT'].apply(lambda x: sia.polarity_scores(x)['pos'])
+        df['Negativity'] = df['COMMENT'].apply(lambda x: sia.polarity_scores(x)['neg'])
+        df['Neutrality'] = df['COMMENT'].apply(lambda x: sia.polarity_scores(x)['neu'])
+        df['Compound'] = df['COMMENT'].apply(lambda x: sia.polarity_scores(x)['compound'])
+        pd.pandas.set_option('display.max_rows',None)  
+        neg=df[df['Compound']<0]
+        pos=df[df['Compound']>0]
+        neu=df[df['Compound']==0]
+        neg_sentiment=round(100*(len(neg)/(len(neu)+len(neg)+len(pos))),2)
+        pos_sentiment=round(100*(len(pos)/(len(neu)+len(neg)+len(pos))),2)
+        neu_sentiment=round(100*(len(neu)/(len(neu)+len(neg)+len(pos))),2)
+        word_chart={'donut':{'pos':pos_sentiment,'neg':neg_sentiment,'neu':neu_sentiment},'text':['pos','neg','neu']}
 
 #     print(df)
     
