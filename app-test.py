@@ -25717,7 +25717,7 @@ def district_portal___(districtid):
 
 # to get schools of sub category
 @app.route('/district_portal_schools__/<districtid>/<sub_category>')
-def district_portal_schoolss_(districtid,sub_category):
+def district_portal_schoolss__(districtid,sub_category):
     client = MongoClient('mongodb://admin:F5tMazRj47cYqm33e@52.41.36.115:27017/')
     db=client.compass
     district=disdic[districtid]
