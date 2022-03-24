@@ -23725,14 +23725,17 @@ def dis_schoolrating_csy__(districtid,startdate,enddate):
            {'$sort':{'_id':-1}}
 
     ])))
+    
+    if df.empty == True:
+        temp={"donut": {"five": 0, "four": 0, "one": 0, "three": 0, "two": 0}}
+    else:
+        df['_id']=df['_id'].replace({5:'five', 4:'four',3:'three',2:'two',1:'one'})
 
-    df['_id']=df['_id'].replace({5:'five', 4:'four',3:'three',2:'two',1:'one'})
+        dff=df.set_index("_id")["count"].to_dict()
 
-    dff=df.set_index("_id")["count"].to_dict()
+        dff={str(k):int(v) for k,v in dff.items()}
 
-    dff={str(k):int(v) for k,v in dff.items()}
-
-    temp={"donut":dff}
+        temp={"donut":dff}
    
     return json.dumps(temp)
 
