@@ -25030,13 +25030,14 @@ def district_portal_rating_(districtid):
                             '_id':None,
                             'users':{'$addToSet':'$_id'}                        
                         }}
-                           ]))[0].get('users')
+                           ]))
 
     if len(all_user_district)==0:
         month_average=0
         week_average=0
         today_average=0 
     else:
+        all_user_district=all_user_district[0].get('users')
         all_rating_data=pd.DataFrame(db.audio_feedback.aggregate([{'$match':{'$and':[{'USER._id':{'$in':all_user_district}},
     #                                                                         {'COMMENT':{'$nin':['',None,'null','NULL',' ']}},
                                                                             {'RATING':{'$in':[1,2,3,4,5]}},
