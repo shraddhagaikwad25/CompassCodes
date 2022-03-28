@@ -25108,6 +25108,7 @@ def district_portal_comment_(districtid):
     last_30_dates_df=pd.DataFrame({'DATE':last_30_dates})
     last_7_dates_df=pd.DataFrame({'DATE':last_7_dates})
     _24_hr_df=pd.DataFrame({'HOUR_OF_THE_DAY':list(range(1,25))})
+    
 
     all_user_district=list(db.user_master.aggregate([{"$match":{
              '$and':[{ 'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
@@ -25128,14 +25129,19 @@ def district_portal_comment_(districtid):
                                 }},
                     ]}},
                        {'$group':{
-                            '_id':None,
+                            '_id':1,
                             'users':{'$addToSet':'$_id'}                        
                         }}
-                           ]))[0].get('users')
+                           ]))
+    
+    
+    
 
     if len(all_user_district)==0:
         comment_data_for_use_table="NO INFO"
     else:
+        all_user_district = all_user_district[0].get('users')
+        # print("all_user_district",len(all_user_district))
         comments_data=pd.DataFrame(list(db.audio_feedback.aggregate([{'$match':{'$and':[
             {'USER._id':{'$in':all_user_district}},
             {'COMMENT':{'$nin':['',None,'null','NULL',' ']}},
