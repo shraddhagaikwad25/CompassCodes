@@ -19932,77 +19932,75 @@ def schoolpracticemindfulsessions_new(userid):
 
 
 
-@app.route('/district_portal__/<districtid>')
-def district_portal__(districtid):
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
-    db=client.compass
-    district=disdic[districtid]
+# @app.route('/district_portal__/<districtid>')
+# def district_portal___(districtid):
+#     username=urllib.parse.quote_plus('adminIE')
+#     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+#     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+#     db=client.compass_beta
+#     district=disdic[districtid]
 
-    all_user_district=DataFrame(list(db.school_master.aggregate([{"$match":{
-    '$and':[
-        {'CATEGORY':{'$regex':district, '$options':'i'}},{'SUB_CATEGORY':{'$exists':1}},
-        {'IS_PORTAL':'Y'}
-        ]}}, 
+#     all_user_district=DataFrame(list(db.school_master.aggregate([{"$match":{
+#     '$and':[
+#         {'CATEGORY':{'$regex':district, '$options':'i'}},{'SUB_CATEGORY':{'$exists':1}},
+#         {'IS_PORTAL':'Y'}
+#         ]}}, 
                                                                  
-    {'$project':{'_id':None,
-    'SUB_CATEGORY':'$SUB_CATEGORY'                     
-    }}
+#     {'$group':{'_id':'$SUB_CATEGORY'  , 'schools':{'$sum':1}                   
+#               }}
+#     ])))
 
-    ])))
+#     if all_user_district.empty==True:
+#         idd=[]
+#     else:
+#         idd=all_user_district['_id'].tolist()
+#         idd.sort()
 
-    if all_user_district.empty==True:
-        sub_category=[]
-    else:
-#         all_user_district.sort_values(by=['SUB_CATEGORY'],ascending=False)
-        sub_category=all_user_district['SUB_CATEGORY'].tolist()
-        sub_category.sort()
-
-    data={'sub_category':sub_category}
-    return json.dumps(data)
+        
+#     data={'sub_category':idd}
+#     return json.dumps(data)
 
 
-@app.route('/district_portal_schools__/<districtid>/<sub_category>')
-def district_portal_schoolss_(districtid,sub_category):
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
-    db=client.compass
-    district=disdic[districtid]
-    from bson.objectid import ObjectId
+# @app.route('/district_portal_schools__/<districtid>/<sub_category>')
+# def district_portal_schoolss_(districtid,sub_category):
+#     username = urllib.parse.quote_plus('admin')
+#     password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
+#     client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+#     db=client.compass
+#     district=disdic[districtid]
+#     from bson.objectid import ObjectId
 
-    all_user_district=DataFrame(list(db.school_master.aggregate([{"$match":{
-    '$and':[
-        {'CATEGORY':{'$regex':district, '$options':'i'}},
-        {'SUB_CATEGORY':{'$exists':1}},
-        {'SUB_CATEGORY':{'$regex':sub_category, '$options':'i'}},
-        {'IS_PORTAL':'Y'}
+#     all_user_district=DataFrame(list(db.school_master.aggregate([{"$match":{
+#     '$and':[
+#         {'CATEGORY':{'$regex':district, '$options':'i'}},
+#         {'SUB_CATEGORY':{'$exists':1}},
+#         {'SUB_CATEGORY':{'$regex':sub_category, '$options':'i'}},
+#         {'IS_PORTAL':'Y'}
 
-        ]}}, 
+#         ]}}, 
 
-    {'$project':{'_id':'$_id',
-    'School':'$NAME'  ,
-    'CATEGORY':'$CATEGORY'
-    }}
+#     {'$project':{'_id':'$_id',
+#     'School':'$NAME'  ,
+#     'CATEGORY':'$CATEGORY'
+#     }}
 
-    ])))
+#     ])))
 
-    data=[] 
-    if all_user_district.empty==True:
-        schoolname=[]
-        schoolids=[]
-        data.append({'schoolname':schoolname, 'schoolid':schoolids})
-
-
-    else:
-
-        for i in range(len(all_user_district)):
-            data.append({'schoolname':all_user_district['School'][i], 'schoolid':str(all_user_district['_id'][i])})
+#     data=[] 
+#     if all_user_district.empty==True:
+#         schoolname=[]
+#         schoolids=[]
+#         data.append({'schoolname':schoolname, 'schoolid':schoolids})
 
 
-        final_data={'data':data}
-    return json.dumps(final_data)
+#     else:
+
+#         for i in range(len(all_user_district)):
+#             data.append({'schoolname':all_user_district['School'][i], 'schoolid':str(all_user_district['_id'][i])})
+
+
+#         final_data={'data':data}
+#     return json.dumps(final_data)
 
 @app.route('/adminstatsprogram_practice_new/<name>')
 def prog_prac_admin_new(name):
