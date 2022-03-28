@@ -25248,7 +25248,7 @@ def district_portal_tunein_(districtid):
                             '_id':None,
                             'users':{'$addToSet':'$_id'}                        
                         }}
-                           ]))[0].get('users')
+                           ]))
 
     if len(all_user_district)==0:        
         monthdf=last_30_dates_df
@@ -25261,7 +25261,7 @@ def district_portal_tunein_(districtid):
         todaydf['Count']=0
         todaydf['COUNTS']=0
     else:
-        
+        all_user_district=all_user_district[0].get('users')
         email_ids=db.user_master.distinct('EMAIL_ID',{'$and':[{'_id':{'$in':all_user_district}},
                                                 {'EMAIL_ID':{'$nin':['',' ']}}
                                                 
