@@ -24893,7 +24893,7 @@ def district_portal_practice_(districtid):
                             '_id':None,
                             'users':{'$addToSet':'$_id'}                        
                         }}
-                           ]))[0].get('users')
+                           ]))
     
 
     if len(all_user_district)==0:
@@ -24908,6 +24908,7 @@ def district_portal_practice_(districtid):
         todaydf['COUNTS']=0
 
     else:
+        all_user_district = all_user_district[0].get('users')
         all_practice_data=pd.DataFrame(db.audio_track_master.aggregate([{'$match':{'$and':[{'USER_ID._id':{'$in':
                                                                       all_user_district
                                                                       }},
