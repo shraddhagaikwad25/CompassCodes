@@ -6618,11 +6618,12 @@ def heatmap_prac_district(districtid):
 
 
 @app.route('/portal_new_api/<smcategory>')
-def portal_new_api(smcategory):    
+def portal_new_api(smcategory):        
     username = urllib.parse.quote_plus('admin')
     password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
     client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
     db=client.compass
+    
     collection = db.school_master
     from bson.objectid import ObjectId
 #     smcategory="Agawam School district"
@@ -6640,12 +6641,16 @@ def portal_new_api(smcategory):
     ]
     merge11=list(collection.aggregate(query))
     overallum11=pd.DataFrame(merge11)
+#     print(overallum11)
+    
     collection = db.district_master
     queryt=[{'$match':{'$and':[
     { 'DISTRICT_NAME':{"$regex":""+smcategory+"",'$options':'i'}},]
     }},
     {"$project":{"_id":0,
     "to_school":'$TOTAL_SCHOOLS',
+    
+
     
                 }},
     ]
@@ -6680,7 +6685,7 @@ def portal_new_api(smcategory):
     'UMUSER_ID':'$_id',"USER_NAME":'$USER_NAME',
     "UMSCHOOLID":'$schoolId._id',
     "DISTRICT_NAME":"$DISTRICT_ID.DISTRICT_NAME",
-                 "UMSCHOOLNAME":'$schoolId.NAME',
+#                  "UMSCHOOLNAME":'$schoolId.NAME',
                 }},
     ]
     merge1=list(collection.aggregate(query))
@@ -6691,6 +6696,8 @@ def portal_new_api(smcategory):
     try:
         email=list(overallum["UMUSER_ID"])
         schoolid=list(overallum["UMSCHOOLID"])
+        overallum=pd.merge(overallum11, overallum, how='left', on='UMSCHOOLID')
+#         print(overallum)
     except:
         pass
     ################################sub_master################################
@@ -6708,6 +6715,7 @@ def portal_new_api(smcategory):
         merge=list(collection.aggregate(qr))
         overall=pd.DataFrame(merge)
         mergeddf=pd.merge(overallum, overall, how='left', left_on='UMUSER_ID', right_on='SMUSER_ID')
+#         print(mergeddf)
     except:
         pass
     db=client.compass
@@ -6746,8 +6754,10 @@ def portal_new_api(smcategory):
     try:
         merge110=list(collection.aggregate(qra))
         atd=pd.DataFrame(merge110)
+#         print(atd)
         atd.to_csv("chechj.csv")
         mmm=str(round(sum(atd["atdTotal_Mindful_Minutes"])))
+#         print(mmm)
         finalmerge=pd.merge(mergeddf, atd, how='left', left_on='UMSCHOOLID', right_on='_id')
         finaldata=finalmerge[["DISTRICT_NAME","UMSCHOOLID","UMSCHOOLNAME","UMUSER_ID","ROLE","atdLastpractice","RENEWAL_DATE","atdPracticecount"]]
         finaldata["atdPracticecount"] = finaldata['atdPracticecount'].fillna(0)
