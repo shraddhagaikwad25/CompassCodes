@@ -20535,38 +20535,43 @@ def live_user_district(districtid):
 #                {'$sort':{'name':1}}
 
                       ])))
-    ids=df['_id'].tolist()
+#     print(df)
+    if df.empty == True:
+        temp ={'data':"NO INFO"}
+    else:
 
-    collection= db.audio_track_master
-    df_playback= DataFrame(list(collection.aggregate([
-        {"$match":{
-    '$and':[
-    {'USER_ID._id':{"$in":ids}},
-    {'MODIFIED_DATE': {'$gte':datetime.datetime.utcnow()-datetime.timedelta(minutes=10)}}
-    ]}},
-    {'$group':{'_id':'$USER_ID._id', 'practice':{'$sum':1}}}
-    ])))
+        ids=df['_id'].tolist()
 
-    if df_playback.empty:
-        data= {'active_users':str(0)}
-#         temp={"data":data.values.tolist()}
-        temp={"data":[data]}
-    else: 
-        list_of_users=df_playback['_id'].tolist()
-        active_users=str(len(df_playback))
-
-        df_IMAGE=DataFrame(list(db.user_master.aggregate([{"$match":{
+        collection= db.audio_track_master
+        df_playback= DataFrame(list(collection.aggregate([
+            {"$match":{
         '$and':[
-           
-        {'_id':{'$in':list_of_users}}
-               ]}},
-        {'$group':{'_id':'$_id', 'url':{'$first':'$IMAGE_URL'}}}]))).fillna('')
+        {'USER_ID._id':{"$in":ids}},
+        {'MODIFIED_DATE': {'$gte':datetime.datetime.utcnow()-datetime.timedelta(minutes=10)}}
+        ]}},
+        {'$group':{'_id':'$USER_ID._id', 'practice':{'$sum':1}}}
+        ])))
 
-        IMAGE=df_IMAGE['url'].tolist()
-        
+        if df_playback.empty:
+            data= {'active_users':str(0)}
+    #         temp={"data":data.values.tolist()}
+            temp={"data":[data]}
+        else: 
+            list_of_users=df_playback['_id'].tolist()
+            active_users=str(len(df_playback))
 
-        data1= {'active_users':str(active_users),'image':IMAGE}
-        temp ={'data':[data1]} 
+            df_IMAGE=DataFrame(list(db.user_master.aggregate([{"$match":{
+            '$and':[
+
+            {'_id':{'$in':list_of_users}}
+                   ]}},
+            {'$group':{'_id':'$_id', 'url':{'$first':'$IMAGE_URL'}}}]))).fillna('')
+
+            IMAGE=df_IMAGE['url'].tolist()
+
+
+            data1= {'active_users':str(active_users),'image':IMAGE}
+            temp ={'data':[data1]} 
     return json.dumps(temp)
 
 
