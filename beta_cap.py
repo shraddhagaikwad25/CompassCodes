@@ -99,6 +99,7 @@ def LSY_Date():
 
 
 disdic={
+    "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
     "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
@@ -1822,6 +1823,7 @@ def _excecutivecount_():
 @app.route('/schoolwisefamilycount/<districtid>')
 def schpuc(districtid):
     disdic={
+    "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
     "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
@@ -2015,6 +2017,7 @@ def schpuc(districtid):
 @app.route('/schoolwisefamilypracticecount/<districtid>')
 def schppcfamily(districtid):
     disdic={
+    "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
     "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
@@ -2230,7 +2233,8 @@ def schppcfamily(districtid):
 
 @app.route('/schoolwisepracticecounttop20/<districtid>')
 def schwisepc(districtid):
-    disdic={       
+    disdic={
+    "623975aa25e068fe63efa956":"Project Hoeppner",       
     "6241625424e8123075e7b423":"North Muskegon School District",
     "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
     '620f3d6132c6d4813f4c9887':'Jackson County Schools', 
@@ -2448,6 +2452,7 @@ def schwisepc(districtid):
 @app.route('/schoolwiseusercounttop20/<districtid>')
 def schwiseuc(districtid):
     disdic={
+    "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
     "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
@@ -2638,6 +2643,7 @@ def schwiseuc(districtid):
 @app.route('/monthwisepracticedistrict/<districtid>')
 def monthwisepc(districtid):
     disdic={
+    "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
     "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
@@ -2848,6 +2854,7 @@ def monthwisepc(districtid):
 @app.route('/90daysuserpractising/<districtid>')
 def user_practice_90days(districtid):
     disdic={
+    "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
     "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
@@ -3057,6 +3064,7 @@ def user_practice_90days(districtid):
 @app.route('/90daysuserloggedindetail/<districtid>')
 def user_logins_90days(districtid):
     disdic={
+    "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
     "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
@@ -3267,6 +3275,7 @@ def user_logins_90days(districtid):
 @app.route('/top20userspractisinginfo/<districtid>')
 def topusers_practice(districtid):
     disdic={
+    "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
     "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
@@ -3493,6 +3502,7 @@ def topusers_practice(districtid):
 @app.route('/districtcardsinfo/<districtid>')
 def district_count_cards(districtid):
     disdic={
+    "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
     "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
@@ -3858,6 +3868,7 @@ def district_count_cards(districtid):
 @app.route('/districtusertableteacher/<districtid>')
 def district_user_table_teacher(districtid):
     disdic={
+    "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
     "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
@@ -4116,6 +4127,7 @@ def district_user_table_teacher(districtid):
 @app.route('/districtusertableparent/<districtid>')
 def district_user_table_parents(districtid):
     disdic={
+    "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
     "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
@@ -4373,6 +4385,7 @@ def district_user_table_parents(districtid):
 @app.route('/monthwisepracticesuperadmin/<districtid>')
 def monthwisepcsuper(districtid):
     disdic={
+    "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
     "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
@@ -4733,6 +4746,7 @@ def monthwisepcsuper(districtid):
 @app.route('/districtschooltable/<districtid>')
 def district_school_table(districtid):
     disdic={
+    "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
     "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
@@ -5001,6 +5015,7 @@ def district_school_table(districtid):
 
 def heat_district(districtid):
     disdic={
+    "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
     "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
@@ -5270,6 +5285,7 @@ def heat_district(districtid):
 
 def heat_district_family_active(districtid):
     disdic={
+    "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
     "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
@@ -5537,6 +5553,7 @@ def heat_district_family_active(districtid):
 
 def heat_district_teachers_active(districtid):
     disdic={
+    "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
     "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
@@ -5805,6 +5822,7 @@ def heat_district_teachers_active(districtid):
 @app.route('/districtheatmappracteacher/<districtid>')
 def heat_district_teachers_prac(districtid):
     disdic={
+    "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
     "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
@@ -6071,6 +6089,7 @@ def heat_district_teachers_prac(districtid):
 @app.route('/districtheatmappracfamily/<districtid>')
 def heat_district_family_prac(districtid):
     disdic={
+    "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
     "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
@@ -6346,6 +6365,7 @@ def heat_district_family_prac(districtid):
 
 def heatmap_prac_district(districtid):
     disdic={
+    "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
     "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
@@ -9877,6 +9897,7 @@ def buble_district():
 @app.route('/bubble/<disid>/csv')
 def schdistrict(disid):  
     disdic={
+    "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
     "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
@@ -11621,6 +11642,7 @@ def portal_testing_new_api(smcategory):
 @app.route('/bubblecum/<disid>/csv')
 def schdistrictCUM(disid):  
     disdic={
+    "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
     "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
     '620f3d6132c6d4813f4c9887':'Jackson County Schools',
@@ -21852,6 +21874,7 @@ def district_school_table_(districtid,startdate,enddate):
             {'$group':{'_id':'$USER_ID.schoolId._id','ID':{'$sum':1},'NAME':{'$first':'$USER_ID.schoolId.NAME'},'last_practice_date':{'$max':{"$dateToString": { "format": "%Y-%m-%d", "date":'$MODIFIED_DATE'}}},'prog':{'$first':'$PROGRAM_AUDIO_ID.PROGRAM_ID.PROGRAM_NAME'}}},
                   {'$project':{'_id':1,'Practice_Count':'$ID','program':1,'last_practice_date':'$last_practice_date'}},
                    ]))).fillna(0)
+    
     df_ = DataFrame(list(collection1.aggregate([
     {"$match":
          {'$and': [
@@ -21918,20 +21941,39 @@ def district_school_table_(districtid,startdate,enddate):
             {'$group':{'_id':'$USER_ID.schoolId._id','subsdate':{'$max':{"$dateToString": { "format": "%Y-%m-%d", "date":'$SUBSCRIPTION_EXPIRE_DATE'}}}}},
                   {'$project':{'_id':1,'program':1,'Subscription_expire_date':'$subsdate'}},
                    ])))
-    
+
+    if df3.empty == True:        
+        df3 = pd.DataFrame(columns=['_id', 'Practice_Count', 'last_practice_date'])
+        df3["_id"] = df2["_id"],
+        df3['Practice_Count'] = 0,
+        df3['last_practice_date'] = "No_Info"
+#         print(df3)
+    if df_.empty == True:
+        df_ = pd.DataFrame(columns=['_id', 'Practice_Count_csy'])
+        df_["_id"] = df2["_id"],
+        df_['Practice_Count_csy'] = 0
+#         print(df_)
+    if df__.empty == True:
+        df__ = pd.DataFrame(columns=['_id', 'Practice_Count_lsy'])
+        df__["_id"] = df2["_id"],
+        df__['Practice_Count_lsy'] = 0
+        # print(df__)
+
 
     df5=pd.merge(df2,df3, how='left', on='_id')
+#     print(df5)
+    print(df__.columns)
     dff=pd.merge(df5,df_, how='left', on='_id')
     dfff=pd.merge(dff,df__, how='left', on='_id')
     df=pd.merge(dfff,df4, how='left', on='_id')
 #     df=pd.merge(df6,df4, how='left', on='_id')
     df.rename(columns = { '_id': 'schoolid_'}, inplace = True)
-    
-    
+
+
 #     df[["schoolid_", "schoolid"]]=df[["schoolid_", "schoolid"]].astype(str) 
 
     # df4.fillna(0)
-#     print(df)
+    # print(df)
     df['school_name'].fillna("NO INFO", inplace=True)
     df['country'].fillna("NO INFO", inplace=True)
     df.Practice_Count=df.Practice_Count.fillna(0)
@@ -21946,12 +21988,12 @@ def district_school_table_(districtid,startdate,enddate):
     df['city'].replace("",'NO INFO', inplace=True)
     df['State'].replace("",'NO INFO', inplace=True)
     df['country'].replace("",'NO INFO', inplace=True)
-    
+
     df['city'].fillna("NO INFO", inplace=True)
     df['city'].replace("NULL","NO INFO", inplace=True)
     df['State'].fillna("NO INFO", inplace=True)
     df['State'].replace("NULL","NO INFO", inplace=True)
-   
+
     df['Created_date']=df['Created_date'].fillna(0)
     df['last_practice_date']=df['last_practice_date'].fillna('NO PRACTICE')
     df['Subscription_expire_date']=df['Subscription_expire_date'].fillna('No Info')
