@@ -16510,10 +16510,19 @@ def practice_progress(schoolid,startdate,enddate):
         {"$project":{"_id":0,"USER_ID":"$_id","count(ONBOARD)":"$count"}}
                 ])
         df5= DataFrame(list(collection4)).fillna(0)
+        
+        iid = df["USER_ID"].to_list()
         if df5.empty == True:
+            df5 = pd.DataFrame({"USER_ID":iid, "count(ONBOARD)":0})
             onboarded_user=0
-        else:
+        else:    
             onboarded_user=len(df5["USER_ID"])
+        
+#         print("onboarded_user",onboarded_user)
+        
+        
+#         print("df \n",df)
+#         print("df5 \n",df5)
 
         dfnew=pd.merge(df,df5,on="USER_ID",how="outer").fillna(0)
         df6=pd.merge(dfnew,df2,on="USER_ID",how="left").fillna(0)
