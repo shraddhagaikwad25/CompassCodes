@@ -8209,10 +8209,7 @@ def admin_portal_table(userid):
             return json.dumps(temp, default=str)
     
     else:
-        # username = urllib.parse.quote_plus('admin')
-        # password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-        # client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
-        # db=client.compass
+      
 
         username = urllib.parse.quote_plus('adminIE')                                     #SwitchedToBeta
         password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
@@ -16378,10 +16375,10 @@ def user_practice_list(userid,classid):
 @app.route('/practiceprogress/<schoolid>/<startdate>/<enddate>')
 def practice_progress(schoolid,startdate,enddate):
     import datetime
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
-    db=client.compass
+    username=urllib.parse.quote_plus('adminIE')
+    password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    db=client.compass_beta 
     startdate= dateutil.parser.parse(str(startdate))
     enddat= dateutil.parser.parse(str(enddate))
     enddate=datetime.datetime.combine(enddat,datetime.time.max)
@@ -23704,10 +23701,12 @@ def heat_district_family_active_(districtid,startdate,enddate):
 
 @app.route('/districtfeedbackrating_csy/<districtid>/<startdate>/<enddate>')
 def dis_schoolrating_csy__(districtid,startdate,enddate):
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
-    db=client.compass
+
+    username=urllib.parse.quote_plus('adminIE')
+    password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    db=client.compass_beta 
+  
     collection = db.audio_feedback
     district=disdic[districtid]
     myDatetime1 = dateutil.parser.parse(startdate)
@@ -23784,10 +23783,11 @@ def dis_sentiment_pie(districtid,startdate,enddate):
     d1 = today.strftime("%Y-%m-%d")
     # myDatetimestrt = dateutil.parser.parse(date1)
     # myDatetimeend = dateutil.parser.parse(date2)
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
-    db=client.compass
+    username=urllib.parse.quote_plus('adminIE')
+    password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    db=client.compass_beta 
+   
     collection = db.audio_feedback
     district=disdic[districtid]
     myDatetime1 = dateutil.parser.parse(startdate)
