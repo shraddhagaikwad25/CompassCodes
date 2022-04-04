@@ -16378,10 +16378,10 @@ def user_practice_list(userid,classid):
 @app.route('/practiceprogress/<schoolid>/<startdate>/<enddate>')
 def practice_progress(schoolid,startdate,enddate):
     import datetime
-    username=urllib.parse.quote_plus('adminIE')
-    password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
-    db=client.compass_beta
+    username = urllib.parse.quote_plus('admin')
+    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
+    client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
+    db=client.compass
     startdate= dateutil.parser.parse(str(startdate))
     enddat= dateutil.parser.parse(str(enddate))
     enddate=datetime.datetime.combine(enddat,datetime.time.max)
@@ -16502,10 +16502,19 @@ def practice_progress(schoolid,startdate,enddate):
         {"$project":{"_id":0,"USER_ID":"$_id","count(ONBOARD)":"$count"}}
                 ])
         df5= DataFrame(list(collection4)).fillna(0)
+        
+        iid = df["USER_ID"].to_list()
         if df5.empty == True:
+            df5 = pd.DataFrame({"USER_ID":iid, "count(ONBOARD)":0})
             onboarded_user=0
-        else:
+        else:    
             onboarded_user=len(df5["USER_ID"])
+        
+#         print("onboarded_user",onboarded_user)
+        
+        
+#         print("df \n",df)
+#         print("df5 \n",df5)
 
         dfnew=pd.merge(df,df5,on="USER_ID",how="outer").fillna(0)
         df6=pd.merge(dfnew,df2,on="USER_ID",how="left").fillna(0)
