@@ -20597,7 +20597,7 @@ def live_user_district(districtid):
             {"$match":{
         '$and':[
         {'USER_ID._id':{"$in":ids}},
-        {'MODIFIED_DATE': {'$gte':datetime.datetime.utcnow()-datetime.timedelta(minutes=10)}}
+        {'MODIFIED_DATE': {'$gte':datetime.datetime.utcnow()-datetime.timedelta(hours=24)}}
         ]}},
         {'$group':{'_id':'$USER_ID._id', 'practice':{'$sum':1}}}
         ])))
