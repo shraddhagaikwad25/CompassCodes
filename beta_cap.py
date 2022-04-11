@@ -24924,7 +24924,7 @@ def district_portal_signup_(districtid):
             'xaxis':list(todaydf['HOUR_OF_THE_DAY'])                  
         }}
 
-    if (temp['month']==0)&(temp['week']==0)&(temp['today']==0):
+    if (temp['month']['count']==0)&(temp['week']['count']==0)&(temp['today']['count']==0):
         temp['Status']=0
     else:
         temp['Status']=1
@@ -25065,8 +25065,8 @@ def district_portal_practice_(districtid):
             'yaxis':list(todaydf['Count']),                    
             'xaxis':list(todaydf['HOUR_OF_THE_DAY'])                  
         }}
-        
-    if (temp['month']==0)&(temp['week']==0)&(temp['today']==0):
+
+    if (temp['month']['count']==0)&(temp['week']['count']==0)&(temp['today']['count']==0):
         temp['Status']=0
     else:
         temp['Status']=1
