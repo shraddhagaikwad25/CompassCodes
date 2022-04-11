@@ -24923,6 +24923,12 @@ def district_portal_signup_(districtid):
             'yaxis':list(todaydf['Count']),                    
             'xaxis':list(todaydf['HOUR_OF_THE_DAY'])                  
         }}
+
+    if (temp['month']==0)&(temp['week']==0)&(temp['today']==0):
+        temp['Status']=0
+    else:
+        temp['Status']=1
+
     return json.dumps(temp)
         
         
@@ -25059,6 +25065,12 @@ def district_portal_practice_(districtid):
             'yaxis':list(todaydf['Count']),                    
             'xaxis':list(todaydf['HOUR_OF_THE_DAY'])                  
         }}
+        
+    if (temp['month']==0)&(temp['week']==0)&(temp['today']==0):
+        temp['Status']=0
+    else:
+        temp['Status']=1
+
     return json.dumps(temp)
                 
             
@@ -25162,6 +25174,11 @@ def district_portal_rating_(districtid):
     temp={'month':month_average,
           'week':week_average,
           'today':today_average}
+
+    if (temp['month']==0)&(temp['week']==0)&(temp['today']==0):
+        temp['Status']=0
+    else:
+        temp['Status']=1
     
     return json.dumps(temp)
                 
@@ -25279,6 +25296,10 @@ def district_portal_comment_(districtid):
             comment_data_for_use_table=comment_data_for_use[0:50].values.tolist()
             
     temp={'comments':comment_data_for_use_table}
+    if (temp['comments']=='NO INFO'):
+        temp['Status']=0
+    else:
+        temp['Status']=1
     return json.dumps(temp)
     
 @app.route('/districtportaltuneins/<districtid>')  
@@ -25424,6 +25445,12 @@ def district_portal_tunein_(districtid):
             'yaxis':list(todaydf['Count']),                    
             'xaxis':list(todaydf['HOUR_OF_THE_DAY'])                  
         }}
+
+    if (temp['month']['count']==0)&(temp['week']['count']==0)&(temp['today']['count']==0):
+        temp['Status']=0
+    else:
+        temp['Status']=1
+
     return json.dumps(temp)
 
 
