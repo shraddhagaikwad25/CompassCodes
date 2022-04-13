@@ -19507,7 +19507,6 @@ def admin_portal_table_super_admin(userid):
                             { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
     #     //             {'USER_ID.IS_PORTAL':'Y'},
         {'USER_ID.EMAIL_ID':{'$ne':''}},
-                    {"USER_ID._id" : ObjectId("5f2e12f3592000521523721a")},
 
 
     #     //              {'EMAIL_ID':{'$regex':'broward','$options':'i'}},
