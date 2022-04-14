@@ -16390,6 +16390,7 @@ def practice_progress(schoolid,startdate,enddate):
     password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
     client = MongoClient("mongodb://%s:%s@52.41.36.115:27017/" % (username, password))
     db=client.compass
+
     startdate= dateutil.parser.parse(str(startdate))
     enddat= dateutil.parser.parse(str(enddate))
     enddate=datetime.datetime.combine(enddat,datetime.time.max)
