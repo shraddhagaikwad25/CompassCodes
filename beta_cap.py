@@ -25268,6 +25268,10 @@ def district_portal_comment_(districtid):
                     PRACTICE_DAY.append(digit[0])
 
             comments_data['PRACTICE_DAY']=PRACTICE_DAY
+            comments_data = comments_data.drop(comments_data[comments_data["COMMENT"] == "."].index)
+            comments_data = comments_data.drop(comments_data[comments_data["COMMENT"] == ".\n"].index)
+            comments_data = comments_data.drop(comments_data[comments_data["COMMENT"] == ".\\n"].index)
+            
             comments_school_detail=pd.DataFrame(list(db.user_master.aggregate([{'$match':{
             '$and':[{'_id':{'$in':list(comments_data['USER_ID'])}}]
             }},
@@ -25295,10 +25299,7 @@ def district_portal_comment_(districtid):
             comment_data_for_use_table=comment_data_for_use[0:50].values.tolist()
             
     temp={'comments':comment_data_for_use_table}
-    if (temp['comments']=='NO INFO'):
-        temp['Status']=0
-    else:
-        temp['Status']=1
+#     print(len(comment_data_final))
     return json.dumps(temp)
     
 @app.route('/districtportaltuneins/<districtid>')  
