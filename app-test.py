@@ -25231,7 +25231,7 @@ def district_portal_rating_(districtid):
         
 @app.route('/districtportalcomments/<districtid>')
 def district_portal_comment_(districtid):
-    client = MongoClient('mongodb://admin:F5tMazRj47cYqm33e@52.41.36.115:27017/')
+    client = MongoClient('mongodb://admin:F5tMazRj47cYqm33e@35.88.43.45:27017/')
     db=client.compass
 
     # Getting district id name from inserted district
@@ -25313,6 +25313,10 @@ def district_portal_comment_(districtid):
                     PRACTICE_DAY.append(digit[0])
 
             comments_data['PRACTICE_DAY']=PRACTICE_DAY
+            comments_data = comments_data.drop(comments_data[comments_data["COMMENT"] == "."].index)
+            comments_data = comments_data.drop(comments_data[comments_data["COMMENT"] == ".\n"].index)
+            comments_data = comments_data.drop(comments_data[comments_data["COMMENT"] == ".\\n"].index)
+            
             comments_school_detail=pd.DataFrame(list(db.user_master.aggregate([{'$match':{
             '$and':[{'_id':{'$in':list(comments_data['USER_ID'])}}]
             }},
@@ -25340,6 +25344,7 @@ def district_portal_comment_(districtid):
             comment_data_for_use_table=comment_data_for_use[0:50].values.tolist()
             
     temp={'comments':comment_data_for_use_table}
+#     print(len(comment_data_final))
     return json.dumps(temp)
     
 @app.route('/districtportaltuneins/<districtid>')  
