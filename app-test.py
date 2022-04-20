@@ -25231,25 +25231,22 @@ def district_portal_rating_(districtid):
         
 @app.route('/districtportalcomments/<districtid>')
 def district_portal_comment_(districtid):
-    client = MongoClient('mongodb://admin:F5tMazRj47cYqm33e@35.88.43.45:27017/')
-    db=client.compass
-
+    username=urllib.parse.quote_plus('adminIE')
+    password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    db=client.compass_beta
     # Getting district id name from inserted district
     district=disdic[districtid]
     #  time frames
     current_time_utc=datetime.datetime.utcnow()
     last_30_days=current_time_utc-relativedelta(days=30)
     last__7_days=current_time_utc-relativedelta(days=7)
-
     last_24_hr=current_time_utc-relativedelta(hours=24)
-   
     last_30_dates=[(last_30_days+timedelta(days=x)).date().strftime("%d-%m-%Y") for x in range((current_time_utc-last_30_days).days)]
     last_7_dates=[(last__7_days+timedelta(days=x)).date().strftime("%d-%m-%Y") for x in range((current_time_utc-last__7_days).days)]
     last_30_dates_df=pd.DataFrame({'DATE':last_30_dates})
     last_7_dates_df=pd.DataFrame({'DATE':last_7_dates})
     _24_hr_df=pd.DataFrame({'HOUR_OF_THE_DAY':list(range(1,25))})
-    
-
     all_user_district=list(db.user_master.aggregate([{"$match":{
              '$and':[{ 'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
                        {'EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
@@ -25270,13 +25267,9 @@ def district_portal_comment_(districtid):
                     ]}},
                        {'$group':{
                             '_id':1,
-                            'users':{'$addToSet':'$_id'}                        
+                            'users':{'$addToSet':'$_id'}
                         }}
                            ]))
-    
-    
-    
-
     if len(all_user_district)==0:
         comment_data_for_use_table="NO INFO"
     else:
@@ -25297,26 +25290,22 @@ def district_portal_comment_(districtid):
                  'AUDIO_DAY':'$AUDIO_ID.AUDIO_DAY',
                  'PROGRAM':'$AUDIO_ID.PROGRAM_ID.PROGRAM_NAME'
              }}])))
-
         if comments_data.empty:
             comment_data_for_use_table="NO INFO"
         else:
             if 'AUDIO_DAY' not in comments_data.columns:
                 comments_data['AUDIO_DAY']=''
-
-            PRACTICE_DAY=[]    
+            PRACTICE_DAY=[]
             for i in range(len(comments_data)):
                 digit=[int(k) for k in comments_data['AUDIO_DAY'][i].split() if k.isdigit()]
                 if len(digit)==0:
                     PRACTICE_DAY.append('')
                 else:
                     PRACTICE_DAY.append(digit[0])
-
             comments_data['PRACTICE_DAY']=PRACTICE_DAY
             comments_data = comments_data.drop(comments_data[comments_data["COMMENT"] == "."].index)
             comments_data = comments_data.drop(comments_data[comments_data["COMMENT"] == ".\n"].index)
             comments_data = comments_data.drop(comments_data[comments_data["COMMENT"] == ".\\n"].index)
-            
             comments_school_detail=pd.DataFrame(list(db.user_master.aggregate([{'$match':{
             '$and':[{'_id':{'$in':list(comments_data['USER_ID'])}}]
             }},
@@ -25325,15 +25314,11 @@ def district_portal_comment_(districtid):
                          'USER_ID':'$_id',
                          'SCHOOL_ID':'$schoolId._id',
                          'SCHOOL_NAME':'$schoolId.NAME'
-
-
                      }}])))
             comment_data_final=comments_data.merge(comments_school_detail,how='left',on='USER_ID')
-
             comment_data_final[['AUDIO_NAME','SCHOOL_NAME']]=comment_data_final[['AUDIO_NAME','SCHOOL_NAME']].fillna('')
             comment_data_final=comment_data_final.sort_values(by=['CREATED_DATE'],ascending=False).reset_index(drop=True)
             COMMENT_DATE=[]
-
             for i in range(len(comment_data_final)):
                 try:
                     COMMENT_DATE.append(comment_data_final['CREATED_DATE'][i].strftime("%b-%d-%Y, %I:%M:%S"))
@@ -25342,11 +25327,14 @@ def district_portal_comment_(districtid):
             comment_data_final['COMMENT_DATE']=COMMENT_DATE
             comment_data_for_use=comment_data_final[['COMMENT','SCHOOL_NAME','AUDIO_NAME','PROGRAM','PRACTICE_DAY','COMMENT_DATE']]
             comment_data_for_use_table=comment_data_for_use[0:50].values.tolist()
-            
     temp={'comments':comment_data_for_use_table}
+    if (temp['comments']=='NO INFO'):
+        temp['Status']=0
+    else:
+        temp['Status']=1
 #     print(len(comment_data_final))
-    return json.dumps(temp)
-    
+    return json.dumps(temp)   
+     
 @app.route('/districtportaltuneins/<districtid>')  
 def district_portal_tunein_(districtid):
     client = MongoClient('mongodb://admin:F5tMazRj47cYqm33e@35.88.43.45:27017/')
