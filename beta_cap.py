@@ -25178,17 +25178,17 @@ def district_portal_rating_(districtid):
     #                                                                                                                   'RATING':'DATE'})
 
             monthdf=last_30_dates_df.merge(all_rating_data,how='left',on='DATE').fillna(0)
-            month_average=round(monthdf['RATING'].mean(),1)
+            month_average=round(monthdf[monthdf['RATING']!=0]['RATING'].mean(),1)
 
             weekdf=last_7_dates_df.merge(all_rating_data,how='left',on='DATE').fillna(0)
-            week_average=round(weekdf['RATING'].mean(),1)       
+            week_average=round(weekdf[weekdf['RATING']!=0]['RATING'].mean(),1)       
 
             last_24_hr_rating=all_rating_data[all_rating_data['RATING_DATE']>=last_24_hr].reset_index(drop=True)
 
             if last_24_hr_rating.empty:
                 today_average=0            
             else:
-                today_average=round(last_24_hr_rating['RATING'].mean(),1)
+                today_average=round(last_24_hr_rating[last_24_hr_rating['RATING']!=0]['RATING'].mean(),1)
     #             last_24_hr_rating_df=last_24_hr_rating.groupby('HOUR_OF_THE_DAY')['USER_ID'].count().reset_index().rename(columns={'USER_ID':'Count'})
     #             todaydf=_24_hr_df.merge(last_24_hr_rating_df,how='left',on='HOUR_OF_THE_DAY').fillna(0)
 
