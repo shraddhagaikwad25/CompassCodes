@@ -16864,10 +16864,10 @@ def practice_progress_table(schoolid,table_type,startdate,enddate):
             ])
     df5= DataFrame(list(collection4)).fillna(0)
     if df5.empty== True:
+        # df5['USER_ID']=0
         onboarded_user=[0]
     else:
-        onboarded_user=df5["USER_ID"].tolist()
-    
+        onboarded_user=df5["USER_ID"].tolist()    
 
     dfnew=pd.merge(df,df2, on="USER_ID",how="left").fillna(0)
 #     print("dfnew",dfnew)
@@ -16889,7 +16889,7 @@ def practice_progress_table(schoolid,table_type,startdate,enddate):
          "total_sessions" : total_sessions }
     table_name=table0[table_type]
 #     print(table_name)
-    df8=df7[df7["USER_ID"].isin(table_name)]
+    df8=df7[df7["USER_ID"].isin(table_name)]    
 #     print(df8)
     table=df8[["USER_ID","USER_NAME","email_id","Last_Practice_Date","last_login_date","Practice_Sessions","Mindful_Minutes","SIGNUP_DATE"]]
 #     print(table)
