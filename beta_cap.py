@@ -24390,7 +24390,8 @@ def active_teachers_school_search(idd,chart_type):
     
     username = urllib.parse.quote_plus('admin')
     password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@35.88.43.45:27017/" % (username, password))
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+
     db=client.compass
     collection= db.audio_track_master
     school=idd
