@@ -100,7 +100,7 @@ def LSY_Date():
 
 disdic={
     "62603f5be9c76545ce51d732":"North Elementary School District",
-    "62603f5be9c76545ce51d732":"North Elementary School District",
+    # "62603f5be9c76545ce51d732":"North Elementary School District",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
