@@ -16779,10 +16779,10 @@ def practice_progress_table(schoolid,table_type,startdate,enddate):
     enddat= dateutil.parser.parse(str(enddate))
     enddate=datetime.datetime.combine(enddat,datetime.time.max)
 #     import datetime
-    username=urllib.parse.quote_plus('adminIE')
-    password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
-    db=client.compass_beta
+    username = urllib.parse.quote_plus('admin')
+    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
+    client = MongoClient("mongodb://%s:%s@35.88.43.45:27017/" % (username, password))
+    db=client.compass
 
     # username = urllib.parse.quote_plus('adminIE')                                     #SwitchedToBeta
     # password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
@@ -16896,11 +16896,10 @@ def practice_progress_table(schoolid,table_type,startdate,enddate):
             ])
     df5= DataFrame(list(collection4)).fillna(0)
     if df5.empty== True:
-        # df5["USER_ID"]=0
+        df5['USER_ID']=0
         onboarded_user=[0]
     else:
-        onboarded_user=df5["USER_ID"].tolist()
-    
+        onboarded_user=df5["USER_ID"].tolist()    
 
     dfnew=pd.merge(df,df2, on="USER_ID",how="left").fillna(0)
 #     print("dfnew",dfnew)
@@ -16923,13 +16922,16 @@ def practice_progress_table(schoolid,table_type,startdate,enddate):
     table_name=table0[table_type]
 #     print(table_name)
     df8=df7[df7["USER_ID"].isin(table_name)]
-    
-#     print(df8)
-    table=df8[["USER_ID","USER_NAME","email_id","Last_Practice_Date","last_login_date","Practice_Sessions","Mindful_Minutes","SIGNUP_DATE"]]
-#     print(table)
-    temp = {"table":table.to_numpy().tolist()}
-#     print(len(table))
-    return json.dumps(temp,default = str)
+    if df8.empty:
+        temp={'Result':0}
+        return json.dumps(temp)
+    else:
+    #     print(df8)
+        table=df8[["USER_ID","USER_NAME","email_id","Last_Practice_Date","last_login_date","Practice_Sessions","Mindful_Minutes","SIGNUP_DATE"]]
+    #     print(table)
+        temp = {"table":table.to_numpy().tolist()}
+    #     print(len(table))
+        return json.dumps(temp,default = str)
 #     return df7
 
 
