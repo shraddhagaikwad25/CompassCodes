@@ -25466,11 +25466,7 @@ def district_portal_tunein_(districtid):
         temp['Status']=0
     else:
         temp['Status']=1
-
     return json.dumps(temp)
-
-
-
 
 
 @app.route('/narratorprofileb1/<id>')
