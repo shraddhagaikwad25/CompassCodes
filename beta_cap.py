@@ -100,7 +100,6 @@ def LSY_Date():
 
 disdic={
     "62603f5be9c76545ce51d732":"North Elementary School District",
-    # "62603f5be9c76545ce51d732":"North Elementary School District",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
@@ -1827,7 +1826,6 @@ def _excecutivecount_():
 def schpuc(districtid):
     disdic={
     "62603f5be9c76545ce51d732":"North Elementary School District",
-    "62603f5be9c76545ce51d732":"North Elementary School District",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
@@ -2023,7 +2021,6 @@ def schpuc(districtid):
 @app.route('/schoolwisefamilypracticecount/<districtid>')
 def schppcfamily(districtid):
     disdic={
-    "62603f5be9c76545ce51d732":"North Elementary School District",
     "62603f5be9c76545ce51d732":"North Elementary School District",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
@@ -2243,7 +2240,6 @@ def schppcfamily(districtid):
 @app.route('/schoolwisepracticecounttop20/<districtid>')
 def schwisepc(districtid):
     disdic={
-    "62603f5be9c76545ce51d732":"North Elementary School District",
     "62603f5be9c76545ce51d732":"North Elementary School District",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",       
@@ -2465,7 +2461,6 @@ def schwisepc(districtid):
 def schwiseuc(districtid):
     disdic={
     "62603f5be9c76545ce51d732":"North Elementary School District",
-    "62603f5be9c76545ce51d732":"North Elementary School District",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
@@ -2658,7 +2653,6 @@ def schwiseuc(districtid):
 @app.route('/monthwisepracticedistrict/<districtid>')
 def monthwisepc(districtid):
     disdic={
-    "62603f5be9c76545ce51d732":"North Elementary School District",
     "62603f5be9c76545ce51d732":"North Elementary School District",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
@@ -2873,7 +2867,6 @@ def monthwisepc(districtid):
 def user_practice_90days(districtid):
     disdic={
     "62603f5be9c76545ce51d732":"North Elementary School District",
-    "62603f5be9c76545ce51d732":"North Elementary School District",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
@@ -3085,7 +3078,6 @@ def user_practice_90days(districtid):
 @app.route('/90daysuserloggedindetail/<districtid>')
 def user_logins_90days(districtid):
     disdic={
-    "62603f5be9c76545ce51d732":"North Elementary School District",
     "62603f5be9c76545ce51d732":"North Elementary School District",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
@@ -3299,7 +3291,6 @@ def user_logins_90days(districtid):
 @app.route('/top20userspractisinginfo/<districtid>')
 def topusers_practice(districtid):
     disdic={
-    "62603f5be9c76545ce51d732":"North Elementary School District",
     "62603f5be9c76545ce51d732":"North Elementary School District",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
@@ -3529,7 +3520,6 @@ def topusers_practice(districtid):
 @app.route('/districtcardsinfo/<districtid>')
 def district_count_cards(districtid):
     disdic={
-    "62603f5be9c76545ce51d732":"North Elementary School District",
     "62603f5be9c76545ce51d732":"North Elementary School District",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
@@ -3899,7 +3889,6 @@ def district_count_cards(districtid):
 def district_user_table_teacher(districtid):
     disdic={
     "62603f5be9c76545ce51d732":"North Elementary School District",
-    "62603f5be9c76545ce51d732":"North Elementary School District",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
@@ -4161,7 +4150,6 @@ def district_user_table_teacher(districtid):
 def district_user_table_parents(districtid):
     disdic={
     "62603f5be9c76545ce51d732":"North Elementary School District",
-    "62603f5be9c76545ce51d732":"North Elementary School District",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
@@ -4421,7 +4409,6 @@ def district_user_table_parents(districtid):
 @app.route('/monthwisepracticesuperadmin/<districtid>')
 def monthwisepcsuper(districtid):
     disdic={
-    "62603f5be9c76545ce51d732":"North Elementary School District",
     "62603f5be9c76545ce51d732":"North Elementary School District",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
@@ -4786,7 +4773,6 @@ def monthwisepcsuper(districtid):
 def district_school_table(districtid):
     disdic={
     "62603f5be9c76545ce51d732":"North Elementary School District",
-    "62603f5be9c76545ce51d732":"North Elementary School District",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
@@ -5057,7 +5043,6 @@ def district_school_table(districtid):
 
 def heat_district(districtid):
     disdic={
-    "62603f5be9c76545ce51d732":"North Elementary School District",
     "62603f5be9c76545ce51d732":"North Elementary School District",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
@@ -5331,7 +5316,6 @@ def heat_district(districtid):
 def heat_district_family_active(districtid):
     disdic={
     "62603f5be9c76545ce51d732":"North Elementary School District",
-    "62603f5be9c76545ce51d732":"North Elementary School District",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
@@ -5601,7 +5585,6 @@ def heat_district_family_active(districtid):
 
 def heat_district_teachers_active(districtid):
     disdic={
-    "62603f5be9c76545ce51d732":"North Elementary School District",
     "62603f5be9c76545ce51d732":"North Elementary School District",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
@@ -5874,7 +5857,6 @@ def heat_district_teachers_active(districtid):
 def heat_district_teachers_prac(districtid):
     disdic={
     "62603f5be9c76545ce51d732":"North Elementary School District",
-    "62603f5be9c76545ce51d732":"North Elementary School District",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
@@ -6143,7 +6125,6 @@ def heat_district_teachers_prac(districtid):
 @app.route('/districtheatmappracfamily/<districtid>')
 def heat_district_family_prac(districtid):
     disdic={
-    "62603f5be9c76545ce51d732":"North Elementary School District",
     "62603f5be9c76545ce51d732":"North Elementary School District",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
@@ -6422,7 +6403,6 @@ def heat_district_family_prac(districtid):
 
 def heatmap_prac_district(districtid):
     disdic={
-    "62603f5be9c76545ce51d732":"North Elementary School District",
     "62603f5be9c76545ce51d732":"North Elementary School District",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
@@ -9955,7 +9935,6 @@ def buble_district():
 def schdistrict(disid):  
     disdic={
     "62603f5be9c76545ce51d732":"North Elementary School District",
-    "62603f5be9c76545ce51d732":"North Elementary School District",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
@@ -11702,7 +11681,6 @@ def portal_testing_new_api(smcategory):
 @app.route('/bubblecum/<disid>/csv')
 def schdistrictCUM(disid):  
     disdic={
-    "62603f5be9c76545ce51d732":"North Elementary School District",
     "62603f5be9c76545ce51d732":"North Elementary School District",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
