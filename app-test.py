@@ -25961,8 +25961,8 @@ def ukraine_campaign():
 
 
 
-    temp={'RAISED_AMOUNT':ukraine_campaign_df['RAISED_AMOUNT'][0],
-         'TOTAL_TARGET_AMOUNT':ukraine_campaign_df['TOTAL_TARGET_AMOUNT'][0]     
+    temp={'RAISED_AMOUNT':round(ukraine_campaign_df['RAISED_AMOUNT'][0],0),
+         'TOTAL_TARGET_AMOUNT':round(ukraine_campaign_df['TOTAL_TARGET_AMOUNT'][0],0)     
          }
     return json.dumps(temp)
 
