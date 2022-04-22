@@ -25946,6 +25946,27 @@ def district_portal_schoolss__(districtid,sub_category):
     return json.dumps(final_data)
 
 
+# ukraine thermometer api added.
+@app.route('/ukrainecamptherma')
+def ukraine_campaign():
+    client = MongoClient('mongodb://admin:F5tMazRj47cYqm33e@35.88.43.45:27017/')
+    db=client.compass
+    ukraine_campaign_df=pd.DataFrame(list(db.campaign_detail.aggregate([{'$match':{'$and':[
+                                                                                {'_id':ObjectId('6260122a91af2ca7047316dd')
+                                                                                }]}}])))
+    if 'RAISED_AMOUNT' not in list(ukraine_campaign_df.columns):
+        ukraine_campaign_df['RAISED_AMOUNT']=0
+    if 'TOTAL_TARGET_AMOUNT' not in list(ukraine_campaign_df.columns):
+        ukraine_campaign_df['TOTAL_TARGET_AMOUNT']=0
+
+
+
+    temp={'RAISED_AMOUNT':ukraine_campaign_df['RAISED_AMOUNT'][0],
+         'TOTAL_TARGET_AMOUNT':ukraine_campaign_df['TOTAL_TARGET_AMOUNT'][0]     
+         }
+    return json.dumps(temp)
+
+
 
 @app.route('/School_Search')
 def Practice_streak():
