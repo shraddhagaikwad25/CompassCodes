@@ -99,6 +99,7 @@ def LSY_Date():
 
 
 disdic={
+    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
@@ -1824,6 +1825,7 @@ def _excecutivecount_():
 @app.route('/schoolwisefamilycount/<districtid>')
 def schpuc(districtid):
     disdic={
+    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
@@ -2019,6 +2021,7 @@ def schpuc(districtid):
 @app.route('/schoolwisefamilypracticecount/<districtid>')
 def schppcfamily(districtid):
     disdic={
+    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
@@ -2237,6 +2240,7 @@ def schppcfamily(districtid):
 @app.route('/schoolwisepracticecounttop20/<districtid>')
 def schwisepc(districtid):
     disdic={
+    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
@@ -2456,6 +2460,7 @@ def schwisepc(districtid):
 @app.route('/schoolwiseusercounttop20/<districtid>')
 def schwiseuc(districtid):
     disdic={
+    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
@@ -2648,6 +2653,7 @@ def schwiseuc(districtid):
 @app.route('/monthwisepracticedistrict/<districtid>')
 def monthwisepc(districtid):
     disdic={
+    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
@@ -2860,6 +2866,7 @@ def monthwisepc(districtid):
 @app.route('/90daysuserpractising/<districtid>')
 def user_practice_90days(districtid):
     disdic={
+    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
@@ -3071,6 +3078,7 @@ def user_practice_90days(districtid):
 @app.route('/90daysuserloggedindetail/<districtid>')
 def user_logins_90days(districtid):
     disdic={
+    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
@@ -3283,6 +3291,7 @@ def user_logins_90days(districtid):
 @app.route('/top20userspractisinginfo/<districtid>')
 def topusers_practice(districtid):
     disdic={
+    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
@@ -3511,6 +3520,7 @@ def topusers_practice(districtid):
 @app.route('/districtcardsinfo/<districtid>')
 def district_count_cards(districtid):
     disdic={
+    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
@@ -3878,6 +3888,7 @@ def district_count_cards(districtid):
 @app.route('/districtusertableteacher/<districtid>')
 def district_user_table_teacher(districtid):
     disdic={
+    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
@@ -4138,6 +4149,7 @@ def district_user_table_teacher(districtid):
 @app.route('/districtusertableparent/<districtid>')
 def district_user_table_parents(districtid):
     disdic={
+    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
@@ -4397,6 +4409,7 @@ def district_user_table_parents(districtid):
 @app.route('/monthwisepracticesuperadmin/<districtid>')
 def monthwisepcsuper(districtid):
     disdic={
+    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
@@ -4759,6 +4772,7 @@ def monthwisepcsuper(districtid):
 @app.route('/districtschooltable/<districtid>')
 def district_school_table(districtid):
     disdic={
+    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
@@ -5029,6 +5043,7 @@ def district_school_table(districtid):
 
 def heat_district(districtid):
     disdic={
+    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
@@ -5300,6 +5315,7 @@ def heat_district(districtid):
 
 def heat_district_family_active(districtid):
     disdic={
+    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
@@ -5569,6 +5585,7 @@ def heat_district_family_active(districtid):
 
 def heat_district_teachers_active(districtid):
     disdic={
+    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
@@ -5839,6 +5856,7 @@ def heat_district_teachers_active(districtid):
 @app.route('/districtheatmappracteacher/<districtid>')
 def heat_district_teachers_prac(districtid):
     disdic={
+    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
@@ -6107,6 +6125,7 @@ def heat_district_teachers_prac(districtid):
 @app.route('/districtheatmappracfamily/<districtid>')
 def heat_district_family_prac(districtid):
     disdic={
+    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
@@ -6384,6 +6403,7 @@ def heat_district_family_prac(districtid):
 
 def heatmap_prac_district(districtid):
     disdic={
+    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
@@ -9916,6 +9936,7 @@ def buble_district():
 @app.route('/bubble/<disid>/csv')
 def schdistrict(disid):  
     disdic={
+    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
@@ -11664,6 +11685,7 @@ def portal_testing_new_api(smcategory):
 @app.route('/bubblecum/<disid>/csv')
 def schdistrictCUM(disid):  
     disdic={
+    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
     "62552a4fbc7b0f11833b430c":"DUSD Power",
     "623975aa25e068fe63efa956":"Project Hoeppner",
     "6241625424e8123075e7b423":"North Muskegon School District",
