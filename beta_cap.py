@@ -99,152 +99,25 @@ def LSY_Date():
 
 # checking if i can push first without pulling it.....
 
-disdic={
-    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
-    "62603f5be9c76545ce51d732":"North Elementary School District",
-    "62552a4fbc7b0f11833b430c":"DUSD Power",
-    "623975aa25e068fe63efa956":"Project Hoeppner",
-    "6241625424e8123075e7b423":"North Muskegon School District",
-    "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
-    '620f3d6132c6d4813f4c9887':'Jackson County Schools',
-    '6045e4d007ead7744b125848':'Adams 12 Five Star Schools',
-    '616d2865c35ee7525fb145d9':'Addison Northwest School District',
-    '6167fe41282c502e1077c12f':'Anchorage',
-    '6045e4d707ead7744b125854':'Adams County School District 14',
-    '5f2609807a1c0000950bb475':'Agawam School district',
-    '5f2609807a1c0000950bb481':'Alameda Unified School District',
-    '5f2609807a1c0000950bb47a':'Alpine School District',
-    '5f2609807a1c0000950bb47b':'Ann Arbor Public Schools',
-    '6045e4c907ead7744b12583d':'Apple Valley Unified School District',
-    '619268dd81f00a4319a65a52':'Access Community',
-    '789':'Attendance works',
-    '6045e4d707ead7744b125855':'Aurora Public Schools',
-    '5f2609807a1c0000950bb463':'Austin Independent School District',
-    '5f59e4836451a9089d7d4007':'Belleville School District',
-    '6045e4d107ead7744b125849':'Berkeley Public Schools',
-    '5fe2e25d4d0ca68d7baf889d':'BGCA',
-    '6045e4ca07ead7744b12583e':'Bishop Unified School District',
-    '6045e4d107ead7744b12584a':'Bismarck Public Schools',
-    '5fe318b14d0ca68d7baf889e':'BLUE',
-    '6045e4c807ead7744b12583b':'Boston Public Schools',
-    '6023a6d79e8e623753fc305c':'Boulder Valley School District',
-    '60f7bf747cc8db72d772e465':'Bright Horizons Early Learning Centers',
-    '5f2609807a1c0000950bb46d':'Broward County Public Schools',
-    '617949a0fc72b63e0d1dc7d3':'Burlington School District',
-    '6045e4ca07ead7744b12583f':'Canyons School District',
-    '60473f8823e88e242074ebd2':'Champlain Valley School District',
-    '6045e4d907ead7744b125858':'Chicago Public Schools',
-    '5f2609807a1c0000950bb46c':'Chico Unified School District',
-    '5ffd8176469a86e28635f512':'Chula Vista Elementary School District',
-    '5f2609807a1c0000950bb460':'Clarksville-Montgomery County School System',
-    '6045e4d907ead7744b125857':'Colton Joint Unified School District',
-    '5f2609807a1c0000950bb47f':'Community Consolidated School District 89',
-    '5f2609807a1c0000950bb45c':'Comox Valley School District',
-    '5f2609807a1c0000950bb480':'Dell Texas',
-    '6045e4da07ead7744b125859':'Dennis-Yarmouth Regional School District',
-    '6045e4cb07ead7744b125840':'Denver Public Schools',
-    '5f2609807a1c0000950bb46e':'District 25 New York Schools',
-    '5f7413ef9387fd71ce6387cb':'Douglas County School District',
-    '6045e4c707ead7744b12583a':'Durham Public Schools',
-    '5f895191609e08b76029f641':'Early learning Sarasota',
-    '5f2609807a1c0000950bb462':'Englewood Cliffs Public Schools',
-    '5f2609807a1c0000950bb461':'Englewood Public School District',
-    '5f2609807a1c0000950bb464':'Equity Education',
-    '6045e4cc07ead7744b125841':'Fairfax County Public Schools',
-    '5f2609807a1c0000950bb45e':'Fairfield-Suisun Unified School District',
-    '6045e4cd07ead7744b125843':'Falmouth Public Schools',
-    '6045e4da07ead7744b12585a':'FITCHBURG PUBLIC SCHOOLS',
-    '5f2609807a1c0000950bb47d':'Flint Public Schools',
-    '6023a7269e8e623753fc305e':'Fulton County School System',
-    '5f2609807a1c0000950bb46b':'FundaciÃ³n La Puerta',
-    '617fae53ccd2dd76541ed5e7':'Glasgow Independent Schools',
-    '6045e4d207ead7744b12584b':'Glenbard District 87',
-    '5f2609807a1c0000950bb450':'Goleta District',
-    '6045e4cd07ead7744b125844':'Granite School District',
-    '5f2609807a1c0000950bb474':'Greenburgh North Castle Union Free School District',
-    '5f2609807a1c0000950bb45f':'Griffin-Spalding County School System',
-    '60cb8971c5b0e89ed7ac0aa1':'Hall County School District',
-    '5f9aa5e526edbed399d56c92':'Hamilton-Wenham Regional School District',
-    '6045e4c707ead7744b125839':'Hartford Public Schools',
-    '5f2609807a1c0000950bb47c':'Hawaii Public Schools',
-    '6045e4ce07ead7744b125845':'Helena Public Schools',
-    '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
-    '61aa08a4afeab44256f54074':'Benton Harbor',
-    '6045e4db07ead7744b12585b':'HidalgoIndependent School district',
-    '5f2609807a1c0000950bb476':'Hillsborough County',
-    '6045e4db07ead7744b12585c':'Hopedale Public Schools',
-    '6045e4cc07ead7744b125842':'Houston Independent School District',
-    '60b872ce826cab06ebdf044e':'Kalamazoo Public Schools',
-    '6045e4dc07ead7744b12585d':'Kearsarge Regional School District',
-    '6045e4d307ead7744b12584d':'KIPP Public Schools',
-    '5f2609807a1c0000950bb455':'Krum Independent School District',
-    '5f2609807a1c0000950bb47e':'La Joya School District',
-    '6045e4cf07ead7744b125846':'Lamar Consolidated Independent School District',
-    '5f2609807a1c0000950bb45a':'LAUSD',
-    '5f2609807a1c0000950bb467':'Lincolnshire Schools',
-    '6045e4dc07ead7744b12585e':'Littleton Public Schools',
-    '5fe2e1ee4d0ca68d7baf889c':'LSF-Head Start',
-    '6023a7499e8e623753fc305f':'Manatee County School District',
-    '5f2609807a1c0000950bb482':'Massachusetts Institute of Technology',
-    '6077e1b5eaa8bae0e2e04a64':'Medfield School District',
-    '6023a7019e8e623753fc305d':'Miami-Dade County Public Schools',
-    '5f2609807a1c0000950bb465':'Middleton-Cross Plains Area School District',
-    '6045e4d407ead7744b12584f':'Mill Valley School District',
-    '6045e4d307ead7744b12584e':'Millard School District',
-    '610d0837931db8cfdf500fef':'Mission Consolidated Independent School District',
-    '5fb4efce4139b9d4c5a86a69':'Mt. Lebanon School District',
-    '6045e4cf07ead7744b125847':'Muscatine Community School District',
-    '5fbcdf0ba84e48a64412a798':'Needham School District',
-    '5f2609807a1c0000950bb459':'North Special School District',
-    '6045e4c907ead7744b12583c':'Northside Independent School District',
-    '5f7c01fa9387fd71ce6387cc':'NYC - Queens South',
-    '5fd704da04a848e368de5dc6':'Oakland Unified School District',
-    '5f6994386451a9089d7d4009':'Ogden school district',
-    '5f2609807a1c0000950bb472':'Oroville City Elementary School District',
-    '6017ab3043ca9c39151838d4':'Oswego School District',
-    '6045e4dd07ead7744b12585f':'Palm Beach County School District',
-    '60913aaea5fd4b56a4bafa70':'Palm Springs Unified',
-    '5f2609807a1c0000950bb479':'Panorama Education',
-    '5f2609807a1c0000950bb46f':'Paradise Schools',
-    '5f8fcd33609e08b76029f644':'Paradise Unified School District',
-    '6045e4de07ead7744b125860':'Paterson School District',
-    '6177e72d108b6ebefcfc1014':'Pasco County Schools',
-    '5f2609807a1c0000950bb466':'Pinellas County Schools',
-    '5f2609807a1c0000950bb471':'Racine Unified Schools',
-    '6045e4d507ead7744b125850':'Rich School District',
-    '5f6d7cbce6452eb06384db20':'Salt Lake City School District',
-    '5f2609807a1c0000950bb478':'San Diego Unified School District',
-    '6045e4d507ead7744b125851':'San Francisco Unified School District',
-    '6023a76f9e8e623753fc3060':'San Jose Unified School District',
-    '5f2609807a1c0000950bb470':'San Leandro Unified School District',
-    '6045e4df07ead7744b125862':'San Marcos Unified School District',
-    '6045e4df07ead7744b125863':'San Marino Unified School District',
-    '5f2609807a1c0000950bb477':'Sarasota County',
-    '602e60e567d3e6c0a4eb4d99':'School District of Palm Beach County',
-    '6045e4d807ead7744b125856':'School District of the Chathams',
-    '6045e4de07ead7744b125861':'Sevier School District',
-    '5f2609807a1c0000950bb473':'Skillman Foundation',
-    '617fc552ccd2dd76541ed5eb': 'Shah Family Foundation & BPS',
-    '123':'Skillman',
-    '6045e4e007ead7744b125864':'South Summit School District',
-    '60eea965ae7de54f57abf234':'Southfield Public Schools',
-    '5f2609807a1c0000950bb46a':'Springfield Public School',
-    '6045e4e007ead7744b125865':'Sudbury Public Schools',
-    '6045e4e107ead7744b125866':'Tooele County School District',
-    '60a7b03831afdba383052726':'United Way Of Santa Barbara',
-    '6045e4d607ead7744b125852':'Upland Unified School District',
-    '5f2609807a1c0000950bb468':'Utah Board of Education',
-    '456':'UWBA',
-    '6023a7949e8e623753fc3061':'Wasatch County School District',
-    '6045e4e207ead7744b125867':'Washoe County School District',
-    '5f698b826451a9089d7d4008':'Wayne Metro',
-    '6045e4d607ead7744b125853':'West Contra Costa Unified School District',
-    '5f2609807a1c0000950bb45b':'Westfield Public School District',
-    '6045e4e207ead7744b125868':'Westford Public Schools',
-    '6045e4d207ead7744b12584c':'White River School District',
-    '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
-    '5f2609807a1c0000950bb45d':'Youngstown',
-    }
+# Global district id code
+disdic1={
+'789':'Attendance works', 
+'5f2609807a1c0000950bb45a':'LAUSD',
+'123':'Skillman',
+'456':'UWBA',
+}
+username=urllib.parse.quote_plus('adminIE')
+password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+db=client.compass_beta 
+df2 = DataFrame(list(db.district_master.aggregate([
+{'$project':{'_id':1,'DISTRICT_NAME':1 }}
+])))
+disdic2 = dict(df2.values)
+# if districtid in disdic1:
+#     district=disdic1[districtid]
+# else:   
+#     district=disdic2[ObjectId(districtid)]
 
 
 @app.route('/word_cloud_chart/<product>/<rating>/<startdate>/<enddate>')
@@ -1826,152 +1699,15 @@ def _excecutivecount_():
 # =====================districtreport===========================
 @app.route('/schoolwisefamilycount/<districtid>')
 def schpuc(districtid):
-    disdic={
-    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
-    "62603f5be9c76545ce51d732":"North Elementary School District",
-    "62552a4fbc7b0f11833b430c":"DUSD Power",
-    "623975aa25e068fe63efa956":"Project Hoeppner",
-    "6241625424e8123075e7b423":"North Muskegon School District",
-    "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
-    '620f3d6132c6d4813f4c9887':'Jackson County Schools',
-    "5f2609807a1c0000950bb459":"North Special School District",    
-    '61af3b75870dba387bcd86cd':'Holyoke Public Schools',    
-    '6045e4d007ead7744b125848':'Adams 12 Five Star Schools',
-    '619268dd81f00a4319a65a52':'Access Community',
-    '6045e4d707ead7744b125854':'Adams County School District 14',
-    '5f2609807a1c0000950bb475':'Agawam School district',
-    '5f2609807a1c0000950bb481':'Alameda Unified School District',
-    '5f2609807a1c0000950bb47a':'Alpine School District',
-    '5f2609807a1c0000950bb47b':'Ann Arbor Public Schools',
-    '6045e4c907ead7744b12583d':'Apple Valley Unified School District',
-    '789':'Attendance works',
-    '6045e4d707ead7744b125855':'Aurora Public Schools',
-    '5f2609807a1c0000950bb463':'Austin Independent School District',
-    '5f59e4836451a9089d7d4007':'Belleville School District',
-    '61aa08a4afeab44256f54074':'Benton Harbor',
-    '6045e4d107ead7744b125849':'Berkeley Public Schools',
-    '5fe2e25d4d0ca68d7baf889d':'BGCA',
-    '6045e4ca07ead7744b12583e':'Bishop Unified School District',
-    '6045e4d107ead7744b12584a':'Bismarck Public Schools',
-    '5fe318b14d0ca68d7baf889e':'BLUE',
-    '6045e4c807ead7744b12583b':'Boston Public Schools',
-    '6023a6d79e8e623753fc305c':'Boulder Valley School District',
-    '60f7bf747cc8db72d772e465':'Bright Horizons Early Learning Centers',
-    '5f2609807a1c0000950bb46d':'Broward County Public Schools',
-    '6045e4ca07ead7744b12583f':'Canyons School District',
-    '60473f8823e88e242074ebd2':'Champlain Valley School District',
-    '6045e4d907ead7744b125858':'Chicago Public Schools',
-    '5f2609807a1c0000950bb46c':'Chico Unified School District',
-    '5ffd8176469a86e28635f512':'Chula Vista Elementary School District',
-    '5f2609807a1c0000950bb460':'Clarksville-Montgomery County School System',
-    '6045e4d907ead7744b125857':'Colton Joint Unified School District',
-    '5f2609807a1c0000950bb47f':'Community Consolidated School District 89',
-    '5f2609807a1c0000950bb45c':'Comox Valley School District',
-    '5f2609807a1c0000950bb480':'Dell Texas',
-    '6045e4da07ead7744b125859':'Dennis-Yarmouth Regional School District',
-    '6045e4cb07ead7744b125840':'Denver Public Schools',
-    '5f2609807a1c0000950bb46e':'District 25 New York Schools',
-    '5f7413ef9387fd71ce6387cb':'Douglas County School District',
-    '6045e4c707ead7744b12583a':'Durham Public Schools',
-    '5f895191609e08b76029f641':'Early learning Sarasota',
-    '5f2609807a1c0000950bb462':'Englewood Cliffs Public Schools',
-    '5f2609807a1c0000950bb461':'Englewood Public School District',
-    '5f2609807a1c0000950bb464':'Equity Education',
-    '6045e4cc07ead7744b125841':'Fairfax County Public Schools',
-    '5f2609807a1c0000950bb45e':'Fairfield-Suisun Unified School District',
-    '6045e4cd07ead7744b125843':'Falmouth Public Schools',
-    '6045e4da07ead7744b12585a':'FITCHBURG PUBLIC SCHOOLS',
-    '5f2609807a1c0000950bb47d':'Flint Public Schools',
-    '6023a7269e8e623753fc305e':'Fulton County School System',
-    '5f2609807a1c0000950bb46b':'FundaciÃ³n La Puerta',
-    '6045e4d207ead7744b12584b':'Glenbard District 87',
-    '5f2609807a1c0000950bb450':'Goleta District',
-    '6045e4cd07ead7744b125844':'Granite School District',
-    '5f2609807a1c0000950bb474':'Greenburgh North Castle Union Free School District',
-    '5f2609807a1c0000950bb45f':'Griffin-Spalding County School System',
-    '60cb8971c5b0e89ed7ac0aa1':'Hall County School District',
-    '5f9aa5e526edbed399d56c92':'Hamilton-Wenham Regional School District',
-    '6045e4c707ead7744b125839':'Hartford Public Schools',
-    '5f2609807a1c0000950bb47c':'Hawaii Public Schools',
-    '6045e4ce07ead7744b125845':'Helena Public Schools',
-    '6045e4db07ead7744b12585b':'HidalgoIndependent School district',
-    '5f2609807a1c0000950bb476':'Hillsborough County',
-    '6045e4db07ead7744b12585c':'Hopedale Public Schools',
-    '6045e4cc07ead7744b125842':'Houston Independent School District',
-    '60b872ce826cab06ebdf044e':'Kalamazoo Public Schools',
-    '6045e4dc07ead7744b12585d':'Kearsarge Regional School District',
-    '6045e4d307ead7744b12584d':'KIPP Public Schools',
-    '5f2609807a1c0000950bb455':'Krum Independent School District',
-    '5f2609807a1c0000950bb47e':'La Joya School District',
-    '6045e4cf07ead7744b125846':'Lamar Consolidated Independent School District',
-    '5f2609807a1c0000950bb45a':'LAUSD',
-    '5f2609807a1c0000950bb467':'Lincolnshire Schools',
-    '6045e4dc07ead7744b12585e':'Littleton Public Schools',
-    '5fe2e1ee4d0ca68d7baf889c':'LSF-Head Start',
-    '6023a7499e8e623753fc305f':'Manatee County School District',
-    '5f2609807a1c0000950bb482':'Massachusetts Institute of Technology',
-    '6077e1b5eaa8bae0e2e04a64':'Medfield School District',
-    '6023a7019e8e623753fc305d':'Miami-Dade County Public Schools',
-    '5f2609807a1c0000950bb465':'Middleton-Cross Plains Area School District',
-    '6045e4d407ead7744b12584f':'Mill Valley School District',
-    '6045e4d307ead7744b12584e':'Millard School District',
-    '610d0837931db8cfdf500fef':'Mission Consolidated Independent School District',
-    '5fb4efce4139b9d4c5a86a69':'Mt. Lebanon School District',
-    '6045e4cf07ead7744b125847':'Muscatine Community School District',
-    '5fbcdf0ba84e48a64412a798':'Needham School District',
-    '5f2609807a1c0000950bb459':'North Special School District',
-    '6045e4c907ead7744b12583c':'Northside Independent School District',
-    '5f7c01fa9387fd71ce6387cc':'NYC - Queens South',
-    '5fd704da04a848e368de5dc6':'Oakland Unified School District',
-    '5f6994386451a9089d7d4009':'Ogden school district',
-    '5f2609807a1c0000950bb472':'Oroville City Elementary School District',
-    '6017ab3043ca9c39151838d4':'Oswego School District',
-    '6045e4dd07ead7744b12585f':'Palm Beach County School District',
-    '60913aaea5fd4b56a4bafa70':'Palm Springs Unified',
-    '5f2609807a1c0000950bb479':'Panorama Education',
-    '5f2609807a1c0000950bb46f':'Paradise Schools',
-    '5f8fcd33609e08b76029f644':'Paradise Unified School District',
-    '6045e4de07ead7744b125860':'Paterson School District',
-    '5f2609807a1c0000950bb466':'Pinellas County Schools',
-    '5f2609807a1c0000950bb471':'Racine Unified Schools',
-    '6045e4d507ead7744b125850':'Rich School District',
-    '5f6d7cbce6452eb06384db20':'Salt Lake City School District',
-    '5f2609807a1c0000950bb478':'San Diego Unified School District',
-    '6045e4d507ead7744b125851':'San Francisco Unified School District',
-    '6023a76f9e8e623753fc3060':'San Jose Unified School District',
-    '5f2609807a1c0000950bb470':'San Leandro Unified School District',
-    '6045e4df07ead7744b125862':'San Marcos Unified School District',
-    '6045e4df07ead7744b125863':'San Marino Unified School District',
-    '5f2609807a1c0000950bb477':'Sarasota County',
-    '602e60e567d3e6c0a4eb4d99':'School District of Palm Beach County',
-    '6045e4d807ead7744b125856':'School District of the Chathams',
-    '6045e4de07ead7744b125861':'Sevier School District',
-    '5f2609807a1c0000950bb473':'Skillman Foundation',
-    '123':'Skillman',
-    '6045e4e007ead7744b125864':'South Summit School District',
-    '60eea965ae7de54f57abf234':'Southfield Public Schools',
-    '5f2609807a1c0000950bb46a':'Springfield Public School',
-    '6045e4e007ead7744b125865':'Sudbury Public Schools',
-    '6045e4e107ead7744b125866':'Tooele County School District',
-    '60a7b03831afdba383052726':'United Way Of Santa Barbara',
-    '6045e4d607ead7744b125852':'Upland Unified School District',
-    '5f2609807a1c0000950bb468':'Utah Board of Education',
-    '456':'UWBA',
-    '6023a7949e8e623753fc3061':'Wasatch County School District',
-    '6045e4e207ead7744b125867':'Washoe County School District',
-    '5f698b826451a9089d7d4008':'Wayne Metro',
-    '6045e4d607ead7744b125853':'West Contra Costa Unified School District',
-    '5f2609807a1c0000950bb45b':'Westfield Public School District',
-    '6045e4e207ead7744b125868':'Westford Public Schools',
-    '6045e4d207ead7744b12584c':'White River School District',
-    '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
-    '5f2609807a1c0000950bb45d':'Youngstown'}
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.user_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     df = DataFrame(list(collection.aggregate([
     {"$match":
          {'$and': [
@@ -2023,153 +1759,16 @@ def schpuc(districtid):
 
 @app.route('/schoolwisefamilypracticecount/<districtid>')
 def schppcfamily(districtid):
-    disdic={
-    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
-    "62603f5be9c76545ce51d732":"North Elementary School District",
-    "62552a4fbc7b0f11833b430c":"DUSD Power",
-    "623975aa25e068fe63efa956":"Project Hoeppner",
-    "6241625424e8123075e7b423":"North Muskegon School District",
-    "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
-    '620f3d6132c6d4813f4c9887':'Jackson County Schools',
-    "5f2609807a1c0000950bb459":"North Special School District",    
-    '61af3b75870dba387bcd86cd':'Holyoke Public Schools',    
-    '6045e4d007ead7744b125848':'Adams 12 Five Star Schools',
-    '619268dd81f00a4319a65a52':'Access Community',
-    '6045e4d707ead7744b125854':'Adams County School District 14',
-    '5f2609807a1c0000950bb475':'Agawam School district',
-    '5f2609807a1c0000950bb481':'Alameda Unified School District',
-    '5f2609807a1c0000950bb47a':'Alpine School District',
-    '5f2609807a1c0000950bb47b':'Ann Arbor Public Schools',
-    '6045e4c907ead7744b12583d':'Apple Valley Unified School District',
-    '789':'Attendance works',
-    '6045e4d707ead7744b125855':'Aurora Public Schools',
-    '5f2609807a1c0000950bb463':'Austin Independent School District',
-    '5f59e4836451a9089d7d4007':'Belleville School District',
-    '61aa08a4afeab44256f54074':'Benton Harbor',
-    '6045e4d107ead7744b125849':'Berkeley Public Schools',
-    '5fe2e25d4d0ca68d7baf889d':'BGCA',
-    '6045e4ca07ead7744b12583e':'Bishop Unified School District',
-    '6045e4d107ead7744b12584a':'Bismarck Public Schools',
-    '5fe318b14d0ca68d7baf889e':'BLUE',
-    '6045e4c807ead7744b12583b':'Boston Public Schools',
-    '6023a6d79e8e623753fc305c':'Boulder Valley School District',
-    '60f7bf747cc8db72d772e465':'Bright Horizons Early Learning Centers',
-    '5f2609807a1c0000950bb46d':'Broward County Public Schools',
-    '6045e4ca07ead7744b12583f':'Canyons School District',
-    '60473f8823e88e242074ebd2':'Champlain Valley School District',
-    '6045e4d907ead7744b125858':'Chicago Public Schools',
-    '5f2609807a1c0000950bb46c':'Chico Unified School District',
-    '5ffd8176469a86e28635f512':'Chula Vista Elementary School District',
-    '5f2609807a1c0000950bb460':'Clarksville-Montgomery County School System',
-    '6045e4d907ead7744b125857':'Colton Joint Unified School District',
-    '5f2609807a1c0000950bb47f':'Community Consolidated School District 89',
-    '5f2609807a1c0000950bb45c':'Comox Valley School District',
-    '5f2609807a1c0000950bb480':'Dell Texas',
-    '6045e4da07ead7744b125859':'Dennis-Yarmouth Regional School District',
-    '6045e4cb07ead7744b125840':'Denver Public Schools',
-    '5f2609807a1c0000950bb46e':'District 25 New York Schools',
-    '5f7413ef9387fd71ce6387cb':'Douglas County School District',
-    '6045e4c707ead7744b12583a':'Durham Public Schools',
-    '5f895191609e08b76029f641':'Early learning Sarasota',
-    '5f2609807a1c0000950bb462':'Englewood Cliffs Public Schools',
-    '5f2609807a1c0000950bb461':'Englewood Public School District',
-    '5f2609807a1c0000950bb464':'Equity Education',
-    '6045e4cc07ead7744b125841':'Fairfax County Public Schools',
-    '5f2609807a1c0000950bb45e':'Fairfield-Suisun Unified School District',
-    '6045e4cd07ead7744b125843':'Falmouth Public Schools',
-    '6045e4da07ead7744b12585a':'FITCHBURG PUBLIC SCHOOLS',
-    '5f2609807a1c0000950bb47d':'Flint Public Schools',
-    '6023a7269e8e623753fc305e':'Fulton County School System',
-    '5f2609807a1c0000950bb46b':'FundaciÃ³n La Puerta',
-    '6045e4d207ead7744b12584b':'Glenbard District 87',
-    '5f2609807a1c0000950bb450':'Goleta District',
-    '6045e4cd07ead7744b125844':'Granite School District',
-    '5f2609807a1c0000950bb474':'Greenburgh North Castle Union Free School District',
-    '5f2609807a1c0000950bb45f':'Griffin-Spalding County School System',
-    '60cb8971c5b0e89ed7ac0aa1':'Hall County School District',
-    '5f9aa5e526edbed399d56c92':'Hamilton-Wenham Regional School District',
-    '6045e4c707ead7744b125839':'Hartford Public Schools',
-    '5f2609807a1c0000950bb47c':'Hawaii Public Schools',
-    '6045e4ce07ead7744b125845':'Helena Public Schools',
-    '6045e4db07ead7744b12585b':'HidalgoIndependent School district',
-    '5f2609807a1c0000950bb476':'Hillsborough County',
-    '6045e4db07ead7744b12585c':'Hopedale Public Schools',
-    '6045e4cc07ead7744b125842':'Houston Independent School District',
-    '60b872ce826cab06ebdf044e':'Kalamazoo Public Schools',
-    '6045e4dc07ead7744b12585d':'Kearsarge Regional School District',
-    '6045e4d307ead7744b12584d':'KIPP Public Schools',
-    '5f2609807a1c0000950bb455':'Krum Independent School District',
-    '5f2609807a1c0000950bb47e':'La Joya School District',
-    '6045e4cf07ead7744b125846':'Lamar Consolidated Independent School District',
-    '5f2609807a1c0000950bb45a':'LAUSD',
-    '5f2609807a1c0000950bb467':'Lincolnshire Schools',
-    '6045e4dc07ead7744b12585e':'Littleton Public Schools',
-    '5fe2e1ee4d0ca68d7baf889c':'LSF-Head Start',
-    '6023a7499e8e623753fc305f':'Manatee County School District',
-    '5f2609807a1c0000950bb482':'Massachusetts Institute of Technology',
-    '6077e1b5eaa8bae0e2e04a64':'Medfield School District',
-    '6023a7019e8e623753fc305d':'Miami-Dade County Public Schools',
-    '5f2609807a1c0000950bb465':'Middleton-Cross Plains Area School District',
-    '6045e4d407ead7744b12584f':'Mill Valley School District',
-    '6045e4d307ead7744b12584e':'Millard School District',
-    '610d0837931db8cfdf500fef':'Mission Consolidated Independent School District',
-    '5fb4efce4139b9d4c5a86a69':'Mt. Lebanon School District',
-    '6045e4cf07ead7744b125847':'Muscatine Community School District',
-    '5fbcdf0ba84e48a64412a798':'Needham School District',
-    '5f2609807a1c0000950bb459':'North Special School District',
-    '6045e4c907ead7744b12583c':'Northside Independent School District',
-    '5f7c01fa9387fd71ce6387cc':'NYC - Queens South',
-    '5fd704da04a848e368de5dc6':'Oakland Unified School District',
-    '5f6994386451a9089d7d4009':'Ogden school district',
-    '5f2609807a1c0000950bb472':'Oroville City Elementary School District',
-    '6017ab3043ca9c39151838d4':'Oswego School District',
-    '6045e4dd07ead7744b12585f':'Palm Beach County School District',
-    '60913aaea5fd4b56a4bafa70':'Palm Springs Unified',
-    '5f2609807a1c0000950bb479':'Panorama Education',
-    '5f2609807a1c0000950bb46f':'Paradise Schools',
-    '5f8fcd33609e08b76029f644':'Paradise Unified School District',
-    '6045e4de07ead7744b125860':'Paterson School District',
-    '5f2609807a1c0000950bb466':'Pinellas County Schools',
-    '5f2609807a1c0000950bb471':'Racine Unified Schools',
-    '6045e4d507ead7744b125850':'Rich School District',
-    '5f6d7cbce6452eb06384db20':'Salt Lake City School District',
-    '5f2609807a1c0000950bb478':'San Diego Unified School District',
-    '6045e4d507ead7744b125851':'San Francisco Unified School District',
-    '6023a76f9e8e623753fc3060':'San Jose Unified School District',
-    '5f2609807a1c0000950bb470':'San Leandro Unified School District',
-    '6045e4df07ead7744b125862':'San Marcos Unified School District',
-    '6045e4df07ead7744b125863':'San Marino Unified School District',
-    '5f2609807a1c0000950bb477':'Sarasota County',
-    '602e60e567d3e6c0a4eb4d99':'School District of Palm Beach County',
-    '6045e4d807ead7744b125856':'School District of the Chathams',
-    '6045e4de07ead7744b125861':'Sevier School District',
-    '5f2609807a1c0000950bb473':'Skillman Foundation',
-    '123':'Skillman',
-    '6045e4e007ead7744b125864':'South Summit School District',
-    '60eea965ae7de54f57abf234':'Southfield Public Schools',
-    '5f2609807a1c0000950bb46a':'Springfield Public School',
-    '6045e4e007ead7744b125865':'Sudbury Public Schools',
-    '6045e4e107ead7744b125866':'Tooele County School District',
-    '60a7b03831afdba383052726':'United Way Of Santa Barbara',
-    '6045e4d607ead7744b125852':'Upland Unified School District',
-    '5f2609807a1c0000950bb468':'Utah Board of Education',
-    '456':'UWBA',
-    '6023a7949e8e623753fc3061':'Wasatch County School District',
-    '6045e4e207ead7744b125867':'Washoe County School District',
-    '5f698b826451a9089d7d4008':'Wayne Metro',
-    '6045e4d607ead7744b125853':'West Contra Costa Unified School District',
-    '5f2609807a1c0000950bb45b':'Westfield Public School District',
-    '6045e4e207ead7744b125868':'Westford Public Schools',
-    '6045e4d207ead7744b12584c':'White River School District',
-    '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
-    '5f2609807a1c0000950bb45d':'Youngstown'}
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
     collection1 = db.user_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     df1 = DataFrame(list(collection.aggregate([
     {"$match":
          {'$and': [
@@ -2243,153 +1842,16 @@ def schppcfamily(districtid):
 
 @app.route('/schoolwisepracticecounttop20/<districtid>')
 def schwisepc(districtid):
-    disdic={
-    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
-    "62603f5be9c76545ce51d732":"North Elementary School District",
-    "62552a4fbc7b0f11833b430c":"DUSD Power",
-    "623975aa25e068fe63efa956":"Project Hoeppner",       
-    "6241625424e8123075e7b423":"North Muskegon School District",
-    "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
-    '620f3d6132c6d4813f4c9887':'Jackson County Schools', 
-    "5f2609807a1c0000950bb459":"North Special School District",
-    '61af3b75870dba387bcd86cd':'Holyoke Public Schools',    
-    '6045e4d007ead7744b125848':'Adams 12 Five Star Schools',
-    '619268dd81f00a4319a65a52':'Access Community',
-    '6045e4d707ead7744b125854':'Adams County School District 14',
-    '5f2609807a1c0000950bb475':'Agawam School district',
-    '5f2609807a1c0000950bb481':'Alameda Unified School District',
-    '5f2609807a1c0000950bb47a':'Alpine School District',
-    '5f2609807a1c0000950bb47b':'Ann Arbor Public Schools',
-    '6045e4c907ead7744b12583d':'Apple Valley Unified School District',
-    '789':'Attendance works',
-    '6045e4d707ead7744b125855':'Aurora Public Schools',
-    '5f2609807a1c0000950bb463':'Austin Independent School District',
-    '5f59e4836451a9089d7d4007':'Belleville School District',
-    '61aa08a4afeab44256f54074':'Benton Harbor',
-    '6045e4d107ead7744b125849':'Berkeley Public Schools',
-    '5fe2e25d4d0ca68d7baf889d':'BGCA',
-    '6045e4ca07ead7744b12583e':'Bishop Unified School District',
-    '6045e4d107ead7744b12584a':'Bismarck Public Schools',
-    '5fe318b14d0ca68d7baf889e':'BLUE',
-    '6045e4c807ead7744b12583b':'Boston Public Schools',
-    '6023a6d79e8e623753fc305c':'Boulder Valley School District',
-    '60f7bf747cc8db72d772e465':'Bright Horizons Early Learning Centers',
-    '5f2609807a1c0000950bb46d':'Broward County Public Schools',
-    '6045e4ca07ead7744b12583f':'Canyons School District',
-    '60473f8823e88e242074ebd2':'Champlain Valley School District',
-    '6045e4d907ead7744b125858':'Chicago Public Schools',
-    '5f2609807a1c0000950bb46c':'Chico Unified School District',
-    '5ffd8176469a86e28635f512':'Chula Vista Elementary School District',
-    '5f2609807a1c0000950bb460':'Clarksville-Montgomery County School System',
-    '6045e4d907ead7744b125857':'Colton Joint Unified School District',
-    '5f2609807a1c0000950bb47f':'Community Consolidated School District 89',
-    '5f2609807a1c0000950bb45c':'Comox Valley School District',
-    '5f2609807a1c0000950bb480':'Dell Texas',
-    '6045e4da07ead7744b125859':'Dennis-Yarmouth Regional School District',
-    '6045e4cb07ead7744b125840':'Denver Public Schools',
-    '5f2609807a1c0000950bb46e':'District 25 New York Schools',
-    '5f7413ef9387fd71ce6387cb':'Douglas County School District',
-    '6045e4c707ead7744b12583a':'Durham Public Schools',
-    '5f895191609e08b76029f641':'Early learning Sarasota',
-    '5f2609807a1c0000950bb462':'Englewood Cliffs Public Schools',
-    '5f2609807a1c0000950bb461':'Englewood Public School District',
-    '5f2609807a1c0000950bb464':'Equity Education',
-    '6045e4cc07ead7744b125841':'Fairfax County Public Schools',
-    '5f2609807a1c0000950bb45e':'Fairfield-Suisun Unified School District',
-    '6045e4cd07ead7744b125843':'Falmouth Public Schools',
-    '6045e4da07ead7744b12585a':'FITCHBURG PUBLIC SCHOOLS',
-    '5f2609807a1c0000950bb47d':'Flint Public Schools',
-    '6023a7269e8e623753fc305e':'Fulton County School System',
-    '5f2609807a1c0000950bb46b':'FundaciÃ³n La Puerta',
-    '6045e4d207ead7744b12584b':'Glenbard District 87',
-    '5f2609807a1c0000950bb450':'Goleta District',
-    '6045e4cd07ead7744b125844':'Granite School District',
-    '5f2609807a1c0000950bb474':'Greenburgh North Castle Union Free School District',
-    '5f2609807a1c0000950bb45f':'Griffin-Spalding County School System',
-    '60cb8971c5b0e89ed7ac0aa1':'Hall County School District',
-    '5f9aa5e526edbed399d56c92':'Hamilton-Wenham Regional School District',
-    '6045e4c707ead7744b125839':'Hartford Public Schools',
-    '5f2609807a1c0000950bb47c':'Hawaii Public Schools',
-    '6045e4ce07ead7744b125845':'Helena Public Schools',
-    '6045e4db07ead7744b12585b':'HidalgoIndependent School district',
-    '5f2609807a1c0000950bb476':'Hillsborough County',
-    '6045e4db07ead7744b12585c':'Hopedale Public Schools',
-    '6045e4cc07ead7744b125842':'Houston Independent School District',
-    '60b872ce826cab06ebdf044e':'Kalamazoo Public Schools',
-    '6045e4dc07ead7744b12585d':'Kearsarge Regional School District',
-    '6045e4d307ead7744b12584d':'KIPP Public Schools',
-    '5f2609807a1c0000950bb455':'Krum Independent School District',
-    '5f2609807a1c0000950bb47e':'La Joya School District',
-    '6045e4cf07ead7744b125846':'Lamar Consolidated Independent School District',
-    '5f2609807a1c0000950bb45a':'LAUSD',
-    '5f2609807a1c0000950bb467':'Lincolnshire Schools',
-    '6045e4dc07ead7744b12585e':'Littleton Public Schools',
-    '5fe2e1ee4d0ca68d7baf889c':'LSF-Head Start',
-    '6023a7499e8e623753fc305f':'Manatee County School District',
-    '5f2609807a1c0000950bb482':'Massachusetts Institute of Technology',
-    '6077e1b5eaa8bae0e2e04a64':'Medfield School District',
-    '6023a7019e8e623753fc305d':'Miami-Dade County Public Schools',
-    '5f2609807a1c0000950bb465':'Middleton-Cross Plains Area School District',
-    '6045e4d407ead7744b12584f':'Mill Valley School District',
-    '6045e4d307ead7744b12584e':'Millard School District',
-    '610d0837931db8cfdf500fef':'Mission Consolidated Independent School District',
-    '5fb4efce4139b9d4c5a86a69':'Mt. Lebanon School District',
-    '6045e4cf07ead7744b125847':'Muscatine Community School District',
-    '5fbcdf0ba84e48a64412a798':'Needham School District',
-    '5f2609807a1c0000950bb459':'North Special School District',
-    '6045e4c907ead7744b12583c':'Northside Independent School District',
-    '5f7c01fa9387fd71ce6387cc':'NYC - Queens South',
-    '5fd704da04a848e368de5dc6':'Oakland Unified School District',
-    '5f6994386451a9089d7d4009':'Ogden school district',
-    '5f2609807a1c0000950bb472':'Oroville City Elementary School District',
-    '6017ab3043ca9c39151838d4':'Oswego School District',
-    '6045e4dd07ead7744b12585f':'Palm Beach County School District',
-    '60913aaea5fd4b56a4bafa70':'Palm Springs Unified',
-    '5f2609807a1c0000950bb479':'Panorama Education',
-    '5f2609807a1c0000950bb46f':'Paradise Schools',
-    '5f8fcd33609e08b76029f644':'Paradise Unified School District',
-    '6045e4de07ead7744b125860':'Paterson School District',
-    '5f2609807a1c0000950bb466':'Pinellas County Schools',
-    '5f2609807a1c0000950bb471':'Racine Unified Schools',
-    '6045e4d507ead7744b125850':'Rich School District',
-    '5f6d7cbce6452eb06384db20':'Salt Lake City School District',
-    '5f2609807a1c0000950bb478':'San Diego Unified School District',
-    '6045e4d507ead7744b125851':'San Francisco Unified School District',
-    '6023a76f9e8e623753fc3060':'San Jose Unified School District',
-    '5f2609807a1c0000950bb470':'San Leandro Unified School District',
-    '6045e4df07ead7744b125862':'San Marcos Unified School District',
-    '6045e4df07ead7744b125863':'San Marino Unified School District',
-    '5f2609807a1c0000950bb477':'Sarasota County',
-    '602e60e567d3e6c0a4eb4d99':'School District of Palm Beach County',
-    '6045e4d807ead7744b125856':'School District of the Chathams',
-    '6045e4de07ead7744b125861':'Sevier School District',
-    '5f2609807a1c0000950bb473':'Skillman Foundation',
-    '123':'Skillman',
-    '6045e4e007ead7744b125864':'South Summit School District',
-    '60eea965ae7de54f57abf234':'Southfield Public Schools',
-    '5f2609807a1c0000950bb46a':'Springfield Public School',
-    '6045e4e007ead7744b125865':'Sudbury Public Schools',
-    '6045e4e107ead7744b125866':'Tooele County School District',
-    '60a7b03831afdba383052726':'United Way Of Santa Barbara',
-    '6045e4d607ead7744b125852':'Upland Unified School District',
-    '5f2609807a1c0000950bb468':'Utah Board of Education',
-    '456':'UWBA',
-    '6023a7949e8e623753fc3061':'Wasatch County School District',
-    '6045e4e207ead7744b125867':'Washoe County School District',
-    '5f698b826451a9089d7d4008':'Wayne Metro',
-    '6045e4d607ead7744b125853':'West Contra Costa Unified School District',
-    '5f2609807a1c0000950bb45b':'Westfield Public School District',
-    '6045e4e207ead7744b125868':'Westford Public Schools',
-    '6045e4d207ead7744b12584c':'White River School District',
-    '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
-    '5f2609807a1c0000950bb45d':'Youngstown'}
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
     collection1 = db.user_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     df1 = DataFrame(list(collection.aggregate([
     {"$match":
          {'$and': [
@@ -2464,152 +1926,15 @@ def schwisepc(districtid):
 
 @app.route('/schoolwiseusercounttop20/<districtid>')
 def schwiseuc(districtid):
-    disdic={
-    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
-    "62603f5be9c76545ce51d732":"North Elementary School District",
-    "62552a4fbc7b0f11833b430c":"DUSD Power",
-    "623975aa25e068fe63efa956":"Project Hoeppner",
-    "6241625424e8123075e7b423":"North Muskegon School District",
-    "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
-    '620f3d6132c6d4813f4c9887':'Jackson County Schools',
-    "5f2609807a1c0000950bb459":"North Special School District",
-    '61af3b75870dba387bcd86cd':'Holyoke Public Schools',    
-    '6045e4d007ead7744b125848':'Adams 12 Five Star Schools',
-    '619268dd81f00a4319a65a52':'Access Community',
-    '6045e4d707ead7744b125854':'Adams County School District 14',
-    '5f2609807a1c0000950bb475':'Agawam School district',
-    '5f2609807a1c0000950bb481':'Alameda Unified School District',
-    '5f2609807a1c0000950bb47a':'Alpine School District',
-    '5f2609807a1c0000950bb47b':'Ann Arbor Public Schools',
-    '6045e4c907ead7744b12583d':'Apple Valley Unified School District',
-    '789':'Attendance works',
-    '6045e4d707ead7744b125855':'Aurora Public Schools',
-    '5f2609807a1c0000950bb463':'Austin Independent School District',
-    '5f59e4836451a9089d7d4007':'Belleville School District',
-    '61aa08a4afeab44256f54074':'Benton Harbor',
-    '6045e4d107ead7744b125849':'Berkeley Public Schools',
-    '5fe2e25d4d0ca68d7baf889d':'BGCA',
-    '6045e4ca07ead7744b12583e':'Bishop Unified School District',
-    '6045e4d107ead7744b12584a':'Bismarck Public Schools',
-    '5fe318b14d0ca68d7baf889e':'BLUE',
-    '6045e4c807ead7744b12583b':'Boston Public Schools',
-    '6023a6d79e8e623753fc305c':'Boulder Valley School District',
-    '60f7bf747cc8db72d772e465':'Bright Horizons Early Learning Centers',
-    '5f2609807a1c0000950bb46d':'Broward County Public Schools',
-    '6045e4ca07ead7744b12583f':'Canyons School District',
-    '60473f8823e88e242074ebd2':'Champlain Valley School District',
-    '6045e4d907ead7744b125858':'Chicago Public Schools',
-    '5f2609807a1c0000950bb46c':'Chico Unified School District',
-    '5ffd8176469a86e28635f512':'Chula Vista Elementary School District',
-    '5f2609807a1c0000950bb460':'Clarksville-Montgomery County School System',
-    '6045e4d907ead7744b125857':'Colton Joint Unified School District',
-    '5f2609807a1c0000950bb47f':'Community Consolidated School District 89',
-    '5f2609807a1c0000950bb45c':'Comox Valley School District',
-    '5f2609807a1c0000950bb480':'Dell Texas',
-    '6045e4da07ead7744b125859':'Dennis-Yarmouth Regional School District',
-    '6045e4cb07ead7744b125840':'Denver Public Schools',
-    '5f2609807a1c0000950bb46e':'District 25 New York Schools',
-    '5f7413ef9387fd71ce6387cb':'Douglas County School District',
-    '6045e4c707ead7744b12583a':'Durham Public Schools',
-    '5f895191609e08b76029f641':'Early learning Sarasota',
-    '5f2609807a1c0000950bb462':'Englewood Cliffs Public Schools',
-    '5f2609807a1c0000950bb461':'Englewood Public School District',
-    '5f2609807a1c0000950bb464':'Equity Education',
-    '6045e4cc07ead7744b125841':'Fairfax County Public Schools',
-    '5f2609807a1c0000950bb45e':'Fairfield-Suisun Unified School District',
-    '6045e4cd07ead7744b125843':'Falmouth Public Schools',
-    '6045e4da07ead7744b12585a':'FITCHBURG PUBLIC SCHOOLS',
-    '5f2609807a1c0000950bb47d':'Flint Public Schools',
-    '6023a7269e8e623753fc305e':'Fulton County School System',
-    '5f2609807a1c0000950bb46b':'FundaciÃ³n La Puerta',
-    '6045e4d207ead7744b12584b':'Glenbard District 87',
-    '5f2609807a1c0000950bb450':'Goleta District',
-    '6045e4cd07ead7744b125844':'Granite School District',
-    '5f2609807a1c0000950bb474':'Greenburgh North Castle Union Free School District',
-    '5f2609807a1c0000950bb45f':'Griffin-Spalding County School System',
-    '60cb8971c5b0e89ed7ac0aa1':'Hall County School District',
-    '5f9aa5e526edbed399d56c92':'Hamilton-Wenham Regional School District',
-    '6045e4c707ead7744b125839':'Hartford Public Schools',
-    '5f2609807a1c0000950bb47c':'Hawaii Public Schools',
-    '6045e4ce07ead7744b125845':'Helena Public Schools',
-    '6045e4db07ead7744b12585b':'HidalgoIndependent School district',
-    '5f2609807a1c0000950bb476':'Hillsborough County',
-    '6045e4db07ead7744b12585c':'Hopedale Public Schools',
-    '6045e4cc07ead7744b125842':'Houston Independent School District',
-    '60b872ce826cab06ebdf044e':'Kalamazoo Public Schools',
-    '6045e4dc07ead7744b12585d':'Kearsarge Regional School District',
-    '6045e4d307ead7744b12584d':'KIPP Public Schools',
-    '5f2609807a1c0000950bb455':'Krum Independent School District',
-    '5f2609807a1c0000950bb47e':'La Joya School District',
-    '6045e4cf07ead7744b125846':'Lamar Consolidated Independent School District',
-    '5f2609807a1c0000950bb45a':'LAUSD',
-    '5f2609807a1c0000950bb467':'Lincolnshire Schools',
-    '6045e4dc07ead7744b12585e':'Littleton Public Schools',
-    '5fe2e1ee4d0ca68d7baf889c':'LSF-Head Start',
-    '6023a7499e8e623753fc305f':'Manatee County School District',
-    '5f2609807a1c0000950bb482':'Massachusetts Institute of Technology',
-    '6077e1b5eaa8bae0e2e04a64':'Medfield School District',
-    '6023a7019e8e623753fc305d':'Miami-Dade County Public Schools',
-    '5f2609807a1c0000950bb465':'Middleton-Cross Plains Area School District',
-    '6045e4d407ead7744b12584f':'Mill Valley School District',
-    '6045e4d307ead7744b12584e':'Millard School District',
-    '610d0837931db8cfdf500fef':'Mission Consolidated Independent School District',
-    '5fb4efce4139b9d4c5a86a69':'Mt. Lebanon School District',
-    '6045e4cf07ead7744b125847':'Muscatine Community School District',
-    '5fbcdf0ba84e48a64412a798':'Needham School District',
-    '5f2609807a1c0000950bb459':'North Special School District',
-    '6045e4c907ead7744b12583c':'Northside Independent School District',
-    '5f7c01fa9387fd71ce6387cc':'NYC - Queens South',
-    '5fd704da04a848e368de5dc6':'Oakland Unified School District',
-    '5f6994386451a9089d7d4009':'Ogden school district',
-    '5f2609807a1c0000950bb472':'Oroville City Elementary School District',
-    '6017ab3043ca9c39151838d4':'Oswego School District',
-    '6045e4dd07ead7744b12585f':'Palm Beach County School District',
-    '60913aaea5fd4b56a4bafa70':'Palm Springs Unified',
-    '5f2609807a1c0000950bb479':'Panorama Education',
-    '5f2609807a1c0000950bb46f':'Paradise Schools',
-    '5f8fcd33609e08b76029f644':'Paradise Unified School District',
-    '6045e4de07ead7744b125860':'Paterson School District',
-    '5f2609807a1c0000950bb466':'Pinellas County Schools',
-    '5f2609807a1c0000950bb471':'Racine Unified Schools',
-    '6045e4d507ead7744b125850':'Rich School District',
-    '5f6d7cbce6452eb06384db20':'Salt Lake City School District',
-    '5f2609807a1c0000950bb478':'San Diego Unified School District',
-    '6045e4d507ead7744b125851':'San Francisco Unified School District',
-    '6023a76f9e8e623753fc3060':'San Jose Unified School District',
-    '5f2609807a1c0000950bb470':'San Leandro Unified School District',
-    '6045e4df07ead7744b125862':'San Marcos Unified School District',
-    '6045e4df07ead7744b125863':'San Marino Unified School District',
-    '5f2609807a1c0000950bb477':'Sarasota County',
-    '602e60e567d3e6c0a4eb4d99':'School District of Palm Beach County',
-    '6045e4d807ead7744b125856':'School District of the Chathams',
-    '6045e4de07ead7744b125861':'Sevier School District',
-    '5f2609807a1c0000950bb473':'Skillman Foundation',
-    '123':'Skillman',
-    '6045e4e007ead7744b125864':'South Summit School District',
-    '60eea965ae7de54f57abf234':'Southfield Public Schools',
-    '5f2609807a1c0000950bb46a':'Springfield Public School',
-    '6045e4e007ead7744b125865':'Sudbury Public Schools',
-    '6045e4e107ead7744b125866':'Tooele County School District',
-    '60a7b03831afdba383052726':'United Way Of Santa Barbara',
-    '6045e4d607ead7744b125852':'Upland Unified School District',
-    '5f2609807a1c0000950bb468':'Utah Board of Education',
-    '456':'UWBA',
-    '6023a7949e8e623753fc3061':'Wasatch County School District',
-    '6045e4e207ead7744b125867':'Washoe County School District',
-    '5f698b826451a9089d7d4008':'Wayne Metro',
-    '6045e4d607ead7744b125853':'West Contra Costa Unified School District',
-    '5f2609807a1c0000950bb45b':'Westfield Public School District',
-    '6045e4e207ead7744b125868':'Westford Public Schools',
-    '6045e4d207ead7744b12584c':'White River School District',
-    '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
-    '5f2609807a1c0000950bb45d':'Youngstown'}
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.user_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     df = DataFrame(list(collection.aggregate([
     {"$match":
          {'$and': [
@@ -2658,152 +1983,15 @@ def schwiseuc(districtid):
 
 @app.route('/monthwisepracticedistrict/<districtid>')
 def monthwisepc(districtid):
-    disdic={
-    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
-    "62603f5be9c76545ce51d732":"North Elementary School District",
-    "62552a4fbc7b0f11833b430c":"DUSD Power",
-    "623975aa25e068fe63efa956":"Project Hoeppner",
-    "6241625424e8123075e7b423":"North Muskegon School District",
-    "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
-    '620f3d6132c6d4813f4c9887':'Jackson County Schools',
-    "5f2609807a1c0000950bb459":"North Special School District",
-    '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
-    '6045e4d007ead7744b125848':'Adams 12 Five Star Schools',
-    '619268dd81f00a4319a65a52':'Access Community',
-    '6045e4d707ead7744b125854':'Adams County School District 14',
-    '5f2609807a1c0000950bb475':'Agawam School district',
-    '5f2609807a1c0000950bb481':'Alameda Unified School District',
-    '5f2609807a1c0000950bb47a':'Alpine School District',
-    '5f2609807a1c0000950bb47b':'Ann Arbor Public Schools',
-    '6045e4c907ead7744b12583d':'Apple Valley Unified School District',
-    '789':'Attendance works',
-    '6045e4d707ead7744b125855':'Aurora Public Schools',
-    '5f2609807a1c0000950bb463':'Austin Independent School District',
-    '5f59e4836451a9089d7d4007':'Belleville School District',
-    '61aa08a4afeab44256f54074':'Benton Harbor',
-    '6045e4d107ead7744b125849':'Berkeley Public Schools',
-    '5fe2e25d4d0ca68d7baf889d':'BGCA',
-    '6045e4ca07ead7744b12583e':'Bishop Unified School District',
-    '6045e4d107ead7744b12584a':'Bismarck Public Schools',
-    '5fe318b14d0ca68d7baf889e':'BLUE',
-    '6045e4c807ead7744b12583b':'Boston Public Schools',
-    '6023a6d79e8e623753fc305c':'Boulder Valley School District',
-    '60f7bf747cc8db72d772e465':'Bright Horizons Early Learning Centers',
-    '5f2609807a1c0000950bb46d':'Broward County Public Schools',
-    '6045e4ca07ead7744b12583f':'Canyons School District',
-    '60473f8823e88e242074ebd2':'Champlain Valley School District',
-    '6045e4d907ead7744b125858':'Chicago Public Schools',
-    '5f2609807a1c0000950bb46c':'Chico Unified School District',
-    '5ffd8176469a86e28635f512':'Chula Vista Elementary School District',
-    '5f2609807a1c0000950bb460':'Clarksville-Montgomery County School System',
-    '6045e4d907ead7744b125857':'Colton Joint Unified School District',
-    '5f2609807a1c0000950bb47f':'Community Consolidated School District 89',
-    '5f2609807a1c0000950bb45c':'Comox Valley School District',
-    '5f2609807a1c0000950bb480':'Dell Texas',
-    '6045e4da07ead7744b125859':'Dennis-Yarmouth Regional School District',
-    '6045e4cb07ead7744b125840':'Denver Public Schools',
-    '5f2609807a1c0000950bb46e':'District 25 New York Schools',
-    '5f7413ef9387fd71ce6387cb':'Douglas County School District',
-    '6045e4c707ead7744b12583a':'Durham Public Schools',
-    '5f895191609e08b76029f641':'Early learning Sarasota',
-    '5f2609807a1c0000950bb462':'Englewood Cliffs Public Schools',
-    '5f2609807a1c0000950bb461':'Englewood Public School District',
-    '5f2609807a1c0000950bb464':'Equity Education',
-    '6045e4cc07ead7744b125841':'Fairfax County Public Schools',
-    '5f2609807a1c0000950bb45e':'Fairfield-Suisun Unified School District',
-    '6045e4cd07ead7744b125843':'Falmouth Public Schools',
-    '6045e4da07ead7744b12585a':'FITCHBURG PUBLIC SCHOOLS',
-    '5f2609807a1c0000950bb47d':'Flint Public Schools',
-    '6023a7269e8e623753fc305e':'Fulton County School System',
-    '5f2609807a1c0000950bb46b':'FundaciÃ³n La Puerta',
-    '6045e4d207ead7744b12584b':'Glenbard District 87',
-    '5f2609807a1c0000950bb450':'Goleta District',
-    '6045e4cd07ead7744b125844':'Granite School District',
-    '5f2609807a1c0000950bb474':'Greenburgh North Castle Union Free School District',
-    '5f2609807a1c0000950bb45f':'Griffin-Spalding County School System',
-    '60cb8971c5b0e89ed7ac0aa1':'Hall County School District',
-    '5f9aa5e526edbed399d56c92':'Hamilton-Wenham Regional School District',
-    '6045e4c707ead7744b125839':'Hartford Public Schools',
-    '5f2609807a1c0000950bb47c':'Hawaii Public Schools',
-    '6045e4ce07ead7744b125845':'Helena Public Schools',
-    '6045e4db07ead7744b12585b':'HidalgoIndependent School district',
-    '5f2609807a1c0000950bb476':'Hillsborough County',
-    '6045e4db07ead7744b12585c':'Hopedale Public Schools',
-    '6045e4cc07ead7744b125842':'Houston Independent School District',
-    '60b872ce826cab06ebdf044e':'Kalamazoo Public Schools',
-    '6045e4dc07ead7744b12585d':'Kearsarge Regional School District',
-    '6045e4d307ead7744b12584d':'KIPP Public Schools',
-    '5f2609807a1c0000950bb455':'Krum Independent School District',
-    '5f2609807a1c0000950bb47e':'La Joya School District',
-    '6045e4cf07ead7744b125846':'Lamar Consolidated Independent School District',
-    '5f2609807a1c0000950bb45a':'LAUSD',
-    '5f2609807a1c0000950bb467':'Lincolnshire Schools',
-    '6045e4dc07ead7744b12585e':'Littleton Public Schools',
-    '5fe2e1ee4d0ca68d7baf889c':'LSF-Head Start',
-    '6023a7499e8e623753fc305f':'Manatee County School District',
-    '5f2609807a1c0000950bb482':'Massachusetts Institute of Technology',
-    '6077e1b5eaa8bae0e2e04a64':'Medfield School District',
-    '6023a7019e8e623753fc305d':'Miami-Dade County Public Schools',
-    '5f2609807a1c0000950bb465':'Middleton-Cross Plains Area School District',
-    '6045e4d407ead7744b12584f':'Mill Valley School District',
-    '6045e4d307ead7744b12584e':'Millard School District',
-    '610d0837931db8cfdf500fef':'Mission Consolidated Independent School District',
-    '5fb4efce4139b9d4c5a86a69':'Mt. Lebanon School District',
-    '6045e4cf07ead7744b125847':'Muscatine Community School District',
-    '5fbcdf0ba84e48a64412a798':'Needham School District',
-    '5f2609807a1c0000950bb459':'North Special School District',
-    '6045e4c907ead7744b12583c':'Northside Independent School District',
-    '5f7c01fa9387fd71ce6387cc':'NYC - Queens South',
-    '5fd704da04a848e368de5dc6':'Oakland Unified School District',
-    '5f6994386451a9089d7d4009':'Ogden school district',
-    '5f2609807a1c0000950bb472':'Oroville City Elementary School District',
-    '6017ab3043ca9c39151838d4':'Oswego School District',
-    '6045e4dd07ead7744b12585f':'Palm Beach County School District',
-    '60913aaea5fd4b56a4bafa70':'Palm Springs Unified',
-    '5f2609807a1c0000950bb479':'Panorama Education',
-    '5f2609807a1c0000950bb46f':'Paradise Schools',
-    '5f8fcd33609e08b76029f644':'Paradise Unified School District',
-    '6045e4de07ead7744b125860':'Paterson School District',
-    '5f2609807a1c0000950bb466':'Pinellas County Schools',
-    '5f2609807a1c0000950bb471':'Racine Unified Schools',
-    '6045e4d507ead7744b125850':'Rich School District',
-    '5f6d7cbce6452eb06384db20':'Salt Lake City School District',
-    '5f2609807a1c0000950bb478':'San Diego Unified School District',
-    '6045e4d507ead7744b125851':'San Francisco Unified School District',
-    '6023a76f9e8e623753fc3060':'San Jose Unified School District',
-    '5f2609807a1c0000950bb470':'San Leandro Unified School District',
-    '6045e4df07ead7744b125862':'San Marcos Unified School District',
-    '6045e4df07ead7744b125863':'San Marino Unified School District',
-    '5f2609807a1c0000950bb477':'Sarasota County',
-    '602e60e567d3e6c0a4eb4d99':'School District of Palm Beach County',
-    '6045e4d807ead7744b125856':'School District of the Chathams',
-    '6045e4de07ead7744b125861':'Sevier School District',
-    '5f2609807a1c0000950bb473':'Skillman Foundation',
-    '123':'Skillman',
-    '6045e4e007ead7744b125864':'South Summit School District',
-    '60eea965ae7de54f57abf234':'Southfield Public Schools',
-    '5f2609807a1c0000950bb46a':'Springfield Public School',
-    '6045e4e007ead7744b125865':'Sudbury Public Schools',
-    '6045e4e107ead7744b125866':'Tooele County School District',
-    '60a7b03831afdba383052726':'United Way Of Santa Barbara',
-    '6045e4d607ead7744b125852':'Upland Unified School District',
-    '5f2609807a1c0000950bb468':'Utah Board of Education',
-    '456':'UWBA',
-    '6023a7949e8e623753fc3061':'Wasatch County School District',
-    '6045e4e207ead7744b125867':'Washoe County School District',
-    '5f698b826451a9089d7d4008':'Wayne Metro',
-    '6045e4d607ead7744b125853':'West Contra Costa Unified School District',
-    '5f2609807a1c0000950bb45b':'Westfield Public School District',
-    '6045e4e207ead7744b125868':'Westford Public Schools',
-    '6045e4d207ead7744b12584c':'White River School District',
-    '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
-    '5f2609807a1c0000950bb45d':'Youngstown'}
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     df = DataFrame(list(collection.aggregate([
     {"$match":
     {'$and': [
@@ -2872,146 +2060,6 @@ def monthwisepc(districtid):
 
 @app.route('/90daysuserpractising/<districtid>')
 def user_practice_90days(districtid):
-    disdic={
-    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
-    "62603f5be9c76545ce51d732":"North Elementary School District",
-    "62552a4fbc7b0f11833b430c":"DUSD Power",
-    "623975aa25e068fe63efa956":"Project Hoeppner",
-    "6241625424e8123075e7b423":"North Muskegon School District",
-    "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
-    '620f3d6132c6d4813f4c9887':'Jackson County Schools',
-    "5f2609807a1c0000950bb459":"North Special School District",
-    '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
-    '6045e4d007ead7744b125848':'Adams 12 Five Star Schools',
-    '619268dd81f00a4319a65a52':'Access Community',
-    '6045e4d707ead7744b125854':'Adams County School District 14',
-    '5f2609807a1c0000950bb475':'Agawam School district',
-    '5f2609807a1c0000950bb481':'Alameda Unified School District',
-    '5f2609807a1c0000950bb47a':'Alpine School District',
-    '5f2609807a1c0000950bb47b':'Ann Arbor Public Schools',
-    '6045e4c907ead7744b12583d':'Apple Valley Unified School District',
-    '789':'Attendance works',
-    '6045e4d707ead7744b125855':'Aurora Public Schools',
-    '5f2609807a1c0000950bb463':'Austin Independent School District',
-    '5f59e4836451a9089d7d4007':'Belleville School District',
-    '61aa08a4afeab44256f54074':'Benton Harbor',
-    '6045e4d107ead7744b125849':'Berkeley Public Schools',
-    '5fe2e25d4d0ca68d7baf889d':'BGCA',
-    '6045e4ca07ead7744b12583e':'Bishop Unified School District',
-    '6045e4d107ead7744b12584a':'Bismarck Public Schools',
-    '5fe318b14d0ca68d7baf889e':'BLUE',
-    '6045e4c807ead7744b12583b':'Boston Public Schools',
-    '6023a6d79e8e623753fc305c':'Boulder Valley School District',
-    '60f7bf747cc8db72d772e465':'Bright Horizons Early Learning Centers',
-    '5f2609807a1c0000950bb46d':'Broward County Public Schools',
-    '6045e4ca07ead7744b12583f':'Canyons School District',
-    '60473f8823e88e242074ebd2':'Champlain Valley School District',
-    '6045e4d907ead7744b125858':'Chicago Public Schools',
-    '5f2609807a1c0000950bb46c':'Chico Unified School District',
-    '5ffd8176469a86e28635f512':'Chula Vista Elementary School District',
-    '5f2609807a1c0000950bb460':'Clarksville-Montgomery County School System',
-    '6045e4d907ead7744b125857':'Colton Joint Unified School District',
-    '5f2609807a1c0000950bb47f':'Community Consolidated School District 89',
-    '5f2609807a1c0000950bb45c':'Comox Valley School District',
-    '5f2609807a1c0000950bb480':'Dell Texas',
-    '6045e4da07ead7744b125859':'Dennis-Yarmouth Regional School District',
-    '6045e4cb07ead7744b125840':'Denver Public Schools',
-    '5f2609807a1c0000950bb46e':'District 25 New York Schools',
-    '5f7413ef9387fd71ce6387cb':'Douglas County School District',
-    '6045e4c707ead7744b12583a':'Durham Public Schools',
-    '5f895191609e08b76029f641':'Early learning Sarasota',
-    '5f2609807a1c0000950bb462':'Englewood Cliffs Public Schools',
-    '5f2609807a1c0000950bb461':'Englewood Public School District',
-    '5f2609807a1c0000950bb464':'Equity Education',
-    '6045e4cc07ead7744b125841':'Fairfax County Public Schools',
-    '5f2609807a1c0000950bb45e':'Fairfield-Suisun Unified School District',
-    '6045e4cd07ead7744b125843':'Falmouth Public Schools',
-    '6045e4da07ead7744b12585a':'FITCHBURG PUBLIC SCHOOLS',
-    '5f2609807a1c0000950bb47d':'Flint Public Schools',
-    '6023a7269e8e623753fc305e':'Fulton County School System',
-    '5f2609807a1c0000950bb46b':'FundaciÃ³n La Puerta',
-    '6045e4d207ead7744b12584b':'Glenbard District 87',
-    '5f2609807a1c0000950bb450':'Goleta District',
-    '6045e4cd07ead7744b125844':'Granite School District',
-    '5f2609807a1c0000950bb474':'Greenburgh North Castle Union Free School District',
-    '5f2609807a1c0000950bb45f':'Griffin-Spalding County School System',
-    '60cb8971c5b0e89ed7ac0aa1':'Hall County School District',
-    '5f9aa5e526edbed399d56c92':'Hamilton-Wenham Regional School District',
-    '6045e4c707ead7744b125839':'Hartford Public Schools',
-    '5f2609807a1c0000950bb47c':'Hawaii Public Schools',
-    '6045e4ce07ead7744b125845':'Helena Public Schools',
-    '6045e4db07ead7744b12585b':'HidalgoIndependent School district',
-    '5f2609807a1c0000950bb476':'Hillsborough County',
-    '6045e4db07ead7744b12585c':'Hopedale Public Schools',
-    '6045e4cc07ead7744b125842':'Houston Independent School District',
-    '60b872ce826cab06ebdf044e':'Kalamazoo Public Schools',
-    '6045e4dc07ead7744b12585d':'Kearsarge Regional School District',
-    '6045e4d307ead7744b12584d':'KIPP Public Schools',
-    '5f2609807a1c0000950bb455':'Krum Independent School District',
-    '5f2609807a1c0000950bb47e':'La Joya School District',
-    '6045e4cf07ead7744b125846':'Lamar Consolidated Independent School District',
-    '5f2609807a1c0000950bb45a':'LAUSD',
-    '5f2609807a1c0000950bb467':'Lincolnshire Schools',
-    '6045e4dc07ead7744b12585e':'Littleton Public Schools',
-    '5fe2e1ee4d0ca68d7baf889c':'LSF-Head Start',
-    '6023a7499e8e623753fc305f':'Manatee County School District',
-    '5f2609807a1c0000950bb482':'Massachusetts Institute of Technology',
-    '6077e1b5eaa8bae0e2e04a64':'Medfield School District',
-    '6023a7019e8e623753fc305d':'Miami-Dade County Public Schools',
-    '5f2609807a1c0000950bb465':'Middleton-Cross Plains Area School District',
-    '6045e4d407ead7744b12584f':'Mill Valley School District',
-    '6045e4d307ead7744b12584e':'Millard School District',
-    '610d0837931db8cfdf500fef':'Mission Consolidated Independent School District',
-    '5fb4efce4139b9d4c5a86a69':'Mt. Lebanon School District',
-    '6045e4cf07ead7744b125847':'Muscatine Community School District',
-    '5fbcdf0ba84e48a64412a798':'Needham School District',
-    '5f2609807a1c0000950bb459':'North Special School District',
-    '6045e4c907ead7744b12583c':'Northside Independent School District',
-    '5f7c01fa9387fd71ce6387cc':'NYC - Queens South',
-    '5fd704da04a848e368de5dc6':'Oakland Unified School District',
-    '5f6994386451a9089d7d4009':'Ogden school district',
-    '5f2609807a1c0000950bb472':'Oroville City Elementary School District',
-    '6017ab3043ca9c39151838d4':'Oswego School District',
-    '6045e4dd07ead7744b12585f':'Palm Beach County School District',
-    '60913aaea5fd4b56a4bafa70':'Palm Springs Unified',
-    '5f2609807a1c0000950bb479':'Panorama Education',
-    '5f2609807a1c0000950bb46f':'Paradise Schools',
-    '5f8fcd33609e08b76029f644':'Paradise Unified School District',
-    '6045e4de07ead7744b125860':'Paterson School District',
-    '5f2609807a1c0000950bb466':'Pinellas County Schools',
-    '5f2609807a1c0000950bb471':'Racine Unified Schools',
-    '6045e4d507ead7744b125850':'Rich School District',
-    '5f6d7cbce6452eb06384db20':'Salt Lake City School District',
-    '5f2609807a1c0000950bb478':'San Diego Unified School District',
-    '6045e4d507ead7744b125851':'San Francisco Unified School District',
-    '6023a76f9e8e623753fc3060':'San Jose Unified School District',
-    '5f2609807a1c0000950bb470':'San Leandro Unified School District',
-    '6045e4df07ead7744b125862':'San Marcos Unified School District',
-    '6045e4df07ead7744b125863':'San Marino Unified School District',
-    '5f2609807a1c0000950bb477':'Sarasota County',
-    '602e60e567d3e6c0a4eb4d99':'School District of Palm Beach County',
-    '6045e4d807ead7744b125856':'School District of the Chathams',
-    '6045e4de07ead7744b125861':'Sevier School District',
-    '5f2609807a1c0000950bb473':'Skillman Foundation',
-    '123':'Skillman',
-    '6045e4e007ead7744b125864':'South Summit School District',
-    '60eea965ae7de54f57abf234':'Southfield Public Schools',
-    '5f2609807a1c0000950bb46a':'Springfield Public School',
-    '6045e4e007ead7744b125865':'Sudbury Public Schools',
-    '6045e4e107ead7744b125866':'Tooele County School District',
-    '60a7b03831afdba383052726':'United Way Of Santa Barbara',
-    '6045e4d607ead7744b125852':'Upland Unified School District',
-    '5f2609807a1c0000950bb468':'Utah Board of Education',
-    '456':'UWBA',
-    '6023a7949e8e623753fc3061':'Wasatch County School District',
-    '6045e4e207ead7744b125867':'Washoe County School District',
-    '5f698b826451a9089d7d4008':'Wayne Metro',
-    '6045e4d607ead7744b125853':'West Contra Costa Unified School District',
-    '5f2609807a1c0000950bb45b':'Westfield Public School District',
-    '6045e4e207ead7744b125868':'Westford Public Schools',
-    '6045e4d207ead7744b12584c':'White River School District',
-    '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
-    '5f2609807a1c0000950bb45d':'Youngstown'}
     from datetime import datetime
     from datetime import timedelta
     
@@ -3024,7 +2072,10 @@ def user_practice_90days(districtid):
     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     df = DataFrame(list(collection.aggregate([
     {"$match":
      {'$and': [
@@ -3085,146 +2136,6 @@ def user_practice_90days(districtid):
 
 @app.route('/90daysuserloggedindetail/<districtid>')
 def user_logins_90days(districtid):
-    disdic={
-    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
-    "62603f5be9c76545ce51d732":"North Elementary School District",
-    "62552a4fbc7b0f11833b430c":"DUSD Power",
-    "623975aa25e068fe63efa956":"Project Hoeppner",
-    "6241625424e8123075e7b423":"North Muskegon School District",
-    "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
-    '620f3d6132c6d4813f4c9887':'Jackson County Schools',
-    "5f2609807a1c0000950bb459":"North Special School District",
-    '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
-    '6045e4d007ead7744b125848':'Adams 12 Five Star Schools',
-    '619268dd81f00a4319a65a52':'Access Community',
-    '6045e4d707ead7744b125854':'Adams County School District 14',
-    '5f2609807a1c0000950bb475':'Agawam School district',
-    '5f2609807a1c0000950bb481':'Alameda Unified School District',
-    '5f2609807a1c0000950bb47a':'Alpine School District',
-    '5f2609807a1c0000950bb47b':'Ann Arbor Public Schools',
-    '6045e4c907ead7744b12583d':'Apple Valley Unified School District',
-    '789':'Attendance works',
-    '6045e4d707ead7744b125855':'Aurora Public Schools',
-    '5f2609807a1c0000950bb463':'Austin Independent School District',
-    '5f59e4836451a9089d7d4007':'Belleville School District',
-    '61aa08a4afeab44256f54074':'Benton Harbor',
-    '6045e4d107ead7744b125849':'Berkeley Public Schools',
-    '5fe2e25d4d0ca68d7baf889d':'BGCA',
-    '6045e4ca07ead7744b12583e':'Bishop Unified School District',
-    '6045e4d107ead7744b12584a':'Bismarck Public Schools',
-    '5fe318b14d0ca68d7baf889e':'BLUE',
-    '6045e4c807ead7744b12583b':'Boston Public Schools',
-    '6023a6d79e8e623753fc305c':'Boulder Valley School District',
-    '60f7bf747cc8db72d772e465':'Bright Horizons Early Learning Centers',
-    '5f2609807a1c0000950bb46d':'Broward County Public Schools',
-    '6045e4ca07ead7744b12583f':'Canyons School District',
-    '60473f8823e88e242074ebd2':'Champlain Valley School District',
-    '6045e4d907ead7744b125858':'Chicago Public Schools',
-    '5f2609807a1c0000950bb46c':'Chico Unified School District',
-    '5ffd8176469a86e28635f512':'Chula Vista Elementary School District',
-    '5f2609807a1c0000950bb460':'Clarksville-Montgomery County School System',
-    '6045e4d907ead7744b125857':'Colton Joint Unified School District',
-    '5f2609807a1c0000950bb47f':'Community Consolidated School District 89',
-    '5f2609807a1c0000950bb45c':'Comox Valley School District',
-    '5f2609807a1c0000950bb480':'Dell Texas',
-    '6045e4da07ead7744b125859':'Dennis-Yarmouth Regional School District',
-    '6045e4cb07ead7744b125840':'Denver Public Schools',
-    '5f2609807a1c0000950bb46e':'District 25 New York Schools',
-    '5f7413ef9387fd71ce6387cb':'Douglas County School District',
-    '6045e4c707ead7744b12583a':'Durham Public Schools',
-    '5f895191609e08b76029f641':'Early learning Sarasota',
-    '5f2609807a1c0000950bb462':'Englewood Cliffs Public Schools',
-    '5f2609807a1c0000950bb461':'Englewood Public School District',
-    '5f2609807a1c0000950bb464':'Equity Education',
-    '6045e4cc07ead7744b125841':'Fairfax County Public Schools',
-    '5f2609807a1c0000950bb45e':'Fairfield-Suisun Unified School District',
-    '6045e4cd07ead7744b125843':'Falmouth Public Schools',
-    '6045e4da07ead7744b12585a':'FITCHBURG PUBLIC SCHOOLS',
-    '5f2609807a1c0000950bb47d':'Flint Public Schools',
-    '6023a7269e8e623753fc305e':'Fulton County School System',
-    '5f2609807a1c0000950bb46b':'FundaciÃ³n La Puerta',
-    '6045e4d207ead7744b12584b':'Glenbard District 87',
-    '5f2609807a1c0000950bb450':'Goleta District',
-    '6045e4cd07ead7744b125844':'Granite School District',
-    '5f2609807a1c0000950bb474':'Greenburgh North Castle Union Free School District',
-    '5f2609807a1c0000950bb45f':'Griffin-Spalding County School System',
-    '60cb8971c5b0e89ed7ac0aa1':'Hall County School District',
-    '5f9aa5e526edbed399d56c92':'Hamilton-Wenham Regional School District',
-    '6045e4c707ead7744b125839':'Hartford Public Schools',
-    '5f2609807a1c0000950bb47c':'Hawaii Public Schools',
-    '6045e4ce07ead7744b125845':'Helena Public Schools',
-    '6045e4db07ead7744b12585b':'HidalgoIndependent School district',
-    '5f2609807a1c0000950bb476':'Hillsborough County',
-    '6045e4db07ead7744b12585c':'Hopedale Public Schools',
-    '6045e4cc07ead7744b125842':'Houston Independent School District',
-    '60b872ce826cab06ebdf044e':'Kalamazoo Public Schools',
-    '6045e4dc07ead7744b12585d':'Kearsarge Regional School District',
-    '6045e4d307ead7744b12584d':'KIPP Public Schools',
-    '5f2609807a1c0000950bb455':'Krum Independent School District',
-    '5f2609807a1c0000950bb47e':'La Joya School District',
-    '6045e4cf07ead7744b125846':'Lamar Consolidated Independent School District',
-    '5f2609807a1c0000950bb45a':'LAUSD',
-    '5f2609807a1c0000950bb467':'Lincolnshire Schools',
-    '6045e4dc07ead7744b12585e':'Littleton Public Schools',
-    '5fe2e1ee4d0ca68d7baf889c':'LSF-Head Start',
-    '6023a7499e8e623753fc305f':'Manatee County School District',
-    '5f2609807a1c0000950bb482':'Massachusetts Institute of Technology',
-    '6077e1b5eaa8bae0e2e04a64':'Medfield School District',
-    '6023a7019e8e623753fc305d':'Miami-Dade County Public Schools',
-    '5f2609807a1c0000950bb465':'Middleton-Cross Plains Area School District',
-    '6045e4d407ead7744b12584f':'Mill Valley School District',
-    '6045e4d307ead7744b12584e':'Millard School District',
-    '610d0837931db8cfdf500fef':'Mission Consolidated Independent School District',
-    '5fb4efce4139b9d4c5a86a69':'Mt. Lebanon School District',
-    '6045e4cf07ead7744b125847':'Muscatine Community School District',
-    '5fbcdf0ba84e48a64412a798':'Needham School District',
-    '5f2609807a1c0000950bb459':'North Special School District',
-    '6045e4c907ead7744b12583c':'Northside Independent School District',
-    '5f7c01fa9387fd71ce6387cc':'NYC - Queens South',
-    '5fd704da04a848e368de5dc6':'Oakland Unified School District',
-    '5f6994386451a9089d7d4009':'Ogden school district',
-    '5f2609807a1c0000950bb472':'Oroville City Elementary School District',
-    '6017ab3043ca9c39151838d4':'Oswego School District',
-    '6045e4dd07ead7744b12585f':'Palm Beach County School District',
-    '60913aaea5fd4b56a4bafa70':'Palm Springs Unified',
-    '5f2609807a1c0000950bb479':'Panorama Education',
-    '5f2609807a1c0000950bb46f':'Paradise Schools',
-    '5f8fcd33609e08b76029f644':'Paradise Unified School District',
-    '6045e4de07ead7744b125860':'Paterson School District',
-    '5f2609807a1c0000950bb466':'Pinellas County Schools',
-    '5f2609807a1c0000950bb471':'Racine Unified Schools',
-    '6045e4d507ead7744b125850':'Rich School District',
-    '5f6d7cbce6452eb06384db20':'Salt Lake City School District',
-    '5f2609807a1c0000950bb478':'San Diego Unified School District',
-    '6045e4d507ead7744b125851':'San Francisco Unified School District',
-    '6023a76f9e8e623753fc3060':'San Jose Unified School District',
-    '5f2609807a1c0000950bb470':'San Leandro Unified School District',
-    '6045e4df07ead7744b125862':'San Marcos Unified School District',
-    '6045e4df07ead7744b125863':'San Marino Unified School District',
-    '5f2609807a1c0000950bb477':'Sarasota County',
-    '602e60e567d3e6c0a4eb4d99':'School District of Palm Beach County',
-    '6045e4d807ead7744b125856':'School District of the Chathams',
-    '6045e4de07ead7744b125861':'Sevier School District',
-    '5f2609807a1c0000950bb473':'Skillman Foundation',
-    '123':'Skillman',
-    '6045e4e007ead7744b125864':'South Summit School District',
-    '60eea965ae7de54f57abf234':'Southfield Public Schools',
-    '5f2609807a1c0000950bb46a':'Springfield Public School',    
-    '6045e4e007ead7744b125865':'Sudbury Public Schools',
-    '6045e4e107ead7744b125866':'Tooele County School District',
-    '60a7b03831afdba383052726':'United Way Of Santa Barbara',
-    '6045e4d607ead7744b125852':'Upland Unified School District',
-    '5f2609807a1c0000950bb468':'Utah Board of Education',
-    '456':'UWBA',
-    '6023a7949e8e623753fc3061':'Wasatch County School District',
-    '6045e4e207ead7744b125867':'Washoe County School District',
-    '5f698b826451a9089d7d4008':'Wayne Metro',
-    '6045e4d607ead7744b125853':'West Contra Costa Unified School District',
-    '5f2609807a1c0000950bb45b':'Westfield Public School District',
-    '6045e4e207ead7744b125868':'Westford Public Schools',
-    '6045e4d207ead7744b12584c':'White River School District',
-    '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
-    '5f2609807a1c0000950bb45d':'Youngstown'}
     from datetime import datetime
     from datetime import timedelta
     today1= datetime.utcnow()
@@ -3236,7 +2147,10 @@ def user_logins_90days(districtid):
     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.login_logs
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     df = DataFrame(list(collection.aggregate([
     {"$match":
      {'$and': [
@@ -3299,154 +2213,16 @@ def user_logins_90days(districtid):
 
 @app.route('/top20userspractisinginfo/<districtid>')
 def topusers_practice(districtid):
-    disdic={
-    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
-    "62603f5be9c76545ce51d732":"North Elementary School District",
-    "62552a4fbc7b0f11833b430c":"DUSD Power",
-    "623975aa25e068fe63efa956":"Project Hoeppner",
-    "6241625424e8123075e7b423":"North Muskegon School District",
-    "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
-    '620f3d6132c6d4813f4c9887':'Jackson County Schools',
-    "5f2609807a1c0000950bb459":"North Special School District",
-    '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
-    '6045e4d007ead7744b125848':'Adams 12 Five Star Schools',
-    '619268dd81f00a4319a65a52':'Access Community',
-    '6045e4d707ead7744b125854':'Adams County School District 14',
-    '5f2609807a1c0000950bb475':'Agawam School district',
-    '5f2609807a1c0000950bb481':'Alameda Unified School District',
-    '5f2609807a1c0000950bb47a':'Alpine School District',
-    '5f2609807a1c0000950bb47b':'Ann Arbor Public Schools',
-    '6045e4c907ead7744b12583d':'Apple Valley Unified School District',
-    '789':'Attendance works',
-    '6045e4d707ead7744b125855':'Aurora Public Schools',
-    '5f2609807a1c0000950bb463':'Austin Independent School District',
-    '5f59e4836451a9089d7d4007':'Belleville School District',
-    '61aa08a4afeab44256f54074':'Benton Harbor',
-    '6045e4d107ead7744b125849':'Berkeley Public Schools',
-    '5fe2e25d4d0ca68d7baf889d':'BGCA',
-    '6045e4ca07ead7744b12583e':'Bishop Unified School District',
-    '6045e4d107ead7744b12584a':'Bismarck Public Schools',
-    '5fe318b14d0ca68d7baf889e':'BLUE',
-    '6045e4c807ead7744b12583b':'Boston Public Schools',
-    '6023a6d79e8e623753fc305c':'Boulder Valley School District',
-    '60f7bf747cc8db72d772e465':'Bright Horizons Early Learning Centers',
-    '5f2609807a1c0000950bb46d':'Broward County Public Schools',
-    '6045e4ca07ead7744b12583f':'Canyons School District',
-    '60473f8823e88e242074ebd2':'Champlain Valley School District',
-    '6045e4d907ead7744b125858':'Chicago Public Schools',
-    '5f2609807a1c0000950bb46c':'Chico Unified School District',
-    '5ffd8176469a86e28635f512':'Chula Vista Elementary School District',
-    '5f2609807a1c0000950bb460':'Clarksville-Montgomery County School System',
-    '6045e4d907ead7744b125857':'Colton Joint Unified School District',
-    '5f2609807a1c0000950bb47f':'Community Consolidated School District 89',
-    '5f2609807a1c0000950bb45c':'Comox Valley School District',
-    '5f2609807a1c0000950bb480':'Dell Texas',
-    '6045e4da07ead7744b125859':'Dennis-Yarmouth Regional School District',
-    '6045e4cb07ead7744b125840':'Denver Public Schools',
-    '5f2609807a1c0000950bb46e':'District 25 New York Schools',
-    '5f7413ef9387fd71ce6387cb':'Douglas County School District',
-    '6045e4c707ead7744b12583a':'Durham Public Schools',
-    '5f895191609e08b76029f641':'Early learning Sarasota',
-    '5f2609807a1c0000950bb462':'Englewood Cliffs Public Schools',
-    '5f2609807a1c0000950bb461':'Englewood Public School District',
-    '5f2609807a1c0000950bb464':'Equity Education',
-    '6045e4cc07ead7744b125841':'Fairfax County Public Schools',
-    '5f2609807a1c0000950bb45e':'Fairfield-Suisun Unified School District',
-    '6045e4cd07ead7744b125843':'Falmouth Public Schools',
-    '6045e4da07ead7744b12585a':'FITCHBURG PUBLIC SCHOOLS',
-    '5f2609807a1c0000950bb47d':'Flint Public Schools',
-    '6023a7269e8e623753fc305e':'Fulton County School System',
-    '5f2609807a1c0000950bb46b':'FundaciÃ³n La Puerta',
-    '6045e4d207ead7744b12584b':'Glenbard District 87',
-    '5f2609807a1c0000950bb450':'Goleta District',
-    '6045e4cd07ead7744b125844':'Granite School District',
-    '5f2609807a1c0000950bb474':'Greenburgh North Castle Union Free School District',
-    '5f2609807a1c0000950bb45f':'Griffin-Spalding County School System',
-    '60cb8971c5b0e89ed7ac0aa1':'Hall County School District',
-    '5f9aa5e526edbed399d56c92':'Hamilton-Wenham Regional School District',
-    '6045e4c707ead7744b125839':'Hartford Public Schools',
-    '5f2609807a1c0000950bb47c':'Hawaii Public Schools',
-    '6045e4ce07ead7744b125845':'Helena Public Schools',
-    '6045e4db07ead7744b12585b':'HidalgoIndependent School district',
-    '5f2609807a1c0000950bb476':'Hillsborough County',
-    '6045e4db07ead7744b12585c':'Hopedale Public Schools',
-    '6045e4cc07ead7744b125842':'Houston Independent School District',
-    '60b872ce826cab06ebdf044e':'Kalamazoo Public Schools',
-    '6045e4dc07ead7744b12585d':'Kearsarge Regional School District',
-    '6045e4d307ead7744b12584d':'KIPP Public Schools',
-    '5f2609807a1c0000950bb455':'Krum Independent School District',
-    '5f2609807a1c0000950bb47e':'La Joya School District',
-    '6045e4cf07ead7744b125846':'Lamar Consolidated Independent School District',
-    '5f2609807a1c0000950bb45a':'LAUSD',
-    '5f2609807a1c0000950bb467':'Lincolnshire Schools',
-    '6045e4dc07ead7744b12585e':'Littleton Public Schools',
-    '5fe2e1ee4d0ca68d7baf889c':'LSF-Head Start',
-    '6023a7499e8e623753fc305f':'Manatee County School District',
-    '5f2609807a1c0000950bb482':'Massachusetts Institute of Technology',
-    '6077e1b5eaa8bae0e2e04a64':'Medfield School District',
-    '6023a7019e8e623753fc305d':'Miami-Dade County Public Schools',
-    '5f2609807a1c0000950bb465':'Middleton-Cross Plains Area School District',
-    '6045e4d407ead7744b12584f':'Mill Valley School District',
-    '6045e4d307ead7744b12584e':'Millard School District',
-    '610d0837931db8cfdf500fef':'Mission Consolidated Independent School District',
-    '5fb4efce4139b9d4c5a86a69':'Mt. Lebanon School District',
-    '6045e4cf07ead7744b125847':'Muscatine Community School District',
-    '5fbcdf0ba84e48a64412a798':'Needham School District',
-    '5f2609807a1c0000950bb459':'North Special School District',
-    '6045e4c907ead7744b12583c':'Northside Independent School District',
-    '5f7c01fa9387fd71ce6387cc':'NYC - Queens South',
-    '5fd704da04a848e368de5dc6':'Oakland Unified School District',
-    '5f6994386451a9089d7d4009':'Ogden school district',
-    '5f2609807a1c0000950bb472':'Oroville City Elementary School District',
-    '6017ab3043ca9c39151838d4':'Oswego School District',
-    '6045e4dd07ead7744b12585f':'Palm Beach County School District',
-    '60913aaea5fd4b56a4bafa70':'Palm Springs Unified',
-    '5f2609807a1c0000950bb479':'Panorama Education',
-    '5f2609807a1c0000950bb46f':'Paradise Schools',
-    '5f8fcd33609e08b76029f644':'Paradise Unified School District',
-    '6045e4de07ead7744b125860':'Paterson School District',
-    '5f2609807a1c0000950bb466':'Pinellas County Schools',
-    '5f2609807a1c0000950bb471':'Racine Unified Schools',
-    '6045e4d507ead7744b125850':'Rich School District',
-    '5f6d7cbce6452eb06384db20':'Salt Lake City School District',
-    '5f2609807a1c0000950bb478':'San Diego Unified School District',
-    '6045e4d507ead7744b125851':'San Francisco Unified School District',
-    '6023a76f9e8e623753fc3060':'San Jose Unified School District',
-    '5f2609807a1c0000950bb470':'San Leandro Unified School District',
-    '6045e4df07ead7744b125862':'San Marcos Unified School District',
-    '6045e4df07ead7744b125863':'San Marino Unified School District',
-    '5f2609807a1c0000950bb477':'Sarasota County',
-    '602e60e567d3e6c0a4eb4d99':'School District of Palm Beach County',
-    '6045e4d807ead7744b125856':'School District of the Chathams',
-    '6045e4de07ead7744b125861':'Sevier School District',
-    '5f2609807a1c0000950bb473':'Skillman Foundation',
-    '123':'Skillman',
-    '6045e4e007ead7744b125864':'South Summit School District',
-    '60eea965ae7de54f57abf234':'Southfield Public Schools',
-    '5f2609807a1c0000950bb46a':'Springfield Public School',
     
-    '6045e4e007ead7744b125865':'Sudbury Public Schools',
-    '6045e4e107ead7744b125866':'Tooele County School District',
-    '60a7b03831afdba383052726':'United Way Of Santa Barbara',
-    '6045e4d607ead7744b125852':'Upland Unified School District',
-    '5f2609807a1c0000950bb468':'Utah Board of Education',
-    '456':'UWBA',
-    '6023a7949e8e623753fc3061':'Wasatch County School District',
-    '6045e4e207ead7744b125867':'Washoe County School District',
-    '5f698b826451a9089d7d4008':'Wayne Metro',
-    '6045e4d607ead7744b125853':'West Contra Costa Unified School District',
-    '5f2609807a1c0000950bb45b':'Westfield Public School District',
-    '6045e4e207ead7744b125868':'Westford Public Schools',
-    '6045e4d207ead7744b12584c':'White River School District',
-    '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
-    '5f2609807a1c0000950bb45d':'Youngstown'}
-
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
 
 
     collection1 = db.user_master
@@ -3529,146 +2305,6 @@ def topusers_practice(districtid):
 
 @app.route('/districtcardsinfo/<districtid>')
 def district_count_cards(districtid):
-    disdic={
-    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
-    "62603f5be9c76545ce51d732":"North Elementary School District",
-    "62552a4fbc7b0f11833b430c":"DUSD Power",
-    "623975aa25e068fe63efa956":"Project Hoeppner",
-    "6241625424e8123075e7b423":"North Muskegon School District",
-    "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
-    '620f3d6132c6d4813f4c9887':'Jackson County Schools',
-    "5f2609807a1c0000950bb459":"North Special School District",
-    '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
-    '6045e4d007ead7744b125848':'Adams 12 Five Star Schools',
-    '619268dd81f00a4319a65a52':'Access Community',
-    '6045e4d707ead7744b125854':'Adams County School District 14',
-    '5f2609807a1c0000950bb475':'Agawam School district',
-    '5f2609807a1c0000950bb481':'Alameda Unified School District',
-    '5f2609807a1c0000950bb47a':'Alpine School District',
-    '5f2609807a1c0000950bb47b':'Ann Arbor Public Schools',
-    '6045e4c907ead7744b12583d':'Apple Valley Unified School District',
-    '789':'Attendance works',
-    '6045e4d707ead7744b125855':'Aurora Public Schools',
-    '5f2609807a1c0000950bb463':'Austin Independent School District',
-    '5f59e4836451a9089d7d4007':'Belleville School District',
-    '61aa08a4afeab44256f54074':'Benton Harbor',
-    '6045e4d107ead7744b125849':'Berkeley Public Schools',
-    '5fe2e25d4d0ca68d7baf889d':'BGCA',
-    '6045e4ca07ead7744b12583e':'Bishop Unified School District',
-    '6045e4d107ead7744b12584a':'Bismarck Public Schools',
-    '5fe318b14d0ca68d7baf889e':'BLUE',
-    '6045e4c807ead7744b12583b':'Boston Public Schools',
-    '6023a6d79e8e623753fc305c':'Boulder Valley School District',
-    '60f7bf747cc8db72d772e465':'Bright Horizons Early Learning Centers',
-    '5f2609807a1c0000950bb46d':'Broward County Public Schools',
-    '6045e4ca07ead7744b12583f':'Canyons School District',
-    '60473f8823e88e242074ebd2':'Champlain Valley School District',
-    '6045e4d907ead7744b125858':'Chicago Public Schools',
-    '5f2609807a1c0000950bb46c':'Chico Unified School District',
-    '5ffd8176469a86e28635f512':'Chula Vista Elementary School District',
-    '5f2609807a1c0000950bb460':'Clarksville-Montgomery County School System',
-    '6045e4d907ead7744b125857':'Colton Joint Unified School District',
-    '5f2609807a1c0000950bb47f':'Community Consolidated School District 89',
-    '5f2609807a1c0000950bb45c':'Comox Valley School District',
-    '5f2609807a1c0000950bb480':'Dell Texas',
-    '6045e4da07ead7744b125859':'Dennis-Yarmouth Regional School District',
-    '6045e4cb07ead7744b125840':'Denver Public Schools',
-    '5f2609807a1c0000950bb46e':'District 25 New York Schools',
-    '5f7413ef9387fd71ce6387cb':'Douglas County School District',
-    '6045e4c707ead7744b12583a':'Durham Public Schools',
-    '5f895191609e08b76029f641':'Early learning Sarasota',
-    '5f2609807a1c0000950bb462':'Englewood Cliffs Public Schools',
-    '5f2609807a1c0000950bb461':'Englewood Public School District',
-    '5f2609807a1c0000950bb464':'Equity Education',
-    '6045e4cc07ead7744b125841':'Fairfax County Public Schools',
-    '5f2609807a1c0000950bb45e':'Fairfield-Suisun Unified School District',
-    '6045e4cd07ead7744b125843':'Falmouth Public Schools',
-    '6045e4da07ead7744b12585a':'FITCHBURG PUBLIC SCHOOLS',
-    '5f2609807a1c0000950bb47d':'Flint Public Schools',
-    '6023a7269e8e623753fc305e':'Fulton County School System',
-    '5f2609807a1c0000950bb46b':'FundaciÃ³n La Puerta',
-    '6045e4d207ead7744b12584b':'Glenbard District 87',
-    '5f2609807a1c0000950bb450':'Goleta District',
-    '6045e4cd07ead7744b125844':'Granite School District',
-    '5f2609807a1c0000950bb474':'Greenburgh North Castle Union Free School District',
-    '5f2609807a1c0000950bb45f':'Griffin-Spalding County School System',
-    '60cb8971c5b0e89ed7ac0aa1':'Hall County School District',
-    '5f9aa5e526edbed399d56c92':'Hamilton-Wenham Regional School District',
-    '6045e4c707ead7744b125839':'Hartford Public Schools',
-    '5f2609807a1c0000950bb47c':'Hawaii Public Schools',
-    '6045e4ce07ead7744b125845':'Helena Public Schools',
-    '6045e4db07ead7744b12585b':'HidalgoIndependent School district',
-    '5f2609807a1c0000950bb476':'Hillsborough County',
-    '6045e4db07ead7744b12585c':'Hopedale Public Schools',
-    '6045e4cc07ead7744b125842':'Houston Independent School District',
-    '60b872ce826cab06ebdf044e':'Kalamazoo Public Schools',
-    '6045e4dc07ead7744b12585d':'Kearsarge Regional School District',
-    '6045e4d307ead7744b12584d':'KIPP Public Schools',
-    '5f2609807a1c0000950bb455':'Krum Independent School District',
-    '5f2609807a1c0000950bb47e':'La Joya School District',
-    '6045e4cf07ead7744b125846':'Lamar Consolidated Independent School District',
-    '5f2609807a1c0000950bb45a':'LAUSD',
-    '5f2609807a1c0000950bb467':'Lincolnshire Schools',
-    '6045e4dc07ead7744b12585e':'Littleton Public Schools',
-    '5fe2e1ee4d0ca68d7baf889c':'LSF-Head Start',
-    '6023a7499e8e623753fc305f':'Manatee County School District',
-    '5f2609807a1c0000950bb482':'Massachusetts Institute of Technology',
-    '6077e1b5eaa8bae0e2e04a64':'Medfield School District',
-    '6023a7019e8e623753fc305d':'Miami-Dade County Public Schools',
-    '5f2609807a1c0000950bb465':'Middleton-Cross Plains Area School District',
-    '6045e4d407ead7744b12584f':'Mill Valley School District',
-    '6045e4d307ead7744b12584e':'Millard School District',
-    '610d0837931db8cfdf500fef':'Mission Consolidated Independent School District',
-    '5fb4efce4139b9d4c5a86a69':'Mt. Lebanon School District',
-    '6045e4cf07ead7744b125847':'Muscatine Community School District',
-    '5fbcdf0ba84e48a64412a798':'Needham School District',
-    '5f2609807a1c0000950bb459':'North Special School District',
-    '6045e4c907ead7744b12583c':'Northside Independent School District',
-    '5f7c01fa9387fd71ce6387cc':'NYC - Queens South',
-    '5fd704da04a848e368de5dc6':'Oakland Unified School District',
-    '5f6994386451a9089d7d4009':'Ogden school district',
-    '5f2609807a1c0000950bb472':'Oroville City Elementary School District',
-    '6017ab3043ca9c39151838d4':'Oswego School District',
-    '6045e4dd07ead7744b12585f':'Palm Beach County School District',
-    '60913aaea5fd4b56a4bafa70':'Palm Springs Unified',
-    '5f2609807a1c0000950bb479':'Panorama Education',
-    '5f2609807a1c0000950bb46f':'Paradise Schools',
-    '5f8fcd33609e08b76029f644':'Paradise Unified School District',
-    '6045e4de07ead7744b125860':'Paterson School District',
-    '5f2609807a1c0000950bb466':'Pinellas County Schools',
-    '5f2609807a1c0000950bb471':'Racine Unified Schools',
-    '6045e4d507ead7744b125850':'Rich School District',
-    '5f6d7cbce6452eb06384db20':'Salt Lake City School District',
-    '5f2609807a1c0000950bb478':'San Diego Unified School District',
-    '6045e4d507ead7744b125851':'San Francisco Unified School District',
-    '6023a76f9e8e623753fc3060':'San Jose Unified School District',
-    '5f2609807a1c0000950bb470':'San Leandro Unified School District',
-    '6045e4df07ead7744b125862':'San Marcos Unified School District',
-    '6045e4df07ead7744b125863':'San Marino Unified School District',
-    '5f2609807a1c0000950bb477':'Sarasota County',
-    '602e60e567d3e6c0a4eb4d99':'School District of Palm Beach County',
-    '6045e4d807ead7744b125856':'School District of the Chathams',
-    '6045e4de07ead7744b125861':'Sevier School District',
-    '5f2609807a1c0000950bb473':'Skillman Foundation',
-    '123':'Skillman',
-    '6045e4e007ead7744b125864':'South Summit School District',
-    '60eea965ae7de54f57abf234':'Southfield Public Schools',
-    '5f2609807a1c0000950bb46a':'Springfield Public School',
-    '6045e4e007ead7744b125865':'Sudbury Public Schools',
-    '6045e4e107ead7744b125866':'Tooele County School District',
-    '60a7b03831afdba383052726':'United Way Of Santa Barbara',
-    '6045e4d607ead7744b125852':'Upland Unified School District',
-    '5f2609807a1c0000950bb468':'Utah Board of Education',
-    '456':'UWBA',
-    '6023a7949e8e623753fc3061':'Wasatch County School District',
-    '6045e4e207ead7744b125867':'Washoe County School District',
-    '5f698b826451a9089d7d4008':'Wayne Metro',
-    '6045e4d607ead7744b125853':'West Contra Costa Unified School District',
-    '5f2609807a1c0000950bb45b':'Westfield Public School District',
-    '6045e4e207ead7744b125868':'Westford Public Schools',
-    '6045e4d207ead7744b12584c':'White River School District',
-    '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
-    '5f2609807a1c0000950bb45d':'Youngstown'}
     from datetime import datetime
     from datetime import timedelta
     
@@ -3679,7 +2315,10 @@ def district_count_cards(districtid):
     collection1 = db.user_master
     collection2=db.audio_track_master
     collection3=db.login_logs
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     print(district)
     df1 = DataFrame(list(collection1.aggregate([
      {"$match":
@@ -3898,146 +2537,6 @@ def district_count_cards(districtid):
 
 @app.route('/districtusertableteacher/<districtid>')
 def district_user_table_teacher(districtid):
-    disdic={
-    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
-    "62603f5be9c76545ce51d732":"North Elementary School District",
-    "62552a4fbc7b0f11833b430c":"DUSD Power",
-    "623975aa25e068fe63efa956":"Project Hoeppner",
-    "6241625424e8123075e7b423":"North Muskegon School District",
-    "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
-    '620f3d6132c6d4813f4c9887':'Jackson County Schools',
-    "5f2609807a1c0000950bb459":"North Special School District",    
-    '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
-    '6045e4d007ead7744b125848':'Adams 12 Five Star Schools',
-    '619268dd81f00a4319a65a52':'Access Community',
-    '6045e4d707ead7744b125854':'Adams County School District 14',
-    '5f2609807a1c0000950bb475':'Agawam School district',
-    '5f2609807a1c0000950bb481':'Alameda Unified School District',
-    '5f2609807a1c0000950bb47a':'Alpine School District',
-    '5f2609807a1c0000950bb47b':'Ann Arbor Public Schools',
-    '6045e4c907ead7744b12583d':'Apple Valley Unified School District',
-    '789':'Attendance works',
-    '6045e4d707ead7744b125855':'Aurora Public Schools',
-    '5f2609807a1c0000950bb463':'Austin Independent School District',
-    '5f59e4836451a9089d7d4007':'Belleville School District',
-    '61aa08a4afeab44256f54074':'Benton Harbor',
-    '6045e4d107ead7744b125849':'Berkeley Public Schools',
-    '5fe2e25d4d0ca68d7baf889d':'BGCA',
-    '6045e4ca07ead7744b12583e':'Bishop Unified School District',
-    '6045e4d107ead7744b12584a':'Bismarck Public Schools',
-    '5fe318b14d0ca68d7baf889e':'BLUE',
-    '6045e4c807ead7744b12583b':'Boston Public Schools',
-    '6023a6d79e8e623753fc305c':'Boulder Valley School District',
-    '60f7bf747cc8db72d772e465':'Bright Horizons Early Learning Centers',
-    '5f2609807a1c0000950bb46d':'Broward County Public Schools',
-    '6045e4ca07ead7744b12583f':'Canyons School District',
-    '60473f8823e88e242074ebd2':'Champlain Valley School District',
-    '6045e4d907ead7744b125858':'Chicago Public Schools',
-    '5f2609807a1c0000950bb46c':'Chico Unified School District',
-    '5ffd8176469a86e28635f512':'Chula Vista Elementary School District',
-    '5f2609807a1c0000950bb460':'Clarksville-Montgomery County School System',
-    '6045e4d907ead7744b125857':'Colton Joint Unified School District',
-    '5f2609807a1c0000950bb47f':'Community Consolidated School District 89',
-    '5f2609807a1c0000950bb45c':'Comox Valley School District',
-    '5f2609807a1c0000950bb480':'Dell Texas',
-    '6045e4da07ead7744b125859':'Dennis-Yarmouth Regional School District',
-    '6045e4cb07ead7744b125840':'Denver Public Schools',
-    '5f2609807a1c0000950bb46e':'District 25 New York Schools',
-    '5f7413ef9387fd71ce6387cb':'Douglas County School District',
-    '6045e4c707ead7744b12583a':'Durham Public Schools',
-    '5f895191609e08b76029f641':'Early learning Sarasota',
-    '5f2609807a1c0000950bb462':'Englewood Cliffs Public Schools',
-    '5f2609807a1c0000950bb461':'Englewood Public School District',
-    '5f2609807a1c0000950bb464':'Equity Education',
-    '6045e4cc07ead7744b125841':'Fairfax County Public Schools',
-    '5f2609807a1c0000950bb45e':'Fairfield-Suisun Unified School District',
-    '6045e4cd07ead7744b125843':'Falmouth Public Schools',
-    '6045e4da07ead7744b12585a':'FITCHBURG PUBLIC SCHOOLS',
-    '5f2609807a1c0000950bb47d':'Flint Public Schools',
-    '6023a7269e8e623753fc305e':'Fulton County School System',
-    '5f2609807a1c0000950bb46b':'FundaciÃ³n La Puerta',
-    '6045e4d207ead7744b12584b':'Glenbard District 87',
-    '5f2609807a1c0000950bb450':'Goleta District',
-    '6045e4cd07ead7744b125844':'Granite School District',
-    '5f2609807a1c0000950bb474':'Greenburgh North Castle Union Free School District',
-    '5f2609807a1c0000950bb45f':'Griffin-Spalding County School System',
-    '60cb8971c5b0e89ed7ac0aa1':'Hall County School District',
-    '5f9aa5e526edbed399d56c92':'Hamilton-Wenham Regional School District',
-    '6045e4c707ead7744b125839':'Hartford Public Schools',
-    '5f2609807a1c0000950bb47c':'Hawaii Public Schools',
-    '6045e4ce07ead7744b125845':'Helena Public Schools',
-    '6045e4db07ead7744b12585b':'HidalgoIndependent School district',
-    '5f2609807a1c0000950bb476':'Hillsborough County',
-    '6045e4db07ead7744b12585c':'Hopedale Public Schools',
-    '6045e4cc07ead7744b125842':'Houston Independent School District',
-    '60b872ce826cab06ebdf044e':'Kalamazoo Public Schools',
-    '6045e4dc07ead7744b12585d':'Kearsarge Regional School District',
-    '6045e4d307ead7744b12584d':'KIPP Public Schools',
-    '5f2609807a1c0000950bb455':'Krum Independent School District',
-    '5f2609807a1c0000950bb47e':'La Joya School District',
-    '6045e4cf07ead7744b125846':'Lamar Consolidated Independent School District',
-    '5f2609807a1c0000950bb45a':'LAUSD',
-    '5f2609807a1c0000950bb467':'Lincolnshire Schools',
-    '6045e4dc07ead7744b12585e':'Littleton Public Schools',
-    '5fe2e1ee4d0ca68d7baf889c':'LSF-Head Start',
-    '6023a7499e8e623753fc305f':'Manatee County School District',
-    '5f2609807a1c0000950bb482':'Massachusetts Institute of Technology',
-    '6077e1b5eaa8bae0e2e04a64':'Medfield School District',
-    '6023a7019e8e623753fc305d':'Miami-Dade County Public Schools',
-    '5f2609807a1c0000950bb465':'Middleton-Cross Plains Area School District',
-    '6045e4d407ead7744b12584f':'Mill Valley School District',
-    '6045e4d307ead7744b12584e':'Millard School District',
-    '610d0837931db8cfdf500fef':'Mission Consolidated Independent School District',
-    '5fb4efce4139b9d4c5a86a69':'Mt. Lebanon School District',
-    '6045e4cf07ead7744b125847':'Muscatine Community School District',
-    '5fbcdf0ba84e48a64412a798':'Needham School District',
-    '5f2609807a1c0000950bb459':'North Special School District',
-    '6045e4c907ead7744b12583c':'Northside Independent School District',
-    '5f7c01fa9387fd71ce6387cc':'NYC - Queens South',
-    '5fd704da04a848e368de5dc6':'Oakland Unified School District',
-    '5f6994386451a9089d7d4009':'Ogden school district',
-    '5f2609807a1c0000950bb472':'Oroville City Elementary School District',
-    '6017ab3043ca9c39151838d4':'Oswego School District',
-    '6045e4dd07ead7744b12585f':'Palm Beach County School District',
-    '60913aaea5fd4b56a4bafa70':'Palm Springs Unified',
-    '5f2609807a1c0000950bb479':'Panorama Education',
-    '5f2609807a1c0000950bb46f':'Paradise Schools',
-    '5f8fcd33609e08b76029f644':'Paradise Unified School District',
-    '6045e4de07ead7744b125860':'Paterson School District',
-    '5f2609807a1c0000950bb466':'Pinellas County Schools',
-    '5f2609807a1c0000950bb471':'Racine Unified Schools',
-    '6045e4d507ead7744b125850':'Rich School District',
-    '5f6d7cbce6452eb06384db20':'Salt Lake City School District',
-    '5f2609807a1c0000950bb478':'San Diego Unified School District',
-    '6045e4d507ead7744b125851':'San Francisco Unified School District',
-    '6023a76f9e8e623753fc3060':'San Jose Unified School District',
-    '5f2609807a1c0000950bb470':'San Leandro Unified School District',
-    '6045e4df07ead7744b125862':'San Marcos Unified School District',
-    '6045e4df07ead7744b125863':'San Marino Unified School District',
-    '5f2609807a1c0000950bb477':'Sarasota County',
-    '602e60e567d3e6c0a4eb4d99':'School District of Palm Beach County',
-    '6045e4d807ead7744b125856':'School District of the Chathams',
-    '6045e4de07ead7744b125861':'Sevier School District',
-    '5f2609807a1c0000950bb473':'Skillman Foundation',
-    '123':'Skillman',
-    '6045e4e007ead7744b125864':'South Summit School District',
-    '60eea965ae7de54f57abf234':'Southfield Public Schools',
-    '5f2609807a1c0000950bb46a':'Springfield Public School',
-    '6045e4e007ead7744b125865':'Sudbury Public Schools',
-    '6045e4e107ead7744b125866':'Tooele County School District',
-    '60a7b03831afdba383052726':'United Way Of Santa Barbara',
-    '6045e4d607ead7744b125852':'Upland Unified School District',
-    '5f2609807a1c0000950bb468':'Utah Board of Education',
-    '456':'UWBA',
-    '6023a7949e8e623753fc3061':'Wasatch County School District',
-    '6045e4e207ead7744b125867':'Washoe County School District',
-    '5f698b826451a9089d7d4008':'Wayne Metro',
-    '6045e4d607ead7744b125853':'West Contra Costa Unified School District',
-    '5f2609807a1c0000950bb45b':'Westfield Public School District',
-    '6045e4e207ead7744b125868':'Westford Public Schools',
-    '6045e4d207ead7744b12584c':'White River School District',
-    '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
-    '5f2609807a1c0000950bb45d':'Youngstown'}
     
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
@@ -4049,7 +2548,10 @@ def district_user_table_teacher(districtid):
     collection=db.user_master
     collection1=db.audio_track_master
     collection3=db.subscription_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
 
     from datetime import datetime
 
@@ -4160,146 +2662,6 @@ def district_user_table_teacher(districtid):
    
 @app.route('/districtusertableparent/<districtid>')
 def district_user_table_parents(districtid):
-    disdic={
-    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
-    "62603f5be9c76545ce51d732":"North Elementary School District",
-    "62552a4fbc7b0f11833b430c":"DUSD Power",
-    "623975aa25e068fe63efa956":"Project Hoeppner",
-    "6241625424e8123075e7b423":"North Muskegon School District",
-    "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
-    '620f3d6132c6d4813f4c9887':'Jackson County Schools',
-    "5f2609807a1c0000950bb459":"North Special School District",
-    '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
-    '6045e4d007ead7744b125848':'Adams 12 Five Star Schools',
-    '619268dd81f00a4319a65a52':'Access Community',
-    '6045e4d707ead7744b125854':'Adams County School District 14',
-    '5f2609807a1c0000950bb475':'Agawam School district',
-    '5f2609807a1c0000950bb481':'Alameda Unified School District',
-    '5f2609807a1c0000950bb47a':'Alpine School District',
-    '5f2609807a1c0000950bb47b':'Ann Arbor Public Schools',
-    '6045e4c907ead7744b12583d':'Apple Valley Unified School District',
-    '789':'Attendance works',
-    '6045e4d707ead7744b125855':'Aurora Public Schools',
-    '5f2609807a1c0000950bb463':'Austin Independent School District',
-    '5f59e4836451a9089d7d4007':'Belleville School District',
-    '61aa08a4afeab44256f54074':'Benton Harbor',
-    '6045e4d107ead7744b125849':'Berkeley Public Schools',
-    '5fe2e25d4d0ca68d7baf889d':'BGCA',
-    '6045e4ca07ead7744b12583e':'Bishop Unified School District',
-    '6045e4d107ead7744b12584a':'Bismarck Public Schools',
-    '5fe318b14d0ca68d7baf889e':'BLUE',
-    '6045e4c807ead7744b12583b':'Boston Public Schools',
-    '6023a6d79e8e623753fc305c':'Boulder Valley School District',
-    '60f7bf747cc8db72d772e465':'Bright Horizons Early Learning Centers',
-    '5f2609807a1c0000950bb46d':'Broward County Public Schools',
-    '6045e4ca07ead7744b12583f':'Canyons School District',
-    '60473f8823e88e242074ebd2':'Champlain Valley School District',
-    '6045e4d907ead7744b125858':'Chicago Public Schools',
-    '5f2609807a1c0000950bb46c':'Chico Unified School District',
-    '5ffd8176469a86e28635f512':'Chula Vista Elementary School District',
-    '5f2609807a1c0000950bb460':'Clarksville-Montgomery County School System',
-    '6045e4d907ead7744b125857':'Colton Joint Unified School District',
-    '5f2609807a1c0000950bb47f':'Community Consolidated School District 89',
-    '5f2609807a1c0000950bb45c':'Comox Valley School District',
-    '5f2609807a1c0000950bb480':'Dell Texas',
-    '6045e4da07ead7744b125859':'Dennis-Yarmouth Regional School District',
-    '6045e4cb07ead7744b125840':'Denver Public Schools',
-    '5f2609807a1c0000950bb46e':'District 25 New York Schools',
-    '5f7413ef9387fd71ce6387cb':'Douglas County School District',
-    '6045e4c707ead7744b12583a':'Durham Public Schools',
-    '5f895191609e08b76029f641':'Early learning Sarasota',
-    '5f2609807a1c0000950bb462':'Englewood Cliffs Public Schools',
-    '5f2609807a1c0000950bb461':'Englewood Public School District',
-    '5f2609807a1c0000950bb464':'Equity Education',
-    '6045e4cc07ead7744b125841':'Fairfax County Public Schools',
-    '5f2609807a1c0000950bb45e':'Fairfield-Suisun Unified School District',
-    '6045e4cd07ead7744b125843':'Falmouth Public Schools',
-    '6045e4da07ead7744b12585a':'FITCHBURG PUBLIC SCHOOLS',
-    '5f2609807a1c0000950bb47d':'Flint Public Schools',
-    '6023a7269e8e623753fc305e':'Fulton County School System',
-    '5f2609807a1c0000950bb46b':'FundaciÃ³n La Puerta',
-    '6045e4d207ead7744b12584b':'Glenbard District 87',
-    '5f2609807a1c0000950bb450':'Goleta District',
-    '6045e4cd07ead7744b125844':'Granite School District',
-    '5f2609807a1c0000950bb474':'Greenburgh North Castle Union Free School District',
-    '5f2609807a1c0000950bb45f':'Griffin-Spalding County School System',
-    '60cb8971c5b0e89ed7ac0aa1':'Hall County School District',
-    '5f9aa5e526edbed399d56c92':'Hamilton-Wenham Regional School District',
-    '6045e4c707ead7744b125839':'Hartford Public Schools',
-    '5f2609807a1c0000950bb47c':'Hawaii Public Schools',
-    '6045e4ce07ead7744b125845':'Helena Public Schools',
-    '6045e4db07ead7744b12585b':'HidalgoIndependent School district',
-    '5f2609807a1c0000950bb476':'Hillsborough County',
-    '6045e4db07ead7744b12585c':'Hopedale Public Schools',
-    '6045e4cc07ead7744b125842':'Houston Independent School District',
-    '60b872ce826cab06ebdf044e':'Kalamazoo Public Schools',
-    '6045e4dc07ead7744b12585d':'Kearsarge Regional School District',
-    '6045e4d307ead7744b12584d':'KIPP Public Schools',
-    '5f2609807a1c0000950bb455':'Krum Independent School District',
-    '5f2609807a1c0000950bb47e':'La Joya School District',
-    '6045e4cf07ead7744b125846':'Lamar Consolidated Independent School District',
-    '5f2609807a1c0000950bb45a':'LAUSD',
-    '5f2609807a1c0000950bb467':'Lincolnshire Schools',
-    '6045e4dc07ead7744b12585e':'Littleton Public Schools',
-    '5fe2e1ee4d0ca68d7baf889c':'LSF-Head Start',
-    '6023a7499e8e623753fc305f':'Manatee County School District',
-    '5f2609807a1c0000950bb482':'Massachusetts Institute of Technology',
-    '6077e1b5eaa8bae0e2e04a64':'Medfield School District',
-    '6023a7019e8e623753fc305d':'Miami-Dade County Public Schools',
-    '5f2609807a1c0000950bb465':'Middleton-Cross Plains Area School District',
-    '6045e4d407ead7744b12584f':'Mill Valley School District',
-    '6045e4d307ead7744b12584e':'Millard School District',
-    '610d0837931db8cfdf500fef':'Mission Consolidated Independent School District',
-    '5fb4efce4139b9d4c5a86a69':'Mt. Lebanon School District',
-    '6045e4cf07ead7744b125847':'Muscatine Community School District',
-    '5fbcdf0ba84e48a64412a798':'Needham School District',
-    '5f2609807a1c0000950bb459':'North Special School District',
-    '6045e4c907ead7744b12583c':'Northside Independent School District',
-    '5f7c01fa9387fd71ce6387cc':'NYC - Queens South',
-    '5fd704da04a848e368de5dc6':'Oakland Unified School District',
-    '5f6994386451a9089d7d4009':'Ogden school district',
-    '5f2609807a1c0000950bb472':'Oroville City Elementary School District',
-    '6017ab3043ca9c39151838d4':'Oswego School District',
-    '6045e4dd07ead7744b12585f':'Palm Beach County School District',
-    '60913aaea5fd4b56a4bafa70':'Palm Springs Unified',
-    '5f2609807a1c0000950bb479':'Panorama Education',
-    '5f2609807a1c0000950bb46f':'Paradise Schools',
-    '5f8fcd33609e08b76029f644':'Paradise Unified School District',
-    '6045e4de07ead7744b125860':'Paterson School District',
-    '5f2609807a1c0000950bb466':'Pinellas County Schools',
-    '5f2609807a1c0000950bb471':'Racine Unified Schools',
-    '6045e4d507ead7744b125850':'Rich School District',
-    '5f6d7cbce6452eb06384db20':'Salt Lake City School District',
-    '5f2609807a1c0000950bb478':'San Diego Unified School District',
-    '6045e4d507ead7744b125851':'San Francisco Unified School District',
-    '6023a76f9e8e623753fc3060':'San Jose Unified School District',
-    '5f2609807a1c0000950bb470':'San Leandro Unified School District',
-    '6045e4df07ead7744b125862':'San Marcos Unified School District',
-    '6045e4df07ead7744b125863':'San Marino Unified School District',
-    '5f2609807a1c0000950bb477':'Sarasota County',
-    '602e60e567d3e6c0a4eb4d99':'School District of Palm Beach County',
-    '6045e4d807ead7744b125856':'School District of the Chathams',
-    '6045e4de07ead7744b125861':'Sevier School District',
-    '5f2609807a1c0000950bb473':'Skillman Foundation',
-    '123':'Skillman',
-    '6045e4e007ead7744b125864':'South Summit School District',
-    '60eea965ae7de54f57abf234':'Southfield Public Schools',
-    '5f2609807a1c0000950bb46a':'Springfield Public School',
-    '6045e4e007ead7744b125865':'Sudbury Public Schools',
-    '6045e4e107ead7744b125866':'Tooele County School District',
-    '60a7b03831afdba383052726':'United Way Of Santa Barbara',
-    '6045e4d607ead7744b125852':'Upland Unified School District',
-    '5f2609807a1c0000950bb468':'Utah Board of Education',
-    '456':'UWBA',
-    '6023a7949e8e623753fc3061':'Wasatch County School District',
-    '6045e4e207ead7744b125867':'Washoe County School District',
-    '5f698b826451a9089d7d4008':'Wayne Metro',
-    '6045e4d607ead7744b125853':'West Contra Costa Unified School District',
-    '5f2609807a1c0000950bb45b':'Westfield Public School District',
-    '6045e4e207ead7744b125868':'Westford Public Schools',
-    '6045e4d207ead7744b12584c':'White River School District',
-    '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
-    '5f2609807a1c0000950bb45d':'Youngstown'}
     
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
@@ -4311,7 +2673,10 @@ def district_user_table_parents(districtid):
     collection=db.user_master
     collection1=db.audio_track_master
     collection3=db.subscription_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
 
 
 
@@ -4421,152 +2786,15 @@ def district_user_table_parents(districtid):
 
 @app.route('/monthwisepracticesuperadmin/<districtid>')
 def monthwisepcsuper(districtid):
-    disdic={
-    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
-    "62603f5be9c76545ce51d732":"North Elementary School District",
-    "62552a4fbc7b0f11833b430c":"DUSD Power",
-    "623975aa25e068fe63efa956":"Project Hoeppner",
-    "6241625424e8123075e7b423":"North Muskegon School District",
-    "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
-    '620f3d6132c6d4813f4c9887':'Jackson County Schools',
-    "5f2609807a1c0000950bb459":"North Special School District",
-    '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
-    '6045e4d007ead7744b125848':'Adams 12 Five Star Schools',
-    '619268dd81f00a4319a65a52':'Access Community',
-    '6045e4d707ead7744b125854':'Adams County School District 14',
-    '5f2609807a1c0000950bb475':'Agawam School district',
-    '5f2609807a1c0000950bb481':'Alameda Unified School District',
-    '5f2609807a1c0000950bb47a':'Alpine School District',
-    '5f2609807a1c0000950bb47b':'Ann Arbor Public Schools',
-    '6045e4c907ead7744b12583d':'Apple Valley Unified School District',
-    '789':'Attendance works',
-    '6045e4d707ead7744b125855':'Aurora Public Schools',
-    '5f2609807a1c0000950bb463':'Austin Independent School District',
-    '5f59e4836451a9089d7d4007':'Belleville School District',
-    '61aa08a4afeab44256f54074':'Benton Harbor',
-    '6045e4d107ead7744b125849':'Berkeley Public Schools',
-    '5fe2e25d4d0ca68d7baf889d':'BGCA',
-    '6045e4ca07ead7744b12583e':'Bishop Unified School District',
-    '6045e4d107ead7744b12584a':'Bismarck Public Schools',
-    '5fe318b14d0ca68d7baf889e':'BLUE',
-    '6045e4c807ead7744b12583b':'Boston Public Schools',
-    '6023a6d79e8e623753fc305c':'Boulder Valley School District',
-    '60f7bf747cc8db72d772e465':'Bright Horizons Early Learning Centers',
-    '5f2609807a1c0000950bb46d':'Broward County Public Schools',
-    '6045e4ca07ead7744b12583f':'Canyons School District',
-    '60473f8823e88e242074ebd2':'Champlain Valley School District',
-    '6045e4d907ead7744b125858':'Chicago Public Schools',
-    '5f2609807a1c0000950bb46c':'Chico Unified School District',
-    '5ffd8176469a86e28635f512':'Chula Vista Elementary School District',
-    '5f2609807a1c0000950bb460':'Clarksville-Montgomery County School System',
-    '6045e4d907ead7744b125857':'Colton Joint Unified School District',
-    '5f2609807a1c0000950bb47f':'Community Consolidated School District 89',
-    '5f2609807a1c0000950bb45c':'Comox Valley School District',
-    '5f2609807a1c0000950bb480':'Dell Texas',
-    '6045e4da07ead7744b125859':'Dennis-Yarmouth Regional School District',
-    '6045e4cb07ead7744b125840':'Denver Public Schools',
-    '5f2609807a1c0000950bb46e':'District 25 New York Schools',
-    '5f7413ef9387fd71ce6387cb':'Douglas County School District',
-    '6045e4c707ead7744b12583a':'Durham Public Schools',
-    '5f895191609e08b76029f641':'Early learning Sarasota',
-    '5f2609807a1c0000950bb462':'Englewood Cliffs Public Schools',
-    '5f2609807a1c0000950bb461':'Englewood Public School District',
-    '5f2609807a1c0000950bb464':'Equity Education',
-    '6045e4cc07ead7744b125841':'Fairfax County Public Schools',
-    '5f2609807a1c0000950bb45e':'Fairfield-Suisun Unified School District',
-    '6045e4cd07ead7744b125843':'Falmouth Public Schools',
-    '6045e4da07ead7744b12585a':'FITCHBURG PUBLIC SCHOOLS',
-    '5f2609807a1c0000950bb47d':'Flint Public Schools',
-    '6023a7269e8e623753fc305e':'Fulton County School System',
-    '5f2609807a1c0000950bb46b':'FundaciÃ³n La Puerta',
-    '6045e4d207ead7744b12584b':'Glenbard District 87',
-    '5f2609807a1c0000950bb450':'Goleta District',
-    '6045e4cd07ead7744b125844':'Granite School District',
-    '5f2609807a1c0000950bb474':'Greenburgh North Castle Union Free School District',
-    '5f2609807a1c0000950bb45f':'Griffin-Spalding County School System',
-    '60cb8971c5b0e89ed7ac0aa1':'Hall County School District',
-    '5f9aa5e526edbed399d56c92':'Hamilton-Wenham Regional School District',
-    '6045e4c707ead7744b125839':'Hartford Public Schools',
-    '5f2609807a1c0000950bb47c':'Hawaii Public Schools',
-    '6045e4ce07ead7744b125845':'Helena Public Schools',
-    '6045e4db07ead7744b12585b':'HidalgoIndependent School district',
-    '5f2609807a1c0000950bb476':'Hillsborough County',
-    '6045e4db07ead7744b12585c':'Hopedale Public Schools',
-    '6045e4cc07ead7744b125842':'Houston Independent School District',
-    '60b872ce826cab06ebdf044e':'Kalamazoo Public Schools',
-    '6045e4dc07ead7744b12585d':'Kearsarge Regional School District',
-    '6045e4d307ead7744b12584d':'KIPP Public Schools',
-    '5f2609807a1c0000950bb455':'Krum Independent School District',
-    '5f2609807a1c0000950bb47e':'La Joya School District',
-    '6045e4cf07ead7744b125846':'Lamar Consolidated Independent School District',
-    '5f2609807a1c0000950bb45a':'LAUSD',
-    '5f2609807a1c0000950bb467':'Lincolnshire Schools',
-    '6045e4dc07ead7744b12585e':'Littleton Public Schools',
-    '5fe2e1ee4d0ca68d7baf889c':'LSF-Head Start',
-    '6023a7499e8e623753fc305f':'Manatee County School District',
-    '5f2609807a1c0000950bb482':'Massachusetts Institute of Technology',
-    '6077e1b5eaa8bae0e2e04a64':'Medfield School District',
-    '6023a7019e8e623753fc305d':'Miami-Dade County Public Schools',
-    '5f2609807a1c0000950bb465':'Middleton-Cross Plains Area School District',
-    '6045e4d407ead7744b12584f':'Mill Valley School District',
-    '6045e4d307ead7744b12584e':'Millard School District',
-    '610d0837931db8cfdf500fef':'Mission Consolidated Independent School District',
-    '5fb4efce4139b9d4c5a86a69':'Mt. Lebanon School District',
-    '6045e4cf07ead7744b125847':'Muscatine Community School District',
-    '5fbcdf0ba84e48a64412a798':'Needham School District',
-    '5f2609807a1c0000950bb459':'North Special School District',
-    '6045e4c907ead7744b12583c':'Northside Independent School District',
-    '5f7c01fa9387fd71ce6387cc':'NYC - Queens South',
-    '5fd704da04a848e368de5dc6':'Oakland Unified School District',
-    '5f6994386451a9089d7d4009':'Ogden school district',
-    '5f2609807a1c0000950bb472':'Oroville City Elementary School District',
-    '6017ab3043ca9c39151838d4':'Oswego School District',
-    '6045e4dd07ead7744b12585f':'Palm Beach County School District',
-    '60913aaea5fd4b56a4bafa70':'Palm Springs Unified',
-    '5f2609807a1c0000950bb479':'Panorama Education',
-    '5f2609807a1c0000950bb46f':'Paradise Schools',
-    '5f8fcd33609e08b76029f644':'Paradise Unified School District',
-    '6045e4de07ead7744b125860':'Paterson School District',
-    '5f2609807a1c0000950bb466':'Pinellas County Schools',
-    '5f2609807a1c0000950bb471':'Racine Unified Schools',
-    '6045e4d507ead7744b125850':'Rich School District',
-    '5f6d7cbce6452eb06384db20':'Salt Lake City School District',
-    '5f2609807a1c0000950bb478':'San Diego Unified School District',
-    '6045e4d507ead7744b125851':'San Francisco Unified School District',
-    '6023a76f9e8e623753fc3060':'San Jose Unified School District',
-    '5f2609807a1c0000950bb470':'San Leandro Unified School District',
-    '6045e4df07ead7744b125862':'San Marcos Unified School District',
-    '6045e4df07ead7744b125863':'San Marino Unified School District',
-    '5f2609807a1c0000950bb477':'Sarasota County',
-    '602e60e567d3e6c0a4eb4d99':'School District of Palm Beach County',
-    '6045e4d807ead7744b125856':'School District of the Chathams',
-    '6045e4de07ead7744b125861':'Sevier School District',
-    '5f2609807a1c0000950bb473':'Skillman Foundation',
-    '123':'Skillman',
-    '6045e4e007ead7744b125864':'South Summit School District',
-    '60eea965ae7de54f57abf234':'Southfield Public Schools',
-    '5f2609807a1c0000950bb46a':'Springfield Public School',
-    '6045e4e007ead7744b125865':'Sudbury Public Schools',
-    '6045e4e107ead7744b125866':'Tooele County School District',
-    '60a7b03831afdba383052726':'United Way Of Santa Barbara',
-    '6045e4d607ead7744b125852':'Upland Unified School District',
-    '5f2609807a1c0000950bb468':'Utah Board of Education',
-    '456':'UWBA',
-    '6023a7949e8e623753fc3061':'Wasatch County School District',
-    '6045e4e207ead7744b125867':'Washoe County School District',
-    '5f698b826451a9089d7d4008':'Wayne Metro',
-    '6045e4d607ead7744b125853':'West Contra Costa Unified School District',
-    '5f2609807a1c0000950bb45b':'Westfield Public School District',
-    '6045e4e207ead7744b125868':'Westford Public Schools',
-    '6045e4d207ead7744b12584c':'White River School District',
-    '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
-    '5f2609807a1c0000950bb45d':'Youngstown'}
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
 #     myDatetime1 = dateutil.parser.parse(startdate)
 #     myDatetime2 = dateutil.parser.parse(enddate)
     df1= DataFrame(list(collection.aggregate([
@@ -4785,146 +3013,6 @@ def monthwisepcsuper(districtid):
     
 @app.route('/districtschooltable/<districtid>')
 def district_school_table(districtid):
-    disdic={
-    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
-    "62603f5be9c76545ce51d732":"North Elementary School District",
-    "62552a4fbc7b0f11833b430c":"DUSD Power",
-    "623975aa25e068fe63efa956":"Project Hoeppner",
-    "6241625424e8123075e7b423":"North Muskegon School District",
-    "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
-    '620f3d6132c6d4813f4c9887':'Jackson County Schools',
-    "5f2609807a1c0000950bb459":"North Special School District",    
-    '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
-    '6045e4d007ead7744b125848':'Adams 12 Five Star Schools',
-    '619268dd81f00a4319a65a52':'Access Community',
-    '6045e4d707ead7744b125854':'Adams County School District 14',
-    '5f2609807a1c0000950bb475':'Agawam School district',
-    '5f2609807a1c0000950bb481':'Alameda Unified School District',
-    '5f2609807a1c0000950bb47a':'Alpine School District',
-    '5f2609807a1c0000950bb47b':'Ann Arbor Public Schools',
-    '6045e4c907ead7744b12583d':'Apple Valley Unified School District',
-    '789':'Attendance works',
-    '6045e4d707ead7744b125855':'Aurora Public Schools',
-    '5f2609807a1c0000950bb463':'Austin Independent School District',
-    '5f59e4836451a9089d7d4007':'Belleville School District',
-    '61aa08a4afeab44256f54074':'Benton Harbor',
-    '6045e4d107ead7744b125849':'Berkeley Public Schools',
-    '5fe2e25d4d0ca68d7baf889d':'BGCA',
-    '6045e4ca07ead7744b12583e':'Bishop Unified School District',
-    '6045e4d107ead7744b12584a':'Bismarck Public Schools',
-    '5fe318b14d0ca68d7baf889e':'BLUE',
-    '6045e4c807ead7744b12583b':'Boston Public Schools',
-    '6023a6d79e8e623753fc305c':'Boulder Valley School District',
-    '60f7bf747cc8db72d772e465':'Bright Horizons Early Learning Centers',
-    '5f2609807a1c0000950bb46d':'Broward County Public Schools',
-    '6045e4ca07ead7744b12583f':'Canyons School District',
-    '60473f8823e88e242074ebd2':'Champlain Valley School District',
-    '6045e4d907ead7744b125858':'Chicago Public Schools',
-    '5f2609807a1c0000950bb46c':'Chico Unified School District',
-    '5ffd8176469a86e28635f512':'Chula Vista Elementary School District',
-    '5f2609807a1c0000950bb460':'Clarksville-Montgomery County School System',
-    '6045e4d907ead7744b125857':'Colton Joint Unified School District',
-    '5f2609807a1c0000950bb47f':'Community Consolidated School District 89',
-    '5f2609807a1c0000950bb45c':'Comox Valley School District',
-    '5f2609807a1c0000950bb480':'Dell Texas',
-    '6045e4da07ead7744b125859':'Dennis-Yarmouth Regional School District',
-    '6045e4cb07ead7744b125840':'Denver Public Schools',
-    '5f2609807a1c0000950bb46e':'District 25 New York Schools',
-    '5f7413ef9387fd71ce6387cb':'Douglas County School District',
-    '6045e4c707ead7744b12583a':'Durham Public Schools',
-    '5f895191609e08b76029f641':'Early learning Sarasota',
-    '5f2609807a1c0000950bb462':'Englewood Cliffs Public Schools',
-    '5f2609807a1c0000950bb461':'Englewood Public School District',
-    '5f2609807a1c0000950bb464':'Equity Education',
-    '6045e4cc07ead7744b125841':'Fairfax County Public Schools',
-    '5f2609807a1c0000950bb45e':'Fairfield-Suisun Unified School District',
-    '6045e4cd07ead7744b125843':'Falmouth Public Schools',
-    '6045e4da07ead7744b12585a':'FITCHBURG PUBLIC SCHOOLS',
-    '5f2609807a1c0000950bb47d':'Flint Public Schools',
-    '6023a7269e8e623753fc305e':'Fulton County School System',
-    '5f2609807a1c0000950bb46b':'FundaciÃ³n La Puerta',
-    '6045e4d207ead7744b12584b':'Glenbard District 87',
-    '5f2609807a1c0000950bb450':'Goleta District',
-    '6045e4cd07ead7744b125844':'Granite School District',
-    '5f2609807a1c0000950bb474':'Greenburgh North Castle Union Free School District',
-    '5f2609807a1c0000950bb45f':'Griffin-Spalding County School System',
-    '60cb8971c5b0e89ed7ac0aa1':'Hall County School District',
-    '5f9aa5e526edbed399d56c92':'Hamilton-Wenham Regional School District',
-    '6045e4c707ead7744b125839':'Hartford Public Schools',
-    '5f2609807a1c0000950bb47c':'Hawaii Public Schools',
-    '6045e4ce07ead7744b125845':'Helena Public Schools',
-    '6045e4db07ead7744b12585b':'HidalgoIndependent School district',
-    '5f2609807a1c0000950bb476':'Hillsborough County',
-    '6045e4db07ead7744b12585c':'Hopedale Public Schools',
-    '6045e4cc07ead7744b125842':'Houston Independent School District',
-    '60b872ce826cab06ebdf044e':'Kalamazoo Public Schools',
-    '6045e4dc07ead7744b12585d':'Kearsarge Regional School District',
-    '6045e4d307ead7744b12584d':'KIPP Public Schools',
-    '5f2609807a1c0000950bb455':'Krum Independent School District',
-    '5f2609807a1c0000950bb47e':'La Joya School District',
-    '6045e4cf07ead7744b125846':'Lamar Consolidated Independent School District',
-    '5f2609807a1c0000950bb45a':'LAUSD',
-    '5f2609807a1c0000950bb467':'Lincolnshire Schools',
-    '6045e4dc07ead7744b12585e':'Littleton Public Schools',
-    '5fe2e1ee4d0ca68d7baf889c':'LSF-Head Start',
-    '6023a7499e8e623753fc305f':'Manatee County School District',
-    '5f2609807a1c0000950bb482':'Massachusetts Institute of Technology',
-    '6077e1b5eaa8bae0e2e04a64':'Medfield School District',
-    '6023a7019e8e623753fc305d':'Miami-Dade County Public Schools',
-    '5f2609807a1c0000950bb465':'Middleton-Cross Plains Area School District',
-    '6045e4d407ead7744b12584f':'Mill Valley School District',
-    '6045e4d307ead7744b12584e':'Millard School District',
-    '610d0837931db8cfdf500fef':'Mission Consolidated Independent School District',
-    '5fb4efce4139b9d4c5a86a69':'Mt. Lebanon School District',
-    '6045e4cf07ead7744b125847':'Muscatine Community School District',
-    '5fbcdf0ba84e48a64412a798':'Needham School District',
-    '5f2609807a1c0000950bb459':'North Special School District',
-    '6045e4c907ead7744b12583c':'Northside Independent School District',
-    '5f7c01fa9387fd71ce6387cc':'NYC - Queens South',
-    '5fd704da04a848e368de5dc6':'Oakland Unified School District',
-    '5f6994386451a9089d7d4009':'Ogden school district',
-    '5f2609807a1c0000950bb472':'Oroville City Elementary School District',
-    '6017ab3043ca9c39151838d4':'Oswego School District',
-    '6045e4dd07ead7744b12585f':'Palm Beach County School District',
-    '60913aaea5fd4b56a4bafa70':'Palm Springs Unified',
-    '5f2609807a1c0000950bb479':'Panorama Education',
-    '5f2609807a1c0000950bb46f':'Paradise Schools',
-    '5f8fcd33609e08b76029f644':'Paradise Unified School District',
-    '6045e4de07ead7744b125860':'Paterson School District',
-    '5f2609807a1c0000950bb466':'Pinellas County Schools',
-    '5f2609807a1c0000950bb471':'Racine Unified Schools',
-    '6045e4d507ead7744b125850':'Rich School District',
-    '5f6d7cbce6452eb06384db20':'Salt Lake City School District',
-    '5f2609807a1c0000950bb478':'San Diego Unified School District',
-    '6045e4d507ead7744b125851':'San Francisco Unified School District',
-    '6023a76f9e8e623753fc3060':'San Jose Unified School District',
-    '5f2609807a1c0000950bb470':'San Leandro Unified School District',
-    '6045e4df07ead7744b125862':'San Marcos Unified School District',
-    '6045e4df07ead7744b125863':'San Marino Unified School District',
-    '5f2609807a1c0000950bb477':'Sarasota County',
-    '602e60e567d3e6c0a4eb4d99':'School District of Palm Beach County',
-    '6045e4d807ead7744b125856':'School District of the Chathams',
-    '6045e4de07ead7744b125861':'Sevier School District',
-    '5f2609807a1c0000950bb473':'Skillman Foundation',
-    '123':'Skillman',
-    '6045e4e007ead7744b125864':'South Summit School District',
-    '60eea965ae7de54f57abf234':'Southfield Public Schools',
-    '5f2609807a1c0000950bb46a':'Springfield Public School',    
-    '6045e4e007ead7744b125865':'Sudbury Public Schools',
-    '6045e4e107ead7744b125866':'Tooele County School District',
-    '60a7b03831afdba383052726':'United Way Of Santa Barbara',
-    '6045e4d607ead7744b125852':'Upland Unified School District',
-    '5f2609807a1c0000950bb468':'Utah Board of Education',
-    '456':'UWBA',
-    '6023a7949e8e623753fc3061':'Wasatch County School District',
-    '6045e4e207ead7744b125867':'Washoe County School District',
-    '5f698b826451a9089d7d4008':'Wayne Metro',
-    '6045e4d607ead7744b125853':'West Contra Costa Unified School District',
-    '5f2609807a1c0000950bb45b':'Westfield Public School District',
-    '6045e4e207ead7744b125868':'Westford Public Schools',
-    '6045e4d207ead7744b12584c':'White River School District',
-    '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
-    '5f2609807a1c0000950bb45d':'Youngstown'}
     
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
@@ -4936,7 +3024,10 @@ def district_school_table(districtid):
     collection=db.user_master
     collection1=db.audio_track_master
     collection3=db.subscription_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
 
     
 
@@ -5057,146 +3148,6 @@ def district_school_table(districtid):
 @app.route('/districtheatmap/<districtid>')
 
 def heat_district(districtid):
-    disdic={
-    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
-    "62603f5be9c76545ce51d732":"North Elementary School District",
-    "62552a4fbc7b0f11833b430c":"DUSD Power",
-    "623975aa25e068fe63efa956":"Project Hoeppner",
-    "6241625424e8123075e7b423":"North Muskegon School District",
-    "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
-    '620f3d6132c6d4813f4c9887':'Jackson County Schools',
-    "5f2609807a1c0000950bb459":"North Special School District",    
-    '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
-    '6045e4d007ead7744b125848':'Adams 12 Five Star Schools',
-    '619268dd81f00a4319a65a52':'Access Community',
-    '6045e4d707ead7744b125854':'Adams County School District 14',
-    '5f2609807a1c0000950bb475':'Agawam School district',
-    '5f2609807a1c0000950bb481':'Alameda Unified School District',
-    '5f2609807a1c0000950bb47a':'Alpine School District',
-    '5f2609807a1c0000950bb47b':'Ann Arbor Public Schools',
-    '6045e4c907ead7744b12583d':'Apple Valley Unified School District',
-    '789':'Attendance works',
-    '6045e4d707ead7744b125855':'Aurora Public Schools',
-    '5f2609807a1c0000950bb463':'Austin Independent School District',
-    '5f59e4836451a9089d7d4007':'Belleville School District',
-    '61aa08a4afeab44256f54074':'Benton Harbor',
-    '6045e4d107ead7744b125849':'Berkeley Public Schools',
-    '5fe2e25d4d0ca68d7baf889d':'BGCA',
-    '6045e4ca07ead7744b12583e':'Bishop Unified School District',
-    '6045e4d107ead7744b12584a':'Bismarck Public Schools',
-    '5fe318b14d0ca68d7baf889e':'BLUE',
-    '6045e4c807ead7744b12583b':'Boston Public Schools',
-    '6023a6d79e8e623753fc305c':'Boulder Valley School District',
-    '60f7bf747cc8db72d772e465':'Bright Horizons Early Learning Centers',
-    '5f2609807a1c0000950bb46d':'Broward County Public Schools',
-    '6045e4ca07ead7744b12583f':'Canyons School District',
-    '60473f8823e88e242074ebd2':'Champlain Valley School District',
-    '6045e4d907ead7744b125858':'Chicago Public Schools',
-    '5f2609807a1c0000950bb46c':'Chico Unified School District',
-    '5ffd8176469a86e28635f512':'Chula Vista Elementary School District',
-    '5f2609807a1c0000950bb460':'Clarksville-Montgomery County School System',
-    '6045e4d907ead7744b125857':'Colton Joint Unified School District',
-    '5f2609807a1c0000950bb47f':'Community Consolidated School District 89',
-    '5f2609807a1c0000950bb45c':'Comox Valley School District',
-    '5f2609807a1c0000950bb480':'Dell Texas',
-    '6045e4da07ead7744b125859':'Dennis-Yarmouth Regional School District',
-    '6045e4cb07ead7744b125840':'Denver Public Schools',
-    '5f2609807a1c0000950bb46e':'District 25 New York Schools',
-    '5f7413ef9387fd71ce6387cb':'Douglas County School District',
-    '6045e4c707ead7744b12583a':'Durham Public Schools',
-    '5f895191609e08b76029f641':'Early learning Sarasota',
-    '5f2609807a1c0000950bb462':'Englewood Cliffs Public Schools',
-    '5f2609807a1c0000950bb461':'Englewood Public School District',
-    '5f2609807a1c0000950bb464':'Equity Education',
-    '6045e4cc07ead7744b125841':'Fairfax County Public Schools',
-    '5f2609807a1c0000950bb45e':'Fairfield-Suisun Unified School District',
-    '6045e4cd07ead7744b125843':'Falmouth Public Schools',
-    '6045e4da07ead7744b12585a':'FITCHBURG PUBLIC SCHOOLS',
-    '5f2609807a1c0000950bb47d':'Flint Public Schools',
-    '6023a7269e8e623753fc305e':'Fulton County School System',
-    '5f2609807a1c0000950bb46b':'FundaciÃ³n La Puerta',
-    '6045e4d207ead7744b12584b':'Glenbard District 87',
-    '5f2609807a1c0000950bb450':'Goleta District',
-    '6045e4cd07ead7744b125844':'Granite School District',
-    '5f2609807a1c0000950bb474':'Greenburgh North Castle Union Free School District',
-    '5f2609807a1c0000950bb45f':'Griffin-Spalding County School System',
-    '60cb8971c5b0e89ed7ac0aa1':'Hall County School District',
-    '5f9aa5e526edbed399d56c92':'Hamilton-Wenham Regional School District',
-    '6045e4c707ead7744b125839':'Hartford Public Schools',
-    '5f2609807a1c0000950bb47c':'Hawaii Public Schools',
-    '6045e4ce07ead7744b125845':'Helena Public Schools',
-    '6045e4db07ead7744b12585b':'HidalgoIndependent School district',
-    '5f2609807a1c0000950bb476':'Hillsborough County',
-    '6045e4db07ead7744b12585c':'Hopedale Public Schools',
-    '6045e4cc07ead7744b125842':'Houston Independent School District',
-    '60b872ce826cab06ebdf044e':'Kalamazoo Public Schools',
-    '6045e4dc07ead7744b12585d':'Kearsarge Regional School District',
-    '6045e4d307ead7744b12584d':'KIPP Public Schools',
-    '5f2609807a1c0000950bb455':'Krum Independent School District',
-    '5f2609807a1c0000950bb47e':'La Joya School District',
-    '6045e4cf07ead7744b125846':'Lamar Consolidated Independent School District',
-    '5f2609807a1c0000950bb45a':'LAUSD',
-    '5f2609807a1c0000950bb467':'Lincolnshire Schools',
-    '6045e4dc07ead7744b12585e':'Littleton Public Schools',
-    '5fe2e1ee4d0ca68d7baf889c':'LSF-Head Start',
-    '6023a7499e8e623753fc305f':'Manatee County School District',
-    '5f2609807a1c0000950bb482':'Massachusetts Institute of Technology',
-    '6077e1b5eaa8bae0e2e04a64':'Medfield School District',
-    '6023a7019e8e623753fc305d':'Miami-Dade County Public Schools',
-    '5f2609807a1c0000950bb465':'Middleton-Cross Plains Area School District',
-    '6045e4d407ead7744b12584f':'Mill Valley School District',
-    '6045e4d307ead7744b12584e':'Millard School District',
-    '610d0837931db8cfdf500fef':'Mission Consolidated Independent School District',
-    '5fb4efce4139b9d4c5a86a69':'Mt. Lebanon School District',
-    '6045e4cf07ead7744b125847':'Muscatine Community School District',
-    '5fbcdf0ba84e48a64412a798':'Needham School District',
-    '5f2609807a1c0000950bb459':'North Special School District',
-    '6045e4c907ead7744b12583c':'Northside Independent School District',
-    '5f7c01fa9387fd71ce6387cc':'NYC - Queens South',
-    '5fd704da04a848e368de5dc6':'Oakland Unified School District',
-    '5f6994386451a9089d7d4009':'Ogden school district',
-    '5f2609807a1c0000950bb472':'Oroville City Elementary School District',
-    '6017ab3043ca9c39151838d4':'Oswego School District',
-    '6045e4dd07ead7744b12585f':'Palm Beach County School District',
-    '60913aaea5fd4b56a4bafa70':'Palm Springs Unified',
-    '5f2609807a1c0000950bb479':'Panorama Education',
-    '5f2609807a1c0000950bb46f':'Paradise Schools',
-    '5f8fcd33609e08b76029f644':'Paradise Unified School District',
-    '6045e4de07ead7744b125860':'Paterson School District',
-    '5f2609807a1c0000950bb466':'Pinellas County Schools',
-    '5f2609807a1c0000950bb471':'Racine Unified Schools',
-    '6045e4d507ead7744b125850':'Rich School District',
-    '5f6d7cbce6452eb06384db20':'Salt Lake City School District',
-    '5f2609807a1c0000950bb478':'San Diego Unified School District',
-    '6045e4d507ead7744b125851':'San Francisco Unified School District',
-    '6023a76f9e8e623753fc3060':'San Jose Unified School District',
-    '5f2609807a1c0000950bb470':'San Leandro Unified School District',
-    '6045e4df07ead7744b125862':'San Marcos Unified School District',
-    '6045e4df07ead7744b125863':'San Marino Unified School District',
-    '5f2609807a1c0000950bb477':'Sarasota County',
-    '602e60e567d3e6c0a4eb4d99':'School District of Palm Beach County',
-    '6045e4d807ead7744b125856':'School District of the Chathams',
-    '6045e4de07ead7744b125861':'Sevier School District',
-    '5f2609807a1c0000950bb473':'Skillman Foundation',
-    '123':'Skillman',
-    '6045e4e007ead7744b125864':'South Summit School District',
-    '60eea965ae7de54f57abf234':'Southfield Public Schools',
-    '5f2609807a1c0000950bb46a':'Springfield Public School',    
-    '6045e4e007ead7744b125865':'Sudbury Public Schools',
-    '6045e4e107ead7744b125866':'Tooele County School District',
-    '60a7b03831afdba383052726':'United Way Of Santa Barbara',
-    '6045e4d607ead7744b125852':'Upland Unified School District',
-    '5f2609807a1c0000950bb468':'Utah Board of Education',
-    '456':'UWBA',
-    '6023a7949e8e623753fc3061':'Wasatch County School District',
-    '6045e4e207ead7744b125867':'Washoe County School District',
-    '5f698b826451a9089d7d4008':'Wayne Metro',
-    '6045e4d607ead7744b125853':'West Contra Costa Unified School District',
-    '5f2609807a1c0000950bb45b':'Westfield Public School District',
-    '6045e4e207ead7744b125868':'Westford Public Schools',
-    '6045e4d207ead7744b12584c':'White River School District',
-    '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
-    '5f2609807a1c0000950bb45d':'Youngstown'}
     import collections
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
@@ -5204,7 +3155,10 @@ def heat_district(districtid):
     db=client.compass_beta 
     collection = db.audio_track_master
     collection2=db.user_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     
 
     df=DataFrame(list(collection2.aggregate([{"$match":
@@ -5330,146 +3284,6 @@ def heat_district(districtid):
 @app.route('/familydistrictheatmap/<districtid>')
 
 def heat_district_family_active(districtid):
-    disdic={
-    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
-    "62603f5be9c76545ce51d732":"North Elementary School District",
-    "62552a4fbc7b0f11833b430c":"DUSD Power",
-    "623975aa25e068fe63efa956":"Project Hoeppner",
-    "6241625424e8123075e7b423":"North Muskegon School District",
-    "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
-    '620f3d6132c6d4813f4c9887':'Jackson County Schools',
-    "5f2609807a1c0000950bb459":"North Special School District",    
-    '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
-    '6045e4d007ead7744b125848':'Adams 12 Five Star Schools',
-    '619268dd81f00a4319a65a52':'Access Community',
-    '6045e4d707ead7744b125854':'Adams County School District 14',
-    '5f2609807a1c0000950bb475':'Agawam School district',
-    '5f2609807a1c0000950bb481':'Alameda Unified School District',
-    '5f2609807a1c0000950bb47a':'Alpine School District',
-    '5f2609807a1c0000950bb47b':'Ann Arbor Public Schools',
-    '6045e4c907ead7744b12583d':'Apple Valley Unified School District',
-    '789':'Attendance works',
-    '6045e4d707ead7744b125855':'Aurora Public Schools',
-    '5f2609807a1c0000950bb463':'Austin Independent School District',
-    '5f59e4836451a9089d7d4007':'Belleville School District',
-    '61aa08a4afeab44256f54074':'Benton Harbor',
-    '6045e4d107ead7744b125849':'Berkeley Public Schools',
-    '5fe2e25d4d0ca68d7baf889d':'BGCA',
-    '6045e4ca07ead7744b12583e':'Bishop Unified School District',
-    '6045e4d107ead7744b12584a':'Bismarck Public Schools',
-    '5fe318b14d0ca68d7baf889e':'BLUE',
-    '6045e4c807ead7744b12583b':'Boston Public Schools',
-    '6023a6d79e8e623753fc305c':'Boulder Valley School District',
-    '60f7bf747cc8db72d772e465':'Bright Horizons Early Learning Centers',
-    '5f2609807a1c0000950bb46d':'Broward County Public Schools',
-    '6045e4ca07ead7744b12583f':'Canyons School District',
-    '60473f8823e88e242074ebd2':'Champlain Valley School District',
-    '6045e4d907ead7744b125858':'Chicago Public Schools',
-    '5f2609807a1c0000950bb46c':'Chico Unified School District',
-    '5ffd8176469a86e28635f512':'Chula Vista Elementary School District',
-    '5f2609807a1c0000950bb460':'Clarksville-Montgomery County School System',
-    '6045e4d907ead7744b125857':'Colton Joint Unified School District',
-    '5f2609807a1c0000950bb47f':'Community Consolidated School District 89',
-    '5f2609807a1c0000950bb45c':'Comox Valley School District',
-    '5f2609807a1c0000950bb480':'Dell Texas',
-    '6045e4da07ead7744b125859':'Dennis-Yarmouth Regional School District',
-    '6045e4cb07ead7744b125840':'Denver Public Schools',
-    '5f2609807a1c0000950bb46e':'District 25 New York Schools',
-    '5f7413ef9387fd71ce6387cb':'Douglas County School District',
-    '6045e4c707ead7744b12583a':'Durham Public Schools',
-    '5f895191609e08b76029f641':'Early learning Sarasota',
-    '5f2609807a1c0000950bb462':'Englewood Cliffs Public Schools',
-    '5f2609807a1c0000950bb461':'Englewood Public School District',
-    '5f2609807a1c0000950bb464':'Equity Education',
-    '6045e4cc07ead7744b125841':'Fairfax County Public Schools',
-    '5f2609807a1c0000950bb45e':'Fairfield-Suisun Unified School District',
-    '6045e4cd07ead7744b125843':'Falmouth Public Schools',
-    '6045e4da07ead7744b12585a':'FITCHBURG PUBLIC SCHOOLS',
-    '5f2609807a1c0000950bb47d':'Flint Public Schools',
-    '6023a7269e8e623753fc305e':'Fulton County School System',
-    '5f2609807a1c0000950bb46b':'FundaciÃ³n La Puerta',
-    '6045e4d207ead7744b12584b':'Glenbard District 87',
-    '5f2609807a1c0000950bb450':'Goleta District',
-    '6045e4cd07ead7744b125844':'Granite School District',
-    '5f2609807a1c0000950bb474':'Greenburgh North Castle Union Free School District',
-    '5f2609807a1c0000950bb45f':'Griffin-Spalding County School System',
-    '60cb8971c5b0e89ed7ac0aa1':'Hall County School District',
-    '5f9aa5e526edbed399d56c92':'Hamilton-Wenham Regional School District',
-    '6045e4c707ead7744b125839':'Hartford Public Schools',
-    '5f2609807a1c0000950bb47c':'Hawaii Public Schools',
-    '6045e4ce07ead7744b125845':'Helena Public Schools',
-    '6045e4db07ead7744b12585b':'HidalgoIndependent School district',
-    '5f2609807a1c0000950bb476':'Hillsborough County',
-    '6045e4db07ead7744b12585c':'Hopedale Public Schools',
-    '6045e4cc07ead7744b125842':'Houston Independent School District',
-    '60b872ce826cab06ebdf044e':'Kalamazoo Public Schools',
-    '6045e4dc07ead7744b12585d':'Kearsarge Regional School District',
-    '6045e4d307ead7744b12584d':'KIPP Public Schools',
-    '5f2609807a1c0000950bb455':'Krum Independent School District',
-    '5f2609807a1c0000950bb47e':'La Joya School District',
-    '6045e4cf07ead7744b125846':'Lamar Consolidated Independent School District',
-    '5f2609807a1c0000950bb45a':'LAUSD',
-    '5f2609807a1c0000950bb467':'Lincolnshire Schools',
-    '6045e4dc07ead7744b12585e':'Littleton Public Schools',
-    '5fe2e1ee4d0ca68d7baf889c':'LSF-Head Start',
-    '6023a7499e8e623753fc305f':'Manatee County School District',
-    '5f2609807a1c0000950bb482':'Massachusetts Institute of Technology',
-    '6077e1b5eaa8bae0e2e04a64':'Medfield School District',
-    '6023a7019e8e623753fc305d':'Miami-Dade County Public Schools',
-    '5f2609807a1c0000950bb465':'Middleton-Cross Plains Area School District',
-    '6045e4d407ead7744b12584f':'Mill Valley School District',
-    '6045e4d307ead7744b12584e':'Millard School District',
-    '610d0837931db8cfdf500fef':'Mission Consolidated Independent School District',
-    '5fb4efce4139b9d4c5a86a69':'Mt. Lebanon School District',
-    '6045e4cf07ead7744b125847':'Muscatine Community School District',
-    '5fbcdf0ba84e48a64412a798':'Needham School District',
-    '5f2609807a1c0000950bb459':'North Special School District',
-    '6045e4c907ead7744b12583c':'Northside Independent School District',
-    '5f7c01fa9387fd71ce6387cc':'NYC - Queens South',
-    '5fd704da04a848e368de5dc6':'Oakland Unified School District',
-    '5f6994386451a9089d7d4009':'Ogden school district',
-    '5f2609807a1c0000950bb472':'Oroville City Elementary School District',
-    '6017ab3043ca9c39151838d4':'Oswego School District',
-    '6045e4dd07ead7744b12585f':'Palm Beach County School District',
-    '60913aaea5fd4b56a4bafa70':'Palm Springs Unified',
-    '5f2609807a1c0000950bb479':'Panorama Education',
-    '5f2609807a1c0000950bb46f':'Paradise Schools',
-    '5f8fcd33609e08b76029f644':'Paradise Unified School District',
-    '6045e4de07ead7744b125860':'Paterson School District',
-    '5f2609807a1c0000950bb466':'Pinellas County Schools',
-    '5f2609807a1c0000950bb471':'Racine Unified Schools',
-    '6045e4d507ead7744b125850':'Rich School District',
-    '5f6d7cbce6452eb06384db20':'Salt Lake City School District',
-    '5f2609807a1c0000950bb478':'San Diego Unified School District',
-    '6045e4d507ead7744b125851':'San Francisco Unified School District',
-    '6023a76f9e8e623753fc3060':'San Jose Unified School District',
-    '5f2609807a1c0000950bb470':'San Leandro Unified School District',
-    '6045e4df07ead7744b125862':'San Marcos Unified School District',
-    '6045e4df07ead7744b125863':'San Marino Unified School District',
-    '5f2609807a1c0000950bb477':'Sarasota County',
-    '602e60e567d3e6c0a4eb4d99':'School District of Palm Beach County',
-    '6045e4d807ead7744b125856':'School District of the Chathams',
-    '6045e4de07ead7744b125861':'Sevier School District',
-    '5f2609807a1c0000950bb473':'Skillman Foundation',
-    '123':'Skillman',
-    '6045e4e007ead7744b125864':'South Summit School District',
-    '60eea965ae7de54f57abf234':'Southfield Public Schools',
-    '5f2609807a1c0000950bb46a':'Springfield Public School',    
-    '6045e4e007ead7744b125865':'Sudbury Public Schools',
-    '6045e4e107ead7744b125866':'Tooele County School District',
-    '60a7b03831afdba383052726':'United Way Of Santa Barbara',
-    '6045e4d607ead7744b125852':'Upland Unified School District',
-    '5f2609807a1c0000950bb468':'Utah Board of Education',
-    '456':'UWBA',
-    '6023a7949e8e623753fc3061':'Wasatch County School District',
-    '6045e4e207ead7744b125867':'Washoe County School District',
-    '5f698b826451a9089d7d4008':'Wayne Metro',
-    '6045e4d607ead7744b125853':'West Contra Costa Unified School District',
-    '5f2609807a1c0000950bb45b':'Westfield Public School District',
-    '6045e4e207ead7744b125868':'Westford Public Schools',
-    '6045e4d207ead7744b12584c':'White River School District',
-    '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
-    '5f2609807a1c0000950bb45d':'Youngstown'}
     import collections
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
@@ -5477,7 +3291,10 @@ def heat_district_family_active(districtid):
     db=client.compass_beta 
     collection = db.audio_track_master
     collection2=db.user_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
 
     
     df=DataFrame(list(collection2.aggregate([{"$match":
@@ -5601,146 +3418,6 @@ def heat_district_family_active(districtid):
 @app.route('/teachersdistrictheatmap/<districtid>')
 
 def heat_district_teachers_active(districtid):
-    disdic={
-    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
-    "62603f5be9c76545ce51d732":"North Elementary School District",
-    "62552a4fbc7b0f11833b430c":"DUSD Power",
-    "623975aa25e068fe63efa956":"Project Hoeppner",
-    "6241625424e8123075e7b423":"North Muskegon School District",
-    "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
-    '620f3d6132c6d4813f4c9887':'Jackson County Schools',
-    "5f2609807a1c0000950bb459":"North Special School District",    
-    '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
-    '6045e4d007ead7744b125848':'Adams 12 Five Star Schools',
-    '619268dd81f00a4319a65a52':'Access Community',
-    '6045e4d707ead7744b125854':'Adams County School District 14',
-    '5f2609807a1c0000950bb475':'Agawam School district',
-    '5f2609807a1c0000950bb481':'Alameda Unified School District',
-    '5f2609807a1c0000950bb47a':'Alpine School District',
-    '5f2609807a1c0000950bb47b':'Ann Arbor Public Schools',
-    '6045e4c907ead7744b12583d':'Apple Valley Unified School District',
-    '789':'Attendance works',
-    '6045e4d707ead7744b125855':'Aurora Public Schools',
-    '5f2609807a1c0000950bb463':'Austin Independent School District',
-    '5f59e4836451a9089d7d4007':'Belleville School District',
-    '61aa08a4afeab44256f54074':'Benton Harbor',
-    '6045e4d107ead7744b125849':'Berkeley Public Schools',
-    '5fe2e25d4d0ca68d7baf889d':'BGCA',
-    '6045e4ca07ead7744b12583e':'Bishop Unified School District',
-    '6045e4d107ead7744b12584a':'Bismarck Public Schools',
-    '5fe318b14d0ca68d7baf889e':'BLUE',
-    '6045e4c807ead7744b12583b':'Boston Public Schools',
-    '6023a6d79e8e623753fc305c':'Boulder Valley School District',
-    '60f7bf747cc8db72d772e465':'Bright Horizons Early Learning Centers',
-    '5f2609807a1c0000950bb46d':'Broward County Public Schools',
-    '6045e4ca07ead7744b12583f':'Canyons School District',
-    '60473f8823e88e242074ebd2':'Champlain Valley School District',
-    '6045e4d907ead7744b125858':'Chicago Public Schools',
-    '5f2609807a1c0000950bb46c':'Chico Unified School District',
-    '5ffd8176469a86e28635f512':'Chula Vista Elementary School District',
-    '5f2609807a1c0000950bb460':'Clarksville-Montgomery County School System',
-    '6045e4d907ead7744b125857':'Colton Joint Unified School District',
-    '5f2609807a1c0000950bb47f':'Community Consolidated School District 89',
-    '5f2609807a1c0000950bb45c':'Comox Valley School District',
-    '5f2609807a1c0000950bb480':'Dell Texas',
-    '6045e4da07ead7744b125859':'Dennis-Yarmouth Regional School District',
-    '6045e4cb07ead7744b125840':'Denver Public Schools',
-    '5f2609807a1c0000950bb46e':'District 25 New York Schools',
-    '5f7413ef9387fd71ce6387cb':'Douglas County School District',
-    '6045e4c707ead7744b12583a':'Durham Public Schools',
-    '5f895191609e08b76029f641':'Early learning Sarasota',
-    '5f2609807a1c0000950bb462':'Englewood Cliffs Public Schools',
-    '5f2609807a1c0000950bb461':'Englewood Public School District',
-    '5f2609807a1c0000950bb464':'Equity Education',
-    '6045e4cc07ead7744b125841':'Fairfax County Public Schools',
-    '5f2609807a1c0000950bb45e':'Fairfield-Suisun Unified School District',
-    '6045e4cd07ead7744b125843':'Falmouth Public Schools',
-    '6045e4da07ead7744b12585a':'FITCHBURG PUBLIC SCHOOLS',
-    '5f2609807a1c0000950bb47d':'Flint Public Schools',
-    '6023a7269e8e623753fc305e':'Fulton County School System',
-    '5f2609807a1c0000950bb46b':'FundaciÃ³n La Puerta',
-    '6045e4d207ead7744b12584b':'Glenbard District 87',
-    '5f2609807a1c0000950bb450':'Goleta District',
-    '6045e4cd07ead7744b125844':'Granite School District',
-    '5f2609807a1c0000950bb474':'Greenburgh North Castle Union Free School District',
-    '5f2609807a1c0000950bb45f':'Griffin-Spalding County School System',
-    '60cb8971c5b0e89ed7ac0aa1':'Hall County School District',
-    '5f9aa5e526edbed399d56c92':'Hamilton-Wenham Regional School District',
-    '6045e4c707ead7744b125839':'Hartford Public Schools',
-    '5f2609807a1c0000950bb47c':'Hawaii Public Schools',
-    '6045e4ce07ead7744b125845':'Helena Public Schools',
-    '6045e4db07ead7744b12585b':'HidalgoIndependent School district',
-    '5f2609807a1c0000950bb476':'Hillsborough County',
-    '6045e4db07ead7744b12585c':'Hopedale Public Schools',
-    '6045e4cc07ead7744b125842':'Houston Independent School District',
-    '60b872ce826cab06ebdf044e':'Kalamazoo Public Schools',
-    '6045e4dc07ead7744b12585d':'Kearsarge Regional School District',
-    '6045e4d307ead7744b12584d':'KIPP Public Schools',
-    '5f2609807a1c0000950bb455':'Krum Independent School District',
-    '5f2609807a1c0000950bb47e':'La Joya School District',
-    '6045e4cf07ead7744b125846':'Lamar Consolidated Independent School District',
-    '5f2609807a1c0000950bb45a':'LAUSD',
-    '5f2609807a1c0000950bb467':'Lincolnshire Schools',
-    '6045e4dc07ead7744b12585e':'Littleton Public Schools',
-    '5fe2e1ee4d0ca68d7baf889c':'LSF-Head Start',
-    '6023a7499e8e623753fc305f':'Manatee County School District',
-    '5f2609807a1c0000950bb482':'Massachusetts Institute of Technology',
-    '6077e1b5eaa8bae0e2e04a64':'Medfield School District',
-    '6023a7019e8e623753fc305d':'Miami-Dade County Public Schools',
-    '5f2609807a1c0000950bb465':'Middleton-Cross Plains Area School District',
-    '6045e4d407ead7744b12584f':'Mill Valley School District',
-    '6045e4d307ead7744b12584e':'Millard School District',
-    '610d0837931db8cfdf500fef':'Mission Consolidated Independent School District',
-    '5fb4efce4139b9d4c5a86a69':'Mt. Lebanon School District',
-    '6045e4cf07ead7744b125847':'Muscatine Community School District',
-    '5fbcdf0ba84e48a64412a798':'Needham School District',
-    '5f2609807a1c0000950bb459':'North Special School District',
-    '6045e4c907ead7744b12583c':'Northside Independent School District',
-    '5f7c01fa9387fd71ce6387cc':'NYC - Queens South',
-    '5fd704da04a848e368de5dc6':'Oakland Unified School District',
-    '5f6994386451a9089d7d4009':'Ogden school district',
-    '5f2609807a1c0000950bb472':'Oroville City Elementary School District',
-    '6017ab3043ca9c39151838d4':'Oswego School District',
-    '6045e4dd07ead7744b12585f':'Palm Beach County School District',
-    '60913aaea5fd4b56a4bafa70':'Palm Springs Unified',
-    '5f2609807a1c0000950bb479':'Panorama Education',
-    '5f2609807a1c0000950bb46f':'Paradise Schools',
-    '5f8fcd33609e08b76029f644':'Paradise Unified School District',
-    '6045e4de07ead7744b125860':'Paterson School District',
-    '5f2609807a1c0000950bb466':'Pinellas County Schools',
-    '5f2609807a1c0000950bb471':'Racine Unified Schools',
-    '6045e4d507ead7744b125850':'Rich School District',
-    '5f6d7cbce6452eb06384db20':'Salt Lake City School District',
-    '5f2609807a1c0000950bb478':'San Diego Unified School District',
-    '6045e4d507ead7744b125851':'San Francisco Unified School District',
-    '6023a76f9e8e623753fc3060':'San Jose Unified School District',
-    '5f2609807a1c0000950bb470':'San Leandro Unified School District',
-    '6045e4df07ead7744b125862':'San Marcos Unified School District',
-    '6045e4df07ead7744b125863':'San Marino Unified School District',
-    '5f2609807a1c0000950bb477':'Sarasota County',
-    '602e60e567d3e6c0a4eb4d99':'School District of Palm Beach County',
-    '6045e4d807ead7744b125856':'School District of the Chathams',
-    '6045e4de07ead7744b125861':'Sevier School District',
-    '5f2609807a1c0000950bb473':'Skillman Foundation',
-    '123':'Skillman',
-    '6045e4e007ead7744b125864':'South Summit School District',
-    '60eea965ae7de54f57abf234':'Southfield Public Schools',
-    '5f2609807a1c0000950bb46a':'Springfield Public School',    
-    '6045e4e007ead7744b125865':'Sudbury Public Schools',
-    '6045e4e107ead7744b125866':'Tooele County School District',
-    '60a7b03831afdba383052726':'United Way Of Santa Barbara',
-    '6045e4d607ead7744b125852':'Upland Unified School District',
-    '5f2609807a1c0000950bb468':'Utah Board of Education',
-    '456':'UWBA',
-    '6023a7949e8e623753fc3061':'Wasatch County School District',
-    '6045e4e207ead7744b125867':'Washoe County School District',
-    '5f698b826451a9089d7d4008':'Wayne Metro',
-    '6045e4d607ead7744b125853':'West Contra Costa Unified School District',
-    '5f2609807a1c0000950bb45b':'Westfield Public School District',
-    '6045e4e207ead7744b125868':'Westford Public Schools',
-    '6045e4d207ead7744b12584c':'White River School District',
-    '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
-    '5f2609807a1c0000950bb45d':'Youngstown'}
     import collections
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
@@ -5748,7 +3425,10 @@ def heat_district_teachers_active(districtid):
     db=client.compass_beta 
     collection = db.audio_track_master
     collection2=db.user_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
 
 
 
@@ -5873,146 +3553,6 @@ def heat_district_teachers_active(districtid):
 
 @app.route('/districtheatmappracteacher/<districtid>')
 def heat_district_teachers_prac(districtid):
-    disdic={
-    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
-    "62603f5be9c76545ce51d732":"North Elementary School District",
-    "62552a4fbc7b0f11833b430c":"DUSD Power",
-    "623975aa25e068fe63efa956":"Project Hoeppner",
-    "6241625424e8123075e7b423":"North Muskegon School District",
-    "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
-    '620f3d6132c6d4813f4c9887':'Jackson County Schools',
-    "5f2609807a1c0000950bb459":"North Special School District",
-    '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
-    '6045e4d007ead7744b125848':'Adams 12 Five Star Schools',
-    '619268dd81f00a4319a65a52':'Access Community',
-    '6045e4d707ead7744b125854':'Adams County School District 14',
-    '5f2609807a1c0000950bb475':'Agawam School district',
-    '5f2609807a1c0000950bb481':'Alameda Unified School District',
-    '5f2609807a1c0000950bb47a':'Alpine School District',
-    '5f2609807a1c0000950bb47b':'Ann Arbor Public Schools',
-    '6045e4c907ead7744b12583d':'Apple Valley Unified School District',
-    '789':'Attendance works',
-    '6045e4d707ead7744b125855':'Aurora Public Schools',
-    '5f2609807a1c0000950bb463':'Austin Independent School District',
-    '5f59e4836451a9089d7d4007':'Belleville School District',
-    '61aa08a4afeab44256f54074':'Benton Harbor',
-    '6045e4d107ead7744b125849':'Berkeley Public Schools',
-    '5fe2e25d4d0ca68d7baf889d':'BGCA',
-    '6045e4ca07ead7744b12583e':'Bishop Unified School District',
-    '6045e4d107ead7744b12584a':'Bismarck Public Schools',
-    '5fe318b14d0ca68d7baf889e':'BLUE',
-    '6045e4c807ead7744b12583b':'Boston Public Schools',
-    '6023a6d79e8e623753fc305c':'Boulder Valley School District',
-    '60f7bf747cc8db72d772e465':'Bright Horizons Early Learning Centers',
-    '5f2609807a1c0000950bb46d':'Broward County Public Schools',
-    '6045e4ca07ead7744b12583f':'Canyons School District',
-    '60473f8823e88e242074ebd2':'Champlain Valley School District',
-    '6045e4d907ead7744b125858':'Chicago Public Schools',
-    '5f2609807a1c0000950bb46c':'Chico Unified School District',
-    '5ffd8176469a86e28635f512':'Chula Vista Elementary School District',
-    '5f2609807a1c0000950bb460':'Clarksville-Montgomery County School System',
-    '6045e4d907ead7744b125857':'Colton Joint Unified School District',
-    '5f2609807a1c0000950bb47f':'Community Consolidated School District 89',
-    '5f2609807a1c0000950bb45c':'Comox Valley School District',
-    '5f2609807a1c0000950bb480':'Dell Texas',
-    '6045e4da07ead7744b125859':'Dennis-Yarmouth Regional School District',
-    '6045e4cb07ead7744b125840':'Denver Public Schools',
-    '5f2609807a1c0000950bb46e':'District 25 New York Schools',
-    '5f7413ef9387fd71ce6387cb':'Douglas County School District',
-    '6045e4c707ead7744b12583a':'Durham Public Schools',
-    '5f895191609e08b76029f641':'Early learning Sarasota',
-    '5f2609807a1c0000950bb462':'Englewood Cliffs Public Schools',
-    '5f2609807a1c0000950bb461':'Englewood Public School District',
-    '5f2609807a1c0000950bb464':'Equity Education',
-    '6045e4cc07ead7744b125841':'Fairfax County Public Schools',
-    '5f2609807a1c0000950bb45e':'Fairfield-Suisun Unified School District',
-    '6045e4cd07ead7744b125843':'Falmouth Public Schools',
-    '6045e4da07ead7744b12585a':'FITCHBURG PUBLIC SCHOOLS',
-    '5f2609807a1c0000950bb47d':'Flint Public Schools',
-    '6023a7269e8e623753fc305e':'Fulton County School System',
-    '5f2609807a1c0000950bb46b':'FundaciÃ³n La Puerta',
-    '6045e4d207ead7744b12584b':'Glenbard District 87',
-    '5f2609807a1c0000950bb450':'Goleta District',
-    '6045e4cd07ead7744b125844':'Granite School District',
-    '5f2609807a1c0000950bb474':'Greenburgh North Castle Union Free School District',
-    '5f2609807a1c0000950bb45f':'Griffin-Spalding County School System',
-    '60cb8971c5b0e89ed7ac0aa1':'Hall County School District',
-    '5f9aa5e526edbed399d56c92':'Hamilton-Wenham Regional School District',
-    '6045e4c707ead7744b125839':'Hartford Public Schools',
-    '5f2609807a1c0000950bb47c':'Hawaii Public Schools',
-    '6045e4ce07ead7744b125845':'Helena Public Schools',
-    '6045e4db07ead7744b12585b':'HidalgoIndependent School district',
-    '5f2609807a1c0000950bb476':'Hillsborough County',
-    '6045e4db07ead7744b12585c':'Hopedale Public Schools',
-    '6045e4cc07ead7744b125842':'Houston Independent School District',
-    '60b872ce826cab06ebdf044e':'Kalamazoo Public Schools',
-    '6045e4dc07ead7744b12585d':'Kearsarge Regional School District',
-    '6045e4d307ead7744b12584d':'KIPP Public Schools',
-    '5f2609807a1c0000950bb455':'Krum Independent School District',
-    '5f2609807a1c0000950bb47e':'La Joya School District',
-    '6045e4cf07ead7744b125846':'Lamar Consolidated Independent School District',
-    '5f2609807a1c0000950bb45a':'LAUSD',
-    '5f2609807a1c0000950bb467':'Lincolnshire Schools',
-    '6045e4dc07ead7744b12585e':'Littleton Public Schools',
-    '5fe2e1ee4d0ca68d7baf889c':'LSF-Head Start',
-    '6023a7499e8e623753fc305f':'Manatee County School District',
-    '5f2609807a1c0000950bb482':'Massachusetts Institute of Technology',
-    '6077e1b5eaa8bae0e2e04a64':'Medfield School District',
-    '6023a7019e8e623753fc305d':'Miami-Dade County Public Schools',
-    '5f2609807a1c0000950bb465':'Middleton-Cross Plains Area School District',
-    '6045e4d407ead7744b12584f':'Mill Valley School District',
-    '6045e4d307ead7744b12584e':'Millard School District',
-    '610d0837931db8cfdf500fef':'Mission Consolidated Independent School District',
-    '5fb4efce4139b9d4c5a86a69':'Mt. Lebanon School District',
-    '6045e4cf07ead7744b125847':'Muscatine Community School District',
-    '5fbcdf0ba84e48a64412a798':'Needham School District',
-    '5f2609807a1c0000950bb459':'North Special School District',
-    '6045e4c907ead7744b12583c':'Northside Independent School District',
-    '5f7c01fa9387fd71ce6387cc':'NYC - Queens South',
-    '5fd704da04a848e368de5dc6':'Oakland Unified School District',
-    '5f6994386451a9089d7d4009':'Ogden school district',
-    '5f2609807a1c0000950bb472':'Oroville City Elementary School District',
-    '6017ab3043ca9c39151838d4':'Oswego School District',
-    '6045e4dd07ead7744b12585f':'Palm Beach County School District',
-    '60913aaea5fd4b56a4bafa70':'Palm Springs Unified',
-    '5f2609807a1c0000950bb479':'Panorama Education',
-    '5f2609807a1c0000950bb46f':'Paradise Schools',
-    '5f8fcd33609e08b76029f644':'Paradise Unified School District',
-    '6045e4de07ead7744b125860':'Paterson School District',
-    '5f2609807a1c0000950bb466':'Pinellas County Schools',
-    '5f2609807a1c0000950bb471':'Racine Unified Schools',
-    '6045e4d507ead7744b125850':'Rich School District',
-    '5f6d7cbce6452eb06384db20':'Salt Lake City School District',
-    '5f2609807a1c0000950bb478':'San Diego Unified School District',
-    '6045e4d507ead7744b125851':'San Francisco Unified School District',
-    '6023a76f9e8e623753fc3060':'San Jose Unified School District',
-    '5f2609807a1c0000950bb470':'San Leandro Unified School District',
-    '6045e4df07ead7744b125862':'San Marcos Unified School District',
-    '6045e4df07ead7744b125863':'San Marino Unified School District',
-    '5f2609807a1c0000950bb477':'Sarasota County',
-    '602e60e567d3e6c0a4eb4d99':'School District of Palm Beach County',
-    '6045e4d807ead7744b125856':'School District of the Chathams',
-    '6045e4de07ead7744b125861':'Sevier School District',
-    '5f2609807a1c0000950bb473':'Skillman Foundation',
-    '123':'Skillman',
-    '6045e4e007ead7744b125864':'South Summit School District',
-    '60eea965ae7de54f57abf234':'Southfield Public Schools',
-    '5f2609807a1c0000950bb46a':'Springfield Public School',    
-    '6045e4e007ead7744b125865':'Sudbury Public Schools',
-    '6045e4e107ead7744b125866':'Tooele County School District',
-    '60a7b03831afdba383052726':'United Way Of Santa Barbara',
-    '6045e4d607ead7744b125852':'Upland Unified School District',
-    '5f2609807a1c0000950bb468':'Utah Board of Education',
-    '456':'UWBA',
-    '6023a7949e8e623753fc3061':'Wasatch County School District',
-    '6045e4e207ead7744b125867':'Washoe County School District',
-    '5f698b826451a9089d7d4008':'Wayne Metro',
-    '6045e4d607ead7744b125853':'West Contra Costa Unified School District',
-    '5f2609807a1c0000950bb45b':'Westfield Public School District',
-    '6045e4e207ead7744b125868':'Westford Public Schools',
-    '6045e4d207ead7744b12584c':'White River School District',
-    '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
-    '5f2609807a1c0000950bb45d':'Youngstown'}
     import collections
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
@@ -6020,7 +3560,10 @@ def heat_district_teachers_prac(districtid):
     db=client.compass_beta 
     collection = db.audio_track_master
     collection2=db.user_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
 
 
     df=DataFrame(list(collection2.aggregate([{"$match":
@@ -6143,146 +3686,6 @@ def heat_district_teachers_prac(districtid):
 
 @app.route('/districtheatmappracfamily/<districtid>')
 def heat_district_family_prac(districtid):
-    disdic={
-    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
-    "62603f5be9c76545ce51d732":"North Elementary School District",
-    "62552a4fbc7b0f11833b430c":"DUSD Power",
-    "623975aa25e068fe63efa956":"Project Hoeppner",
-    "6241625424e8123075e7b423":"North Muskegon School District",
-    "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
-    '620f3d6132c6d4813f4c9887':'Jackson County Schools',
-    "5f2609807a1c0000950bb459":"North Special School District",
-    '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
-    '6045e4d007ead7744b125848':'Adams 12 Five Star Schools',
-    '619268dd81f00a4319a65a52':'Access Community',
-    '6045e4d707ead7744b125854':'Adams County School District 14',
-    '5f2609807a1c0000950bb475':'Agawam School district',
-    '5f2609807a1c0000950bb481':'Alameda Unified School District',
-    '5f2609807a1c0000950bb47a':'Alpine School District',
-    '5f2609807a1c0000950bb47b':'Ann Arbor Public Schools',
-    '6045e4c907ead7744b12583d':'Apple Valley Unified School District',
-    '789':'Attendance works',
-    '6045e4d707ead7744b125855':'Aurora Public Schools',
-    '5f2609807a1c0000950bb463':'Austin Independent School District',
-    '5f59e4836451a9089d7d4007':'Belleville School District',
-    '61aa08a4afeab44256f54074':'Benton Harbor',
-    '6045e4d107ead7744b125849':'Berkeley Public Schools',
-    '5fe2e25d4d0ca68d7baf889d':'BGCA',
-    '6045e4ca07ead7744b12583e':'Bishop Unified School District',
-    '6045e4d107ead7744b12584a':'Bismarck Public Schools',
-    '5fe318b14d0ca68d7baf889e':'BLUE',
-    '6045e4c807ead7744b12583b':'Boston Public Schools',
-    '6023a6d79e8e623753fc305c':'Boulder Valley School District',
-    '60f7bf747cc8db72d772e465':'Bright Horizons Early Learning Centers',
-    '5f2609807a1c0000950bb46d':'Broward County Public Schools',
-    '6045e4ca07ead7744b12583f':'Canyons School District',
-    '60473f8823e88e242074ebd2':'Champlain Valley School District',
-    '6045e4d907ead7744b125858':'Chicago Public Schools',
-    '5f2609807a1c0000950bb46c':'Chico Unified School District',
-    '5ffd8176469a86e28635f512':'Chula Vista Elementary School District',
-    '5f2609807a1c0000950bb460':'Clarksville-Montgomery County School System',
-    '6045e4d907ead7744b125857':'Colton Joint Unified School District',
-    '5f2609807a1c0000950bb47f':'Community Consolidated School District 89',
-    '5f2609807a1c0000950bb45c':'Comox Valley School District',
-    '5f2609807a1c0000950bb480':'Dell Texas',
-    '6045e4da07ead7744b125859':'Dennis-Yarmouth Regional School District',
-    '6045e4cb07ead7744b125840':'Denver Public Schools',
-    '5f2609807a1c0000950bb46e':'District 25 New York Schools',
-    '5f7413ef9387fd71ce6387cb':'Douglas County School District',
-    '6045e4c707ead7744b12583a':'Durham Public Schools',
-    '5f895191609e08b76029f641':'Early learning Sarasota',
-    '5f2609807a1c0000950bb462':'Englewood Cliffs Public Schools',
-    '5f2609807a1c0000950bb461':'Englewood Public School District',
-    '5f2609807a1c0000950bb464':'Equity Education',
-    '6045e4cc07ead7744b125841':'Fairfax County Public Schools',
-    '5f2609807a1c0000950bb45e':'Fairfield-Suisun Unified School District',
-    '6045e4cd07ead7744b125843':'Falmouth Public Schools',
-    '6045e4da07ead7744b12585a':'FITCHBURG PUBLIC SCHOOLS',
-    '5f2609807a1c0000950bb47d':'Flint Public Schools',
-    '6023a7269e8e623753fc305e':'Fulton County School System',
-    '5f2609807a1c0000950bb46b':'FundaciÃ³n La Puerta',
-    '6045e4d207ead7744b12584b':'Glenbard District 87',
-    '5f2609807a1c0000950bb450':'Goleta District',
-    '6045e4cd07ead7744b125844':'Granite School District',
-    '5f2609807a1c0000950bb474':'Greenburgh North Castle Union Free School District',
-    '5f2609807a1c0000950bb45f':'Griffin-Spalding County School System',
-    '60cb8971c5b0e89ed7ac0aa1':'Hall County School District',
-    '5f9aa5e526edbed399d56c92':'Hamilton-Wenham Regional School District',
-    '6045e4c707ead7744b125839':'Hartford Public Schools',
-    '5f2609807a1c0000950bb47c':'Hawaii Public Schools',
-    '6045e4ce07ead7744b125845':'Helena Public Schools',
-    '6045e4db07ead7744b12585b':'HidalgoIndependent School district',
-    '5f2609807a1c0000950bb476':'Hillsborough County',
-    '6045e4db07ead7744b12585c':'Hopedale Public Schools',
-    '6045e4cc07ead7744b125842':'Houston Independent School District',
-    '60b872ce826cab06ebdf044e':'Kalamazoo Public Schools',
-    '6045e4dc07ead7744b12585d':'Kearsarge Regional School District',
-    '6045e4d307ead7744b12584d':'KIPP Public Schools',
-    '5f2609807a1c0000950bb455':'Krum Independent School District',
-    '5f2609807a1c0000950bb47e':'La Joya School District',
-    '6045e4cf07ead7744b125846':'Lamar Consolidated Independent School District',
-    '5f2609807a1c0000950bb45a':'LAUSD',
-    '5f2609807a1c0000950bb467':'Lincolnshire Schools',
-    '6045e4dc07ead7744b12585e':'Littleton Public Schools',
-    '5fe2e1ee4d0ca68d7baf889c':'LSF-Head Start',
-    '6023a7499e8e623753fc305f':'Manatee County School District',
-    '5f2609807a1c0000950bb482':'Massachusetts Institute of Technology',
-    '6077e1b5eaa8bae0e2e04a64':'Medfield School District',
-    '6023a7019e8e623753fc305d':'Miami-Dade County Public Schools',
-    '5f2609807a1c0000950bb465':'Middleton-Cross Plains Area School District',
-    '6045e4d407ead7744b12584f':'Mill Valley School District',
-    '6045e4d307ead7744b12584e':'Millard School District',
-    '610d0837931db8cfdf500fef':'Mission Consolidated Independent School District',
-    '5fb4efce4139b9d4c5a86a69':'Mt. Lebanon School District',
-    '6045e4cf07ead7744b125847':'Muscatine Community School District',
-    '5fbcdf0ba84e48a64412a798':'Needham School District',
-    '5f2609807a1c0000950bb459':'North Special School District',
-    '6045e4c907ead7744b12583c':'Northside Independent School District',
-    '5f7c01fa9387fd71ce6387cc':'NYC - Queens South',
-    '5fd704da04a848e368de5dc6':'Oakland Unified School District',
-    '5f6994386451a9089d7d4009':'Ogden school district',
-    '5f2609807a1c0000950bb472':'Oroville City Elementary School District',
-    '6017ab3043ca9c39151838d4':'Oswego School District',
-    '6045e4dd07ead7744b12585f':'Palm Beach County School District',
-    '60913aaea5fd4b56a4bafa70':'Palm Springs Unified',
-    '5f2609807a1c0000950bb479':'Panorama Education',
-    '5f2609807a1c0000950bb46f':'Paradise Schools',
-    '5f8fcd33609e08b76029f644':'Paradise Unified School District',
-    '6045e4de07ead7744b125860':'Paterson School District',
-    '5f2609807a1c0000950bb466':'Pinellas County Schools',
-    '5f2609807a1c0000950bb471':'Racine Unified Schools',
-    '6045e4d507ead7744b125850':'Rich School District',
-    '5f6d7cbce6452eb06384db20':'Salt Lake City School District',
-    '5f2609807a1c0000950bb478':'San Diego Unified School District',
-    '6045e4d507ead7744b125851':'San Francisco Unified School District',
-    '6023a76f9e8e623753fc3060':'San Jose Unified School District',
-    '5f2609807a1c0000950bb470':'San Leandro Unified School District',
-    '6045e4df07ead7744b125862':'San Marcos Unified School District',
-    '6045e4df07ead7744b125863':'San Marino Unified School District',
-    '5f2609807a1c0000950bb477':'Sarasota County',
-    '602e60e567d3e6c0a4eb4d99':'School District of Palm Beach County',
-    '6045e4d807ead7744b125856':'School District of the Chathams',
-    '6045e4de07ead7744b125861':'Sevier School District',
-    '5f2609807a1c0000950bb473':'Skillman Foundation',
-    '123':'Skillman',
-    '6045e4e007ead7744b125864':'South Summit School District',
-    '60eea965ae7de54f57abf234':'Southfield Public Schools',
-    '5f2609807a1c0000950bb46a':'Springfield Public School',    
-    '6045e4e007ead7744b125865':'Sudbury Public Schools',
-    '6045e4e107ead7744b125866':'Tooele County School District',
-    '60a7b03831afdba383052726':'United Way Of Santa Barbara',
-    '6045e4d607ead7744b125852':'Upland Unified School District',
-    '5f2609807a1c0000950bb468':'Utah Board of Education',
-    '456':'UWBA',
-    '6023a7949e8e623753fc3061':'Wasatch County School District',
-    '6045e4e207ead7744b125867':'Washoe County School District',
-    '5f698b826451a9089d7d4008':'Wayne Metro',
-    '6045e4d607ead7744b125853':'West Contra Costa Unified School District',
-    '5f2609807a1c0000950bb45b':'Westfield Public School District',
-    '6045e4e207ead7744b125868':'Westford Public Schools',
-    '6045e4d207ead7744b12584c':'White River School District',
-    '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
-    '5f2609807a1c0000950bb45d':'Youngstown'}
     import collections
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
@@ -6290,7 +3693,10 @@ def heat_district_family_prac(districtid):
     db=client.compass_beta 
     collection = db.audio_track_master
     collection2=db.user_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
 
    
 
@@ -6422,146 +3828,6 @@ def heat_district_family_prac(districtid):
 @app.route('/districtheatmappractice/<districtid>')
 
 def heatmap_prac_district(districtid):
-    disdic={
-    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
-    "62603f5be9c76545ce51d732":"North Elementary School District",
-    "62552a4fbc7b0f11833b430c":"DUSD Power",
-    "623975aa25e068fe63efa956":"Project Hoeppner",
-    "6241625424e8123075e7b423":"North Muskegon School District",
-    "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
-    '620f3d6132c6d4813f4c9887':'Jackson County Schools',
-    "5f2609807a1c0000950bb459":"North Special School District",
-    '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
-    '6045e4d007ead7744b125848':'Adams 12 Five Star Schools',
-    '619268dd81f00a4319a65a52':'Access Community',
-    '6045e4d707ead7744b125854':'Adams County School District 14',
-    '5f2609807a1c0000950bb475':'Agawam School district',
-    '5f2609807a1c0000950bb481':'Alameda Unified School District',
-    '5f2609807a1c0000950bb47a':'Alpine School District',
-    '5f2609807a1c0000950bb47b':'Ann Arbor Public Schools',
-    '6045e4c907ead7744b12583d':'Apple Valley Unified School District',
-    '789':'Attendance works',
-    '6045e4d707ead7744b125855':'Aurora Public Schools',
-    '5f2609807a1c0000950bb463':'Austin Independent School District',
-    '5f59e4836451a9089d7d4007':'Belleville School District',
-    '61aa08a4afeab44256f54074':'Benton Harbor',
-    '6045e4d107ead7744b125849':'Berkeley Public Schools',
-    '5fe2e25d4d0ca68d7baf889d':'BGCA',
-    '6045e4ca07ead7744b12583e':'Bishop Unified School District',
-    '6045e4d107ead7744b12584a':'Bismarck Public Schools',
-    '5fe318b14d0ca68d7baf889e':'BLUE',
-    '6045e4c807ead7744b12583b':'Boston Public Schools',
-    '6023a6d79e8e623753fc305c':'Boulder Valley School District',
-    '60f7bf747cc8db72d772e465':'Bright Horizons Early Learning Centers',
-    '5f2609807a1c0000950bb46d':'Broward County Public Schools',
-    '6045e4ca07ead7744b12583f':'Canyons School District',
-    '60473f8823e88e242074ebd2':'Champlain Valley School District',
-    '6045e4d907ead7744b125858':'Chicago Public Schools',
-    '5f2609807a1c0000950bb46c':'Chico Unified School District',
-    '5ffd8176469a86e28635f512':'Chula Vista Elementary School District',
-    '5f2609807a1c0000950bb460':'Clarksville-Montgomery County School System',
-    '6045e4d907ead7744b125857':'Colton Joint Unified School District',
-    '5f2609807a1c0000950bb47f':'Community Consolidated School District 89',
-    '5f2609807a1c0000950bb45c':'Comox Valley School District',
-    '5f2609807a1c0000950bb480':'Dell Texas',
-    '6045e4da07ead7744b125859':'Dennis-Yarmouth Regional School District',
-    '6045e4cb07ead7744b125840':'Denver Public Schools',
-    '5f2609807a1c0000950bb46e':'District 25 New York Schools',
-    '5f7413ef9387fd71ce6387cb':'Douglas County School District',
-    '6045e4c707ead7744b12583a':'Durham Public Schools',
-    '5f895191609e08b76029f641':'Early learning Sarasota',
-    '5f2609807a1c0000950bb462':'Englewood Cliffs Public Schools',
-    '5f2609807a1c0000950bb461':'Englewood Public School District',
-    '5f2609807a1c0000950bb464':'Equity Education',
-    '6045e4cc07ead7744b125841':'Fairfax County Public Schools',
-    '5f2609807a1c0000950bb45e':'Fairfield-Suisun Unified School District',
-    '6045e4cd07ead7744b125843':'Falmouth Public Schools',
-    '6045e4da07ead7744b12585a':'FITCHBURG PUBLIC SCHOOLS',
-    '5f2609807a1c0000950bb47d':'Flint Public Schools',
-    '6023a7269e8e623753fc305e':'Fulton County School System',
-    '5f2609807a1c0000950bb46b':'FundaciÃ³n La Puerta',
-    '6045e4d207ead7744b12584b':'Glenbard District 87',
-    '5f2609807a1c0000950bb450':'Goleta District',
-    '6045e4cd07ead7744b125844':'Granite School District',
-    '5f2609807a1c0000950bb474':'Greenburgh North Castle Union Free School District',
-    '5f2609807a1c0000950bb45f':'Griffin-Spalding County School System',
-    '60cb8971c5b0e89ed7ac0aa1':'Hall County School District',
-    '5f9aa5e526edbed399d56c92':'Hamilton-Wenham Regional School District',
-    '6045e4c707ead7744b125839':'Hartford Public Schools',
-    '5f2609807a1c0000950bb47c':'Hawaii Public Schools',
-    '6045e4ce07ead7744b125845':'Helena Public Schools',
-    '6045e4db07ead7744b12585b':'HidalgoIndependent School district',
-    '5f2609807a1c0000950bb476':'Hillsborough County',
-    '6045e4db07ead7744b12585c':'Hopedale Public Schools',
-    '6045e4cc07ead7744b125842':'Houston Independent School District',
-    '60b872ce826cab06ebdf044e':'Kalamazoo Public Schools',
-    '6045e4dc07ead7744b12585d':'Kearsarge Regional School District',
-    '6045e4d307ead7744b12584d':'KIPP Public Schools',
-    '5f2609807a1c0000950bb455':'Krum Independent School District',
-    '5f2609807a1c0000950bb47e':'La Joya School District',
-    '6045e4cf07ead7744b125846':'Lamar Consolidated Independent School District',
-    '5f2609807a1c0000950bb45a':'LAUSD',
-    '5f2609807a1c0000950bb467':'Lincolnshire Schools',
-    '6045e4dc07ead7744b12585e':'Littleton Public Schools',
-    '5fe2e1ee4d0ca68d7baf889c':'LSF-Head Start',
-    '6023a7499e8e623753fc305f':'Manatee County School District',
-    '5f2609807a1c0000950bb482':'Massachusetts Institute of Technology',
-    '6077e1b5eaa8bae0e2e04a64':'Medfield School District',
-    '6023a7019e8e623753fc305d':'Miami-Dade County Public Schools',
-    '5f2609807a1c0000950bb465':'Middleton-Cross Plains Area School District',
-    '6045e4d407ead7744b12584f':'Mill Valley School District',
-    '6045e4d307ead7744b12584e':'Millard School District',
-    '610d0837931db8cfdf500fef':'Mission Consolidated Independent School District',
-    '5fb4efce4139b9d4c5a86a69':'Mt. Lebanon School District',
-    '6045e4cf07ead7744b125847':'Muscatine Community School District',
-    '5fbcdf0ba84e48a64412a798':'Needham School District',
-    '5f2609807a1c0000950bb459':'North Special School District',
-    '6045e4c907ead7744b12583c':'Northside Independent School District',
-    '5f7c01fa9387fd71ce6387cc':'NYC - Queens South',
-    '5fd704da04a848e368de5dc6':'Oakland Unified School District',
-    '5f6994386451a9089d7d4009':'Ogden school district',
-    '5f2609807a1c0000950bb472':'Oroville City Elementary School District',
-    '6017ab3043ca9c39151838d4':'Oswego School District',
-    '6045e4dd07ead7744b12585f':'Palm Beach County School District',
-    '60913aaea5fd4b56a4bafa70':'Palm Springs Unified',
-    '5f2609807a1c0000950bb479':'Panorama Education',
-    '5f2609807a1c0000950bb46f':'Paradise Schools',
-    '5f8fcd33609e08b76029f644':'Paradise Unified School District',
-    '6045e4de07ead7744b125860':'Paterson School District',
-    '5f2609807a1c0000950bb466':'Pinellas County Schools',
-    '5f2609807a1c0000950bb471':'Racine Unified Schools',
-    '6045e4d507ead7744b125850':'Rich School District',
-    '5f6d7cbce6452eb06384db20':'Salt Lake City School District',
-    '5f2609807a1c0000950bb478':'San Diego Unified School District',
-    '6045e4d507ead7744b125851':'San Francisco Unified School District',
-    '6023a76f9e8e623753fc3060':'San Jose Unified School District',
-    '5f2609807a1c0000950bb470':'San Leandro Unified School District',
-    '6045e4df07ead7744b125862':'San Marcos Unified School District',
-    '6045e4df07ead7744b125863':'San Marino Unified School District',
-    '5f2609807a1c0000950bb477':'Sarasota County',
-    '602e60e567d3e6c0a4eb4d99':'School District of Palm Beach County',
-    '6045e4d807ead7744b125856':'School District of the Chathams',
-    '6045e4de07ead7744b125861':'Sevier School District',
-    '5f2609807a1c0000950bb473':'Skillman Foundation',
-    '123':'Skillman',
-    '6045e4e007ead7744b125864':'South Summit School District',
-    '60eea965ae7de54f57abf234':'Southfield Public Schools',
-    '5f2609807a1c0000950bb46a':'Springfield Public School',
-    '6045e4e007ead7744b125865':'Sudbury Public Schools',
-    '6045e4e107ead7744b125866':'Tooele County School District',
-    '60a7b03831afdba383052726':'United Way Of Santa Barbara',
-    '6045e4d607ead7744b125852':'Upland Unified School District',
-    '5f2609807a1c0000950bb468':'Utah Board of Education',
-    '456':'UWBA',
-    '6023a7949e8e623753fc3061':'Wasatch County School District',
-    '6045e4e207ead7744b125867':'Washoe County School District',
-    '5f698b826451a9089d7d4008':'Wayne Metro',
-    '6045e4d607ead7744b125853':'West Contra Costa Unified School District',
-    '5f2609807a1c0000950bb45b':'Westfield Public School District',
-    '6045e4e207ead7744b125868':'Westford Public Schools',
-    '6045e4d207ead7744b12584c':'White River School District',
-    '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
-    '5f2609807a1c0000950bb45d':'Youngstown'}
     import collections
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
@@ -6569,7 +3835,10 @@ def heatmap_prac_district(districtid):
     db=client.compass_beta 
     collection = db.audio_track_master
     collection2=db.user_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
 
 
 
@@ -6915,7 +4184,7 @@ def admin_portal_card_teacher(userid):
     collection5=db.login_logs
     collection1=db.audio_track_master
     collection3=db.subscription_master
-    #     district=disdic[districtid]
+    
     #     myDatetime1 = dateutil.parser.parse(startdate)
     #     myDatetime2 = dateutil.parser.parse(enddate)
     from datetime import datetime
@@ -8534,7 +5803,7 @@ def admin_stats_cards(userid):
     collection4=db.invite_master
     collection1=db.audio_track_master
     collection3=db.subscription_master
-#     district=disdic[districtid]
+
 #     myDatetime1 = dateutil.parser.parse(startdate)
 #     myDatetime2 = dateutil.parser.parse(enddate)
     from datetime import datetime
@@ -9954,69 +7223,7 @@ def buble_district():
 # app = Flask(__name__)
 @app.route('/bubble/<disid>/csv')
 def schdistrict(disid):  
-    disdic={
-    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
-    "62603f5be9c76545ce51d732":"North Elementary School District",
-    "62552a4fbc7b0f11833b430c":"DUSD Power",
-    "623975aa25e068fe63efa956":"Project Hoeppner",
-    "6241625424e8123075e7b423":"North Muskegon School District",
-    "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
-    '620f3d6132c6d4813f4c9887':'Jackson County Schools',
-    "5f2609807a1c0000950bb459":"North Special School District",    
-    '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
-    '5f2609807a1c0000950bb465':'Middleton - Cross Plains Area School District',
-    '5f2609807a1c0000950bb475':'Agawam School district',
-    '619268dd81f00a4319a65a52':'Access Community',
-    '5f2609807a1c0000950bb481':'Alameda Unified School District',
-    '5f2609807a1c0000950bb47a':'Alpine School District',
-    '5f2609807a1c0000950bb47b':'Ann Arbor Public Schools',
-    '5f2609807a1c0000950bb463':'Austin Independent School District',
-    '5f59e4836451a9089d7d4007':'Belleville School District',
-    '61aa08a4afeab44256f54074':'Benton Harbor',
-    '5f2609807a1c0000950bb46d':'Broward County Public Schools',
-    '5f2609807a1c0000950bb46c':'Chico Unified School District',
-    '5f2609807a1c0000950bb460':'Clarksville-Montgomery County School System',
-    '5f2609807a1c0000950bb47f':'Community Consolidated School District 89',
-    '5f2609807a1c0000950bb45c':'Comox Valley School District(sd71)',
-    '5f2609807a1c0000950bb480':'Dell Texas',
-    '5f7413ef9387fd71ce6387cb':'Douglas County School District',
-    '5f895191609e08b76029f641':'Early learning Sarasota',
-    '5f2609807a1c0000950bb462':'Englewood Cliffs Public Schools',
-    '5f2609807a1c0000950bb461':'Englewood Public School District',
-    '5f2609807a1c0000950bb45e':'Fairfield-Suisun Unified School District',
-    '5f2609807a1c0000950bb47d':'Flint Public Schools',
-    '5f2609807a1c0000950bb46b':'FundaciÃ³n La Puerta',
-    '5f2609807a1c0000950bb450':'Goleta District',
-    '5f2609807a1c0000950bb474':'Greenburgh-North Castle (GNC) Union Free School District',
-    '5f2609807a1c0000950bb45f':'Griffin-Spalding County School System',
-    '5f2609807a1c0000950bb476':'Hillsborough County',
-    '5f2609807a1c0000950bb455':'Krum Independent School District',
-    '5f2609807a1c0000950bb47e':'La Joya School District',
-    '5f2609807a1c0000950bb467':'Lincolnshire Schools',
-    '5f2609807a1c0000950bb45a':'LAUSD',
-    '5f2609807a1c0000950bb482':'Massachusetts Institute of Technology',
-    '5fb4efce4139b9d4c5a86a69':'Mt. Lebanon School District',
-    '5fbcdf0ba84e48a64412a798':'Needham School District',
-    '5f7c01fa9387fd71ce6387cc':'NYC - Queens South',
-    '5f6994386451a9089d7d4009':'Ogden school district',
-    '5f2609807a1c0000950bb472':'Oroville City Elementary School District',
-    '5fd704da04a848e368de5dc6':'Oakland Unified School District',
-    '5f8fcd33609e08b76029f644':'Paradise Unified School District',
-    '5f2609807a1c0000950bb466':'Pinellas County Schools',
-    '5f2609807a1c0000950bb471':'Racine Unified Schools',
-    '5f6d7cbce6452eb06384db20':'Salt Lake City School District',
-    '5f2609807a1c0000950bb478':'San Diego Unified School District',
-    '5f2609807a1c0000950bb470':'San Leandro Unified School District',
-    '5f2609807a1c0000950bb477':'Sarasota County',
-    '5f2609807a1c0000950bb473':'Skillman Foundation',
     
-    '5f2609807a1c0000950bb468':'Utah Board of Education',
-    '5f698b826451a9089d7d4008':'Wayne Metro',
-    '5f2609807a1c0000950bb45b':'Westfield Public School District',
-    '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
-    '5ffd8176469a86e28635f512':'Chula Vista Elementary School District',
-    '5f2609807a1c0000950bb45d':'Youngstown'}
-
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
@@ -10546,7 +7753,7 @@ def UWBA_schppcfamily():
     db=client.compass_beta  
     collection = db.audio_track_master
     collection1 = db.user_master
-#     district=disdic[districtid]
+
     df1 = DataFrame(list(collection.aggregate([
     {"$match":
          {'$and': [
@@ -10619,7 +7826,7 @@ def uwba__schpuc():
     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection= db.user_master
-#     district=disdic[districtid]
+
     df = DataFrame(list(collection.aggregate([
     {"$match":
          {'$and': [
@@ -10678,7 +7885,7 @@ def uwbachwisepc():
     db=client.compass_beta 
     collection = db.audio_track_master
     collection1 = db.user_master
-#     district=disdic[districtid]
+
     df1 = DataFrame(list(collection.aggregate([
     {"$match":
          {'$and': [
@@ -10751,7 +7958,7 @@ def uwba__topusers_practice():
     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
-#     district=disdic[districtid]
+
 
 
     collection1 = db.user_master
@@ -10840,7 +8047,7 @@ def uwba__schwiseuc():
     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
     db=client.compass_beta  
     collection = db.user_master
-#     district=disdic[districtid]
+
     df = DataFrame(list(collection.aggregate([
     {"$match":
          {'$and': [
@@ -10894,7 +8101,7 @@ def uwba__monthwisepc():
     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
-#     district=disdic[districtid]
+
     df = DataFrame(list(collection.aggregate([
     {"$match":
     {'$and': [
@@ -10968,7 +8175,7 @@ def uwba_count_cards():
     collection1 = db.user_master
     collection2=db.audio_track_master
     collection3=db.login_logs
-#     district=disdic[districtid]
+
 #     print(district)
     df1 = DataFrame(list(collection1.aggregate([
      {"$match":
@@ -11702,87 +8909,7 @@ def portal_testing_new_api(smcategory):
 
 @app.route('/bubblecum/<disid>/csv')
 def schdistrictCUM(disid):  
-    disdic={
-    "6268df75d51cf12acdcc20c1":"National Heritage Academies",
-    "62603f5be9c76545ce51d732":"North Elementary School District",
-    "62552a4fbc7b0f11833b430c":"DUSD Power",
-    "623975aa25e068fe63efa956":"Project Hoeppner",
-    "6241625424e8123075e7b423":"North Muskegon School District",
-    "62270ef9f5dd5353b9498b99":"San Bernardino County Superintendent of Schools",
-    '620f3d6132c6d4813f4c9887':'Jackson County Schools',
-    "5f2609807a1c0000950bb459":"North Special School District",    
-    '61af3b75870dba387bcd86cd':'Holyoke Public Schools',
-    '5f2609807a1c0000950bb465':'Middleton - Cross Plains Area School District',
-    '5f2609807a1c0000950bb475':'Agawam School district',
-    '619268dd81f00a4319a65a52':'Access Community',
-    '5f2609807a1c0000950bb481':'Alameda Unified School District',
-    '5f2609807a1c0000950bb47a':'Alpine School District',
-    '5f2609807a1c0000950bb47b':'Ann Arbor Public Schools',
-    '5f2609807a1c0000950bb463':'Austin Independent School District',
-    '5f59e4836451a9089d7d4007':'Belleville School District',
-    '61aa08a4afeab44256f54074':'Benton Harbor',
-    '5f2609807a1c0000950bb46d':'Broward County Public Schools',
-    '5f2609807a1c0000950bb46c':'Chico Unified School District',
-    '5f2609807a1c0000950bb460':'Clarksville-Montgomery County School System',
-    '5f2609807a1c0000950bb47f':'Community Consolidated School District 89',
-    '5f2609807a1c0000950bb45c':'Comox Valley School District(sd71)',
-    '5f2609807a1c0000950bb480':'Dell Texas',
-    '5f7413ef9387fd71ce6387cb':'Douglas County School District',
-    '5f895191609e08b76029f641':'Early learning Sarasota',
-    '5f2609807a1c0000950bb462':'Englewood Cliffs Public Schools',
-    '5f2609807a1c0000950bb461':'Englewood Public School District',
-    '5f2609807a1c0000950bb45e':'Fairfield-Suisun Unified School District',
-    '5f2609807a1c0000950bb47d':'Flint Public Schools',
-    '5f2609807a1c0000950bb46b':'FundaciÃ³n La Puerta',
-    '5f2609807a1c0000950bb450':'Goleta District',
-    '5f2609807a1c0000950bb474':'Greenburgh-North Castle (GNC) Union Free School District',
-    '5f2609807a1c0000950bb45f':'Griffin-Spalding County School System',
-    '5f2609807a1c0000950bb476':'Hillsborough County',
-    '5f2609807a1c0000950bb455':'Krum Independent School District',
-    '5f2609807a1c0000950bb47e':'La Joya School District',
-    '5f2609807a1c0000950bb467':'Lincolnshire Schools',
-    '5f2609807a1c0000950bb45a':'LAUSD',
-    '5f2609807a1c0000950bb482':'Massachusetts Institute of Technology',
-    '5fb4efce4139b9d4c5a86a69':'Mt. Lebanon School District',
-    '5fbcdf0ba84e48a64412a798':'Needham School District',
-    '5f7c01fa9387fd71ce6387cc':'NYC - Queens South',
-    '5f6994386451a9089d7d4009':'Ogden school district',
-    '5f2609807a1c0000950bb472':'Oroville City Elementary School District',
-    '5fd704da04a848e368de5dc6':'Oakland Unified School District',
-    '5f8fcd33609e08b76029f644':'Paradise Unified School District',
-    '5f2609807a1c0000950bb466':'Pinellas County Schools',
-    '5f2609807a1c0000950bb471':'Racine Unified Schools',
-    '5f6d7cbce6452eb06384db20':'Salt Lake City School District',
-    '5f2609807a1c0000950bb478':'San Diego Unified School District',
-    '5f2609807a1c0000950bb470':'San Leandro Unified School District',
-    '5f2609807a1c0000950bb477':'Sarasota County',
-    '5f2609807a1c0000950bb473':'Skillman Foundation',
     
-    '5f2609807a1c0000950bb468':'Utah Board of Education',
-    '5f698b826451a9089d7d4008':'Wayne Metro',
-    '5f2609807a1c0000950bb45b':'Westfield Public School District',
-    '5f2609807a1c0000950bb368':'Wichita Falls Independent School District',
-    '5f2609807a1c0000950bb45d':'Youngstown',
-    '5f2609807a1c0000950bb464':'Equity Education',
-    '5f2609807a1c0000950bb469':'LSF -  Head Start',
-    '5f2609807a1c0000950bb46e':'District 25 New York Schools',
-    '5f2609807a1c0000950bb46f':'Paradise Schools',
-    '5f2609807a1c0000950bb479':'Panorama Education',
-    '5f2609807a1c0000950bb47c':'Hawaii Public Schools',
-    '5f9aa5e526edbed399d56c92':'Hamilton-Wenham Regional School District',
-    '5fe2e1ee4d0ca68d7baf889c':'LSF-Head Start',
-    '5fe2e25d4d0ca68d7baf889d':'BGCA',
-    '5fe318b14d0ca68d7baf889e':'BLUE',
-    '5ffd8176469a86e28635f512':'Chula Vista Elementary School District',
-    '6017ab3043ca9c39151838d4':'Oswego School District',
-    '60239a84e57dc27613699d57':'Austin Independent School District',
-    '6023a6d79e8e623753fc305c':'Boulder Valley School District',
-    '6023a7019e8e623753fc305d':'Miami-Dade County Public Schools',
-    '6023a7269e8e623753fc305e':'Fulton County School System',
-    '6023a7499e8e623753fc305f':'Manatee County School District',
-    '6023a76f9e8e623753fc3060':'San Jose Unified School District',
-    '6023a7949e8e623753fc3061':'Wasatch County School District'}
-
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
@@ -14904,7 +12031,10 @@ def dis_activity_feed(districtid,lower,upper):
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
     db=client.compass_beta
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     collection = db.user_master.aggregate([
     {"$match":
         {"$and":[
@@ -20620,7 +17750,10 @@ def live_user_district(districtid):
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
     db=client.compass_beta
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
 
     mydatetime=datetime.datetime.utcnow()
 
@@ -20707,7 +17840,10 @@ def heat_district_(districtid,startdate,enddate):
     db=client.compass_beta 
     collection = db.audio_track_master
     collection2=db.user_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
 
@@ -20863,7 +17999,10 @@ def user_practice_90days_(districtid,startdate,enddate):
     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
@@ -21090,7 +18229,10 @@ def monthwisepc_(districtid,startdate,enddate):
     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
     pre_start= myDatetime1 - relativedelta(years=1)
@@ -21353,7 +18495,10 @@ def schwiseucc_(districtid,startdate,enddate):
     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.user_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
@@ -21590,7 +18735,10 @@ def schwisepc_(districtid,startdate,enddate):
     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.user_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
@@ -21785,7 +18933,10 @@ def topusers_practice_(districtid,startdate,enddate):
     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
 
@@ -21889,7 +19040,10 @@ def district_school_table_(districtid,startdate,enddate):
     collection=db.user_master
     collection1=db.audio_track_master
     collection3=db.subscription_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
     
@@ -22099,7 +19253,10 @@ def district_user_table_teacher_(districtid,startdate,enddate):
     collection=db.user_master
     collection1=db.audio_track_master
     collection3=db.subscription_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
 
@@ -22317,7 +19474,10 @@ def district_user_table_parent_(districtid,startdate,enddate):
     collection=db.user_master
     collection1=db.audio_track_master
     collection3=db.subscription_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
 
@@ -22536,7 +19696,10 @@ def district_count_cards_(districtid,startdate,enddate):
     collection2=db.audio_track_master
     collection3=db.login_logs
     collection4=db.school_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
     
@@ -23024,7 +20187,10 @@ def heat_district_family_prac_(districtid,startdate,enddate):
     db=client.compass_beta 
     collection = db.audio_track_master
     collection2=db.user_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
 
@@ -23175,7 +20341,10 @@ def heat_district_teachers_prac_(districtid,startdate,enddate):
     db=client.compass_beta 
     collection = db.audio_track_master
     collection2=db.user_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
 
@@ -23325,7 +20494,10 @@ def heatmap_prac_district_(districtid,startdate,enddate):
     db=client.compass_beta 
     collection = db.audio_track_master
     collection2=db.user_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
 
@@ -23476,7 +20648,10 @@ def heat_district_teachers_active_(districtid,startdate,enddate):
     db=client.compass_beta 
     collection = db.audio_track_master
     collection2=db.user_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
 
@@ -23628,7 +20803,10 @@ def heat_district_family_active_(districtid,startdate,enddate):
     db=client.compass_beta 
     collection = db.audio_track_master
     collection2=db.user_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
 
@@ -23778,7 +20956,10 @@ def dis_schoolrating_csy__(districtid,startdate,enddate):
     db=client.compass_beta 
   
     collection = db.audio_feedback
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
 
@@ -23859,7 +21040,10 @@ def dis_sentiment_pie(districtid,startdate,enddate):
     db=client.compass_beta 
    
     collection = db.audio_feedback
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
 
@@ -23959,7 +21143,10 @@ def dis_sentiment_pie_table(districtid,table_type,startdate,enddate):
     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
     db=client.compass_beta
     collection = db.audio_feedback
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
 
@@ -24050,7 +21237,10 @@ def district_Date_table(districtid,startdate):
     collection=db.user_master
     collection1=db.audio_track_master
     collection3=db.subscription_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     print(district)
     startdate= dateutil.parser.parse(str(startdate))
     enddat= dateutil.parser.parse(str(startdate))
@@ -24198,7 +21388,10 @@ def last_practice_90days_(districtid):
     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     
 #     myDatetime1 = dateutil.parser.parse(startdate)
 #     myDatetime2 = dateutil.parser.parse(enddate)
@@ -24417,7 +21610,7 @@ def active_teachers_school_search(idd,chart_type):
     db=client.compass
     collection= db.audio_track_master
     school=idd
-    #     district=disdic[districtid]    
+        
     #     myDatetime1 = dateutil.parser.parse(startdate)
     #     myDatetime2 = dateutil.parser.parse(enddate)
 
@@ -24901,7 +22094,10 @@ def district_portal_signup_(districtid):
     db=client.compass_beta
 
     # Getting district id name from inserted district
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     #  time frames
     current_time_utc=datetime.datetime.utcnow()
     last_30_days=current_time_utc-relativedelta(days=30)
@@ -25024,7 +22220,10 @@ def district_portal_practice_(districtid):
     db=client.compass_beta
 
     # Getting district id name from inserted district
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     #  time frames
     current_time_utc=datetime.datetime.utcnow()
     last_30_days=current_time_utc-relativedelta(days=30)
@@ -25167,7 +22366,10 @@ def district_portal_rating_(districtid):
     db=client.compass_beta
 
     # Getting district id name from inserted district
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     #  time frames
     current_time_utc=datetime.datetime.utcnow()
     last_30_days=current_time_utc-relativedelta(days=30)
@@ -25282,7 +22484,10 @@ def district_portal_comment_(districtid):
     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
     db=client.compass_beta
     # Getting district id name from inserted district
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     #  time frames
     current_time_utc=datetime.datetime.utcnow()
     last_30_days=current_time_utc-relativedelta(days=30)
@@ -25389,7 +22594,10 @@ def district_portal_tunein_(districtid):
     db=client.compass_beta
 
     # Getting district id name from inserted district
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     #  time frames
     current_time_utc=datetime.datetime.utcnow()
     last_30_days=current_time_utc-relativedelta(days=30)
@@ -25852,7 +23060,10 @@ def district_portal___(districtid):
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
     db=client.compass_beta
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
 
     all_user_district=DataFrame(list(db.school_master.aggregate([{"$match":{
     '$and':[
@@ -25882,7 +23093,10 @@ def district_portal_schoolss_(districtid,sub_category):
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
     db=client.compass_beta
-    district=disdic[districtid]
+    if districtid in disdic1:
+        district=disdic1[districtid]
+    else:
+        district=disdic2[ObjectId(districtid)]
     from bson.objectid import ObjectId
 
     all_user_district=DataFrame(list(db.school_master.aggregate([{"$match":{
