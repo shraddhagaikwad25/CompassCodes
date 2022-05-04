@@ -1708,6 +1708,7 @@ def schpuc(districtid):
         district=disdic1[districtid]
     else:
         district=disdic2[ObjectId(districtid)]
+        
     df = DataFrame(list(collection.aggregate([
     {"$match":
          {'$and': [
