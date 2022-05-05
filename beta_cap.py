@@ -7232,7 +7232,10 @@ def schdistrict(disid):
     dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
     collection = db.user_master
-    district=disdic[disid]
+    if disid in disdic1:
+        district=disdic1[disid]
+    else:
+        district=disdic2[ObjectId(disid)]
     qraaa=[
         {"$match":{'$and':[
         {'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
@@ -8918,7 +8921,10 @@ def schdistrictCUM(disid):
     dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
     collection = db.user_master
-    district=disdic[disid]
+    if disid in disdic1:
+        district=disdic1[disid]
+    else:
+        district=disdic2[ObjectId(disid)]
     qraaa=[
         {"$match":{'$and':[
         {'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
