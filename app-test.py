@@ -23174,11 +23174,12 @@ def district_portal___(districtid):
 def district_portal_schoolss__(districtid,sub_category):
     client = MongoClient('mongodb://admin:F5tMazRj47cYqm33e@35.88.43.45:27017/')
     db=client.compass
+    from bson.objectid import ObjectId
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
         district=disdic2[ObjectId(districtid)]
-    from bson.objectid import ObjectId
+    
 
     all_user_district=DataFrame(list(db.school_master.aggregate([{"$match":{
     '$and':[
