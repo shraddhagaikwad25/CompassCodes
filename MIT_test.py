@@ -57,8 +57,8 @@ users.append(User(id=1, username='admin@innerexplorer.org', password='datateam20
 users.append(User(id=2, username='mituser', password='M!t_@2o20$',name='MIT'))
 
 
-# app = Flask(__name__)
-# app.secret_key = 'cap4g2020version10date8272020'
+app = Flask(__name__)
+app.secret_key = 'cap4g2020version10date8272020'
 
 @app.before_request
 def before_request():
@@ -99,7 +99,6 @@ def Executive_Dashboard():
         return redirect(url_for('login'))
     
     return render_template('Executive_Dashboard.html')
-
 
 
 @app.route('/School_Analytics')
