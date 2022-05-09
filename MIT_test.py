@@ -468,7 +468,7 @@ def miitsignupnew():
 
     cdate=[]
     for i in df2.index:
-        x=i.strftime('%s')
+        x=i.strftime('%S')
         cdate.append(float(x)*1000)
     count=[]
     for i in df2['sign_up'] :
@@ -556,7 +556,6 @@ def mitsignupdaycomp211():
 
 @app.route('/mitsignupweek')
 def mitsignupweek():
-
     username = urllib.parse.quote_plus('admin')
     password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
     client = MongoClient("mongodb://%s:%s@35.88.43.45:27017/" % (username, password))
@@ -628,8 +627,6 @@ def mitsignupweek():
 
 @app.route('/mitpracnew')
 def mitpracnew():
-    
-
 
     username = urllib.parse.quote_plus('admin')
     password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
@@ -668,7 +665,7 @@ def mitpracnew():
     df2 = df.groupby([df['date'].dt.date]).sum()
     cdate=[]
     for i in df2.index:
-        x=i.strftime('%s')
+        x=i.strftime('%S')
         cdate.append(float(x)*1000)
     count=[]
     for i in df2['count'] :
