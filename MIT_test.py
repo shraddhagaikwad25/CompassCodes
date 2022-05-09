@@ -36,7 +36,6 @@ from sort_dataframeby_monthorweek import *
 from pytz import timezone
 from six.moves import urllib
 
-
 app = Flask(__name__)
 CORS(app)
 
