@@ -819,6 +819,7 @@ def Family_SURVEY():
     if not g.user:
         return redirect(url_for('login'))
     return render_template('Family_SURVEY.html')
+
 @app.route('/Bill_later')
 def Bill_later():
     if not g.user:
@@ -838,15 +839,12 @@ def Journey_score2():
     
     return render_template('familycard.html')
 
-
 @app.route('/Journey_score')
 def reportcard():
     if not g.user:
         return redirect(url_for('login'))
     
     return render_template('Journey_score.html')
-
-   
 
 @app.route("/logout")
 def logout():
