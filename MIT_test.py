@@ -602,7 +602,6 @@ def mitsignupweek():
     times = pd.to_datetime(df1.sign_upn)
     times['hour'] = times.map( lambda x: pd.to_datetime(x).hour )
     timedf=times.groupby(['hour']).size().to_frame('count').reset_index()
-
     timedata0={"hour":timedf['hour'].tolist(),"count":timedf['count'].tolist()}
     timedata1=pd.DataFrame(timedata0)
     hour=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
@@ -812,6 +811,234 @@ def mitsignupdaycomp12():
     
     return json.dumps(temp)
 
+
+
+@app.route('/pracparents')
+def pracparents_table():
+    reader = geolite2.reader()
+
+    username = urllib.parse.quote_plus('admin')
+    password = urllib.parse.quote_plus("I#L@teST^m0NGO_2o20!")
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
+    db=client.compass
+    collection = db.user_master
+    collection2 = db.audio_track_master
+
+    dateStr = "2020-03-17T00:00:00.000Z"
+    myDatetime = dateutil.parser.parse(dateStr)
+
+    df = DataFrame(list(collection.aggregate([
+        {"$match":{'ROLE_ID.ROLE_ID' :3, 
+                   "IS_DISTABLED":{"$ne":"Y"},
+                   "INCOMPLETE_SIGNUP":{"$ne":"Y"},
+                   "EMAIL_ID":{"$ne": ""}}},
+        {"$match":{"$and":[{"EMAIL_ID":{"$not":{"$regex":'1gen','$options':'i'}}},
+                           {"USER_NAME":{"$not":{"$regex":'test','$options':'i'}}},
+                          {"EMAIL_ID":{"$not":{"$regex":'test','$options':'i'}}}]}},
+        {"$match":{"$and":[{"CREATED_DATE":{"$gt": myDatetime}}]}},
+        {"$project":{"USER_ID":1,"USER_NAME":1,"EMAIL_ID":1,"CONTACT_NUMBER":1,"schoolId.CITY":1,
+                     "schoolId.STATE":1,"schoolId.COUNTRY":1,
+                     "schoolId.NAME":1,"schoolId.ADDRESS":1,"CREATED_DATE":1}}])))
+
+    df1=df[['_id','schoolId']]
+    df2 = df1.dropna()
+    schoolId = list(df2['_id'])
+    df2 = pd.json_normalize(df2['schoolId'])
+    df2['schoolId'] = schoolId
+
+    merge=pd.merge(df, df2, how='left', left_on=['_id'], right_on=['schoolId'])
+    del merge['schoolId_x'], merge['schoolId_y']
+    merge['CREATED_DATE'] = pd.to_datetime(merge['CREATED_DATE'])
+
+    df_audio = DataFrame(list(collection2.aggregate([
+                {"$match":{'USER_ID.IS_DISABLED':{"$ne":'Y'},
+                'USER_ID.INCOMPLETE_SIGNUP':{"$ne":'Y'},
+                'USER_ID.EMAIL_ID':{"$ne":""},
+                'USER_ID.CREATED_DATE':{"$gt":myDatetime},
+                'USER_ID.ROLE_ID.ROLE_ID':{"$eq":3}}},
+                {"$match":{"$and":[
+                {'USER_ID.EMAIL_ID':{"$not": {'$regex' : 'test', '$options' : 'i'}}},
+                {'USER_ID.EMAIL_ID':{"$not": {'$regex' : '1gen', '$options' : 'i'}}},
+                {'USER_ID.USER_NAME':{"$not": {'$regex' : 'test', '$options' : 'i'}}}]}},
+                {"$group":{"_id":"$USER_ID._id","Last_Practice_Date":{"$max":"$MODIFIED_DATE"},'Count':{"$sum":1}, 
+                           "EMAIL":{"$first":"USER_ID.EMAIL_ID"}}},
+                {"$project":{"_id":1, 'Practice_Count':'$Count',"Last_Practice_Date":1}}])))
+
+
+    final = pd.merge(merge, df_audio, how='left', left_on=['_id'], right_on=['_id'])
+
+    del final['_id']
+
+    final['Last_Practice_Date'] = pd.to_datetime(final['Last_Practice_Date'])
+
+
+    final['Last_Practice_Date'].fillna("NO PRACTICE", inplace=True)
+    #df['Last_Login_Date']=pd.to_datetime(df['Last_Login_Date'])
+    #df['Last_Login_Date'].fillna("NO LOGIN", inplace=True)
+    final['Practice_Count'].fillna("NO PRACTICE", inplace=True)
+    final['CREATED_DATE']=pd.to_datetime(final['CREATED_DATE'])
+    final['NAME'].fillna("NO SCHOOL INFO", inplace=True)
+    final['ADDRESS'].fillna("NO ADDRESS INFO", inplace=True)
+    final['COUNTRY'].fillna("NO COUNTRY INFO", inplace=True)
+    final['STATE'].fillna("NO STATE INFO", inplace=True)
+    final['CITY'].fillna("NO CITY INFO", inplace=True)
+
+    def country1(i):
+        location = reader.get(i)
+        c=(location['country']['names']['en'])
+        return c
+    def state1(i):
+        location = reader.get(i)
+        s=(location['subdivisions'][0]['names']['en'])
+        return s
+    def city1(i):
+        location = reader.get(i)
+        city=location['city']['names']['en']
+        return city
+    def pn_country(i):
+        import phonenumbers
+        import pycountry
+        from phonenumbers.phonenumberutil import (
+        region_code_for_country_code,
+        region_code_for_number,)
+        pn = phonenumbers.parse('+'+i)   
+        country = pycountry.countries.get(alpha_2=region_code_for_number(pn))
+        con=country.name
+        return con
+
+    #ip=df['ip_address'].tolist()
+    phone_number=final['CONTACT_NUMBER'].tolist()
+    Parents_Name=final['USER_NAME'].tolist()
+    Parents_Email=final['EMAIL_ID'].tolist()
+    School_Name=final['NAME'].tolist()
+    state=final['STATE'].tolist()
+    country=final['COUNTRY'].tolist()
+    city=final['CITY'].tolist()
+    sign_up_date=final['CREATED_DATE'].tolist()
+    last_prac_date=final['Last_Practice_Date'].tolist()
+    #last_login_date=final['Last_Login_Date'].tolist()
+    practice_count=final['Practice_Count'].tolist()
+    #mindful_minutes=final['mindful_minutes'].tolist()
+
+    state12 =  [each_string.lower() for each_string in state]
+    cv={'pnn':Parents_Name,'pe':Parents_Email,'co':country,'pn':phone_number,'sn':School_Name,'ct':city,
+                               'st':state12,'sp':sign_up_date,'lp':last_prac_date,'pc':practice_count}
+    dftry = pd.DataFrame.from_dict(cv)
+    dftry= dftry.drop("co", axis=1)
+    return json.dumps({"data":dftry.values.tolist()})
+
+@app.route('/paroverall')
+def parents_table():
+    reader = geolite2.reader()
+    username = urllib.parse.quote_plus('admin')
+    password = urllib.parse.quote_plus("I#L@teST^m0NGO_2o20!")
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
+    db=client.compass
+    collection = db.user_master
+    collection2 = db.audio_track_master
+
+    dateStr = "2020-03-17T00:00:00.000Z"
+    myDatetime = dateutil.parser.parse(dateStr)
+
+    df = DataFrame(list(collection.aggregate([
+        {"$match":{'ROLE_ID.ROLE_ID' :3, 
+                   "IS_DISTABLED":{"$ne":"Y"},
+                   "INCOMPLETE_SIGNUP":{"$ne":"Y"},
+                   "EMAIL_ID":{"$ne": ""}}},
+        {"$match":{"$and":[{"EMAIL_ID":{"$not":{"$regex":'1gen','$options':'i'}}},
+                           {"USER_NAME":{"$not":{"$regex":'test','$options':'i'}}},
+                          {"EMAIL_ID":{"$not":{"$regex":'test','$options':'i'}}}]}},
+        {"$match":{"$and":[{"CREATED_DATE":{"$gt": myDatetime}}]}},
+        {"$project":{"USER_ID":1,"USER_NAME":1,"EMAIL_ID":1,"CONTACT_NUMBER":1,"schoolId.CITY":1,
+                     "schoolId.STATE":1,"schoolId.COUNTRY":1,
+                     "schoolId.NAME":1,"schoolId.ADDRESS":1,"CREATED_DATE":1}}])))
+
+    df1=df[['_id','schoolId']]
+    df2 = df1.dropna()
+    schoolId = list(df2['_id'])
+    df2 = pd.json_normalize(df2['schoolId'])
+    df2['schoolId'] = schoolId
+
+    merge=pd.merge(df, df2, how='left', left_on=['_id'], right_on=['schoolId'])
+    del merge['schoolId_x'], merge['schoolId_y']
+    merge['CREATED_DATE'] = pd.to_datetime(merge['CREATED_DATE'])
+
+    df_audio = DataFrame(list(collection2.aggregate([
+                {"$match":{'USER_ID.IS_DISABLED':{"$ne":'Y'},
+                'USER_ID.INCOMPLETE_SIGNUP':{"$ne":'Y'},
+                'USER_ID.EMAIL_ID':{"$ne":""},
+                'USER_ID.CREATED_DATE':{"$gt":myDatetime},
+                'USER_ID.ROLE_ID.ROLE_ID':{"$eq":3}}},
+                {"$match":{"$and":[
+                {'USER_ID.EMAIL_ID':{"$not": {'$regex' : 'test', '$options' : 'i'}}},
+                {'USER_ID.EMAIL_ID':{"$not": {'$regex' : '1gen', '$options' : 'i'}}},
+                {'USER_ID.USER_NAME':{"$not": {'$regex' : 'test', '$options' : 'i'}}}]}},
+                {"$group":{"_id":"$USER_ID._id","Last_Practice_Date":{"$max":"$MODIFIED_DATE"},'Count':{"$sum":1}, 
+                           "EMAIL":{"$first":"USER_ID.EMAIL_ID"}}},
+                {"$project":{"_id":1, 'Practice_Count':'$Count',"Last_Practice_Date":1}}])))
+
+
+    final = pd.merge(merge, df_audio, how='left', left_on=['_id'], right_on=['_id'])
+
+    del final['_id']
+
+    final['Last_Practice_Date'] = pd.to_datetime(final['Last_Practice_Date'])
+
+
+    final['Last_Practice_Date'].fillna("NO PRACTICE", inplace=True)
+    #df['Last_Login_Date']=pd.to_datetime(df['Last_Login_Date'])
+    #df['Last_Login_Date'].fillna("NO LOGIN", inplace=True)
+    final['Practice_Count'].fillna("NO PRACTICE", inplace=True)
+    final['CREATED_DATE']=pd.to_datetime(final['CREATED_DATE'])
+    final['NAME'].fillna("NO SCHOOL INFO", inplace=True)
+    final['ADDRESS'].fillna("NO ADDRESS INFO", inplace=True)
+    final['COUNTRY'].fillna("NO COUNTRY INFO", inplace=True)
+    final['STATE'].fillna("NO STATE INFO", inplace=True)
+    final['CITY'].fillna("NO CITY INFO", inplace=True)
+
+    def country1(i):
+        location = reader.get(i)
+        c=(location['country']['names']['en'])
+        return c
+    def state1(i):
+        location = reader.get(i)
+        s=(location['subdivisions'][0]['names']['en'])
+        return s
+    def city1(i):
+        location = reader.get(i)
+        city=location['city']['names']['en']
+        return city
+    def pn_country(i):
+        import phonenumbers
+        import pycountry
+        from phonenumbers.phonenumberutil import (
+        region_code_for_country_code,
+        region_code_for_number,)
+        pn = phonenumbers.parse('+'+i)   
+        country = pycountry.countries.get(alpha_2=region_code_for_number(pn))
+        con=country.name
+        return con
+
+    #ip=df['ip_address'].tolist()
+    phone_number=final['CONTACT_NUMBER'].tolist()
+    Parents_Name=final['USER_NAME'].tolist()
+    Parents_Email=final['EMAIL_ID'].tolist()
+    School_Name=final['NAME'].tolist()
+    state=final['STATE'].tolist()
+    country=final['COUNTRY'].tolist()
+    city=final['CITY'].tolist()
+    sign_up_date=final['CREATED_DATE'].tolist()
+    last_prac_date=final['Last_Practice_Date'].tolist()
+    #last_login_date=final['Last_Login_Date'].tolist()
+    practice_count=final['Practice_Count'].tolist()
+    #mindful_minutes=final['mindful_minutes'].tolist()
+
+    state12 =  [each_string.lower() for each_string in state]
+    cv={'pnn':Parents_Name,'pe':Parents_Email,'co':country,'pn':phone_number,'sn':School_Name,'ct':city,
+                               'st':state12,'sp':sign_up_date,'lp':last_prac_date,'pc':practice_count}
+    dftry = pd.DataFrame.from_dict(cv)
+    dftry= dftry.drop("co", axis=1)
+    return json.dumps({"data":dftry.values.tolist()})
 
 
 @app.route('/Family_SURVEY')
