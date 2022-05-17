@@ -14140,10 +14140,6 @@ def present_feeds_practice_data():
 
 @app.route('/present_feeds')
 def present_feeds():
-    # username = urllib.parse.quote_plus('adminIE')
-    # password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    # client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
-    # db=client.compass_beta
 
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
@@ -14208,16 +14204,25 @@ def present_feeds():
             {'$group':
             {'_id':'$USER_ID._id',
                 'State':{'$first':'$USER_ID.schoolId.STATE'},
-                'Country':{'$first':'$USER_ID.schoolId.COUNTRY'}
+                'Country':{'$first':'$USER_ID.schoolId.COUNTRY'},
+             "Last_Practice_Date":{"$max":"$MODIFIED_DATE"},
+             'Practice_Count':{"$sum":1},
+             'MINDFUL_MINUTES':{'$sum':{'$round':[{'$divide':[{'$subtract':['$CURSOR_END','$cursorStart']}, 60]},2]}}
                 }}
             ])
     df1=DataFrame(list(collection1)).fillna(0)
+#     print(df1)
     if df1.empty == True:
         live_users=0
         live_students=0
     else:
         live_users=len(df1["_id"])
         live_students=live_users*28
+        Practice_Count= df1.Practice_Count.sum()
+        MINDFUL_MINUTES=df1.MINDFUL_MINUTES.sum()
+#         print(Practice_Count)
+#         print(MINDFUL_MINUTES)
+        
     collection2 = db.present_feeds.aggregate([
         {"$match":{
             '$and':[
@@ -14276,9 +14281,10 @@ def present_feeds():
     dfpf["NARRATEDBY"]=dfpf["NARRATEDBY"].replace(0,"",inplace=True)  
     dfpf["NARRATEDBY"].fillna('',inplace=True)
     
-    temp={"top_practices":top_practices,"live":{"live_users":live_users,"live_students":live_students},"all_time":dfpf.to_dict("records")}
-    return json.dumps(temp)
+    temp={"top_practices":top_practices,"live":{"live_users":live_users,"live_students":live_students,"Practice_Count":Practice_Count,"MINDFUL_MINUTES":MINDFUL_MINUTES},"all_time":dfpf.to_dict("records")}
+    return json.dumps(temp,default=str)
 
+# present_feeds()
 
 
 # Practice Trend By Program CSY

@@ -743,9 +743,6 @@ def mitpracweek():
 
 @app.route('/mitpracdaycompp')
 def mitsignupdaycomp12():
-    
-
-
     username = urllib.parse.quote_plus('admin')
     password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
     client = MongoClient("mongodb://%s:%s@35.88.43.45:27017/" % (username, password))
@@ -818,9 +815,10 @@ def pracparents_table():
     reader = geolite2.reader()
 
     username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus("I#L@teST^m0NGO_2o20!")
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
+    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
+    client = MongoClient("mongodb://%s:%s@35.88.43.45:27017/" % (username, password))
     db=client.compass
+
     collection = db.user_master
     collection2 = db.audio_track_master
 
@@ -919,21 +917,38 @@ def pracparents_table():
     #last_login_date=final['Last_Login_Date'].tolist()
     practice_count=final['Practice_Count'].tolist()
     #mindful_minutes=final['mindful_minutes'].tolist()
+    print(final.columns)
+    if "export" in request.args:
+        try:
+            df1=final[['NAME', 'COUNTRY', 'CITY', 'STATE','USER_NAME',  'EMAIL_ID', 'CREATED_DATE',
+        'Last_Practice_Date','Practice_Count']]
+            csv = df1.to_csv(index=False)
+            return Response(
+                csv,
+                mimetype="text/csv",
+                headers={"Content-disposition":
+                        "attachment; filename=SchoolData.csv"})
+        except:
+            return jsonify("Unauthorized Access")   
+    else:
+        state12 =  [each_string.lower() for each_string in state]
+        cv={'pnn':Parents_Name,'pe':Parents_Email,'co':country,'pn':phone_number,'sn':School_Name,'ct':city,
+                                   'st':state12,'sp':sign_up_date,'lp':last_prac_date,'pc':practice_count}
+        dftry = pd.DataFrame.from_dict(cv)
+        dftry= dftry.drop("co", axis=1)
+        return json.dumps({"data":dftry.values.tolist()})
 
-    state12 =  [each_string.lower() for each_string in state]
-    cv={'pnn':Parents_Name,'pe':Parents_Email,'co':country,'pn':phone_number,'sn':School_Name,'ct':city,
-                               'st':state12,'sp':sign_up_date,'lp':last_prac_date,'pc':practice_count}
-    dftry = pd.DataFrame.from_dict(cv)
-    dftry= dftry.drop("co", axis=1)
-    return json.dumps({"data":dftry.values.tolist()})
+# pracparents_table()
+
 
 @app.route('/paroverall')
 def parents_table():
     reader = geolite2.reader()
     username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus("I#L@teST^m0NGO_2o20!")
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
-    db=client.compass
+    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
+    client = MongoClient("mongodb://%s:%s@35.88.43.45:27017/" % (username, password))
+    db = client.compass
+
     collection = db.user_master
     collection2 = db.audio_track_master
 
@@ -1032,14 +1047,31 @@ def parents_table():
     #last_login_date=final['Last_Login_Date'].tolist()
     practice_count=final['Practice_Count'].tolist()
     #mindful_minutes=final['mindful_minutes'].tolist()
+    
+    if "export" in request.args:
+        try:
+            df1=final[['NAME', 'COUNTRY', 'CITY', 'STATE','USER_NAME',  'EMAIL_ID', 'CREATED_DATE',
+        'Last_Practice_Date','Practice_Count']]
+            csv = df1.to_csv(index=False)
+            return Response(
+                csv,
+                mimetype="text/csv",
+                headers={"Content-disposition":
+                        "attachment; filename=SchoolData.csv"})
+        except:
+            return jsonify("Unauthorized Access")   
+    else:
+        state12 =  [each_string.lower() for each_string in state]
+        cv={'pnn':Parents_Name,'pe':Parents_Email,'co':country,'pn':phone_number,'sn':School_Name,'ct':city,
+                                   'st':state12,'sp':sign_up_date,'lp':last_prac_date,'pc':practice_count}
+        dftry = pd.DataFrame.from_dict(cv)
+        dftry= dftry.drop("co", axis=1)
+        return json.dumps({"data":dftry.values.tolist()})
 
-    state12 =  [each_string.lower() for each_string in state]
-    cv={'pnn':Parents_Name,'pe':Parents_Email,'co':country,'pn':phone_number,'sn':School_Name,'ct':city,
-                               'st':state12,'sp':sign_up_date,'lp':last_prac_date,'pc':practice_count}
-    dftry = pd.DataFrame.from_dict(cv)
-    dftry= dftry.drop("co", axis=1)
-    return json.dumps({"data":dftry.values.tolist()})
+# parents_table()
 
+
+#==============================================================================================================
 
 @app.route('/Family_SURVEY')
 def Family_SURVEY():
@@ -1079,9 +1111,9 @@ def logout():
     return render_template('login.html')
 
 
-if __name__ == '__main__':
-    app.run()
 # if __name__ == '__main__':
-#    app.run(host='172.31.58.47',port=5001)
-# if __name__ == "__main__":
-#     app.run(host='localhost', port=5000, debug=True)
+#     app.run()
+# if __name__ == '__main__':
+#     app.run(host='172.31.58.47',port=5001)
+if __name__ == "__main__":
+    app.run(host='localhost', port=5000, debug=True)
