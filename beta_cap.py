@@ -14140,12 +14140,10 @@ def present_feeds_practice_data():
 
 @app.route('/present_feeds')
 def present_feeds():
-
-    username=urllib.parse.quote_plus('adminIE')
-    password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    username = urllib.parse.quote_plus('adminIE')
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
     db=client.compass_beta
-
 
     collectionpa = db.programs_audio.aggregate([
     {"$project":{"_id":0,'AUDIO_ID':"$_id","IMAGE":"$IMAGE_URL","AUDIO_NAME" : "$AUDIO_NAME"}}])
@@ -14281,8 +14279,62 @@ def present_feeds():
     dfpf["NARRATEDBY"]=dfpf["NARRATEDBY"].replace(0,"",inplace=True)  
     dfpf["NARRATEDBY"].fillna('',inplace=True)
     
-    temp={"top_practices":top_practices,"live":{"live_users":live_users,"live_students":live_students,"Practice_Count":Practice_Count,"MINDFUL_MINUTES":MINDFUL_MINUTES},"all_time":dfpf.to_dict("records")}
+    um =  DataFrame(list(db.user_master.aggregate([
+    {"$match":{
+    'ROLE_ID._id':ObjectId("5f155b8a3b6800007900da2b"), 
+    "IS_DISABLED":{"$ne":"Y"},
+    "IS_BLOCKED":{"$ne":"Y"},
+    "INCOMPLETE_SIGNUP":{"$ne":"Y"},
+    "EMAIL_ID":{'$not':{'$regex':'test', '$options':'i'}},
+    "EMAIL_ID":{"$ne": ""},
+    "EMAIL_ID":{'$not':{'$regex':'1gen', '$options':'i'}},
+    "USER_NAME":{'$not':{'$regex':'test', '$options':'i'}},
+    "USER_NAME":{'$not':{'$regex':'1gen', '$options':'i'}},
+    }},
+
+    {"$project":{"_id":"$_id","USER_NAME":1,"EMAIL_ID":"$EMAIL_ID",'SIGNUP':{"$dateToString":{"format": "%Y-%m-%d","date":'$CREATED_DATE'}},
+    "IMAGE_URL":1,"ROLE_ID":"$ROLE_ID.ROLE_ID"}}
+    ])))
+    um = um.sort_values('SIGNUP', ascending=False)
+    # df = df.fillna(0)
+    uid = um._id.to_list()
+
+
+    atm =DataFrame(list(db.audio_track_master.aggregate([
+    {"$match":{
+    '$and':[
+    {'USER_ID._id':{'$in':uid}},
+    { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+    {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+    {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
+    {'USER_ID.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
+    {'USER_ID.IS_DISABLED':{"$ne":'Y'}},
+    {'USER_ID.IS_BLOCKED':{"$ne":'Y'}},
+    {'USER_ID.schoolId.NAME':{'$not':{"$regex":'Blocked','$options':'i'}}},
+    {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':0}},
+    {'USER_ID.schoolId.NAME':{'$not':{"$regex":'test','$options':'i'}}},  
+    # {"PROGRAM_AUDIO_ID.PROGRAM_ID.PROGRAM_ID" : {'$nin':[1,2,3,4,5,6,7,8]}},
+    # {'CREATED_DATE': {'$gte': datetime.datetime.utcnow()-datetime.timedelta(hours=24)}}
+    ]}},
+    {'$group':
+    {'_id':'$USER_ID._id',
+    'State':{'$first':'$USER_ID.schoolId.STATE'},
+    'Country':{'$first':'$USER_ID.schoolId.COUNTRY'},
+    "Last_Practice_Date":{"$max":"$MODIFIED_DATE"},
+    'Practice_Count':{"$sum":1},
+    'MINDFUL_MINUTES':{'$sum':{'$round':[{'$divide':[{'$subtract':['$CURSOR_END','$cursorStart']}, 60]},2]}}
+    }}
+    ])))
+    dfff=pd.merge(um,atm,on='_id',how="inner")
+    dfff = dfff.sort_values('Last_Practice_Date', ascending=False)
+    dfff = dfff.fillna("")
+    fin = dfff[["USER_NAME","IMAGE_URL"]]
+    
+    
+    temp={"top_practices":top_practices,"live":{"live_users":live_users,"live_students":live_students,"Practice_Count":Practice_Count,
+                                                "MINDFUL_MINUTES":MINDFUL_MINUTES},"all_time":dfpf.to_dict("records"),"Latest_users":fin.iloc[0:3].to_dict("records")}
     return json.dumps(temp,default=str)
+
 
 # present_feeds()
 
