@@ -4214,7 +4214,10 @@ def admin_portal_card_teacher(userid):
 
 
         if df00.empty==True:
-            data={'Result':0}        
+            data={"EMAIL": "", "Invite_sent": "0", "Remaining_invites": "0", "Subscription_expire_date": "0", 
+                  "Subscription_start_date": "0", "Total_invites": "0","Total_teachers": "0",
+                  "invite_accepted": "0", "login_history": "0", "mindful_minutes": "0","payment_Mode": "", 
+                  "practice_count": "0"}        
             return json.dumps(data)
         else:
             disid = df00["_id"].to_list()
@@ -4504,11 +4507,17 @@ def admin_portal_card_teacher(userid):
                           'State':{'$first':'$schoolId.STATE'},'INIVITES':{'$first':'$INVITES_ASSIGNED'},'EMAIL':{'$first':'$EMAIL_ID'},'admin':{'$first':'$IS_ADMIN'},'ROLE':{'$first':'$ROLE_ID.ROLE_id'}}},
                 {'$project':{'_id':1,'sid':'$sid','ADMIN':'$admin','EMAIL_ID':'$EMAIL','INIVITES':'$INIVITES'}}])))
         if df1.empty==True:
-            data={'Result':0}        
+            data={"EMAIL": "", "Invite_sent": "0", "Remaining_invites": "0", "Subscription_expire_date": "0", 
+                  "Subscription_start_date": "0", "Total_invites": "0","Total_teachers": "0",
+                  "invite_accepted": "0", "login_history": "0", "mindful_minutes": "0","payment_Mode": "", 
+                  "practice_count": "0"}      
             return json.dumps(data)
 
         if df1['_id'][0]==None:
-            data={'Result':0}        
+            data={"EMAIL": "", "Invite_sent": "0", "Remaining_invites": "0", "Subscription_expire_date": "0", 
+                  "Subscription_start_date": "0", "Total_invites": "0","Total_teachers": "0",
+                  "invite_accepted": "0", "login_history": "0", "mindful_minutes": "0","payment_Mode": "", 
+                  "practice_count": "0"}        
             return json.dumps(data)
         else:
             schoolid=str(df1['_id'][0])
@@ -4739,6 +4748,8 @@ def admin_portal_card_teacher(userid):
 #             print('school_data')
             return json.dumps(data)
 
+
+# admin_portal_card_teacher("62863021a015d865b4a02287")
 
 
 ###################
