@@ -4864,155 +4864,346 @@ def admin_table(userid):
     username = urllib.parse.quote_plus('admin')
     password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
     client = MongoClient("mongodb://%s:%s@35.88.43.45:27017/" % (username, password))
-    db=client.compass 
+    db=client.compass
 
-    collection1 = db.user_master.aggregate([{"$match":
-             {'$and': [
-
-                    {"IS_DISABLED":{"$ne":"Y"}},
-                      {"IS_BLOCKED":{"$ne":"Y"}},
-                     {"INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-                    { 'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                    { 'USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-                    {"_id" : ObjectId(""+userid+"")},
-    #                     
-                 {'EMAIL_ID':{'$ne':''}},
-    #              {'EMAIL_ID':'aroberts@agawamed.org'},
-                     {'schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                 {'schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-  
-                               {'EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                                 {'EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
-             ]}},
-                {'$group':{'_id':'$schoolId._id','sid':{'$addToSet':'$schoolId._id'},'ID':{'$addToSet':'$_id'},'school_name':{'$first':'$schoolId.NAME'},'date':{'$min':{"$dateToString": { "format": "%Y-%m-%d", "date":'$CREATED_DATE'}}},'country':{'$first':'$schoolId.COUNTRY'},
-                          'State':{'$first':'$schoolId.STATE'},'city':{'$first':'$schoolId.CITY'},'admin':{'$first':'$IS_ADMIN'},'ROLE':{'$first':'$ROLE_ID.ROLE_id'}}},
-                {'$project':{'_id':1,'sid':'$sid','admin':'$admin'}},
-    ])
-    df1 = DataFrame(list(collection1))
-    if df1.empty == True:
-        return json.dumps({'Result':0})
-    else:
-
-#         email=str(df1['ID'][0])
-        schoolid=str(df1['_id'][0])  
-        df2 =  DataFrame(list(db.user_master.aggregate([{"$match":
-             {'$and': [
-
-                    {"IS_DISABLED":{"$ne":"Y"}},
-                      {"IS_BLOCKED":{"$ne":"Y"}},
-                     {"INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-                    { 'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                    { 'USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-                    {"schoolId._id" : ObjectId(""+schoolid+"")},
-    #                     
-                 {'EMAIL_ID':{'$ne':''}},
-    #              {'EMAIL_ID':'aroberts@agawamed.org'},
-                     {'schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                 {'schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-  
-                               {'EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                                 {'EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
-             ]}},
-                {'$group':{'_id':'$_id','sid':{'$first':'$EMAIL_ID'},'sid_':{'$first':'$USER_NAME'}}},
-                {'$project':{'_id':1,'email':'$sid','USER_NAME':'$sid_'}},
-        ])))
-        email=df2['_id'].tolist()
-#          print(email)
-#         df1 = DataFrame(list(collection1))
-
-
-
+    collection2=db.school_master
+    collection=db.user_master
+    collection4=db.invite_master
+    collection5=db.login_logs
+    collection1=db.audio_track_master
+    collection3=db.subscription_master
     
-#         print(schoolid)
-        df1
-        df3 = DataFrame(list(db.audio_track_master.aggregate([
-             {"$match":
-                 {'$and': [
-                      {'USER_ID.ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
-                        {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
-                          {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
-                         {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-                        { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                        { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-#        
-                     {"USER_ID.schoolId._id" : ObjectId(""+schoolid+"")},
-                         {'USER_ID.EMAIL_ID':{'$ne':''}},
-
-                     {'MODIFIED_DATE':{"$gte": csy_first_date()}},
-                         {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                     {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-                                   {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                                     {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
-                 ]}},
-                    {'$group':{'_id':'$USER_ID._id',
-
-                               'last_practice_date_q1':{'$max':{"$dateToString": { "format": "%Y-%m-%d", "date":'$MODIFIED_DATE'}}},
-
-                               'CURSOR_END' : {'$last':'$CURSOR_END'},'CURSOR_START' : {'$first':'$cursorStart'},
-                        'AUDIO_NAME' : {'$first' : "$PROGRAM_AUDIO_ID.AUDIO_NAME"},
-                                'AUDIO_DAY' : {'$last' : "$PROGRAM_AUDIO_ID.AUDIO_DAY"},
-                               'object_id':{'$max':'$_id'},
-                                'USER_NAME':{'$first':'$USER_ID.USER_NAME'},
-                          'PROGRAM_NAME' : {'$last' : "$PROGRAM_AUDIO_ID.PROGRAM_ID.PROGRAM_NAME"},
-                        'Mindful_Minutes':{'$sum':{'$round':[{'$divide':[{'$subtract':['$CURSOR_END','$cursorStart']},60]},0]}},
+    
+    df0 = DataFrame(list(collection.aggregate([
+        {"$match":{'$and': [{"_id" : ObjectId(""+userid+"")}]}},
+        {'$project':{'_id':1,"EMAIL_ID" : 1,'district_admin':'$IS_DISTRICT_ADMIN'}}])))
+    print(df0)
 
 
-                            'AUDIO_LENGHT' :{"$last" : "$PROGRAM_AUDIO_ID.AUDIO_LENGTH"},
-                               }},
-                          {'$project':{'_id':1,
-                            'last_practice_date_q1':1,
-                            'Mindful_Minutes' :1,
-                            'CURSOR_END' : 1,
-                         'CURSOR_START' : 1, 
-                         'AUDIO_NAME':1,
-                                       'USER_NAME':1,
-                         'PROGRAM_NAME' : 1,
-                                       'AUDIO_LENGHT':1,
-                                       'AUDIO_DAY':1,
-                                       'object_id':1
-                                      }}])))
-        
-        # dff=pd.merge(df1,df2, how='left', on='_id')
-        if df3.empty==True:
-            df3=pd.DataFrame({'_id':email})
-            df3['PROGRAM_NAME'] = pd.Series(['NO PRACTICE' for x in range(len(df3.index))])
-            df3['AUDIO_DAY'] = pd.Series(['NO PRACTICE' for x in range(len(df3.index))])
-            df3['last_practice_duration'] = pd.Series([0 for x in range(len(df3.index))])
-            df3['last_practice_completion_percentage'] = pd.Series([0 for x in range(len(df3.index))])
-            dff=pd.merge(df2,df3,how='left',on='_id')
-            
-           
-#         df3 = df3.transpose()
-#         column3 =['_id','PROGRAM_NAME','AUDIO_DAY','Mindful_Minutes_csy']
-#         for i in column3:
-#             df3=df3.fillna('')
-#             if i not in df3.columns:
-#                 df3[i] = 'No info'
-                
+
+    if 'district_admin' not in df0.columns:
+        df0['district_admin']=0
+
+    # if df0[df0['district_admin']=='Y']:
+    #     if 'Y' in df0['district_admin'][0]:
+    if df0['district_admin'][0]=='Y':
+
+        uemail = df0["EMAIL_ID"].to_list()
+
+        df00 = DataFrame(list(db.district_master.aggregate([
+        {"$match":{'$and': [
+        {"ADMIN_EMAIL" : {"$in" : uemail}}]}},
+        {'$project':{'_id':1,"ADMIN_EMAIL" : 1}}])))
+#         print(df00)
+
+        if df00.empty==True:
+            temp={'Result':0}
+            return json.dumps(temp, default=str)
         else:
-            dff = df3.fillna(0)
-            dff["last_practice_duration"] = round(dff["CURSOR_END"]-dff["CURSOR_START"]) 
-            
-            dff['new']=dff['last_practice_duration'].where(dff['last_practice_duration']>dff['AUDIO_LENGHT'],other=dff['AUDIO_LENGHT'])
-    
-            dff["last_practice_completion_percentage"] = round((dff["last_practice_duration"]/dff["new"]) * 100)
-#             dff['last_practice_completion_percentage']=dff[dff['last_practice_completion_percentage"'] < 0] = 0
-#             dff['last_practice_duration']=dff[dff['last_practice_duration'] < 0] = 0
-#             dff["Percentage Completed"] = round((dff["Mindful_Minutes"]/dff["AUDIO_LENGHT"]) * 100)
-#         new_dff = dff[["_id",'last_practice_duration','CURSOR_START','CURSOR_END','USER_NAME',"AUDIO_NAME",'object_id',"PROGRAM_NAME",'AUDIO_DAY',"AUDIO_LENGHT","last_practice_date_q1","last_practice_completion_percentage"]]
-            
-        
-#         
-        data= dff[['USER_NAME','PROGRAM_NAME','AUDIO_DAY','last_practice_duration','last_practice_completion_percentage']]
-        num = data._get_numeric_data()
-        num[num < 0] = 0
-#             print(data)
-# data[data < 0] = 0
-        temp={"data":data.values.tolist()}
+            disid = df00["_id"].to_list()
+            print("disid",disid)
 
-#         data={'user_name':user,'program_name':program,'practice':practice,'duration':practice_duration,'percentage_completion':completion}
-        return json.dumps(temp)
-#         return data
+
+            df1=DataFrame(list(db.user_master.aggregate([{"$match":
+            {'$and': [
+            {"DISTRICT_ID._id" : {"$in" : disid}},
+            #             {'ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
+            {"IS_DISABLED":{"$ne":"Y"}},
+            {"IS_BLOCKED":{"$ne":"Y"}},
+            {"INCOMPLETE_SIGNUP":{"$ne":"Y"}},
+            { 'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+            { 'USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
+
+            #                    {'IS_ADMIN':'Y'},
+    #         {"_id" : ObjectId(""+userid+"")},
+            {'EMAIL_ID':{'$ne':''}},
+
+            {'schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+            {'schoolId.BLOCKED_BY_CAP':{'$exists':False}},
+
+            {'EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+            {'EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
+            ]}},
+            # {'$group':{'_id':'$schoolId._id','sid':{'$addToSet':'$schoolId._id'},'school_name':{'$first':'$schoolId.NAME'},
+            #            'date':{'$min':{"$dateToString": { "format": "%Y-%m-%d", "date":'$CREATED_DATE'}}},
+            #            'country':{'$first':'$schoolId.COUNTRY'},
+            # 'State':{'$first':'$schoolId.STATE'},'INIVITES':{'$first':'$INVITES_ASSIGNED'},
+            #            'EMAIL':{'$first':'$EMAIL_ID'},'admin':{'$first':'$IS_ADMIN'},'ROLE':{'$first':'$ROLE_ID.ROLE_id'}}},
+
+            {'$project':{'_id':1}}])))
+
+            if df1.empty==True:
+                temp={'Result':0}
+                return json.dumps(temp, default=str)
+            else:
+                userid = df1["_id"].to_list()
+#                 print("userid",len(userid))
+
+
+
+            df2 =  DataFrame(list(db.user_master.aggregate([{"$match":
+                 {'$and': [
+                        {'_id':{"$in" : userid}},
+                        {'DISTRICT_ID._id':{"$in" : disid}},
+                        {"IS_DISABLED":{"$ne":"Y"}},
+                          {"IS_BLOCKED":{"$ne":"Y"}},
+                         {"INCOMPLETE_SIGNUP":{"$ne":"Y"}},
+                        { 'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                        { 'USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
+#                       
+        #                     
+                     {'EMAIL_ID':{'$ne':''}},
+        #              {'EMAIL_ID':'aroberts@agawamed.org'},
+                         {'schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                     {'schoolId.BLOCKED_BY_CAP':{'$exists':False}},
+
+                                   {'EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                                     {'EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
+                 ]}},
+                    {'$group':{'_id':'$_id','sid':{'$first':'$EMAIL_ID'},'sid_':{'$first':'$USER_NAME'}}},
+                    {'$project':{'_id':1,'email':'$sid','USER_NAME':'$sid_'}},
+            ])))
+            email=df2['_id'].tolist()
+    #          print(email)
+    #         df1 = DataFrame(list(collection1))
+
+
+
+
+    #         print(schoolid)
+            df1
+            df3 = DataFrame(list(db.audio_track_master.aggregate([
+                 {"$match":
+                     {'$and': [
+                         {'USER_ID._id' : {"$in" : user_id }},
+                         {'USER_ID.DISTRICT_ID._id':{"$in" : disid}},
+                          {'USER_ID.ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
+                            {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
+                              {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
+                             {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
+                            { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                            { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
+    #        
+#                          {"USER_ID.schoolId._id" : ObjectId(""+schoolid+"")},
+                             {'USER_ID.EMAIL_ID':{'$ne':''}},
+
+                         {'MODIFIED_DATE':{"$gte": csy_first_date()}},
+                             {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                         {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
+                                       {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                                         {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
+                     ]}},
+                        {'$group':{'_id':'$USER_ID._id',
+
+                                   'last_practice_date_q1':{'$max':{"$dateToString": { "format": "%Y-%m-%d", "date":'$MODIFIED_DATE'}}},
+
+                                   'CURSOR_END' : {'$last':'$CURSOR_END'},'CURSOR_START' : {'$first':'$cursorStart'},
+                            'AUDIO_NAME' : {'$first' : "$PROGRAM_AUDIO_ID.AUDIO_NAME"},
+                                    'AUDIO_DAY' : {'$last' : "$PROGRAM_AUDIO_ID.AUDIO_DAY"},
+                                   'object_id':{'$max':'$_id'},
+                                    'USER_NAME':{'$first':'$USER_ID.USER_NAME'},
+                              'PROGRAM_NAME' : {'$last' : "$PROGRAM_AUDIO_ID.PROGRAM_ID.PROGRAM_NAME"},
+                            'Mindful_Minutes':{'$sum':{'$round':[{'$divide':[{'$subtract':['$CURSOR_END','$cursorStart']},60]},0]}},
+
+
+                                'AUDIO_LENGHT' :{"$last" : "$PROGRAM_AUDIO_ID.AUDIO_LENGTH"},
+                                   }},
+                              {'$project':{'_id':1,
+                                'last_practice_date_q1':1,
+                                'Mindful_Minutes' :1,
+                                'CURSOR_END' : 1,
+                             'CURSOR_START' : 1, 
+                             'AUDIO_NAME':1,
+                                           'USER_NAME':1,
+                             'PROGRAM_NAME' : 1,
+                                           'AUDIO_LENGHT':1,
+                                           'AUDIO_DAY':1,
+                                           'object_id':1
+                                          }}])))
+
+            # dff=pd.merge(df1,df2, how='left', on='_id')
+            if df3.empty==True:
+                df3=pd.DataFrame({'_id':email})
+                df3['PROGRAM_NAME'] = pd.Series(['NO PRACTICE' for x in range(len(df3.index))])
+                df3['AUDIO_DAY'] = pd.Series(['NO PRACTICE' for x in range(len(df3.index))])
+                df3['last_practice_duration'] = pd.Series([0 for x in range(len(df3.index))])
+                df3['last_practice_completion_percentage'] = pd.Series([0 for x in range(len(df3.index))])
+                dff=pd.merge(df2,df3,how='left',on='_id')
+
+
+    #         df3 = df3.transpose()
+    #         column3 =['_id','PROGRAM_NAME','AUDIO_DAY','Mindful_Minutes_csy']
+    #         for i in column3:
+    #             df3=df3.fillna('')
+    #             if i not in df3.columns:
+    #                 df3[i] = 'No info'
+
+            else:
+                dff = df3.fillna(0)
+                dff["last_practice_duration"] = round(dff["CURSOR_END"]-dff["CURSOR_START"]) 
+
+                dff['new']=dff['last_practice_duration'].where(dff['last_practice_duration']>dff['AUDIO_LENGHT'],other=dff['AUDIO_LENGHT'])
+
+                dff["last_practice_completion_percentage"] = round((dff["last_practice_duration"]/dff["new"]) * 100)
+        
+            data= dff[['USER_NAME','PROGRAM_NAME','AUDIO_DAY','last_practice_duration','last_practice_completion_percentage']]
+            num = data._get_numeric_data()
+            num[num < 0] = 0
+    #             print(data)
+    # data[data < 0] = 0
+            temp={"data":data.values.tolist()}
+
+    #         data={'user_name':user,'program_name':program,'practice':practice,'duration':practice_duration,'percentage_completion':completion}
+            return json.dumps(temp)
+
+    else:
+        username = urllib.parse.quote_plus('admin')
+        password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
+        client = MongoClient("mongodb://%s:%s@35.88.43.45:27017/" % (username, password))
+        db=client.compass 
+
+        collection1 = db.user_master.aggregate([{"$match":
+                 {'$and': [
+
+                        {"IS_DISABLED":{"$ne":"Y"}},
+                          {"IS_BLOCKED":{"$ne":"Y"}},
+                         {"INCOMPLETE_SIGNUP":{"$ne":"Y"}},
+                        { 'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                        { 'USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
+                        {"_id" : ObjectId(""+userid+"")},
+        #                     
+                     {'EMAIL_ID':{'$ne':''}},
+        #              {'EMAIL_ID':'aroberts@agawamed.org'},
+                         {'schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                     {'schoolId.BLOCKED_BY_CAP':{'$exists':False}},
+
+                                   {'EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                                     {'EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
+                 ]}},
+                    {'$group':{'_id':'$schoolId._id','sid':{'$addToSet':'$schoolId._id'},'ID':{'$addToSet':'$_id'},'school_name':{'$first':'$schoolId.NAME'},'date':{'$min':{"$dateToString": { "format": "%Y-%m-%d", "date":'$CREATED_DATE'}}},'country':{'$first':'$schoolId.COUNTRY'},
+                              'State':{'$first':'$schoolId.STATE'},'city':{'$first':'$schoolId.CITY'},'admin':{'$first':'$IS_ADMIN'},'ROLE':{'$first':'$ROLE_ID.ROLE_id'}}},
+                    {'$project':{'_id':1,'sid':'$sid','admin':'$admin'}},
+        ])
+        df1 = DataFrame(list(collection1))
+        if df1.empty == True:
+            return json.dumps({'Result':0})
+        else:
+
+    #         email=str(df1['ID'][0])
+            schoolid=str(df1['_id'][0])  
+            df2 =  DataFrame(list(db.user_master.aggregate([{"$match":
+                 {'$and': [
+
+                        {"IS_DISABLED":{"$ne":"Y"}},
+                          {"IS_BLOCKED":{"$ne":"Y"}},
+                         {"INCOMPLETE_SIGNUP":{"$ne":"Y"}},
+                        { 'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                        { 'USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
+                        {"schoolId._id" : ObjectId(""+schoolid+"")},
+        #                     
+                     {'EMAIL_ID':{'$ne':''}},
+        #              {'EMAIL_ID':'aroberts@agawamed.org'},
+                         {'schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                     {'schoolId.BLOCKED_BY_CAP':{'$exists':False}},
+
+                                   {'EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                                     {'EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
+                 ]}},
+                    {'$group':{'_id':'$_id','sid':{'$first':'$EMAIL_ID'},'sid_':{'$first':'$USER_NAME'}}},
+                    {'$project':{'_id':1,'email':'$sid','USER_NAME':'$sid_'}},
+            ])))
+            email=df2['_id'].tolist()
+ 
+            df3 = DataFrame(list(db.audio_track_master.aggregate([
+                 {"$match":
+                     {'$and': [
+                          {'USER_ID.ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
+                            {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
+                              {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
+                             {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
+                            { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                            { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
+    #        
+                         {"USER_ID.schoolId._id" : ObjectId(""+schoolid+"")},
+                             {'USER_ID.EMAIL_ID':{'$ne':''}},
+
+                         {'MODIFIED_DATE':{"$gte": csy_first_date()}},
+                             {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                         {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
+                                       {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                                         {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
+                     ]}},
+                        {'$group':{'_id':'$USER_ID._id',
+
+                                   'last_practice_date_q1':{'$max':{"$dateToString": { "format": "%Y-%m-%d", "date":'$MODIFIED_DATE'}}},
+
+                                   'CURSOR_END' : {'$last':'$CURSOR_END'},'CURSOR_START' : {'$first':'$cursorStart'},
+                            'AUDIO_NAME' : {'$first' : "$PROGRAM_AUDIO_ID.AUDIO_NAME"},
+                                    'AUDIO_DAY' : {'$last' : "$PROGRAM_AUDIO_ID.AUDIO_DAY"},
+                                   'object_id':{'$max':'$_id'},
+                                    'USER_NAME':{'$first':'$USER_ID.USER_NAME'},
+                              'PROGRAM_NAME' : {'$last' : "$PROGRAM_AUDIO_ID.PROGRAM_ID.PROGRAM_NAME"},
+                            'Mindful_Minutes':{'$sum':{'$round':[{'$divide':[{'$subtract':['$CURSOR_END','$cursorStart']},60]},0]}},
+
+
+                                'AUDIO_LENGHT' :{"$last" : "$PROGRAM_AUDIO_ID.AUDIO_LENGTH"},
+                                   }},
+                              {'$project':{'_id':1,
+                                'last_practice_date_q1':1,
+                                'Mindful_Minutes' :1,
+                                'CURSOR_END' : 1,
+                             'CURSOR_START' : 1, 
+                             'AUDIO_NAME':1,
+                                           'USER_NAME':1,
+                             'PROGRAM_NAME' : 1,
+                                           'AUDIO_LENGHT':1,
+                                           'AUDIO_DAY':1,
+                                           'object_id':1
+                                          }}])))
+
+            # dff=pd.merge(df1,df2, how='left', on='_id')
+            if df3.empty==True:
+                df3=pd.DataFrame({'_id':email})
+                df3['PROGRAM_NAME'] = pd.Series(['NO PRACTICE' for x in range(len(df3.index))])
+                df3['AUDIO_DAY'] = pd.Series(['NO PRACTICE' for x in range(len(df3.index))])
+                df3['last_practice_duration'] = pd.Series([0 for x in range(len(df3.index))])
+                df3['last_practice_completion_percentage'] = pd.Series([0 for x in range(len(df3.index))])
+                dff=pd.merge(df2,df3,how='left',on='_id')
+
+
+    #         df3 = df3.transpose()
+    #         column3 =['_id','PROGRAM_NAME','AUDIO_DAY','Mindful_Minutes_csy']
+    #         for i in column3:
+    #             df3=df3.fillna('')
+    #             if i not in df3.columns:
+    #                 df3[i] = 'No info'
+
+            else:
+                dff = df3.fillna(0)
+                dff["last_practice_duration"] = round(dff["CURSOR_END"]-dff["CURSOR_START"]) 
+
+                dff['new']=dff['last_practice_duration'].where(dff['last_practice_duration']>dff['AUDIO_LENGHT'],other=dff['AUDIO_LENGHT'])
+
+                dff["last_practice_completion_percentage"] = round((dff["last_practice_duration"]/dff["new"]) * 100)
+    #             dff['last_practice_completion_percentage']=dff[dff['last_practice_completion_percentage"'] < 0] = 0
+    #             dff['last_practice_duration']=dff[dff['last_practice_duration'] < 0] = 0
+    #             dff["Percentage Completed"] = round((dff["Mindful_Minutes"]/dff["AUDIO_LENGHT"]) * 100)
+    #         new_dff = dff[["_id",'last_practice_duration','CURSOR_START','CURSOR_END','USER_NAME',"AUDIO_NAME",'object_id',"PROGRAM_NAME",'AUDIO_DAY',"AUDIO_LENGHT","last_practice_date_q1","last_practice_completion_percentage"]]
+
+
+    #         
+            data= dff[['USER_NAME','PROGRAM_NAME','AUDIO_DAY','last_practice_duration','last_practice_completion_percentage']]
+            num = data._get_numeric_data()
+            num[num < 0] = 0
+    #             print(data)
+    # data[data < 0] = 0
+            temp={"data":data.values.tolist()}
+
+    #         data={'user_name':user,'program_name':program,'practice':practice,'duration':practice_duration,'percentage_completion':completion}
+            return json.dumps(temp)
+    #         return data
+
+# admin_table("628652efaf8d98553c40b996")
 # admin_table('615a998357fcee2834de3112')
 
 
