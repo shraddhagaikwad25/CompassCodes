@@ -462,24 +462,30 @@ def miitsignupnew():
     ]
     df1=pd.DataFrame(list(collection.aggregate(query)))
     df1['sign_upn'] = pd.to_datetime(df1['sign_up']) 
-    df2 = df1.groupby([df1['sign_upn'].dt.date]).count()
+    df1['sign_upn'] = df1['sign_upn'].astype(np.int64) / int(1e6)
+#     print(df1)
+    df2 = df1.groupby(['sign_upn']).count()
+    
+    
+    cdate=df2.index.to_list()
+#     print("\n\n xxxxx \n\n",df2)
 
-    cdate=[]
-    for i in df2.index:
-        x=i.strftime('%S')
-        cdate.append(float(x)*1000)
+
     count=[]
-    for i in df2['sign_up'] :
+    for i in df2['sign_up']:
         count.append(i)
     count1=np.cumsum(count)
     df3 = pd.DataFrame(list(zip(cdate,count)), 
                     columns =['date', 'count']) 
+#     print(df3)
     df4 = pd.DataFrame(list(zip(cdate,count1)), 
                     columns =['date', 'count'])
+#     print(df4)
     data = df3.values.tolist()
     data1 = df4.values.tolist()
     return json.dumps({"bar":data,"line":data1})
 
+# miitsignupnew()
 
 @app.route('/mitsignupdaycompp')
 
