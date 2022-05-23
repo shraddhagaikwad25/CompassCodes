@@ -636,7 +636,7 @@ def mitpracnew():
     myDatetime = dateutil.parser.parse(dateStr)
 
 
-    x =list(collection.aggregate([
+    x =DataFrame(list(collection.aggregate([
         {"$match":{"$and":[{'USER_ID.ROLE_ID._id':{"$eq":ObjectId("5f155b8a3b6800007900da2b")}},                  
                 {'USER_ID.EMAIL_ID':{"$not":{"$regex":'test','$options':'i'}}},
                 {'USER_ID.USER_NAME':{"$not":{"$regex":'test','$options':'i'}}},
@@ -646,36 +646,34 @@ def mitpracnew():
                 {'USER_ID.USER_TYPE':{"$regex":'MIT','$options':'i'}},
                 {'USER_ID.EMAIL_ID':{'$ne':''}}
                 ]}},
-        {"$group":{"_id":{"$dateToString": {"format": "%Y-%m-%d","date":'$CREATED_DATE'}},
+        {"$group":{"_id":{"$dateToString": {"format": "%Y-%m-%d","date":'$MODIFIED_DATE'}},
                 'Count':{"$sum":1}}},
-        {"$project":{"_id":1, 'Parents_Practice':'$Count'}}]))
-    res = [] 
-    for idx, sub in enumerate(x, start = 0): 
-        if idx == 0: 
-    #         res.append(list(sub.keys())) 
-            res.append(list(sub.values())) 
-        else: 
-            res.append(list(sub.values())) 
-    df = pd.DataFrame(res, columns = ['date', 'count'])
-    df['date'] = pd.to_datetime(df['date'], errors = 'coerce')
-    df['date'] = pd.to_datetime(df['date']) - timedelta(hours=4)
-    df2 = df.groupby([df['date'].dt.date]).sum()
-    cdate=[]
-    for i in df2.index:
-        x=i.strftime('%S')
-        cdate.append(float(x)*1000)
+        {"$project":{"_id":1, 'Parents_Practice':'$Count'}}])))
+#     print("x \n\n",x)
+#     print(x.shape)
+    x['date'] = pd.to_datetime(x['_id'])
+    x['date'] = x['date'].astype(np.int64) / int(1e6)
+    df2 = x.groupby(['date']).sum()
+#     print("\n\n df2 shape",df2)
+    df2=df2.sort_values(by='date')
+
+    cdate=df2.index.to_list()
+#     print("\n\n CADETE \n\n",len(cdate))
     count=[]
-    for i in df2['count'] :
+    for i in df2['Parents_Practice'] :
         count.append(i)
     count1=np.cumsum(count)
     df3 = pd.DataFrame(list(zip(cdate,count)), 
-                    columns =['date', 'count']) 
+                    columns =['date', 'Parents_Practice']) 
+#     print(df3)
     df4 = pd.DataFrame(list(zip(cdate,count1)), 
-                    columns =['date', 'count'])
+                    columns =['date', 'Parents_Practice'])
+#     print(df4)
     data = df3.values.tolist()
     data1 = df4.values.tolist()
     return json.dumps({"bar":data,"line":data1})
 
+# mitpracnew()
 
 @app.route('/mitpracweek')
 def mitpracweek():
