@@ -4888,6 +4888,10 @@ def admin_table(userid):
         {'$project':{'_id':1,"EMAIL_ID" : 1,'district_admin':'$IS_DISTRICT_ADMIN'}}])))
     print(df0)
 
+    if df0.empty==True:
+        temp={'Result':0}
+        return json.dumps(temp, default=str)
+
 
 
     if 'district_admin' not in df0.columns:
@@ -5485,6 +5489,9 @@ def admin_portal_table(userid):
         {"$match":{'$and': [{"_id" : ObjectId(""+userid+"")}]}},
         {'$project':{'_id':1,"EMAIL_ID" : 1,'district_admin':'$IS_DISTRICT_ADMIN'}}])))
 #     print(df0)
+    if df0.empty==True:
+        data={"INVITE_SENT" : [], "INVITE_ACCEPTED" : []}        
+        return json.dumps(data)
 
 
 
@@ -5504,7 +5511,7 @@ def admin_portal_table(userid):
 #         print(df00)
 
         if df00.empty==True:
-            temp={'Result':0}
+            temp={"INVITE_SENT" : [], "INVITE_ACCEPTED" : []}
             return json.dumps(temp, default=str)
         else:
             disid = df00["_id"].to_list()
@@ -5540,7 +5547,7 @@ def admin_portal_table(userid):
             {'$project':{'_id':1}}])))
 
             if df1.empty==True:
-                temp={'Result':0}
+                temp={"INVITE_SENT" : [], "INVITE_ACCEPTED" : []}
                 return json.dumps(temp, default=str)
             else:
                 userid = df1["_id"].to_list()
@@ -5795,7 +5802,7 @@ def admin_portal_table(userid):
         {'$project':{'_id':'$schoolId._id'}}])))
 
         if df1.empty==True:
-            temp={'Result':0}
+            temp={"INVITE_SENT" : [], "INVITE_ACCEPTED" : []}
             return json.dumps(temp, default=str)
 
         else:
