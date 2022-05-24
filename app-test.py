@@ -14521,7 +14521,7 @@ def present_feeds():
     }},
 
     {"$project":{"_id":"$_id","USER_NAME":1,"EMAIL_ID":"$EMAIL_ID",'SIGNUP':{"$dateToString":{"format": "%Y-%m-%d","date":'$CREATED_DATE'}},
-    "IMAGE_URL":1,"ROLE_ID":"$ROLE_ID.ROLE_ID"}}
+    "ROLE_ID":"$ROLE_ID.ROLE_ID"}}
     ])))
     um = um.sort_values('SIGNUP', ascending=False)
     # df = df.fillna(0)
@@ -14550,6 +14550,7 @@ def present_feeds():
     'Country':{'$first':'$USER_ID.schoolId.COUNTRY'},
     "Last_Practice_Date":{"$max":"$MODIFIED_DATE"},
     'Practice_Count':{"$sum":1},
+     "IMAGE_URL":{"$first":"$PROGRAM_AUDIO_ID.IMAGE_URL"},
     'MINDFUL_MINUTES':{'$sum':{'$round':[{'$divide':[{'$subtract':['$CURSOR_END','$cursorStart']}, 60]},2]}}
     }}
     ])))
@@ -14557,6 +14558,7 @@ def present_feeds():
     dfff = dfff.sort_values('Last_Practice_Date', ascending=False)
     dfff = dfff.fillna("")
     fin = dfff[["USER_NAME","IMAGE_URL"]]
+#     print(fin.iloc[0:3].to_dict("records"))
     
     
     temp={"top_practices":top_practices,"live":{"live_users":live_users,"live_students":live_students,"Practice_Count":Practice_Count,
