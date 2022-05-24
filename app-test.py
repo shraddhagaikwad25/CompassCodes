@@ -5591,6 +5591,11 @@ def admin_portal_table(userid):
             {'$project':{'_id':'$INVITED_USER_ID._id',"User_Name" : "$INVITED_USER_ID.USER_NAME",
                          "EMAIL_ID" : '$INVITED_USER_ID.EMAIL_ID','accepted':'$STATUS'}}
             ])))
+    
+            print(df2)
+            if df2.empty==True:
+                temp={"INVITE_SENT" : [], "INVITE_ACCEPTED" : []}
+                return json.dumps(temp, default=str)
 
             df2_Y = df2[df2["accepted"] == "Y"]
             df2_N = df2[df2["accepted"] == "N"]
@@ -5787,7 +5792,7 @@ def admin_portal_table(userid):
         else:
             schoolid=str(df1['_id'][0])
 
-        #     print(schoolid)
+#             print(schoolid)
             df5=DataFrame(list(db.user_master.aggregate([{"$match":
             {'$and': [
             {'ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
@@ -5813,6 +5818,7 @@ def admin_portal_table(userid):
             {'$project':{'_id': "$_id",'ADMIN':'$IS_ADMIN','INIVITES':'$INVITES_ASSIGNED'}}])))
 
             user_id = list(df5["_id"])
+#             print(df5)
 
 
             df2=DataFrame(list(db.invite_master.aggregate([
@@ -5844,7 +5850,12 @@ def admin_portal_table(userid):
             {'$project':{'_id':'$INVITED_USER_ID._id',"User_Name" : "$INVITED_USER_ID.USER_NAME",
                          "EMAIL_ID" : '$INVITED_USER_ID.EMAIL_ID','accepted':'$STATUS'}}
             ])))
-
+            
+#             print(df2)
+            if df2.empty==True:
+                temp={"INVITE_SENT" : [], "INVITE_ACCEPTED" : []}
+                return json.dumps(temp, default=str)
+            
             df2_Y = df2[df2["accepted"] == "Y"]
             df2_N = df2[df2["accepted"] == "N"]
             user_id1 = list(df2["_id"])
@@ -5992,7 +6003,7 @@ def admin_portal_table(userid):
             return json.dumps(temp, default=str)
 
         
-# admin_portal_table("5f33c1c3418467201938f2e3")__
+# admin_portal_table("62863021a015d865b4a02287")
 
 ############################################################33333
 
