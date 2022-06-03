@@ -4988,7 +4988,7 @@ def admin_table(userid):
             df3 = DataFrame(list(db.audio_track_master.aggregate([
                  {"$match":
                      {'$and': [
-                         {'USER_ID._id' : {"$in" : user_id }},
+                         {'USER_ID._id' : {"$in" : userid }},
                          {'USER_ID.DISTRICT_ID._id':{"$in" : disid}},
                           {'USER_ID.ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
                             {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
