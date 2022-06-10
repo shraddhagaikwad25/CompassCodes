@@ -1009,11 +1009,13 @@ def parents_table():
     #df['Last_Login_Date'].fillna("NO LOGIN", inplace=True)
     final['Practice_Count'].fillna("NO PRACTICE", inplace=True)
     final['CREATED_DATE']=pd.to_datetime(final['CREATED_DATE'])
-    final['NAME'].fillna("NO SCHOOL INFO", inplace=True)
-    final['ADDRESS'].fillna("NO ADDRESS INFO", inplace=True)
-    final['COUNTRY'].fillna("NO COUNTRY INFO", inplace=True)
-    final['STATE'].fillna("NO STATE INFO", inplace=True)
-    final['CITY'].fillna("NO CITY INFO", inplace=True)
+    final['NAME'].fillna("NO INFO", inplace=True)
+    final['ADDRESS'].fillna("NO INFO", inplace=True)
+    final['COUNTRY'].fillna("NO INFO", inplace=True)
+    final['STATE'].fillna("NO INFO", inplace=True)
+    final['CITY'].fillna("NO INFO", inplace=True)
+    final.replace("no info","NO INFO", inplace=True)
+    final.replace("","NO INFO", inplace=True)
 
     def country1(i):
         location = reader.get(i)
@@ -1115,9 +1117,9 @@ def logout():
     return render_template('login.html')
 
 
-# if __name__ == '__main__':
-#     app.run()
 if __name__ == '__main__':
-    app.run(host='172.31.58.47',port=5001)
+    app.run()
+# if __name__ == '__main__':
+#     app.run(host='172.31.58.47',port=5001)
 # if __name__ == "__main__":
 #     app.run(host='localhost', port=5000, debug=True)
