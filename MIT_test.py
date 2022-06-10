@@ -886,6 +886,9 @@ def pracparents_table():
     final['CITY'].fillna("NO INFO", inplace=True)
     final.replace("no info","NO INFO", inplace=True)
     final.replace("","NO INFO", inplace=True)
+    final.replace(" NaN","NO INFO", inplace=True)
+    final.replace("NaN","NO INFO", inplace=True)
+    final.fillna("NO INFO", inplace=True)
 
     def country1(i):
         location = reader.get(i)
@@ -1018,6 +1021,9 @@ def parents_table():
     final['CITY'].fillna("NO INFO", inplace=True)
     final.replace("no info","NO INFO", inplace=True)
     final.replace("","NO INFO", inplace=True)
+    final.replace(" NaN","NO INFO", inplace=True)
+    final.replace("NaN","NO INFO", inplace=True)
+    final.fillna("NO INFO", inplace=True)
 
     def country1(i):
         location = reader.get(i)
