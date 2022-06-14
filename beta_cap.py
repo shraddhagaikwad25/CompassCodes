@@ -22693,8 +22693,9 @@ def district_portal_comment_(districtid):
                     pass
             comment_data_final['COMMENT_DATE']=COMMENT_DATE
 #             comment_data_for_use=comment_data_final.copy()            
-            comment_data_for_use=comment_data_final[['COMMENT','SCHOOL_NAME','AUDIO_NAME','PROGRAM','PRACTICE_DAY','COMMENT_DATE']]
-    
+            # comment_data_for_use=comment_data_final[['COMMENT','SCHOOL_NAME','AUDIO_NAME','PROGRAM','PRACTICE_DAY','COMMENT_DATE']]
+            comment_data_for_use_1=comment_data_final[['COMMENT','SCHOOL_NAME','AUDIO_NAME','PROGRAM','PRACTICE_DAY','COMMENT_DATE']]
+            comment_data_for_use = comment_data_for_use_1.copy()
 #             sentiment code is added here.
             comment_data_for_use['COMMENT_LEN']=[len(i.split()) for i in comment_data_for_use['COMMENT']]
             comment_data_for_use=comment_data_for_use[comment_data_for_use['COMMENT_LEN']>=3].reset_index(drop=True)
