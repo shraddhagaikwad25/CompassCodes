@@ -108,7 +108,7 @@ disdic1={
 }
 username=urllib.parse.quote_plus('adminIE')
 password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
 db=client.compass_beta 
 df2 = DataFrame(list(db.district_master.aggregate([
 {'$project':{'_id':1,'DISTRICT_NAME':1 }}
@@ -152,7 +152,7 @@ def word_freq(product,rating,startdate,enddate):
     myDatetimeend = dateutil.parser.parse(date2)
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     collection = db.audio_feedback
     user=[
@@ -419,7 +419,7 @@ def com_user_stat(email,cemail):
 
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     collection = db.audio_track_master
     dateStr = "2020-08-01T00:00:00.000Z"
@@ -513,12 +513,12 @@ def User_practice_cards():
     
     # username = urllib.parse.quote_plus('adminIE')
     # password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    # client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
+    # client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username, password))
     # db=client.compass_beta
 
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
 
     collection = db.audio_track_master
@@ -999,7 +999,7 @@ def User_practice_cards():
 def buble_district12():
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -1082,7 +1082,7 @@ def buble_district12():
     ######family ########
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -1173,7 +1173,7 @@ def buble_district12():
     ###ACTIVE USER
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -1231,7 +1231,7 @@ def buble_district12():
     ###ACTIVE FAMILY
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -1291,7 +1291,7 @@ def buble_district12():
     finmergeufo=finmergeufo.loc[:,~finmergeufo.columns.duplicated()]
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     # dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -1321,7 +1321,7 @@ def buble_district12():
     DISPRACTO=df1111[["NAME_DISTRICT","PRACTICE"]]
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     # dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -1372,7 +1372,7 @@ def buble_district12():
 def campaignapi():
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     collection = db.campaign_data
     query=[{'$match':{'$and':[
@@ -1476,7 +1476,7 @@ def campaignapi():
 def school_search_id():
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     collection = db.user_master
     query=[
@@ -1520,7 +1520,7 @@ def school_search_id():
 def school_search_():
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     collection = db.user_master
     query=[
@@ -1558,7 +1558,7 @@ def school_search_():
 def _excecutivecount_():
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     collection = db["school_master"]
     query = {}
@@ -1572,7 +1572,7 @@ def _excecutivecount_():
     comadd=1299-len(dfum1)
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))
 
     database = client["compass_beta"]
 
@@ -1701,7 +1701,7 @@ def _excecutivecount_():
 def schpuc(districtid):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.user_master
     if districtid in disdic1:
@@ -1762,7 +1762,7 @@ def schpuc(districtid):
 def schppcfamily(districtid):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
     collection1 = db.user_master
@@ -1845,7 +1845,7 @@ def schppcfamily(districtid):
 def schwisepc(districtid):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
     collection1 = db.user_master
@@ -1929,7 +1929,7 @@ def schwisepc(districtid):
 def schwiseuc(districtid):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.user_master
     if districtid in disdic1:
@@ -1986,7 +1986,7 @@ def schwiseuc(districtid):
 def monthwisepc(districtid):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
     if districtid in disdic1:
@@ -2070,7 +2070,7 @@ def user_practice_90days(districtid):
     
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
     if districtid in disdic1:
@@ -2145,7 +2145,7 @@ def user_logins_90days(districtid):
     
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.login_logs
     if districtid in disdic1:
@@ -2217,7 +2217,7 @@ def topusers_practice(districtid):
     
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
     if districtid in disdic1:
@@ -2311,7 +2311,7 @@ def district_count_cards(districtid):
     
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection1 = db.user_master
     collection2=db.audio_track_master
@@ -2541,7 +2541,7 @@ def district_user_table_teacher(districtid):
     
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
 
     
@@ -2666,7 +2666,7 @@ def district_user_table_parents(districtid):
     
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     from datetime import datetime
     
@@ -2789,7 +2789,7 @@ def district_user_table_parents(districtid):
 def monthwisepcsuper(districtid):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
     if districtid in disdic1:
@@ -3017,7 +3017,7 @@ def district_school_table(districtid):
     
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
 
     
@@ -3152,7 +3152,7 @@ def heat_district(districtid):
     import collections
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
     collection2=db.user_master
@@ -3288,7 +3288,7 @@ def heat_district_family_active(districtid):
     import collections
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
     collection2=db.user_master
@@ -3422,7 +3422,7 @@ def heat_district_teachers_active(districtid):
     import collections
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
     collection2=db.user_master
@@ -3557,7 +3557,7 @@ def heat_district_teachers_prac(districtid):
     import collections
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
     collection2=db.user_master
@@ -3690,7 +3690,7 @@ def heat_district_family_prac(districtid):
     import collections
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
     collection2=db.user_master
@@ -3832,7 +3832,7 @@ def heatmap_prac_district(districtid):
     import collections
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
     collection2=db.user_master
@@ -3992,7 +3992,7 @@ def heatmap_prac_district(districtid):
 def portal_new_api(smcategory):    
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     
     collection = db.school_master
@@ -4175,7 +4175,7 @@ def portal_new_api(smcategory):
 def admin_portal_card_teacher(userid):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
 
 
@@ -4750,7 +4750,7 @@ def monthwiseadminpc(userid):
     
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
     collection1 = db.user_master
@@ -4851,7 +4851,7 @@ def monthwiseadminpc(userid):
 def admin_table(userid):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
 
     collection1 = db.user_master.aggregate([{"$match":
@@ -5021,11 +5021,11 @@ def calendarpractice():
     
 #     username = urllib.parse.quote_plus('adminIE')
 #     password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-#     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
+#     client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username, password))
 #     db=client.compass_beta
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
 
     collection2=db.class_master
@@ -5259,7 +5259,7 @@ def admin_portal_table(userid):
     
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
 
     collection2=db.school_master
@@ -5544,7 +5544,7 @@ def admin_portal_table(userid):
 
         username = urllib.parse.quote_plus('adminIE')                                     #SwitchedToBeta
         password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-        client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
+        client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username, password))
         db=client.compass_beta
 
         from datetime import datetime
@@ -5797,7 +5797,7 @@ def admin_portal_table(userid):
 def admin_stats_cards(userid):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     collection2=db.school_master
     collection=db.user_master
@@ -6059,7 +6059,7 @@ def admin_stats_cards(userid):
 def upcoming_practice(userid):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     collection = db.audio_track_master
     collection3=db.class_master
@@ -6616,7 +6616,7 @@ def upcoming_practice(userid):
 def buble_district():
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -6699,7 +6699,7 @@ def buble_district():
     ######family ########
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -6790,7 +6790,7 @@ def buble_district():
     ###ACTIVE USER
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -6848,7 +6848,7 @@ def buble_district():
     ###ACTIVE FAMILY
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -6908,7 +6908,7 @@ def buble_district():
     finmergeufo=finmergeufo.loc[:,~finmergeufo.columns.duplicated()]
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     # dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -6938,7 +6938,7 @@ def buble_district():
     DISPRACTO=df1111[["NAME_DISTRICT","PRACTICE"]]
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     # dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -7024,7 +7024,7 @@ def buble_district():
     ###ACTIVE USER
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -7082,7 +7082,7 @@ def buble_district():
     ###ACTIVE FAMILY
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -7142,7 +7142,7 @@ def buble_district():
     finmergeufo=finmergeufo.loc[:,~finmergeufo.columns.duplicated()]
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     # dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -7172,7 +7172,7 @@ def buble_district():
     DISPRACTO=df1111[["NAME_DISTRICT","PRACTICE"]]
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     # dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -7227,7 +7227,7 @@ def schdistrict(disid):
     
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -7417,7 +7417,7 @@ def schdistrict(disid):
     ###ACTIVE USER
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -7473,7 +7473,7 @@ def schdistrict(disid):
     ###ACTIVE FAMILY
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -7539,7 +7539,7 @@ def schdistrict(disid):
     finmergeufo=finmergeufo.loc[:,~finmergeufo.columns.duplicated()]
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     # dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -7570,7 +7570,7 @@ def schdistrict(disid):
     DISPRACTO=df1111[["NAME_DISTRICT","PRACTICE"]]
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     # dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -7631,7 +7631,7 @@ def UWBA_heatmap_prac():
     import collections
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
     collection2=db.user_master
@@ -7753,7 +7753,7 @@ def UWBA_schppcfamily():
 
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta  
     collection = db.audio_track_master
     collection1 = db.user_master
@@ -7827,7 +7827,7 @@ def uwba__schpuc():
    
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection= db.user_master
 
@@ -7885,7 +7885,7 @@ def uwbachwisepc():
     
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
     collection1 = db.user_master
@@ -7959,7 +7959,7 @@ def uwba__topusers_practice():
     
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
 
@@ -8048,7 +8048,7 @@ def uwba__schwiseuc():
    
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta  
     collection = db.user_master
 
@@ -8102,7 +8102,7 @@ def uwba__monthwisepc():
     
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
 
@@ -8174,7 +8174,7 @@ def uwba_count_cards():
     
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection1 = db.user_master
     collection2=db.audio_track_master
@@ -8408,7 +8408,7 @@ def portal_newd2_test_api(smcategory):
     username123 = request.args.get('name')
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     collection = db.school_master
     print(smcategory,"uadhauisdhaiusdasu") 
@@ -8582,7 +8582,7 @@ def portal_newd2_api(smcategory):
     username123 = request.args.get('name')
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     collection = db.school_master
     print(smcategory,"uadhauisdhaiusdasu") 
@@ -8756,7 +8756,7 @@ def portal_newd2_api(smcategory):
 def portal_testing_new_api(smcategory):    
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     collection = db.school_master
     from bson.objectid import ObjectId
@@ -8916,7 +8916,7 @@ def schdistrictCUM(disid):
     
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -9123,7 +9123,7 @@ def schdistrictCUM(disid):
     ###ACTIVE USER
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-02-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -9162,7 +9162,7 @@ def schdistrictCUM(disid):
     ###ACTIVE USER
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-03-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -9201,7 +9201,7 @@ def schdistrictCUM(disid):
     ###ACTIVE USER
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-04-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -9240,7 +9240,7 @@ def schdistrictCUM(disid):
     ###ACTIVE USER
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-05-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -9279,7 +9279,7 @@ def schdistrictCUM(disid):
     ###ACTIVE USER
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-06-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -9318,7 +9318,7 @@ def schdistrictCUM(disid):
     ###ACTIVE USER
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-07-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -9357,7 +9357,7 @@ def schdistrictCUM(disid):
     ###ACTIVE USER
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-08-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -9396,7 +9396,7 @@ def schdistrictCUM(disid):
     ###ACTIVE USER
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-09-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -9435,7 +9435,7 @@ def schdistrictCUM(disid):
     ###ACTIVE USER
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-10-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -9474,7 +9474,7 @@ def schdistrictCUM(disid):
     ###ACTIVE USER
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-11-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -9513,7 +9513,7 @@ def schdistrictCUM(disid):
     ###ACTIVE USER
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-12-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -9552,7 +9552,7 @@ def schdistrictCUM(disid):
     ###ACTIVE USER
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2021-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -9627,7 +9627,7 @@ def schdistrictCUM(disid):
 
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-02-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -9666,7 +9666,7 @@ def schdistrictCUM(disid):
     ###ACTIVE USER
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-03-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -9705,7 +9705,7 @@ def schdistrictCUM(disid):
     ###ACTIVE USER
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-04-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -9744,7 +9744,7 @@ def schdistrictCUM(disid):
     ###ACTIVE USER
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-05-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -9783,7 +9783,7 @@ def schdistrictCUM(disid):
     ###ACTIVE USER
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-06-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -9822,7 +9822,7 @@ def schdistrictCUM(disid):
     ###ACTIVE USER
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-07-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -9861,7 +9861,7 @@ def schdistrictCUM(disid):
     ###ACTIVE USER
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-08-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -9900,7 +9900,7 @@ def schdistrictCUM(disid):
     ###ACTIVE USER
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-09-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -9939,7 +9939,7 @@ def schdistrictCUM(disid):
     ###ACTIVE USER
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-10-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -9978,7 +9978,7 @@ def schdistrictCUM(disid):
     ###ACTIVE USER
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-11-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -10017,7 +10017,7 @@ def schdistrictCUM(disid):
     ###ACTIVE USER
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2020-12-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -10056,7 +10056,7 @@ def schdistrictCUM(disid):
     ###ACTIVE USER
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dateStr = "2021-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -10173,7 +10173,7 @@ def schdistrictCUM(disid):
     finmergeufo=finmergeufo.loc[:,~finmergeufo.columns.duplicated()]
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     # dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -10204,7 +10204,7 @@ def schdistrictCUM(disid):
     DISPRACTO=df1111[["NAME_DISTRICT","PRACTICE"]]
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     # dateStr = "2020-01-01T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
@@ -10266,7 +10266,7 @@ def school_search_tunein(name):
 
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
 
     collection = database["user_master"]
@@ -10650,7 +10650,7 @@ def school_search_tunein(name):
 def SUBSCRIPTION_DETAIL_TABLE(dates,type):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     mydoc = db.subscription_master.aggregate([
     {"$match":{"$and":[{"USER_ID.USER_NAME":{"$not":{ "$regex":"Test",'$options':'i'}}},
@@ -10780,7 +10780,7 @@ def SUBSCRIPTION_DETAIL_TABLE(dates,type):
 def TRANSACTION_DETAIL_TABLE(dates,type):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     dfdb = DataFrame(list(db.subscription_master.aggregate([
         {"$match":{
@@ -10897,7 +10897,7 @@ def TRANSACTION_DETAIL_TABLE(dates,type):
 def DONATION_DETAIL_TABLE(dates,type):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     payment_df1 = DataFrame(list(db.campaign_payment.aggregate([
         {"$match":{
@@ -11012,7 +11012,7 @@ def DONATION_DETAIL_TABLE(dates,type):
 def user_activity_feed(userid,lower,upper):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
 
     collection = db.user_master.aggregate([
@@ -12036,7 +12036,7 @@ def user_activity_feed(userid,lower,upper):
 def dis_activity_feed(districtid,lower,upper):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     if districtid in disdic1:
         district=disdic1[districtid]
@@ -12621,7 +12621,7 @@ def dis_activity_feed(districtid,lower,upper):
 def narrator_practice_data():
     username = urllib.parse.quote_plus('adminIE')
     password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username, password))
     db=client.compass_beta
 
 
@@ -12706,7 +12706,7 @@ def narrator_practice_data():
 
 #     username = urllib.parse.quote_plus('adminIE')
 #     password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-#     client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
+#     client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username, password))
 #     db=client.compass_beta
 
 #     collection = db.narrator_profile.aggregate([
@@ -12943,7 +12943,7 @@ def narrator_profile(id):
 
     username = urllib.parse.quote_plus('adminIE')
     password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username, password))
     db=client.compass_beta
 
 
@@ -13179,7 +13179,7 @@ def narrator_profile(id):
 def realtimeusercount():
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     collection = db.audio_track_master
     query4=[{"$match":{
@@ -13232,7 +13232,7 @@ def realtimeusercount():
 def realtimemaprcount():
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     collection = db.audio_track_master
     query4=[{"$match":{
@@ -13331,7 +13331,7 @@ def realtimemaprcount():
 def realtimelausdmaprcount():
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     collection = db.audio_track_master
     query4=[{"$match":{
@@ -13435,7 +13435,7 @@ def user_practice_list(userid,classid):
 
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
 
     collection = db.user_master.aggregate([
@@ -13581,7 +13581,7 @@ def practice_progress(schoolid,startdate,enddate):
     import datetime
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     startdate= dateutil.parser.parse(str(startdate))
     enddat= dateutil.parser.parse(str(enddate))
@@ -13589,7 +13589,7 @@ def practice_progress(schoolid,startdate,enddate):
 
     # username = urllib.parse.quote_plus('adminIE')                                     #SwitchedToBeta
     # password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    # client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
+    # client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username, password))
     # db=client.compass_beta
     if len(schoolid)<10:
         data={'Result':0}
@@ -13924,7 +13924,7 @@ def practice_progress_table(schoolid,table_type,startdate,enddate):
 
     # username = urllib.parse.quote_plus('adminIE')                                     #SwitchedToBeta
     # password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    # client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
+    # client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username, password))
     # db=client.compass_beta
 
     collection = db.user_master.aggregate([
@@ -14083,12 +14083,12 @@ def practice_progress_table(schoolid,table_type,startdate,enddate):
 def present_feeds_practice_data():
     # username = urllib.parse.quote_plus('adminIE')
     # password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    # client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
+    # client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username, password))
     # db=client.compass_beta
 
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
 
     collection = db.audio_track_master.aggregate([
@@ -14142,7 +14142,7 @@ def present_feeds_practice_data():
 def present_feeds():
     username = urllib.parse.quote_plus('adminIE')
     password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username, password))
     db=client.compass_beta
 
     collectionpa = db.programs_audio.aggregate([
@@ -14345,7 +14345,7 @@ def present_feeds():
 def prog_prac_admin(name):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
 
     collection = db.user_master
@@ -14503,7 +14503,7 @@ def prog_prac_admin(name):
 def prog_user_admin(name):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
 
     collection = db.user_master
@@ -14661,12 +14661,12 @@ def prog_user_admin(name):
 def feedback_rating(admin_id):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
 
     # username = urllib.parse.quote_plus('adminIE')                                     #SwitchedToBeta
     # password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    # client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
+    # client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username, password))
     # db=client.compass_beta
 
 #     start_date = dateutil.parser.parse(start_date)
@@ -14832,7 +14832,7 @@ def wordcloud(adminid):
     
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
 
 
@@ -15045,12 +15045,12 @@ def wordcloud(adminid):
 def schoolpracticemindfulsessions(userid):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     
     # username = urllib.parse.quote_plus('adminIE')                                     #SwitchedToBeta
     # password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    # client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
+    # client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username, password))
     # db=client.compass_beta
 
     collection=db.audio_track_master
@@ -15217,12 +15217,12 @@ def schoolpracticemindfulsessions(userid):
 def tunein_donut_card(userid):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
 
     # username = urllib.parse.quote_plus('adminIE')                                     #SwitchedToBeta
     # password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    # client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
+    # client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username, password))
     # db=client.compass_beta
 
     collection = db.tune_in_audio_track_detail
@@ -15387,12 +15387,12 @@ def tunein_donut_card(userid):
 def tune_in_admin_graph(userid):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
 
     # username = urllib.parse.quote_plus('adminIE')                                     #SwitchedToBeta
     # password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    # client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
+    # client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username, password))
     # db=client.compass_beta
 
 #     startdate= dateutil.parser.parse(str(startdate))
@@ -15560,7 +15560,7 @@ def tune_in_admin_graph(userid):
 def tune_in_user_graph(userid,classid):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     from datetime import datetime
 #     startdate= dateutil.parser.parse(str(startdate))
@@ -15694,7 +15694,7 @@ def tune_in_user_graph(userid,classid):
 def tunein_user_card(userid,classid):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     collection = db.tune_in_audio_track_detail
     collection2=db.user_master
@@ -15847,7 +15847,7 @@ def tunein_user_card(userid,classid):
 def omstable():
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta  
 
 
@@ -15947,7 +15947,7 @@ def omstable():
 def tunein_user_table(userid,classid):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     collection = db.tune_in_audio_track_detail
     collection2=db.user_master
@@ -16151,12 +16151,12 @@ def teacher_feeds():
 
     # username = urllib.parse.quote_plus('adminIE')
     # password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    # client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
+    # client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username, password))
     # db=client.compass_beta
 
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
 
     collectionpa = db.programs_audio.aggregate([
@@ -16298,12 +16298,12 @@ def narrator_profile_classroom(id):
 
     # username = urllib.parse.quote_plus('adminIE')
     # password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    # client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
+    # client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username, password))
     # db=client.compass_beta
 
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
 
     collection = db.narrator_profile.aggregate([
@@ -16537,7 +16537,7 @@ def narrator_profile_classroom(id):
 def admin_cto(schoolid):
     username = urllib.parse.quote_plus('adminIE')        ###### test
     password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username, password))
     db=client.compass_beta   
 
     collection1 = db.user_master.aggregate([
@@ -16679,7 +16679,7 @@ def admin_cto(schoolid):
 def admin_portal_table_super_admin(userid):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
 
     collection2=db.school_master
@@ -16938,7 +16938,7 @@ def admin_portal_table_super_admin(userid):
 def district_manage_invites(userid):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
 
 
@@ -17087,7 +17087,7 @@ def district_manage_invites(userid):
 def schoolpracticemindfulsessions_new(userid):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     
     if len(userid)<10:
@@ -17255,7 +17255,7 @@ def schoolpracticemindfulsessions_new(userid):
 def prog_prac_admin_new(name):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     if len(name)<10:
         data={'Result':0}
@@ -17414,12 +17414,12 @@ def prog_prac_admin_new(name):
 def feedback_rating_new(admin_id):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
 
     # username = urllib.parse.quote_plus('adminIE')                                     #SwitchedToBeta
     # password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    # client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
+    # client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username, password))
     # db=client.compass_beta
 
 #     start_date = dateutil.parser.parse(start_date)
@@ -17586,12 +17586,12 @@ def wordcloud_new(adminid):
     
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
 
     # username = urllib.parse.quote_plus('adminIE')                                     #SwitchedToBeta
     # password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    # client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
+    # client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username, password))
     # db=client.compass_beta
     if len(adminid)<10:
         data={'Result':0}
@@ -17813,7 +17813,7 @@ def wordcloud_new(adminid):
 def live_user_district(districtid):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     if districtid in disdic1:
         district=disdic1[districtid]
@@ -17901,7 +17901,7 @@ def heat_district_(districtid,startdate,enddate):
     import collections
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
     collection2=db.user_master
@@ -18061,7 +18061,7 @@ def user_practice_90days_(districtid,startdate,enddate):
     
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
     if districtid in disdic1:
@@ -18291,7 +18291,7 @@ def monthwisepc_(districtid,startdate,enddate):
     
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
     if districtid in disdic1:
@@ -18557,7 +18557,7 @@ def schwiseucc_(districtid,startdate,enddate):
 
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.user_master
     if districtid in disdic1:
@@ -18797,7 +18797,7 @@ def schwiseucc_(districtid,startdate,enddate):
 def schwisepc_(districtid,startdate,enddate):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.user_master
     if districtid in disdic1:
@@ -18995,7 +18995,7 @@ def schwisepc_(districtid,startdate,enddate):
 def topusers_practice_(districtid,startdate,enddate):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
     if districtid in disdic1:
@@ -19098,7 +19098,7 @@ def district_school_table_(districtid,startdate,enddate):
     
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
 
     collection2=db.school_master
@@ -19310,7 +19310,7 @@ def district_user_table_teacher_(districtid,startdate,enddate):
 
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
 
     
@@ -19531,7 +19531,7 @@ def district_user_table_parent_(districtid,startdate,enddate):
 
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
 
     
@@ -19755,7 +19755,7 @@ def district_count_cards_(districtid,startdate,enddate):
     
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection1 = db.user_master
     collection2=db.audio_track_master
@@ -20248,7 +20248,7 @@ def heat_district_family_prac_(districtid,startdate,enddate):
     import collections
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
     collection2=db.user_master
@@ -20402,7 +20402,7 @@ def heat_district_teachers_prac_(districtid,startdate,enddate):
     import collections
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
     collection2=db.user_master
@@ -20555,7 +20555,7 @@ def heatmap_prac_district_(districtid,startdate,enddate):
     import collections
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
     collection2=db.user_master
@@ -20709,7 +20709,7 @@ def heat_district_teachers_active_(districtid,startdate,enddate):
     import collections
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
     collection2=db.user_master
@@ -20864,7 +20864,7 @@ def heat_district_family_active_(districtid,startdate,enddate):
     import collections
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
     collection2=db.user_master
@@ -21017,7 +21017,7 @@ def dis_schoolrating_csy__(districtid,startdate,enddate):
 
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
   
     collection = db.audio_feedback
@@ -21101,7 +21101,7 @@ def dis_sentiment_pie(districtid,startdate,enddate):
     # myDatetimeend = dateutil.parser.parse(date2)
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
    
     collection = db.audio_feedback
@@ -21205,7 +21205,7 @@ def dis_sentiment_pie_table(districtid,table_type,startdate,enddate):
     # myDatetimeend = dateutil.parser.parse(date2)
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     collection = db.audio_feedback
     if districtid in disdic1:
@@ -21294,7 +21294,7 @@ def dis_sentiment_pie_table(districtid,table_type,startdate,enddate):
 def district_Date_table(districtid,startdate):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
 
     
@@ -21450,7 +21450,7 @@ def last_practice_90days_(districtid):
     
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta 
     collection = db.audio_track_master
     if districtid in disdic1:
@@ -21670,7 +21670,7 @@ def active_teachers_school_search(idd,chart_type):
     
     username = urllib.parse.quote_plus('admin')
     password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
 
     db=client.compass
     collection= db.audio_track_master
@@ -22155,7 +22155,7 @@ def active_teachers_school_search(idd,chart_type):
 def district_portal_signup_(districtid):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
 
     # Getting district id name from inserted district
@@ -22281,7 +22281,7 @@ def district_portal_signup_(districtid):
 def district_portal_practice_(districtid):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
 
     # Getting district id name from inserted district
@@ -22427,7 +22427,7 @@ def district_portal_practice_(districtid):
 def district_portal_rating_(districtid):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
 
     # Getting district id name from inserted district
@@ -22544,9 +22544,54 @@ def district_portal_rating_(districtid):
         
 @app.route('/districtportalcomments/<districtid>')
 def district_portal_comment_(districtid):
+    from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+    from nltk.corpus import stopwords
+    import string
+    from nltk.stem.wordnet import WordNetLemmatizer
+    from nltk import word_tokenize
+    import re
+    
+    def first_round_cleaning(text):
+        new_text=text.lower()
+        new_text = re.sub(r'[^\w\s]',' ',new_text)
+        new_text=new_text.strip()
+        new_text= re.sub('[''""…]', '', new_text)
+        new_text = re.sub('\n', '', new_text)
+        new_text = re.sub('[%s]' % re.escape(string.punctuation), '', new_text)
+        new_text=re.sub(r'\d+', '',new_text)
+        new_text=" ".join(new_text.split())
+        return new_text
+    
+    lemma = WordNetLemmatizer()
+    def round_2_cleaning(text):
+        new_text=word_tokenize(text)
+        new_text=[word for word in new_text if word not in stop]
+        new_text=[word for word in new_text if word not in exclude]
+        new_text=new_text=[lemma.lemmatize(word) for word in new_text]
+        new_text=" ".join(new_text)
+        return new_text
+    
+    def sentiment_type(text):
+        sid_obj = SentimentIntensityAnalyzer()
+        stats=sid_obj.polarity_scores(text)
+        pos_score.append(stats['pos'])
+        neg_score.append(stats['neg'])
+        neutral_score.append(stats['neu'])
+        compound_score.append(stats['compound'])
+        return ({'status':'done'})
+    stop = set(stopwords.words('English'))
+    exclude = list(set(string.punctuation))
+    spec_chars = ["!",'"',"#","%","&","'","(",")",
+                                "*","+",",","-",".","/",":",";","<",
+                                "=",">","?","@","[","\\","]","^","_",
+                                "`","{","|","}","~","–","\n","'"]
+    exclude=exclude+spec_chars
+    exclude=set(exclude)
+    
+    
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     # Getting district id name from inserted district
     if districtid in disdic1:
@@ -22558,11 +22603,13 @@ def district_portal_comment_(districtid):
     last_30_days=current_time_utc-relativedelta(days=30)
     last__7_days=current_time_utc-relativedelta(days=7)
     last_24_hr=current_time_utc-relativedelta(hours=24)
+   
     last_30_dates=[(last_30_days+timedelta(days=x)).date().strftime("%d-%m-%Y") for x in range((current_time_utc-last_30_days).days)]
     last_7_dates=[(last__7_days+timedelta(days=x)).date().strftime("%d-%m-%Y") for x in range((current_time_utc-last__7_days).days)]
     last_30_dates_df=pd.DataFrame({'DATE':last_30_dates})
     last_7_dates_df=pd.DataFrame({'DATE':last_7_dates})
     _24_hr_df=pd.DataFrame({'HOUR_OF_THE_DAY':list(range(1,25))})
+    
     all_user_district=list(db.user_master.aggregate([{"$match":{
              '$and':[{ 'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
                        {'EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
@@ -22583,9 +22630,12 @@ def district_portal_comment_(districtid):
                     ]}},
                        {'$group':{
                             '_id':1,
-                            'users':{'$addToSet':'$_id'}
+                            'users':{'$addToSet':'$_id'}                        
                         }}
                            ]))
+    
+    
+    
     if len(all_user_district)==0:
         comment_data_for_use_table="NO INFO"
     else:
@@ -22611,7 +22661,7 @@ def district_portal_comment_(districtid):
         else:
             if 'AUDIO_DAY' not in comments_data.columns:
                 comments_data['AUDIO_DAY']=''
-            PRACTICE_DAY=[]
+            PRACTICE_DAY=[]    
             for i in range(len(comments_data)):
                 digit=[int(k) for k in comments_data['AUDIO_DAY'][i].split() if k.isdigit()]
                 if len(digit)==0:
@@ -22622,6 +22672,7 @@ def district_portal_comment_(districtid):
             comments_data = comments_data.drop(comments_data[comments_data["COMMENT"] == "."].index)
             comments_data = comments_data.drop(comments_data[comments_data["COMMENT"] == ".\n"].index)
             comments_data = comments_data.drop(comments_data[comments_data["COMMENT"] == ".\\n"].index)
+            
             comments_school_detail=pd.DataFrame(list(db.user_master.aggregate([{'$match':{
             '$and':[{'_id':{'$in':list(comments_data['USER_ID'])}}]
             }},
@@ -22641,21 +22692,46 @@ def district_portal_comment_(districtid):
                 except:
                     pass
             comment_data_final['COMMENT_DATE']=COMMENT_DATE
+#             comment_data_for_use=comment_data_final.copy()            
             comment_data_for_use=comment_data_final[['COMMENT','SCHOOL_NAME','AUDIO_NAME','PROGRAM','PRACTICE_DAY','COMMENT_DATE']]
+    
+#             sentiment code is added here.
+            comment_data_for_use['COMMENT_LEN']=[len(i.split()) for i in comment_data_for_use['COMMENT']]
+            comment_data_for_use=comment_data_for_use[comment_data_for_use['COMMENT_LEN']>=3].reset_index(drop=True)
+            #clean the data
+            
+            comment_data_for_use['R1_Cleaned_Comments']=comment_data_for_use['COMMENT'].apply(first_round_cleaning)
+            comment_data_for_use['R2_Cleaned_Comments']=comment_data_for_use['R1_Cleaned_Comments'].apply(round_2_cleaning)
+            pos_score=[]
+            neg_score=[]
+            neutral_score=[]
+            compound_score=[]
+            
+            for i in range(len(comment_data_for_use)):
+                sentiment_type(comment_data_for_use['R2_Cleaned_Comments'][i])
+            comment_data_for_use['Vader_com_Score']=compound_score
+            comment_data_for_use=comment_data_for_use[comment_data_for_use['Vader_com_Score']>0].reset_index(drop=True)
+            
+            comment_data_for_use=comment_data_for_use[['COMMENT','SCHOOL_NAME','AUDIO_NAME','PROGRAM','PRACTICE_DAY','COMMENT_DATE']]
             comment_data_for_use_table=comment_data_for_use[0:50].values.tolist()
+            
     temp={'comments':comment_data_for_use_table}
     if (temp['comments']=='NO INFO'):
         temp['Status']=0
     else:
         temp['Status']=1
-#     print(len(comment_data_final))
-    return json.dumps(temp)    
+#     print(len(comment_data_for_use))
+    return json.dumps(temp)
+
+
+
+
     
 @app.route('/districtportaltuneins/<districtid>')  
 def district_portal_tunein_(districtid):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
 
     # Getting district id name from inserted district
@@ -22811,7 +22887,7 @@ def narrator_profile_(id):
     from textblob import TextBlob, Word, Blobber
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     collection = db.narrator_profile.aggregate([
             {"$match":
@@ -23123,7 +23199,7 @@ def narrator_profile_(id):
 def district_portal___(districtid):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     if districtid in disdic1:
         district=disdic1[districtid]
@@ -23156,7 +23232,7 @@ def district_portal___(districtid):
 def district_portal_schoolss_(districtid,sub_category):
     username=urllib.parse.quote_plus('adminIE')
     password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username,password))  #BETA
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
     db=client.compass_beta
     from bson.objectid import ObjectId
     if districtid in disdic1:
@@ -23201,7 +23277,7 @@ def district_portal_schoolss_(districtid,sub_category):
 # ukraine thermameter api added.
 @app.route('/ukrainecamptherma')
 def ukraine_campaign():
-    client = MongoClient('mongodb://adminIE:CtZh5Nqp8Qn9LHUDx2GH@54.184.165.106:27017/')
+    client = MongoClient('mongodb://adminIE:CtZh5Nqp8Qn9LHUDx2GH@35.87.63.194:27017/')
     db=client.compass_beta
     ukraine_campaign_df=pd.DataFrame(list(db.campaign_detail.aggregate([{'$match':{'$and':[
                                                                                 {'_id':ObjectId('6260122a91af2ca7047316dd')
