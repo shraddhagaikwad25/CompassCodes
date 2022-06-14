@@ -22579,7 +22579,20 @@ def district_portal_comment_(districtid):
         neutral_score.append(stats['neu'])
         compound_score.append(stats['compound'])
         return ({'status':'done'})
-    stop = set(stopwords.words('English'))
+    stop = {'there', 'do', 'very', 'd', 'out', "mightn't", 'down', "you'd", 'mightn', 'to', "doesn't", 'over', 'mustn', 
+            'are', "shan't", 'under', 'he', 'such', 'had', 'theirs', 'why', 'only', 'wasn', 'a', 'shouldn', 'our',
+            'after', "hasn't", 'what', 'who', 'him', "mustn't", 'has', "she's", 'you', 'did', 'won', 'again', 'as', 
+            'don', 'haven', 'above', 'needn', 'of', 'this', "didn't", 'with', 'myself', 'it', 'couldn', "wouldn't", 
+            'does', 'ours', 'were', "isn't", 'being', 'ourselves', 'too', 'these', 'them', 'now', 'me', "needn't", 
+            'some', "it's", 'his', 'for', 'your', 'weren', 'yourself', 'their', "won't", 'or', 'so', 'herself', 'hadn',
+            'own', 's', 'o', 'most', 've', 'between', 'no', 'and', "shouldn't", 'here', 'hers', 't', 'having', 'doesn',
+            "you've", 'just', 'am', 'during', "you'll", 'aren', 'then', "should've", 'itself', 'is', 'until', 'y', 'when',
+            'its', 'yourselves', 'which', 'isn', 'didn', 'her', 'where', 'other', 're', 'be', 'from', 'how', "don't", 
+            'but', 'whom', 'if', 'we', 'my', 'been', 'should', "aren't", 'more', 'ain', 'ma', 'the', "hadn't", 'that', 
+            'not', "that'll", 'while', "you're", 'an', 'at', 'before', 'both', 'she', 'into', 'can', 'i', 'by', 'doing',
+            'few', 'nor', 'against', 'same', 'themselves', 'in', 'any', 'about', 'll', 'all', "couldn't", 'they', 'up',
+            'on', 'was', 'than', 'hasn', 'yours', 'm', 'through', 'those', 'off', 'further', "haven't", 'shan', 'each', 'below',
+            'will', "weren't", 'wouldn', "wasn't", 'have', 'once', 'himself', 'because'}
     exclude = list(set(string.punctuation))
     spec_chars = ["!",'"',"#","%","&","'","(",")",
                                 "*","+",",","-",".","/",":",";","<",
