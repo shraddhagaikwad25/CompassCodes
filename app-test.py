@@ -22867,8 +22867,7 @@ def district_portal_rating_(districtid):
         
 @app.route('/districtportalcomments/<districtid>')
 def district_portal_comment_(districtid):
-    client = MongoClient('mongodb://admin:F5tMazRj47cYqm33e@35.88.43.45:27017/')
-    db=client.compass
+    
     from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
     from nltk.corpus import stopwords
     import string
@@ -22927,7 +22926,8 @@ def district_portal_comment_(districtid):
     exclude=set(exclude)
     
     
-    db=client.compass_beta
+    client = MongoClient('mongodb://admin:F5tMazRj47cYqm33e@35.88.43.45:27017/')
+    db=client.compass
     # Getting district id name from inserted district
     if districtid in disdic1:
         district=disdic1[districtid]
