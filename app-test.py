@@ -22869,7 +22869,65 @@ def district_portal_rating_(districtid):
 def district_portal_comment_(districtid):
     client = MongoClient('mongodb://admin:F5tMazRj47cYqm33e@35.88.43.45:27017/')
     db=client.compass
-
+    from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+    from nltk.corpus import stopwords
+    import string
+    from nltk.stem.wordnet import WordNetLemmatizer
+    from nltk import word_tokenize
+    import re
+    
+    def first_round_cleaning(text):
+        new_text=text.lower()
+        new_text = re.sub(r'[^\w\s]',' ',new_text)
+        new_text=new_text.strip()
+        new_text= re.sub('[''""…]', '', new_text)
+        new_text = re.sub('\n', '', new_text)
+        new_text = re.sub('[%s]' % re.escape(string.punctuation), '', new_text)
+        new_text=re.sub(r'\d+', '',new_text)
+        new_text=" ".join(new_text.split())
+        return new_text
+    
+    lemma = WordNetLemmatizer()
+    def round_2_cleaning(text):
+        new_text=word_tokenize(text)
+        new_text=[word for word in new_text if word not in stop]
+        new_text=[word for word in new_text if word not in exclude]
+        new_text=new_text=[lemma.lemmatize(word) for word in new_text]
+        new_text=" ".join(new_text)
+        return new_text
+    
+    def sentiment_type(text):
+        sid_obj = SentimentIntensityAnalyzer()
+        stats=sid_obj.polarity_scores(text)
+        pos_score.append(stats['pos'])
+        neg_score.append(stats['neg'])
+        neutral_score.append(stats['neu'])
+        compound_score.append(stats['compound'])
+        return ({'status':'done'})
+    stop = {'there', 'do', 'very', 'd', 'out', "mightn't", 'down', "you'd", 'mightn', 'to', "doesn't", 'over', 'mustn', 
+            'are', "shan't", 'under', 'he', 'such', 'had', 'theirs', 'why', 'only', 'wasn', 'a', 'shouldn', 'our',
+            'after', "hasn't", 'what', 'who', 'him', "mustn't", 'has', "she's", 'you', 'did', 'won', 'again', 'as', 
+            'don', 'haven', 'above', 'needn', 'of', 'this', "didn't", 'with', 'myself', 'it', 'couldn', "wouldn't", 
+            'does', 'ours', 'were', "isn't", 'being', 'ourselves', 'too', 'these', 'them', 'now', 'me', "needn't", 
+            'some', "it's", 'his', 'for', 'your', 'weren', 'yourself', 'their', "won't", 'or', 'so', 'herself', 'hadn',
+            'own', 's', 'o', 'most', 've', 'between', 'no', 'and', "shouldn't", 'here', 'hers', 't', 'having', 'doesn',
+            "you've", 'just', 'am', 'during', "you'll", 'aren', 'then', "should've", 'itself', 'is', 'until', 'y', 'when',
+            'its', 'yourselves', 'which', 'isn', 'didn', 'her', 'where', 'other', 're', 'be', 'from', 'how', "don't", 
+            'but', 'whom', 'if', 'we', 'my', 'been', 'should', "aren't", 'more', 'ain', 'ma', 'the', "hadn't", 'that', 
+            'not', "that'll", 'while', "you're", 'an', 'at', 'before', 'both', 'she', 'into', 'can', 'i', 'by', 'doing',
+            'few', 'nor', 'against', 'same', 'themselves', 'in', 'any', 'about', 'll', 'all', "couldn't", 'they', 'up',
+            'on', 'was', 'than', 'hasn', 'yours', 'm', 'through', 'those', 'off', 'further', "haven't", 'shan', 'each', 'below',
+            'will', "weren't", 'wouldn', "wasn't", 'have', 'once', 'himself', 'because'}
+    exclude = list(set(string.punctuation))
+    spec_chars = ["!",'"',"#","%","&","'","(",")",
+                                "*","+",",","-",".","/",":",";","<",
+                                "=",">","?","@","[","\\","]","^","_",
+                                "`","{","|","}","~","–","\n","'"]
+    exclude=exclude+spec_chars
+    exclude=set(exclude)
+    
+    
+    db=client.compass_beta
     # Getting district id name from inserted district
     if districtid in disdic1:
         district=disdic1[districtid]
@@ -22879,7 +22937,6 @@ def district_portal_comment_(districtid):
     current_time_utc=datetime.datetime.utcnow()
     last_30_days=current_time_utc-relativedelta(days=30)
     last__7_days=current_time_utc-relativedelta(days=7)
-
     last_24_hr=current_time_utc-relativedelta(hours=24)
    
     last_30_dates=[(last_30_days+timedelta(days=x)).date().strftime("%d-%m-%Y") for x in range((current_time_utc-last_30_days).days)]
@@ -22888,7 +22945,6 @@ def district_portal_comment_(districtid):
     last_7_dates_df=pd.DataFrame({'DATE':last_7_dates})
     _24_hr_df=pd.DataFrame({'HOUR_OF_THE_DAY':list(range(1,25))})
     
-
     all_user_district=list(db.user_master.aggregate([{"$match":{
              '$and':[{ 'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
                        {'EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
@@ -22915,7 +22971,6 @@ def district_portal_comment_(districtid):
     
     
     
-
     if len(all_user_district)==0:
         comment_data_for_use_table="NO INFO"
     else:
@@ -22936,13 +22991,11 @@ def district_portal_comment_(districtid):
                  'AUDIO_DAY':'$AUDIO_ID.AUDIO_DAY',
                  'PROGRAM':'$AUDIO_ID.PROGRAM_ID.PROGRAM_NAME'
              }}])))
-
         if comments_data.empty:
             comment_data_for_use_table="NO INFO"
         else:
             if 'AUDIO_DAY' not in comments_data.columns:
                 comments_data['AUDIO_DAY']=''
-
             PRACTICE_DAY=[]    
             for i in range(len(comments_data)):
                 digit=[int(k) for k in comments_data['AUDIO_DAY'][i].split() if k.isdigit()]
@@ -22950,7 +23003,6 @@ def district_portal_comment_(districtid):
                     PRACTICE_DAY.append('')
                 else:
                     PRACTICE_DAY.append(digit[0])
-
             comments_data['PRACTICE_DAY']=PRACTICE_DAY
             comments_data = comments_data.drop(comments_data[comments_data["COMMENT"] == "."].index)
             comments_data = comments_data.drop(comments_data[comments_data["COMMENT"] == ".\n"].index)
@@ -22964,22 +23016,39 @@ def district_portal_comment_(districtid):
                          'USER_ID':'$_id',
                          'SCHOOL_ID':'$schoolId._id',
                          'SCHOOL_NAME':'$schoolId.NAME'
-
-
                      }}])))
             comment_data_final=comments_data.merge(comments_school_detail,how='left',on='USER_ID')
-
             comment_data_final[['AUDIO_NAME','SCHOOL_NAME']]=comment_data_final[['AUDIO_NAME','SCHOOL_NAME']].fillna('')
             comment_data_final=comment_data_final.sort_values(by=['CREATED_DATE'],ascending=False).reset_index(drop=True)
             COMMENT_DATE=[]
-
             for i in range(len(comment_data_final)):
                 try:
                     COMMENT_DATE.append(comment_data_final['CREATED_DATE'][i].strftime("%b-%d-%Y, %I:%M:%S"))
                 except:
                     pass
             comment_data_final['COMMENT_DATE']=COMMENT_DATE
-            comment_data_for_use=comment_data_final[['COMMENT','SCHOOL_NAME','AUDIO_NAME','PROGRAM','PRACTICE_DAY','COMMENT_DATE']]
+#             comment_data_for_use=comment_data_final.copy()            
+            # comment_data_for_use=comment_data_final[['COMMENT','SCHOOL_NAME','AUDIO_NAME','PROGRAM','PRACTICE_DAY','COMMENT_DATE']]
+            comment_data_for_use_1=comment_data_final[['COMMENT','SCHOOL_NAME','AUDIO_NAME','PROGRAM','PRACTICE_DAY','COMMENT_DATE']]
+            comment_data_for_use = comment_data_for_use_1.copy()
+#             sentiment code is added here.
+            comment_data_for_use['COMMENT_LEN']=[len(i.split()) for i in comment_data_for_use['COMMENT']]
+            comment_data_for_use=comment_data_for_use[comment_data_for_use['COMMENT_LEN']>=3].reset_index(drop=True)
+            #clean the data
+            
+            comment_data_for_use['R1_Cleaned_Comments']=comment_data_for_use['COMMENT'].apply(first_round_cleaning)
+            comment_data_for_use['R2_Cleaned_Comments']=comment_data_for_use['R1_Cleaned_Comments'].apply(round_2_cleaning)
+            pos_score=[]
+            neg_score=[]
+            neutral_score=[]
+            compound_score=[]
+            
+            for i in range(len(comment_data_for_use)):
+                sentiment_type(comment_data_for_use['R2_Cleaned_Comments'][i])
+            comment_data_for_use['Vader_com_Score']=compound_score
+            comment_data_for_use=comment_data_for_use[comment_data_for_use['Vader_com_Score']>0].reset_index(drop=True)
+            
+            comment_data_for_use=comment_data_for_use[['COMMENT','SCHOOL_NAME','AUDIO_NAME','PROGRAM','PRACTICE_DAY','COMMENT_DATE']]
             comment_data_for_use_table=comment_data_for_use[0:50].values.tolist()
             
     temp={'comments':comment_data_for_use_table}
@@ -22987,7 +23056,7 @@ def district_portal_comment_(districtid):
         temp['Status']=0
     else:
         temp['Status']=1
-#     print(len(comment_data_final))
+#     print(len(comment_data_for_use))
     return json.dumps(temp)
     
 @app.route('/districtportaltuneins/<districtid>')  
