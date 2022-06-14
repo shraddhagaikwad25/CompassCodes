@@ -390,52 +390,50 @@ def mitcount():
     temp={"download":[str(total_downloads)],"downloadper":[str(downloadper)],"android":[str(android)],"ios":[str(ios)],'totalparents':[str(total_parents)]}
     return json.dumps(temp)
 
-@app.route('/newcardmit')
-def mitpracticedatacard():
+# @app.route('/newcardmit')
+# def mitpracticedatacard():
     
+#     username = urllib.parse.quote_plus('admin')
+#     password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
+#     client = MongoClient("mongodb://%s:%s@35.88.43.45:27017/" % (username, password))
 
+#     db=client.compass
+#     collection = db.audio_track_master
+#     query=[
+#         {"$match":{"$and":[{'USER_ID.ROLE_ID.ROLE_ID':{"$eq":3}},                  
+#                 {'USER_ID.EMAIL_ID':{"$not":{"$regex":'test','$options':'i'}}},
+#                 {'USER_ID.USER_NAME':{"$not":{"$regex":'test','$options':'i'}}},
+#                 {'USER_ID.IS_DISABLE':{"$ne":'Y'}},
+#                 {'USER_ID.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
+#                 {'USER_ID.EMAIL_ID':{"$not":{"$regex":'1gen','$options':'i'}}},
+#                 {'USER_ID.USER_TYPE':{"$regex":'MIT','$options':'i'}},
+#                 {'USER_ID.EMAIL_ID':{'$ne':''}}
+#                 ]}},
+#         {"$project":{'USER_ID':'$USER_ID.USER_ID','PROGRAM_AUDIO_ID.AUDIO_ID':1,
+#             'PROGRAM_AUDIO_ID.PROGRAM_ID.PROGRAM_ID':1,
+#             'AGE_GROUP':'$PROGRAM_AUDIO_ID.PROGRAM_ID.AGE_GROUP',
+#             'AUDIO_NAME':1,'AUDIO_LENGTH':1,
+#             'IS_DONE':1,'PROGRAM_AUDIO_ID.AUDIO_DAY':1,'PROGRAM_AUDIO_ID.AUDIO_LENGTH':1,
+#             'Mindful_Minutes':{"$round":[{"$divide":[{"$subtract":['$CURSOR_END','$cursorStart']},60]},2]},        
+#             'PlayBack_Time_Percent':{"$round":[{"$divide":[{"$subtract":
+#                 ['$CURSOR_END','$cursorStart']},'$PROGRAM_AUDIO_ID.AUDIO_LENGTH']},2]}}}       
 
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@35.88.43.45:27017/" % (username, password))
-
-    db=client.compass
-    collection = db.audio_track_master
-    query=[
-        {"$match":{"$and":[{'USER_ID.ROLE_ID.ROLE_ID':{"$eq":3}},                  
-                {'USER_ID.EMAIL_ID':{"$not":{"$regex":'test','$options':'i'}}},
-                {'USER_ID.USER_NAME':{"$not":{"$regex":'test','$options':'i'}}},
-                {'USER_ID.IS_DISABLE':{"$ne":'Y'}},
-                {'USER_ID.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
-                {'USER_ID.EMAIL_ID':{"$not":{"$regex":'1gen','$options':'i'}}},
-                {'USER_ID.USER_TYPE':{"$regex":'MIT','$options':'i'}},
-                {'USER_ID.EMAIL_ID':{'$ne':''}}
-                ]}},
-        {"$project":{'USER_ID':'$USER_ID.USER_ID','PROGRAM_AUDIO_ID.AUDIO_ID':1,
-            'PROGRAM_AUDIO_ID.PROGRAM_ID.PROGRAM_ID':1,
-            'AGE_GROUP':'$PROGRAM_AUDIO_ID.PROGRAM_ID.AGE_GROUP',
-            'AUDIO_NAME':1,'AUDIO_LENGTH':1,
-            'IS_DONE':1,'PROGRAM_AUDIO_ID.AUDIO_DAY':1,'PROGRAM_AUDIO_ID.AUDIO_LENGTH':1,
-            'Mindful_Minutes':{"$round":[{"$divide":[{"$subtract":['$CURSOR_END','$cursorStart']},60]},2]},        
-            'PlayBack_Time_Percent':{"$round":[{"$divide":[{"$subtract":
-                ['$CURSOR_END','$cursorStart']},'$PROGRAM_AUDIO_ID.AUDIO_LENGTH']},2]}}}       
-
-                ]
-    Overall=list(collection.aggregate(query))
-    Overall_df=pd.DataFrame(Overall)
-    card_df=pd.DataFrame({'engaged':len(set(Overall_df.USER_ID.tolist())),
-                'active':len(set(Overall_df[Overall_df['PlayBack_Time_Percent']>=.5]['USER_ID'].tolist())),
-                'passive':len(set(Overall_df.USER_ID.tolist()))-
-                        len(set(Overall_df[Overall_df['PlayBack_Time_Percent']>=.5]['USER_ID'].tolist())),
-                'playbackpractice':len(Overall_df),
-                'minutespractice':Overall_df.Mindful_Minutes.sum().round()
-                },index=[0]).reset_index(drop=True)
-    temp2={}        
-    for j in range(len(card_df.columns)):
-        key = card_df.columns[j]
-        value = [str(card_df[card_df.columns[j]].iloc[0])]
-        temp2.update({key:value})
-    return json.dumps(temp2)
+#                 ]
+#     Overall=list(collection.aggregate(query))
+#     Overall_df=pd.DataFrame(Overall)
+#     card_df=pd.DataFrame({'engaged':len(set(Overall_df.USER_ID.tolist())),
+#                 'active':len(set(Overall_df[Overall_df['PlayBack_Time_Percent']>=.5]['USER_ID'].tolist())),
+#                 'passive':len(set(Overall_df.USER_ID.tolist()))-
+#                         len(set(Overall_df[Overall_df['PlayBack_Time_Percent']>=.5]['USER_ID'].tolist())),
+#                 'playbackpractice':len(Overall_df),
+#                 'minutespractice':Overall_df.Mindful_Minutes.sum().round()
+#                 },index=[0]).reset_index(drop=True)
+#     temp2={}        
+#     for j in range(len(card_df.columns)):
+#         key = card_df.columns[j]
+#         value = [str(card_df[card_df.columns[j]].iloc[0])]
+#         temp2.update({key:value})
+#     return json.dumps(temp2)
 
 @app.route('/mitsignupsnew')
 def miitsignupnew():    
@@ -1083,6 +1081,237 @@ def parents_table():
         return json.dumps({"data":dftry.values.tolist()})
 
 # parents_table()
+
+@app.route('/totalRegistered_table')
+def TotRegistered_table():
+   
+    username = urllib.parse.quote_plus('admin')
+    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
+    client = MongoClient("mongodb://%s:%s@35.88.43.45:27017/" % (username, password))
+    dateStr = "2020-03-17T00:00:00.000Z"
+    myDatetime = dateutil.parser.parse(dateStr)
+
+    df1=pd.DataFrame(list(db.user_master.aggregate([
+    {"$match":{'ROLE_ID._id':ObjectId("5f155b8a3b6800007900da2b"), 
+        "IS_DISABLED":{"$ne":"Y"},
+        "INCOMPLETE_SIGNUP":{"$ne":"Y"},
+        "EMAIL_ID":{'$not':{'$regex':'test', '$options':'i'}},
+        'USER_TYPE':{"$regex":'mit','$options':'i'}, 
+        "EMAIL_ID":{"$ne": ""},
+        "EMAIL_ID":{'$not':{'$regex':'1gen', '$options':'i'}},
+        "USER_NAME":{'$not':{'$regex':'test', '$options':'i'}},
+    #         "CREATED_DATE":{"$gt":myDatetime}
+              }},
+    #         {"$group":{"_id":"$_id","CREATED_DATE":{"$first": "$CREATED_DATE"}}},
+    {"$project":{"_id":1,'sign_up':{"$dateToString":{"format": "%Y-%m-%d","date":'$CREATED_DATE'}},"USER_NAME":1, "EMAIL_ID":1,
+                "School_Name":"$schoolId.NAME", "CITY":"$schoolId.CITY", "STATE":"$schoolId.STATE", "COUNTRY":"$schoolId.COUNTRY"}},
+    ])))
+    users = df1._id.to_list()
+
+    Overall_df=pd.DataFrame(list(db.audio_track_master.aggregate([
+        {"$match":{"$and":[
+                {'USER_ID._id':{"$in":users}},
+                {'USER_ID.ROLE_ID.ROLE_ID':{"$eq":3}},                  
+                {'USER_ID.EMAIL_ID':{"$not":{"$regex":'test','$options':'i'}}},
+                {'USER_ID.USER_NAME':{"$not":{"$regex":'test','$options':'i'}}},
+                {'USER_ID.IS_DISABLE':{"$ne":'Y'}},
+                {'USER_ID.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
+                {'USER_ID.EMAIL_ID':{"$not":{"$regex":'1gen','$options':'i'}}},
+                {'USER_ID.USER_TYPE':{"$regex":'MIT','$options':'i'}},
+                {'USER_ID.EMAIL_ID':{'$ne':''}}
+                ]}},
+         {'$group':
+        {'_id':'$USER_ID._id',
+        'State':{'$first':'$USER_ID.schoolId.STATE'},
+        'Country':{'$first':'$USER_ID.schoolId.COUNTRY'},
+        "Last_Practice_Date":{"$max":"$MODIFIED_DATE"},
+        'Practice_Count':{"$sum":1},
+         "IMAGE_URL":{"$first":"$PROGRAM_AUDIO_ID.IMAGE_URL"},
+        'Mindful_Minutes':{'$sum':{'$round':[{'$divide':[{'$subtract':['$CURSOR_END','$cursorStart']}, 60]},2]}},
+         'PlayBack_Time_Percent':{'$sum':{"$round":[{"$divide":[{"$subtract":
+                    ['$CURSOR_END','$cursorStart']},'$PROGRAM_AUDIO_ID.AUDIO_LENGTH']},2]}}}}  
+    #     }}
+        ])))
+
+    Overall_df=pd.merge(df1, Overall_df, how='left', on=['_id']).fillna("NO_INFO")
+    Overall_df['PlayBack_Time_Percent'].replace("NO_INFO",0, inplace=True)
+    Overall_df['Mindful_Minutes'].replace("NO_INFO",0, inplace=True)
+    Overall_df['Practice_Count'].replace("NO_INFO",0, inplace=True)
+    act = Overall_df[['USER_NAME','EMAIL_ID',  'sign_up', 'School_Name',
+           'CITY', 'STATE', 'COUNTRY', 'Last_Practice_Date',
+           'Practice_Count', 'Mindful_Minutes']]
+    if "export" in request.args:
+                try:
+                    df1=act[['USER_NAME','EMAIL_ID',  'sign_up', 'School_Name',
+               'CITY', 'STATE', 'COUNTRY', 'Last_Practice_Date',
+               'Practice_Count','Mindful_Minutes']]
+                    csv = df1.to_csv(index=False)
+                    return Response(
+                        csv,
+                        mimetype="text/csv",
+                        headers={"Content-disposition":
+                                "attachment; filename=SchoolData.csv"})
+                except:
+                    return jsonify("Unauthorized Access")   
+    else:
+        temp={"data":act.values.tolist()}
+    return json.dumps(temp, default = str)
+
+
+@app.route('/newcardmit_table')
+def mitpracticedatacard_table():
+
+    username = urllib.parse.quote_plus('admin')
+    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
+    client = MongoClient("mongodb://%s:%s@35.88.43.45:27017/" % (username, password))
+    dateStr = "2020-03-17T00:00:00.000Z"
+    myDatetime = dateutil.parser.parse(dateStr)
+
+    df1=pd.DataFrame(list(db.user_master.aggregate([
+    {"$match":{'ROLE_ID._id':ObjectId("5f155b8a3b6800007900da2b"), 
+        "IS_DISABLED":{"$ne":"Y"},
+        "INCOMPLETE_SIGNUP":{"$ne":"Y"},
+        "EMAIL_ID":{'$not':{'$regex':'test', '$options':'i'}},
+        'USER_TYPE':{"$regex":'mit','$options':'i'}, 
+        "EMAIL_ID":{"$ne": ""},
+        "EMAIL_ID":{'$not':{'$regex':'1gen', '$options':'i'}},
+        "USER_NAME":{'$not':{'$regex':'test', '$options':'i'}},
+    #         "CREATED_DATE":{"$gt":myDatetime}
+              }},
+    #         {"$group":{"_id":"$_id","CREATED_DATE":{"$first": "$CREATED_DATE"}}},
+    {"$project":{"_id":1,'sign_up':{"$dateToString":{"format": "%Y-%m-%d","date":'$CREATED_DATE'}},"USER_NAME":1, "EMAIL_ID":1,
+                "School_Name":"$schoolId.NAME", "CITY":"$schoolId.CITY", "STATE":"$schoolId.STATE", "COUNTRY":"$schoolId.COUNTRY"}},
+    ])))
+    users = df1._id.to_list()
+
+    Overall_df=pd.DataFrame(list(db.audio_track_master.aggregate([
+        {"$match":{"$and":[
+                {'USER_ID._id':{"$in":users}},
+                {'USER_ID.ROLE_ID.ROLE_ID':{"$eq":3}},                  
+                {'USER_ID.EMAIL_ID':{"$not":{"$regex":'test','$options':'i'}}},
+                {'USER_ID.USER_NAME':{"$not":{"$regex":'test','$options':'i'}}},
+                {'USER_ID.IS_DISABLE':{"$ne":'Y'}},
+                {'USER_ID.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
+                {'USER_ID.EMAIL_ID':{"$not":{"$regex":'1gen','$options':'i'}}},
+                {'USER_ID.USER_TYPE':{"$regex":'MIT','$options':'i'}},
+                {'USER_ID.EMAIL_ID':{'$ne':''}}
+                ]}},
+         {'$group':
+        {'_id':'$USER_ID._id',
+    #     'State':{'$first':'$USER_ID.schoolId.STATE'},
+    #     'Country':{'$first':'$USER_ID.schoolId.COUNTRY'},
+        "Last_Practice_Date":{"$max":{"$dateToString":{"format": "%Y-%m-%d","date":'$MODIFIED_DATE'}}},
+        'Practice_Count':{"$sum":1},
+         "IMAGE_URL":{"$first":"$PROGRAM_AUDIO_ID.IMAGE_URL"},
+        'Mindful_Minutes':{'$sum':{'$round':[{'$divide':[{'$subtract':['$CURSOR_END','$cursorStart']}, 60]},2]}},
+         'PlayBack_Time_Percent':{'$sum':{"$round":[{"$divide":[{"$subtract":
+                    ['$CURSOR_END','$cursorStart']},'$PROGRAM_AUDIO_ID.AUDIO_LENGTH']},2]}}}}  
+    #     }}
+        ])))
+
+    Overall_df=pd.merge(df1, Overall_df, how='left', on=['_id']).fillna("NO_INFO")
+    Overall_df['PlayBack_Time_Percent'].replace("NO_INFO",0, inplace=True)
+    Overall_df['Mindful_Minutes'].replace("NO_INFO",0, inplace=True)
+    Overall_df['Practice_Count'].replace("NO_INFO",0, inplace=True)
+
+    act = Overall_df[Overall_df['PlayBack_Time_Percent']>=.5].reset_index()
+    act = act[['USER_NAME','EMAIL_ID',  'sign_up', 'School_Name',
+           'CITY', 'STATE', 'COUNTRY', 'Last_Practice_Date',
+           'Practice_Count', 'Mindful_Minutes']]
+    print(act.shape)
+
+    if "export" in request.args:
+            try:
+                df1=act[['USER_NAME','EMAIL_ID',  'sign_up', 'School_Name',
+           'CITY', 'STATE', 'COUNTRY', 'Last_Practice_Date',
+           'Practice_Count','Mindful_Minutes']]
+                csv = df1.to_csv(index=False)
+                return Response(
+                    csv,
+                    mimetype="text/csv",
+                    headers={"Content-disposition":
+                            "attachment; filename=SchoolData.csv"})
+            except:
+                return jsonify("Unauthorized Access")   
+    else:
+        temp={"data":act.values.tolist()}
+    return json.dumps(temp, default = str)
+
+
+
+@app.route('/newcardmit')
+def mitpracticedatacard():
+   
+    username = urllib.parse.quote_plus('admin')
+    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
+    client = MongoClient("mongodb://%s:%s@35.88.43.45:27017/" % (username, password))
+    dateStr = "2020-03-17T00:00:00.000Z"
+    myDatetime = dateutil.parser.parse(dateStr)
+
+    df1=pd.DataFrame(list(db.user_master.aggregate([
+    {"$match":{'ROLE_ID._id':ObjectId("5f155b8a3b6800007900da2b"), 
+        "IS_DISABLED":{"$ne":"Y"},
+        "INCOMPLETE_SIGNUP":{"$ne":"Y"},
+        "EMAIL_ID":{'$not':{'$regex':'test', '$options':'i'}},
+        'USER_TYPE':{"$regex":'mit','$options':'i'}, 
+        "EMAIL_ID":{"$ne": ""},
+        "EMAIL_ID":{'$not':{'$regex':'1gen', '$options':'i'}},
+        "USER_NAME":{'$not':{'$regex':'test', '$options':'i'}},
+    #         "CREATED_DATE":{"$gt":myDatetime}
+              }},
+    #         {"$group":{"_id":"$_id","CREATED_DATE":{"$first": "$CREATED_DATE"}}},
+    {"$project":{"_id":1,'sign_up':{"$dateToString":{"format": "%Y-%m-%d","date":'$CREATED_DATE'}},"USER_NAME":1, "EMAIL_ID":1,
+                "School_Name":"$schoolId.NAME", "CITY":"$schoolId.CITY", "STATE":"$schoolId.STATE", "COUNTRY":"$schoolId.COUNTRY"}},
+    ])))
+    users = df1._id.to_list()
+
+    Overall_df=pd.DataFrame(list(db.audio_track_master.aggregate([
+        {"$match":{"$and":[
+                {'USER_ID._id':{"$in":users}},
+                {'USER_ID.ROLE_ID.ROLE_ID':{"$eq":3}},                  
+                {'USER_ID.EMAIL_ID':{"$not":{"$regex":'test','$options':'i'}}},
+                {'USER_ID.USER_NAME':{"$not":{"$regex":'test','$options':'i'}}},
+                {'USER_ID.IS_DISABLE':{"$ne":'Y'}},
+                {'USER_ID.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
+                {'USER_ID.EMAIL_ID':{"$not":{"$regex":'1gen','$options':'i'}}},
+                {'USER_ID.USER_TYPE':{"$regex":'MIT','$options':'i'}},
+                {'USER_ID.EMAIL_ID':{'$ne':''}}
+                ]}},
+         {'$group':
+        {'_id':'$USER_ID._id',
+        'State':{'$first':'$USER_ID.schoolId.STATE'},
+        'Country':{'$first':'$USER_ID.schoolId.COUNTRY'},
+        "Last_Practice_Date":{"$max":"$MODIFIED_DATE"},
+        'Practice_Count':{"$sum":1},
+         "IMAGE_URL":{"$first":"$PROGRAM_AUDIO_ID.IMAGE_URL"},
+        'Mindful_Minutes':{'$sum':{'$round':[{'$divide':[{'$subtract':['$CURSOR_END','$cursorStart']}, 60]},2]}},
+         'PlayBack_Time_Percent':{'$sum':{"$round":[{"$divide":[{"$subtract":
+                    ['$CURSOR_END','$cursorStart']},'$PROGRAM_AUDIO_ID.AUDIO_LENGTH']},2]}}}}  
+    #     }}
+        ])))
+
+    Overall_df=pd.merge(df1, Overall_df, how='left', on=['_id']).fillna("NO_INFO")
+    Overall_df['PlayBack_Time_Percent'].replace("NO_INFO",0, inplace=True)
+    Overall_df['Mindful_Minutes'].replace("NO_INFO",0, inplace=True)
+    Overall_df['Practice_Count'].replace("NO_INFO",0, inplace=True)
+
+    card_df=pd.DataFrame({'engaged':len(set(Overall_df._id.tolist())),
+                'active':len(set(Overall_df[Overall_df['PlayBack_Time_Percent']>=.5]['_id'].tolist())),
+                'passive':len(set(Overall_df._id.tolist()))-
+                        len(set(Overall_df[Overall_df['PlayBack_Time_Percent']>=.5]['_id'].tolist())),
+                'playbackpractice':len(Overall_df),
+                'minutespractice':Overall_df.Mindful_Minutes.sum().round(),
+                'Practice_Count':Overall_df.Practice_Count.sum().round()
+                },index=[0]).reset_index(drop=True)
+    temp2={}        
+    for j in range(len(card_df.columns)):
+        key = card_df.columns[j]
+        value = [str(card_df[card_df.columns[j]].iloc[0])]
+        temp2.update({key:value})
+
+    
+    return json.dumps(temp2)
+
 
 
 #==============================================================================================================
