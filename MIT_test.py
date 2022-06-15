@@ -1088,6 +1088,7 @@ def TotRegistered_table():
     username = urllib.parse.quote_plus('admin')
     password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
     client = MongoClient("mongodb://%s:%s@35.88.43.45:27017/" % (username, password))
+    db = client.compass
     dateStr = "2020-03-17T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
 
@@ -1164,6 +1165,7 @@ def mitpracticedatacard_table():
     username = urllib.parse.quote_plus('admin')
     password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
     client = MongoClient("mongodb://%s:%s@35.88.43.45:27017/" % (username, password))
+    db = client.compass
     dateStr = "2020-03-17T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
 
@@ -1245,6 +1247,7 @@ def mitpracticedatacard():
     username = urllib.parse.quote_plus('admin')
     password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
     client = MongoClient("mongodb://%s:%s@35.88.43.45:27017/" % (username, password))
+    db = client.compass
     dateStr = "2020-03-17T00:00:00.000Z"
     myDatetime = dateutil.parser.parse(dateStr)
 
