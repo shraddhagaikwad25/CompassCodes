@@ -1125,7 +1125,7 @@ def TotRegistered_table():
         {'_id':'$USER_ID._id',
         'State':{'$first':'$USER_ID.schoolId.STATE'},
         'Country':{'$first':'$USER_ID.schoolId.COUNTRY'},
-        "Last_Practice_Date":{"$max":"$MODIFIED_DATE"},
+        "Last_Practice_Date":{"$max":{"$dateToString":{"format": "%Y-%m-%d","date":'$MODIFIED_DATE'}}},
         'Practice_Count':{"$sum":1},
          "IMAGE_URL":{"$first":"$PROGRAM_AUDIO_ID.IMAGE_URL"},
         'Mindful_Minutes':{'$sum':{'$round':[{'$divide':[{'$subtract':['$CURSOR_END','$cursorStart']}, 60]},2]}},
