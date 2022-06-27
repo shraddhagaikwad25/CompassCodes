@@ -21668,9 +21668,10 @@ def last_practice_90days_(districtid):
 @app.route('/active_teachers_on_School_Search/<idd>/<chart_type>')
 def active_teachers_school_search(idd,chart_type):
     
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
+    username=urllib.parse.quote_plus('adminIE')
+    password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
     client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
+    db=client.compass_beta
 
     db=client.compass
     collection= db.audio_track_master
