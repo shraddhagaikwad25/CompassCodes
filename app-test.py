@@ -6064,14 +6064,14 @@ def admin_stats_cards(userid):
                       'State':{'$first':'$schoolId.STATE'},'INIVITES':{'$first':'$INVITES_ASSIGNED'},'EMAIL':{'$first':'$EMAIL_ID'},'admin':{'$first':'$IS_ADMIN'},'ROLE':{'$first':'$ROLE_ID.ROLE_id'}}},
             {'$project':{'_id':1,'sid':'$sid','ADMIN':'$admin','EMAIL_ID':'$EMAIL','INIVITES':'$INIVITES'}}])))
     df1= df1.fillna(0)
-    print("df1",df1)
-    print(df1["_id"])    
+    # print("df1",df1)
+    # print(df1["_id"])    
     if df1.empty==True or df1['_id'][0] == 0 :
         data={'Result':0}        
         return json.dumps(data)
     else:
         schoolid=str(df1['_id'][0])
-        print(schoolid)
+        # print(schoolid)
     
 
     
@@ -6128,7 +6128,7 @@ def admin_stats_cards(userid):
 
 #         df2["_id"] = schoolid
 #         df2.fillna(0,inplace=True)
-    print("df2",df2)
+    # print("df2",df2)
         
     df3=DataFrame(list(collection1.aggregate([
      {"$match":
@@ -6194,8 +6194,8 @@ def admin_stats_cards(userid):
                 {"$group":{'_id':'$schoolId._id','distincts': {'$addToSet': "$_id"}}},
                 {"$project":{'_id':1,'never_loggedin':{'$size':'$distincts'}}}])))
 
-    print("df1",df1)
-    print("df2",df2)
+    # print("df1",df1)
+    # print("df2",df2)
     df__=pd.merge(df1,df2, how='left', on='_id')
     dfff=pd.merge(df__,df5,how='left', on='_id')
     dff=pd.merge(dfff,df3, how='left', on='_id')
