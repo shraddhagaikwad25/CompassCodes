@@ -113,11 +113,12 @@ db=client.compass_beta
 df2 = DataFrame(list(db.district_master.aggregate([
 {'$project':{'_id':1,'DISTRICT_NAME':1 }}
 ])))
+df2["_id"] = df2._id.astype(str)
 disdic2 = dict(df2.values)
 # if districtid in disdic1:
 #     district=disdic1[districtid]
 # else:   
-#     district=disdic2[ObjectId(districtid)]
+#     district=disdic2[districtid]
 
 
 @app.route('/word_cloud_chart/<product>/<rating>/<startdate>/<enddate>')
@@ -1707,7 +1708,7 @@ def schpuc(districtid):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
         
     df = DataFrame(list(collection.aggregate([
     {"$match":
@@ -1769,7 +1770,7 @@ def schppcfamily(districtid):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     df1 = DataFrame(list(collection.aggregate([
     {"$match":
          {'$and': [
@@ -1852,7 +1853,7 @@ def schwisepc(districtid):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     df1 = DataFrame(list(collection.aggregate([
     {"$match":
          {'$and': [
@@ -1935,7 +1936,7 @@ def schwiseuc(districtid):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     df = DataFrame(list(collection.aggregate([
     {"$match":
          {'$and': [
@@ -1992,7 +1993,7 @@ def monthwisepc(districtid):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     df = DataFrame(list(collection.aggregate([
     {"$match":
     {'$and': [
@@ -2076,7 +2077,7 @@ def user_practice_90days(districtid):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     df = DataFrame(list(collection.aggregate([
     {"$match":
      {'$and': [
@@ -2151,7 +2152,7 @@ def user_logins_90days(districtid):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     df = DataFrame(list(collection.aggregate([
     {"$match":
      {'$and': [
@@ -2223,7 +2224,7 @@ def topusers_practice(districtid):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
 
 
     collection1 = db.user_master
@@ -2319,7 +2320,7 @@ def district_count_cards(districtid):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     print(district)
     df1 = DataFrame(list(collection1.aggregate([
      {"$match":
@@ -2552,7 +2553,7 @@ def district_user_table_teacher(districtid):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
 
     from datetime import datetime
 
@@ -2677,7 +2678,7 @@ def district_user_table_parents(districtid):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
 
 
 
@@ -2795,7 +2796,7 @@ def monthwisepcsuper(districtid):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
 #     myDatetime1 = dateutil.parser.parse(startdate)
 #     myDatetime2 = dateutil.parser.parse(enddate)
     df1= DataFrame(list(collection.aggregate([
@@ -3028,7 +3029,7 @@ def district_school_table(districtid):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
 
     
 
@@ -3159,7 +3160,7 @@ def heat_district(districtid):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     
 
     df=DataFrame(list(collection2.aggregate([{"$match":
@@ -3295,7 +3296,7 @@ def heat_district_family_active(districtid):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
 
     
     df=DataFrame(list(collection2.aggregate([{"$match":
@@ -3429,7 +3430,7 @@ def heat_district_teachers_active(districtid):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
 
 
 
@@ -3564,7 +3565,7 @@ def heat_district_teachers_prac(districtid):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
 
 
     df=DataFrame(list(collection2.aggregate([{"$match":
@@ -3697,7 +3698,7 @@ def heat_district_family_prac(districtid):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
 
    
 
@@ -3839,7 +3840,7 @@ def heatmap_prac_district(districtid):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
 
 
 
@@ -12041,7 +12042,7 @@ def dis_activity_feed(districtid,lower,upper):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     collection = db.user_master.aggregate([
     {"$match":
         {"$and":[
@@ -17818,7 +17819,7 @@ def live_user_district(districtid):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
 
     mydatetime=datetime.datetime.utcnow()
 
@@ -17908,7 +17909,7 @@ def heat_district_(districtid,startdate,enddate):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
 
@@ -18067,7 +18068,7 @@ def user_practice_90days_(districtid,startdate,enddate):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
@@ -18297,7 +18298,7 @@ def monthwisepc_(districtid,startdate,enddate):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
     pre_start= myDatetime1 - relativedelta(years=1)
@@ -18563,7 +18564,7 @@ def schwiseucc_(districtid,startdate,enddate):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
@@ -18803,7 +18804,7 @@ def schwisepc_(districtid,startdate,enddate):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
@@ -19001,7 +19002,7 @@ def topusers_practice_(districtid,startdate,enddate):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
 
@@ -19108,7 +19109,7 @@ def district_school_table_(districtid,startdate,enddate):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
     
@@ -19321,7 +19322,7 @@ def district_user_table_teacher_(districtid,startdate,enddate):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
 
@@ -19542,7 +19543,7 @@ def district_user_table_parent_(districtid,startdate,enddate):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
 
@@ -19764,7 +19765,7 @@ def district_count_cards_(districtid,startdate,enddate):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
     
@@ -20255,7 +20256,7 @@ def heat_district_family_prac_(districtid,startdate,enddate):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
 
@@ -20409,7 +20410,7 @@ def heat_district_teachers_prac_(districtid,startdate,enddate):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
 
@@ -20562,7 +20563,7 @@ def heatmap_prac_district_(districtid,startdate,enddate):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
 
@@ -20716,7 +20717,7 @@ def heat_district_teachers_active_(districtid,startdate,enddate):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
 
@@ -20871,7 +20872,7 @@ def heat_district_family_active_(districtid,startdate,enddate):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
 
@@ -21024,7 +21025,7 @@ def dis_schoolrating_csy__(districtid,startdate,enddate):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
 
@@ -21108,7 +21109,7 @@ def dis_sentiment_pie(districtid,startdate,enddate):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
 
@@ -21211,7 +21212,7 @@ def dis_sentiment_pie_table(districtid,table_type,startdate,enddate):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     myDatetime1 = dateutil.parser.parse(startdate)
     myDatetime2 = dateutil.parser.parse(enddate)
 
@@ -21305,7 +21306,7 @@ def district_Date_table(districtid,startdate):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     print(district)
     startdate= dateutil.parser.parse(str(startdate))
     enddat= dateutil.parser.parse(str(startdate))
@@ -21456,7 +21457,7 @@ def last_practice_90days_(districtid):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     
 #     myDatetime1 = dateutil.parser.parse(startdate)
 #     myDatetime2 = dateutil.parser.parse(enddate)
@@ -22163,7 +22164,7 @@ def district_portal_signup_(districtid):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     #  time frames
     current_time_utc=datetime.datetime.utcnow()
     last_30_days=current_time_utc-relativedelta(days=30)
@@ -22289,7 +22290,7 @@ def district_portal_practice_(districtid):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     #  time frames
     current_time_utc=datetime.datetime.utcnow()
     last_30_days=current_time_utc-relativedelta(days=30)
@@ -22435,7 +22436,7 @@ def district_portal_rating_(districtid):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     #  time frames
     current_time_utc=datetime.datetime.utcnow()
     last_30_days=current_time_utc-relativedelta(days=30)
@@ -22611,7 +22612,7 @@ def district_portal_comment_(districtid):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     #  time frames
     current_time_utc=datetime.datetime.utcnow()
     last_30_days=current_time_utc-relativedelta(days=30)
@@ -22753,7 +22754,7 @@ def district_portal_tunein_(districtid):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     #  time frames
     current_time_utc=datetime.datetime.utcnow()
     last_30_days=current_time_utc-relativedelta(days=30)
@@ -23219,7 +23220,7 @@ def district_portal___(districtid):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
 
     all_user_district=DataFrame(list(db.school_master.aggregate([{"$match":{
     '$and':[
@@ -23253,7 +23254,7 @@ def district_portal_schoolss_(districtid,sub_category):
     if districtid in disdic1:
         district=disdic1[districtid]
     else:
-        district=disdic2[ObjectId(districtid)]
+        district=disdic2[districtid]
     
 
     all_user_district=DataFrame(list(db.school_master.aggregate([{"$match":{
