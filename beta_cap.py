@@ -13918,15 +13918,15 @@ def practice_progress_table(schoolid,table_type,startdate,enddate):
     enddat= dateutil.parser.parse(str(enddate))
     enddate=datetime.datetime.combine(enddat,datetime.time.max)
 #     import datetime
-    username = urllib.parse.quote_plus('admin')
-    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
-    client = MongoClient("mongodb://%s:%s@35.88.43.45:27017/" % (username, password))
-    db=client.compass
+    # username = urllib.parse.quote_plus('admin')
+    # password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
+    # client = MongoClient("mongodb://%s:%s@35.88.43.45:27017/" % (username, password))
+    # db=client.compass
 
-    # username = urllib.parse.quote_plus('adminIE')                                     #SwitchedToBeta
-    # password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    # client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username, password))
-    # db=client.compass_beta
+    username = urllib.parse.quote_plus('adminIE')                                     #SwitchedToBeta
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username, password))
+    db=client.compass_beta
 
     collection = db.user_master.aggregate([
     {"$match":
@@ -19754,9 +19754,9 @@ def district_count_cards_(districtid,startdate,enddate):
     from datetime import datetime
     from datetime import timedelta
     
-    username=urllib.parse.quote_plus('adminIE')
-    password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
+    username = urllib.parse.quote_plus('adminIE')                                     #SwitchedToBeta
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username, password))
     db=client.compass_beta 
     collection1 = db.user_master
     collection2=db.audio_track_master
@@ -19792,456 +19792,460 @@ def district_count_cards_(districtid,startdate,enddate):
             {'$group':{'_id':'$_id','ID':{'$addToSet':'$schoolId._id'},'dn':{'$first':'$DISTRICT_ID.DISTRICT_NAME'}}},
 #                   {'$project':{'_id':1,'school_count':{'$size':'$ID'},'district':'$dn'}}
                   ])))
-    
-    schoolid=df1_1['ID'].tolist()
-    userid=df1_1['_id'].tolist()
-#     print(userid)
-    
-    
-#     print(district)
-    df1 = DataFrame(list(collection1.aggregate([
-     {"$match":
-         {'$and': [
-                {"IS_DISABLED":{"$ne":"Y"}},
-                  {"IS_BLOCKED":{"$ne":"Y"}},
-                 {"INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-                { 'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                { 'USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-#                  {'IS_PORTAL':'Y'},
-                 {'EMAIL_ID':{'$ne':''}},
-#                  {'DISTRICT_ID._id':{'$eq':ObjectId(""+districtid+"")}},
-             {"schoolId._id":{"$in":db.school_master.distinct( "_id", { "IS_PORTAL": "Y" ,"CATEGORY":{'$regex':district, '$options':'i'}})}},
-    #              {'DISTRICT_ID.DISTRICT_NAME':'Sarasota County'},
-    # //              {'EMAIL_ID':{'$regex':'broward','$options':'i'}},
-#              {'CREATED_DATE':{"$gte": myDatetime1 ,
-#                              "$lte":myDatetime2}},
-                 {'schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-             {'schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-                           {'EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                             {'EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}]}},
-            {'$group':{'_id':'','ID':{'$addToSet':'$schoolId._id'},'dn':{'$first':'$DISTRICT_ID.DISTRICT_NAME'}}},
-                  {'$project':{'_id':1,'school_count':{'$size':'$ID'},'district':'$dn'}}
-                  ])))
-    
-    
-    df10 = DataFrame(list(collection4.aggregate([ {"$match":{"CATEGORY":{'$regex':district, '$options':'i'}}},
-                            {'$project':{'_id':0,'CATEGORY':1,'PARTNER_CATEGORY':1,'STATE':1}} ])))                  
-    df1['district']=df1['district'].fillna(df10['CATEGORY'])                        
-    
-    
-    df2 = DataFrame(list(collection1.aggregate([ {"$match":
-         {'$and': [
-              {'ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
-                {"IS_DISABLED":{"$ne":"Y"}},
-                  {"IS_BLOCKED":{"$ne":"Y"}},
-                 {"INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-                { 'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                { 'USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-#                  {'IS_PORTAL':'Y'},
-                 {'EMAIL_ID':{'$ne':''}},
-                {"schoolId._id":{"$in":db.school_master.distinct( "_id", { "IS_PORTAL": "Y" ,"CATEGORY":{'$regex':district, '$options':'i'}})}},
-#                  {'DISTRICT_ID._id':{'$eq':ObjectId(""+districtid+"")}},
-#              {'CREATED_DATE':{"$gte": myDatetime1 ,
-#                              "$lte":myDatetime2}},
-                 {'schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-             {'schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-                           {'EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                             {'EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}]}},
-            {'$group':{'_id':'','ID':{'$addToSet':'$_id'}}},
-                  {'$project':{'_id':1,'teacher_count':{'$size':'$ID'}}}
-                  ])))
-    df5 = DataFrame(list(collection1.aggregate([ {"$match":
-         {'$and': [
-              {'ROLE_ID._id' :{'$eq':ObjectId("5f155b8a3b6800007900da2b")}},
-             
-                {"IS_DISABLED":{"$ne":"Y"}},
-                  {"IS_BLOCKED":{"$ne":"Y"}},
-                 {"INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-                { 'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                { 'USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-#                  {'IS_PORTAL':'Y'},
-                  {"schoolId._id":{"$in":db.school_master.distinct( "_id", { "IS_PORTAL": "Y" ,"CATEGORY":{'$regex':district, '$options':'i'}})}},
-                 {'EMAIL_ID':{'$ne':''}},
-#              {'CREATED_DATE':{"$gte": myDatetime1 ,
-#                              "$lte":myDatetime2}},
-#                  {'DISTRICT_ID._id':{'$eq':ObjectId(""+districtid+"")}},
-                 {'schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-             {'schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-                           {'EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                             {'EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}]}},
-            {'$group':{'_id':'','ID':{'$addToSet':'$_id'}}},
-                  {'$project':{'_id':1,'family_count':{'$size':'$ID'}}}
-                  ])))
-    today1= datetime.utcnow()
-    tod1= today1+ timedelta(hours=4)
-    start1= tod1-timedelta(days=30)
-    df3=DataFrame(list(collection2.aggregate([
-     {"$match":
-         {'$and': [
-          {'USER_ID.ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
-                {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
-                  {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
-                 {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-                { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-    # //             {'USER_ID.IS_PORTAL':'Y'},
-                 {'USER_ID.EMAIL_ID':{'$ne':''}},
-#                  {'USER_ID.DISTRICT_ID._id':{'$eq':ObjectId(""+districtid+"")}},
-                               {"USER_ID.schoolId._id":{"$in":db.school_master.distinct( "_id", { "IS_PORTAL": "Y" ,"CATEGORY":{'$regex':district, '$options':'i'}})}},
-    #              {'USER_ID.DISTRICT_ID.DISTRICT_NAME':'Sarasota County'},
-                 {'MODIFIED_DATE':{'$gte':csy_first_date()}},
-#             
-                 {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-             {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-                           {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                             {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}]}},
-            {'$group':{'_id':'','pc':{'$addToSet':'$USER_ID._id'}}},
-                  {'$project':{'_id':1,'engd_teacher_csy':{'$size':'$pc'}}}])))
-    df33=DataFrame(list(collection2.aggregate([
-     {"$match":
-         {'$and': [
-          {'USER_ID.ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
-                {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
-                  {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
-                 {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-                { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-    # //             {'USER_ID.IS_PORTAL':'Y'},
-                 {'USER_ID.EMAIL_ID':{'$ne':''}},
-#                  {'USER_ID.DISTRICT_ID._id':{'$eq':ObjectId(""+districtid+"")}},
-                               {"USER_ID.schoolId._id":{"$in":db.school_master.distinct( "_id", { "IS_PORTAL": "Y" ,"CATEGORY":{'$regex':district, '$options':'i'}})}},
-    #              {'USER_ID.DISTRICT_ID.DISTRICT_NAME':'Sarasota County'},
-                 {'MODIFIED_DATE':{'$gte':LSY_Date()}},
-#             
-                 {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-             {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-                           {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                             {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}]}},
-            {'$group':{'_id':'','pc':{'$addToSet':'$USER_ID._id'}}},
-                  {'$project':{'_id':1,'engd_teacher_lsy':{'$size':'$pc'}}}])))
-    df333=DataFrame(list(collection2.aggregate([
-     {"$match":
-         {'$and': [
-          {'USER_ID.ROLE_ID._id' :{'$eq':ObjectId("5f155b8a3b6800007900da2b")}},
-                {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
-                  {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
-                 {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-                { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-    # //             {'USER_ID.IS_PORTAL':'Y'},
-                 {'USER_ID.EMAIL_ID':{'$ne':''}},
-#                  {'USER_ID.DISTRICT_ID._id':{'$eq':ObjectId(""+districtid+"")}},
-                               {"USER_ID.schoolId._id":{"$in":db.school_master.distinct( "_id", { "IS_PORTAL": "Y" ,"CATEGORY":{'$regex':district, '$options':'i'}})}},
-    #              {'USER_ID.DISTRICT_ID.DISTRICT_NAME':'Sarasota County'},
-                 {'MODIFIED_DATE':{'$gte':csy_first_date()}},
-#             
-                 {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-             {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-                           {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                             {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}]}},
-            {'$group':{'_id':'','pc':{'$addToSet':'$USER_ID._id'}}},
-                  {'$project':{'_id':1,'engd_parent_csy':{'$size':'$pc'}}}])))
-    df3333=DataFrame(list(collection2.aggregate([
-     {"$match":
-         {'$and': [
-          {'USER_ID.ROLE_ID._id' :{'$eq':ObjectId("5f155b8a3b6800007900da2b")}},
-                {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
-                  {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
-                 {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-                { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-    # //             {'USER_ID.IS_PORTAL':'Y'},
-                 {'USER_ID.EMAIL_ID':{'$ne':''}},
-#                  {'USER_ID.DISTRICT_ID._id':{'$eq':ObjectId(""+districtid+"")}},
-                               {"USER_ID.schoolId._id":{"$in":db.school_master.distinct( "_id", { "IS_PORTAL": "Y" ,"CATEGORY":{'$regex':district, '$options':'i'}})}},
-    #              {'USER_ID.DISTRICT_ID.DISTRICT_NAME':'Sarasota County'},
-                 {'MODIFIED_DATE':{'$gte':LSY_Date()}},
-#             
-                 {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-             {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-                           {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                             {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}]}},
-            {'$group':{'_id':'','pc':{'$addToSet':'$USER_ID._id'}}},
-                  {'$project':{'_id':1,'engd_parent_lsy':{'$size':'$pc'}}}])))
-   
-   
+#     print(df1_1)
+    if df1_1.empty == True:
+        data={"data":"No Result"}
+    else:
 
-    df4=DataFrame(list(db.audio_feedback.aggregate([{"$match":
-         {'$and': [
-    #           {'USER_ID.ROLE_ID._id' :{'$eq':ObjectId("5f155b8a3b6800007900da2b")}},
-#                 {"USER.":{"$ne":"Y"}},
-#                   {"USER.IS_BLOCKED":{"$ne":"Y"}},
-#                  {"USER.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-#                 { 'USER.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#                 { 'USER.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-#                 {'USER.schoolId._id':{'$ne':None}},
-#     # //               {'IS_ADMIN':'Y'},
-                  {"USER._id":{"$in":userid}},
-                     {'RATING':{'$ne':0}},
-#     # //             {'USER_ID.IS_PORTAL':'Y'},
-#                  {'USER.EMAIL_ID':{'$ne':''}},
-# #                  {'USER_ID.DISTRICT_ID._id':{'$eq':ObjectId(""+districtid+"")}},
-#     #              {'USER_ID.DISTRICT_ID.DISTRICT_NAME':'Broward County Public Schools'},
-# #                  {'LAST_LOGGED_IN':{'$gte':start1}},
-             {'MODIFIED_DATE':{"$gte": myDatetime1 ,
-                             "$lte":myDatetime2}},
-             
-    # //              {'EMAIL_ID':{'$regex':'broward','$options':'i'}},
-#                  {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-#              {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-#                            {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-#                              {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
-         ]}},
-            {'$group':{'_id':'','rating':{'$avg':'$RATING'}}},
-                  {'$project':{'_id':1,'rating':'$rating'}}])))
-    df6=DataFrame(list(collection2.aggregate([
-     {"$match":
-         {'$and': [
-             {'USER_ID.ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
-                {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
-                  {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
-                 {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-                { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-    # //             {'USER_ID.IS_PORTAL':'Y'},
-                 {'USER_ID.EMAIL_ID':{'$ne':''}},
-#                  {'USER_ID.DISTRICT_ID._id':{'$eq':ObjectId(""+districtid+"")}},
-                               {"USER_ID.schoolId._id":{"$in":db.school_master.distinct( "_id", { "IS_PORTAL": "Y" ,"CATEGORY":{'$regex':district, '$options':'i'}})}},
-    #              {'USER_ID.DISTRICT_ID.DISTRICT_NAME':'Sarasota County'},
-#                  {'MODIFIED_DATE':{'$gte':csy_first_date()}},
-             {'MODIFIED_DATE':{"$gte": myDatetime1 ,
-                             "$lte":myDatetime2}},
-    # //              {'EMAIL_ID':{'$regex':'broward','$options':'i'}},
-                 {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-             {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-                           {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                             {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}]}},
-            {'$group':{'_id':'','pc':{'$sum':1},'MINDFUL_MINUTES':{'$sum':{'$round':[{'$divide':[{'$subtract':['$CURSOR_END','$cursorStart']}, 60]},2]}}}},
-                  {'$project':{'_id':1,'practice_sessions_t':'$pc','MINDFUL_MINUTES_t':'$MINDFUL_MINUTES'}}])))
-   
-    df7=DataFrame(list(collection2.aggregate([
-     {"$match":
-         {'$and': [
-             {'USER_ID.ROLE_ID._id' :{'$eq':ObjectId("5f155b8a3b6800007900da2b")}},
-                {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
-                  {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
-                 {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-                { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-    # //             {'USER_ID.IS_PORTAL':'Y'},
-                 {'USER_ID.EMAIL_ID':{'$ne':''}},
-#                  {'USER_ID.DISTRICT_ID._id':{'$eq':ObjectId(""+districtid+"")}},
-                               {"USER_ID.schoolId._id":{"$in":db.school_master.distinct( "_id", { "IS_PORTAL": "Y" ,"CATEGORY":{'$regex':district, '$options':'i'}})}},
-    #              {'USER_ID.DISTRICT_ID.DISTRICT_NAME':'Sarasota County'},
-#                  {'MODIFIED_DATE':{'$gte':csy_first_date()}},
-             {'MODIFIED_DATE':{"$gte": myDatetime1 ,
-                             "$lte":myDatetime2}},
-    # //              {'EMAIL_ID':{'$regex':'broward','$options':'i'}},
-                 {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-             {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-                           {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                             {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}]}},
-            {'$group':{'_id':'','pc':{'$sum':1},'MINDFUL_MINUTES':{'$sum':{'$round':[{'$divide':[{'$subtract':['$CURSOR_END','$cursorStart']}, 60]},2]}}}},
-                  {'$project':{'_id':1,'practice_sessions_p':'$pc','MINDFUL_MINUTES_p':'$MINDFUL_MINUTES'}}])))
-    
-    df77=DataFrame(list(collection2.aggregate([
-     {"$match":
-         {'$and': [
-#              {'USER_ID.ROLE_ID._id' :{'$eq':ObjectId("5f155b8a3b6800007900da2b")}},
-                {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
-                  {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
-                 {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-                { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-    # //             {'USER_ID.IS_PORTAL':'Y'},
-                 {'USER_ID.EMAIL_ID':{'$ne':''}},
-#                  {'USER_ID.DISTRICT_ID._id':{'$eq':ObjectId(""+districtid+"")}},
-                               {"USER_ID.schoolId._id":{"$in":db.school_master.distinct( "_id", { "IS_PORTAL": "Y" ,"CATEGORY":{'$regex':district, '$options':'i'}})}},
-    #              {'USER_ID.DISTRICT_ID.DISTRICT_NAME':'Sarasota County'},
-#                  {'MODIFIED_DATE':{'$gte':csy_first_date()}},
-             {'MODIFIED_DATE':{"$gte": myDatetime1 ,
-                             "$lte":myDatetime2}},
-    # //              {'EMAIL_ID':{'$regex':'broward','$options':'i'}},
-                 {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-             {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-                           {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                             {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}]}},
-            {'$group':{'_id':'','pc':{'$sum':1},'MINDFUL_MINUTES':{'$sum':{'$round':[{'$divide':[{'$subtract':['$CURSOR_END','$cursorStart']}, 60]},2]}}}},
-                  {'$project':{'_id':1,'practice_sessions':'$pc','MINDFUL_MINUTES':'$MINDFUL_MINUTES'}}])))
-    
-    
-    
-    
-    df0=DataFrame(list(collection2.aggregate([
-     {"$match":
-         {'$and': [
-    # //          {'ROLE_ID._id' :{'$':ObjectId("5f155b8a3b6800007900da2b")}},
-                {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
-                  {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
-                 {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-                { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-    # //             {'USER_ID.IS_PORTAL':'Y'},
-                 {'USER_ID.EMAIL_ID':{'$ne':''}},
-#                  {'USER_ID.DISTRICT_ID._id':{'$eq':ObjectId(""+districtid+"")}},
-                               {"USER_ID.schoolId._id":{"$in":db.school_master.distinct( "_id", { "IS_PORTAL": "Y" ,"CATEGORY":{'$regex':district, '$options':'i'}})}},
-    #              {'USER_ID.DISTRICT_ID.DISTRICT_NAME':'Sarasota County'},
-                 {'MODIFIED_DATE':{'$gte':csy_first_date()}},
-                 {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-             {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-                           {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                             {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}]}},
-            {'$group':{'_id':'','pc':{'$addToSet':'$USER_ID.schoolId._id'}}},
-                  {'$project':{'_id':1,'engdschool_csy':{'$size':'$pc'}}}])))
-    df00=DataFrame(list(collection2.aggregate([
-     {"$match":
-         {'$and': [
-    # //          {'ROLE_ID._id' :{'$':ObjectId("5f155b8a3b6800007900da2b")}},
-                {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
-                  {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
-                 {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-                { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
-    # //             {'USER_ID.IS_PORTAL':'Y'},
-                 {'USER_ID.EMAIL_ID':{'$ne':''}},
-#                  {'USER_ID.DISTRICT_ID._id':{'$eq':ObjectId(""+districtid+"")}},
-                               {"USER_ID.schoolId._id":{"$in":db.school_master.distinct( "_id", { "IS_PORTAL": "Y" ,"CATEGORY":{'$regex':district, '$options':'i'}})}},
-    #              {'USER_ID.DISTRICT_ID.DISTRICT_NAME':'Sarasota County'},
-                 {'MODIFIED_DATE':{'$gte':LSY_Date()}},
-                 {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-             {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
-                           {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                             {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}]}},
-            {'$group':{'_id':'','pc':{'$addToSet':'$USER_ID.schoolId._id'}}},
-                  {'$project':{'_id':1,'engdschool_lsy':{'$size':'$pc'}}}])))
+        schoolid=df1_1['ID'].tolist()
+        userid=df1_1['_id'].tolist()
+    #     print(userid)
 
-    
-    engd_parent_lsy=[0]
-    try:
-        engd_parent_lsy=df3333['engd_parent_lsy']
-    except:
+
+    #     print(district)
+        df1 = DataFrame(list(collection1.aggregate([
+         {"$match":
+             {'$and': [
+                    {"IS_DISABLED":{"$ne":"Y"}},
+                      {"IS_BLOCKED":{"$ne":"Y"}},
+                     {"INCOMPLETE_SIGNUP":{"$ne":"Y"}},
+                    { 'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                    { 'USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
+    #                  {'IS_PORTAL':'Y'},
+                     {'EMAIL_ID':{'$ne':''}},
+    #                  {'DISTRICT_ID._id':{'$eq':ObjectId(""+districtid+"")}},
+                 {"schoolId._id":{"$in":db.school_master.distinct( "_id", { "IS_PORTAL": "Y" ,"CATEGORY":{'$regex':district, '$options':'i'}})}},
+        #              {'DISTRICT_ID.DISTRICT_NAME':'Sarasota County'},
+        # //              {'EMAIL_ID':{'$regex':'broward','$options':'i'}},
+    #              {'CREATED_DATE':{"$gte": myDatetime1 ,
+    #                              "$lte":myDatetime2}},
+                     {'schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                 {'schoolId.BLOCKED_BY_CAP':{'$exists':False}},
+                               {'EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                                 {'EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}]}},
+                {'$group':{'_id':'','ID':{'$addToSet':'$schoolId._id'},'dn':{'$first':'$DISTRICT_ID.DISTRICT_NAME'}}},
+                      {'$project':{'_id':1,'school_count':{'$size':'$ID'},'district':'$dn'}}
+                      ])))
+
+
+        df10 = DataFrame(list(collection4.aggregate([ {"$match":{"CATEGORY":{'$regex':district, '$options':'i'}}},
+                                {'$project':{'_id':0,'CATEGORY':1,'PARTNER_CATEGORY':1,'STATE':1}} ])))                  
+        df1['district']=df1['district'].fillna(df10['CATEGORY'])                        
+
+
+        df2 = DataFrame(list(collection1.aggregate([ {"$match":
+             {'$and': [
+                  {'ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
+                    {"IS_DISABLED":{"$ne":"Y"}},
+                      {"IS_BLOCKED":{"$ne":"Y"}},
+                     {"INCOMPLETE_SIGNUP":{"$ne":"Y"}},
+                    { 'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                    { 'USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
+    #                  {'IS_PORTAL':'Y'},
+                     {'EMAIL_ID':{'$ne':''}},
+                    {"schoolId._id":{"$in":db.school_master.distinct( "_id", { "IS_PORTAL": "Y" ,"CATEGORY":{'$regex':district, '$options':'i'}})}},
+    #                  {'DISTRICT_ID._id':{'$eq':ObjectId(""+districtid+"")}},
+    #              {'CREATED_DATE':{"$gte": myDatetime1 ,
+    #                              "$lte":myDatetime2}},
+                     {'schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                 {'schoolId.BLOCKED_BY_CAP':{'$exists':False}},
+                               {'EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                                 {'EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}]}},
+                {'$group':{'_id':'','ID':{'$addToSet':'$_id'}}},
+                      {'$project':{'_id':1,'teacher_count':{'$size':'$ID'}}}
+                      ])))
+        df5 = DataFrame(list(collection1.aggregate([ {"$match":
+             {'$and': [
+                  {'ROLE_ID._id' :{'$eq':ObjectId("5f155b8a3b6800007900da2b")}},
+
+                    {"IS_DISABLED":{"$ne":"Y"}},
+                      {"IS_BLOCKED":{"$ne":"Y"}},
+                     {"INCOMPLETE_SIGNUP":{"$ne":"Y"}},
+                    { 'USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                    { 'USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
+    #                  {'IS_PORTAL':'Y'},
+                      {"schoolId._id":{"$in":db.school_master.distinct( "_id", { "IS_PORTAL": "Y" ,"CATEGORY":{'$regex':district, '$options':'i'}})}},
+                     {'EMAIL_ID':{'$ne':''}},
+    #              {'CREATED_DATE':{"$gte": myDatetime1 ,
+    #                              "$lte":myDatetime2}},
+    #                  {'DISTRICT_ID._id':{'$eq':ObjectId(""+districtid+"")}},
+                     {'schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                 {'schoolId.BLOCKED_BY_CAP':{'$exists':False}},
+                               {'EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                                 {'EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}]}},
+                {'$group':{'_id':'','ID':{'$addToSet':'$_id'}}},
+                      {'$project':{'_id':1,'family_count':{'$size':'$ID'}}}
+                      ])))
+        today1= datetime.utcnow()
+        tod1= today1+ timedelta(hours=4)
+        start1= tod1-timedelta(days=30)
+        df3=DataFrame(list(collection2.aggregate([
+         {"$match":
+             {'$and': [
+              {'USER_ID.ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
+                    {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
+                      {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
+                     {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
+                    { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                    { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
+        # //             {'USER_ID.IS_PORTAL':'Y'},
+                     {'USER_ID.EMAIL_ID':{'$ne':''}},
+    #                  {'USER_ID.DISTRICT_ID._id':{'$eq':ObjectId(""+districtid+"")}},
+                                   {"USER_ID.schoolId._id":{"$in":db.school_master.distinct( "_id", { "IS_PORTAL": "Y" ,"CATEGORY":{'$regex':district, '$options':'i'}})}},
+        #              {'USER_ID.DISTRICT_ID.DISTRICT_NAME':'Sarasota County'},
+                     {'MODIFIED_DATE':{'$gte':csy_first_date()}},
+    #             
+                     {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                 {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
+                               {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                                 {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}]}},
+                {'$group':{'_id':'','pc':{'$addToSet':'$USER_ID._id'}}},
+                      {'$project':{'_id':1,'engd_teacher_csy':{'$size':'$pc'}}}])))
+        df33=DataFrame(list(collection2.aggregate([
+         {"$match":
+             {'$and': [
+              {'USER_ID.ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
+                    {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
+                      {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
+                     {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
+                    { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                    { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
+        # //             {'USER_ID.IS_PORTAL':'Y'},
+                     {'USER_ID.EMAIL_ID':{'$ne':''}},
+    #                  {'USER_ID.DISTRICT_ID._id':{'$eq':ObjectId(""+districtid+"")}},
+                                   {"USER_ID.schoolId._id":{"$in":db.school_master.distinct( "_id", { "IS_PORTAL": "Y" ,"CATEGORY":{'$regex':district, '$options':'i'}})}},
+        #              {'USER_ID.DISTRICT_ID.DISTRICT_NAME':'Sarasota County'},
+                     {'MODIFIED_DATE':{'$gte':LSY_Date()}},
+    #             
+                     {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                 {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
+                               {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                                 {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}]}},
+                {'$group':{'_id':'','pc':{'$addToSet':'$USER_ID._id'}}},
+                      {'$project':{'_id':1,'engd_teacher_lsy':{'$size':'$pc'}}}])))
+        df333=DataFrame(list(collection2.aggregate([
+         {"$match":
+             {'$and': [
+              {'USER_ID.ROLE_ID._id' :{'$eq':ObjectId("5f155b8a3b6800007900da2b")}},
+                    {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
+                      {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
+                     {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
+                    { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                    { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
+        # //             {'USER_ID.IS_PORTAL':'Y'},
+                     {'USER_ID.EMAIL_ID':{'$ne':''}},
+    #                  {'USER_ID.DISTRICT_ID._id':{'$eq':ObjectId(""+districtid+"")}},
+                                   {"USER_ID.schoolId._id":{"$in":db.school_master.distinct( "_id", { "IS_PORTAL": "Y" ,"CATEGORY":{'$regex':district, '$options':'i'}})}},
+        #              {'USER_ID.DISTRICT_ID.DISTRICT_NAME':'Sarasota County'},
+                     {'MODIFIED_DATE':{'$gte':csy_first_date()}},
+    #             
+                     {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                 {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
+                               {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                                 {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}]}},
+                {'$group':{'_id':'','pc':{'$addToSet':'$USER_ID._id'}}},
+                      {'$project':{'_id':1,'engd_parent_csy':{'$size':'$pc'}}}])))
+        df3333=DataFrame(list(collection2.aggregate([
+         {"$match":
+             {'$and': [
+              {'USER_ID.ROLE_ID._id' :{'$eq':ObjectId("5f155b8a3b6800007900da2b")}},
+                    {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
+                      {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
+                     {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
+                    { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                    { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
+        # //             {'USER_ID.IS_PORTAL':'Y'},
+                     {'USER_ID.EMAIL_ID':{'$ne':''}},
+    #                  {'USER_ID.DISTRICT_ID._id':{'$eq':ObjectId(""+districtid+"")}},
+                                   {"USER_ID.schoolId._id":{"$in":db.school_master.distinct( "_id", { "IS_PORTAL": "Y" ,"CATEGORY":{'$regex':district, '$options':'i'}})}},
+        #              {'USER_ID.DISTRICT_ID.DISTRICT_NAME':'Sarasota County'},
+                     {'MODIFIED_DATE':{'$gte':LSY_Date()}},
+    #             
+                     {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                 {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
+                               {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                                 {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}]}},
+                {'$group':{'_id':'','pc':{'$addToSet':'$USER_ID._id'}}},
+                      {'$project':{'_id':1,'engd_parent_lsy':{'$size':'$pc'}}}])))
+
+
+
+        df4=DataFrame(list(db.audio_feedback.aggregate([{"$match":
+             {'$and': [
+        #           {'USER_ID.ROLE_ID._id' :{'$eq':ObjectId("5f155b8a3b6800007900da2b")}},
+    #                 {"USER.":{"$ne":"Y"}},
+    #                   {"USER.IS_BLOCKED":{"$ne":"Y"}},
+    #                  {"USER.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
+    #                 { 'USER.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+    #                 { 'USER.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
+    #                 {'USER.schoolId._id':{'$ne':None}},
+    #     # //               {'IS_ADMIN':'Y'},
+                      {"USER._id":{"$in":userid}},
+                         {'RATING':{'$ne':0}},
+    #     # //             {'USER_ID.IS_PORTAL':'Y'},
+    #                  {'USER.EMAIL_ID':{'$ne':''}},
+    # #                  {'USER_ID.DISTRICT_ID._id':{'$eq':ObjectId(""+districtid+"")}},
+    #     #              {'USER_ID.DISTRICT_ID.DISTRICT_NAME':'Broward County Public Schools'},
+    # #                  {'LAST_LOGGED_IN':{'$gte':start1}},
+                 {'MODIFIED_DATE':{"$gte": myDatetime1 ,
+                                 "$lte":myDatetime2}},
+
+        # //              {'EMAIL_ID':{'$regex':'broward','$options':'i'}},
+    #                  {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+    #              {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
+    #                            {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+    #                              {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}
+             ]}},
+                {'$group':{'_id':'','rating':{'$avg':'$RATING'}}},
+                      {'$project':{'_id':1,'rating':'$rating'}}])))
+        df6=DataFrame(list(collection2.aggregate([
+         {"$match":
+             {'$and': [
+                 {'USER_ID.ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
+                    {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
+                      {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
+                     {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
+                    { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                    { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
+        # //             {'USER_ID.IS_PORTAL':'Y'},
+                     {'USER_ID.EMAIL_ID':{'$ne':''}},
+    #                  {'USER_ID.DISTRICT_ID._id':{'$eq':ObjectId(""+districtid+"")}},
+                                   {"USER_ID.schoolId._id":{"$in":db.school_master.distinct( "_id", { "IS_PORTAL": "Y" ,"CATEGORY":{'$regex':district, '$options':'i'}})}},
+        #              {'USER_ID.DISTRICT_ID.DISTRICT_NAME':'Sarasota County'},
+    #                  {'MODIFIED_DATE':{'$gte':csy_first_date()}},
+                 {'MODIFIED_DATE':{"$gte": myDatetime1 ,
+                                 "$lte":myDatetime2}},
+        # //              {'EMAIL_ID':{'$regex':'broward','$options':'i'}},
+                     {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                 {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
+                               {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                                 {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}]}},
+                {'$group':{'_id':'','pc':{'$sum':1},'MINDFUL_MINUTES':{'$sum':{'$round':[{'$divide':[{'$subtract':['$CURSOR_END','$cursorStart']}, 60]},2]}}}},
+                      {'$project':{'_id':1,'practice_sessions_t':'$pc','MINDFUL_MINUTES_t':'$MINDFUL_MINUTES'}}])))
+
+        df7=DataFrame(list(collection2.aggregate([
+         {"$match":
+             {'$and': [
+                 {'USER_ID.ROLE_ID._id' :{'$eq':ObjectId("5f155b8a3b6800007900da2b")}},
+                    {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
+                      {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
+                     {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
+                    { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                    { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
+        # //             {'USER_ID.IS_PORTAL':'Y'},
+                     {'USER_ID.EMAIL_ID':{'$ne':''}},
+    #                  {'USER_ID.DISTRICT_ID._id':{'$eq':ObjectId(""+districtid+"")}},
+                                   {"USER_ID.schoolId._id":{"$in":db.school_master.distinct( "_id", { "IS_PORTAL": "Y" ,"CATEGORY":{'$regex':district, '$options':'i'}})}},
+        #              {'USER_ID.DISTRICT_ID.DISTRICT_NAME':'Sarasota County'},
+    #                  {'MODIFIED_DATE':{'$gte':csy_first_date()}},
+                 {'MODIFIED_DATE':{"$gte": myDatetime1 ,
+                                 "$lte":myDatetime2}},
+        # //              {'EMAIL_ID':{'$regex':'broward','$options':'i'}},
+                     {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                 {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
+                               {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                                 {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}]}},
+                {'$group':{'_id':'','pc':{'$sum':1},'MINDFUL_MINUTES':{'$sum':{'$round':[{'$divide':[{'$subtract':['$CURSOR_END','$cursorStart']}, 60]},2]}}}},
+                      {'$project':{'_id':1,'practice_sessions_p':'$pc','MINDFUL_MINUTES_p':'$MINDFUL_MINUTES'}}])))
+
+        df77=DataFrame(list(collection2.aggregate([
+         {"$match":
+             {'$and': [
+    #              {'USER_ID.ROLE_ID._id' :{'$eq':ObjectId("5f155b8a3b6800007900da2b")}},
+                    {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
+                      {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
+                     {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
+                    { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                    { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
+        # //             {'USER_ID.IS_PORTAL':'Y'},
+                     {'USER_ID.EMAIL_ID':{'$ne':''}},
+    #                  {'USER_ID.DISTRICT_ID._id':{'$eq':ObjectId(""+districtid+"")}},
+                                   {"USER_ID.schoolId._id":{"$in":db.school_master.distinct( "_id", { "IS_PORTAL": "Y" ,"CATEGORY":{'$regex':district, '$options':'i'}})}},
+        #              {'USER_ID.DISTRICT_ID.DISTRICT_NAME':'Sarasota County'},
+    #                  {'MODIFIED_DATE':{'$gte':csy_first_date()}},
+                 {'MODIFIED_DATE':{"$gte": myDatetime1 ,
+                                 "$lte":myDatetime2}},
+        # //              {'EMAIL_ID':{'$regex':'broward','$options':'i'}},
+                     {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                 {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
+                               {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                                 {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}]}},
+                {'$group':{'_id':'','pc':{'$sum':1},'MINDFUL_MINUTES':{'$sum':{'$round':[{'$divide':[{'$subtract':['$CURSOR_END','$cursorStart']}, 60]},2]}}}},
+                      {'$project':{'_id':1,'practice_sessions':'$pc','MINDFUL_MINUTES':'$MINDFUL_MINUTES'}}])))
+
+
+
+
+        df0=DataFrame(list(collection2.aggregate([
+         {"$match":
+             {'$and': [
+        # //          {'ROLE_ID._id' :{'$':ObjectId("5f155b8a3b6800007900da2b")}},
+                    {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
+                      {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
+                     {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
+                    { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                    { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
+        # //             {'USER_ID.IS_PORTAL':'Y'},
+                     {'USER_ID.EMAIL_ID':{'$ne':''}},
+    #                  {'USER_ID.DISTRICT_ID._id':{'$eq':ObjectId(""+districtid+"")}},
+                                   {"USER_ID.schoolId._id":{"$in":db.school_master.distinct( "_id", { "IS_PORTAL": "Y" ,"CATEGORY":{'$regex':district, '$options':'i'}})}},
+        #              {'USER_ID.DISTRICT_ID.DISTRICT_NAME':'Sarasota County'},
+                     {'MODIFIED_DATE':{'$gte':csy_first_date()}},
+                     {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                 {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
+                               {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                                 {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}]}},
+                {'$group':{'_id':'','pc':{'$addToSet':'$USER_ID.schoolId._id'}}},
+                      {'$project':{'_id':1,'engdschool_csy':{'$size':'$pc'}}}])))
+        df00=DataFrame(list(collection2.aggregate([
+         {"$match":
+             {'$and': [
+        # //          {'ROLE_ID._id' :{'$':ObjectId("5f155b8a3b6800007900da2b")}},
+                    {"USER_ID.IS_DISABLED":{"$ne":"Y"}},
+                      {"USER_ID.IS_BLOCKED":{"$ne":"Y"}},
+                     {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
+                    { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                    { 'USER_ID.USER_NAME':{"$not":{"$regex":"1gen",'$options':'i'}}},
+        # //             {'USER_ID.IS_PORTAL':'Y'},
+                     {'USER_ID.EMAIL_ID':{'$ne':''}},
+    #                  {'USER_ID.DISTRICT_ID._id':{'$eq':ObjectId(""+districtid+"")}},
+                                   {"USER_ID.schoolId._id":{"$in":db.school_master.distinct( "_id", { "IS_PORTAL": "Y" ,"CATEGORY":{'$regex':district, '$options':'i'}})}},
+        #              {'USER_ID.DISTRICT_ID.DISTRICT_NAME':'Sarasota County'},
+                     {'MODIFIED_DATE':{'$gte':LSY_Date()}},
+                     {'USER_ID.schoolId.NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                 {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':False}},
+                               {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                                 {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}}]}},
+                {'$group':{'_id':'','pc':{'$addToSet':'$USER_ID.schoolId._id'}}},
+                      {'$project':{'_id':1,'engdschool_lsy':{'$size':'$pc'}}}])))
+
+
         engd_parent_lsy=[0]
-    engd_parent_csy=[0]
-    try:
-        engd_parent_csy=df333['engd_parent_csy']
-    except:
+        try:
+            engd_parent_lsy=df3333['engd_parent_lsy']
+        except:
+            engd_parent_lsy=[0]
         engd_parent_csy=[0]
-        
-    engd_teacher_csy=[0]
-    try:
-        engd_teacher_csy=df3['engd_teacher_csy']
-    except:
-        engd_teacher_csy=[0]
-    engd_teacher_lsy=[0]
-    try:
-        engd_teacher_lsy=df33['engd_teacher_lsy']
-    except:
-        engd_teacher_lsy=[0]
-        
-    
-    
-    
-    engdschool_lsy=[0]
-    try:
-        engdschool_lsy=df00['engdschool_lsy']
-    except:
-        engdschool_lsy=[0]
-    rating=[0]
-    try:
-        rating=df4['rating']
-    except:
-        rating=[0]
-        
-    engdschool_csy=[0]
-    try:
-        engdschool_csy=df0['engdschool_csy']
-    except:
-        engdschool_csy=[0]
-    sc=[0]
-    try:
-        sc=df1['school_count']
-    except:
-        sc=[0]
-        
-    tc=[0]
-    try:
-        tc=df2['teacher_count']
-    except:
-        tc=[0]
-    
-    pct=[0]
-    try:
-        pct=df6['practice_sessions_t']
-    except:
-        pct=[0]
-    pcp=[0]
-    try:
-        pcp=df7['practice_sessions_p']
-    except:
-        pcp=[0]
-        
-    mmt=[0]
-    try:
-        mmt=df6['MINDFUL_MINUTES_t']
-    except:
-        mmt=[0]
-    mmp=[0]
-    try:
-        mmp=df7['MINDFUL_MINUTES_p']
-    except:
-        mmp=[0]     
-            
-        
-    mm=[0]
-    try:
-        mm=df77['MINDFUL_MINUTES']
-    except:
-        mm=[0]
-    pc=[0]
-    try:
-        pc=df77['practice_sessions']
-    except:
-        pc=[0]
-    
-    lc=[0]
-    try:
-        lc=df4['logins']
-    except:
-        lc=[0]
-        
-    fc=[0]
-    try:
-        fc=df5['family_count']
-    except:
-        fc=[0]
+        try:
+            engd_parent_csy=df333['engd_parent_csy']
+        except:
+            engd_parent_csy=[0]
 
-    dn=[0]
-    try:
-        dn=df1['district']
-    except:
+        engd_teacher_csy=[0]
+        try:
+            engd_teacher_csy=df3['engd_teacher_csy']
+        except:
+            engd_teacher_csy=[0]
+        engd_teacher_lsy=[0]
+        try:
+            engd_teacher_lsy=df33['engd_teacher_lsy']
+        except:
+            engd_teacher_lsy=[0]
+
+
+
+
+        engdschool_lsy=[0]
+        try:
+            engdschool_lsy=df00['engdschool_lsy']
+        except:
+            engdschool_lsy=[0]
+        rating=[0]
+        try:
+            rating=df4['rating']
+        except:
+            rating=[0]
+
+        engdschool_csy=[0]
+        try:
+            engdschool_csy=df0['engdschool_csy']
+        except:
+            engdschool_csy=[0]
+        sc=[0]
+        try:
+            sc=df1['school_count']
+        except:
+            sc=[0]
+
+        tc=[0]
+        try:
+            tc=df2['teacher_count']
+        except:
+            tc=[0]
+
+        pct=[0]
+        try:
+            pct=df6['practice_sessions_t']
+        except:
+            pct=[0]
+        pcp=[0]
+        try:
+            pcp=df7['practice_sessions_p']
+        except:
+            pcp=[0]
+
+        mmt=[0]
+        try:
+            mmt=df6['MINDFUL_MINUTES_t']
+        except:
+            mmt=[0]
+        mmp=[0]
+        try:
+            mmp=df7['MINDFUL_MINUTES_p']
+        except:
+            mmp=[0]     
+
+
+        mm=[0]
+        try:
+            mm=df77['MINDFUL_MINUTES']
+        except:
+            mm=[0]
+        pc=[0]
+        try:
+            pc=df77['practice_sessions']
+        except:
+            pc=[0]
+
+        lc=[0]
+        try:
+            lc=df4['logins']
+        except:
+            lc=[0]
+
+        fc=[0]
+        try:
+            fc=df5['family_count']
+        except:
+            fc=[0]
+
         dn=[0]
-    
-    
-    ca=[0]
-    try:
-        ca=df10['CATEGORY']
-    except:
+        try:
+            dn=df1['district']
+        except:
+            dn=[0]
+
+
         ca=[0]
-    
-    Pa=[0]
-    try:
-        Pa=df10['PARTNER_CATEGORY']
-    except:
-        Pa=[0] 
-    state=[0]
-    try:
-        state=df10['STATE']
-    except:
+        try:
+            ca=df10['CATEGORY']
+        except:
+            ca=[0]
+
+        Pa=[0]
+        try:
+            Pa=df10['PARTNER_CATEGORY']
+        except:
+            Pa=[0] 
         state=[0]
-    data={"schoolcount":str(sc[0]),"engd_teacher_lsy":str(engd_teacher_lsy[0]),"engd_teacher_csy":str(engd_teacher_csy[0]),
-          "engd_parent_csy":str(engd_parent_csy[0]),"engd_parent_lsy":str(engd_parent_lsy[0]),
-          "engaged_school_csy":str(engdschool_csy[0]),"engaged_school_lsy":str(engdschool_lsy[0]),"teachercount":str(tc[0]),"familycount":str(fc[0]),"teacherpracticecount":str(pct[0]),"parentspracticecount":str(pcp[0]),
-          'MINDFUL_MINUTES':str(round(int(mm[0]))),'rating':str(round(rating[0],1)),'state':str(state[0]),'MINDFUL_MINUTES_Teacher':str(round(int(mmt[0]))),'MINDFUL_MINUTES_parent':str(round(int(mmp[0]))),'district':str(dn[0]),"practicecount":str(pc[0]),'category':str(ca[0]),'partnercategory':str(Pa[0])}
+        try:
+            state=df10['STATE']
+        except:
+            state=[0]
+        data={"schoolcount":str(sc[0]),"engd_teacher_lsy":str(engd_teacher_lsy[0]),"engd_teacher_csy":str(engd_teacher_csy[0]),
+              "engd_parent_csy":str(engd_parent_csy[0]),"engd_parent_lsy":str(engd_parent_lsy[0]),
+              "engaged_school_csy":str(engdschool_csy[0]),"engaged_school_lsy":str(engdschool_lsy[0]),"teachercount":str(tc[0]),"familycount":str(fc[0]),"teacherpracticecount":str(pct[0]),"parentspracticecount":str(pcp[0]),
+              'MINDFUL_MINUTES':str(round(int(mm[0]))),'rating':str(round(rating[0],1)),'state':str(state[0]),'MINDFUL_MINUTES_Teacher':str(round(int(mmt[0]))),'MINDFUL_MINUTES_parent':str(round(int(mmp[0]))),'district':str(dn[0]),"practicecount":str(pc[0]),'category':str(ca[0]),'partnercategory':str(Pa[0])}
     return json.dumps(data)
 
 @app.route('/districtheatmappracfamily_oct13_/<districtid>/<startdate>/<enddate>')
@@ -20554,9 +20558,9 @@ def heat_district_teachers_prac_(districtid,startdate,enddate):
 @app.route('/districtheatmappractice_oct13_/<districtid>/<startdate>/<enddate>')
 def heatmap_prac_district_(districtid,startdate,enddate):   
     import collections
-    username=urllib.parse.quote_plus('adminIE')
-    password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
+    username = urllib.parse.quote_plus('adminIE')                                     #SwitchedToBeta
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username, password))
     db=client.compass_beta 
     collection = db.audio_track_master
     collection2=db.user_master
@@ -20598,111 +20602,117 @@ def heatmap_prac_district_(districtid,startdate,enddate):
                       {'$sort':{'name':1}}
 
                       ])))
-
-    ids=list(df['_id'])
-    
-    
-#     df3=DataFrame(list(collection.aggregate([
-# {"$match":
-#     {'$and': [
-
-         
-#         {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-# {'USER_ID.schoolId._id':{'$in':ids}},
-
-
-# #  {'MODIFIED_DATE':{'$gte':csy_first_date()}},
-#     {'MODIFIED_DATE':{"$gte": myDatetime1 ,
-#                              "$lte":myDatetime2}}
-#     ]}},
-
-
-#         {'$group':{'_id':'$USER_ID.schoolId._id','uc':{'$addToSet':'$USER_ID._id'},'pc':{'$sum':1},'NAME':{'$first':'$USER_ID.schoolId.NAME'}}},
-#               {'$project':{'_id':1,'active_user_count':{'$size':'$uc'},'name':'$NAME','practice_count':'$pc'}},
-#     { '$sort' : { 'active_user_count' : -1} },
-# #     {'$limit':30}
-#     ])))
-#     top=list(df3['_id'])
-# #     print(df3)
-# #     df3.to_csv('file1.csv')
-    df22=DataFrame(list(collection.aggregate([
-    {"$match":
-        {'$and': [
-            
-#              {'USER_ID.ROLE_ID._id' :{'$eq':ObjectId("5f155b8a3b6800007900da2b")}},
-            {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
-    {'USER_ID.schoolId._id':{'$in':ids}},
-    # {'USER_ID.ROLE_ID._id' :{'$eq':ObjectId("5f155b8a3b6800007900da2b")}},
-  
-#      {'MODIFIED_DATE':{'$gte':csy_first_date()}},
-        {'MODIFIED_DATE':{"$gte": myDatetime1 ,
-                             "$lte":myDatetime2}}]}},
-
-
-            {'$group':{'_id':{'school':'$USER_ID.schoolId._id','month':{'$month':'$MODIFIED_DATE'}},'uc':{'$addToSet':'$USER_ID._id'},'pc':{'$sum':1},'NAME':{'$first':'$USER_ID.schoolId.NAME'}}},
-                  {'$project':{'_id':0,'_id':'$_id.school','month':'$_id.month','active_user_count':{'$size':'$uc'},'school':'$NAME','practice_count':'$pc'}},
-        { '$sort' : { 'name' : 1,'month'  :1} },
-
-
-    # //               {'$count':'count'}
-                  ])))
-    if df22.empty is True:
-        df["month"]=0
-        df["active_user_count"]=0
-        df["practice_count"]=0
-        df1=df
+    if df.empty == True:
+        temp={'Result':0}
+        return json.dumps(temp)
     else:
-        df2=pd.merge(df,df22, on='_id',how='left')
-        df1=df2
-    df1=df1.sort_values(by=['name'], ascending=True)
-    # x=df1[df1['NAME_DISTRICT']=="Belleville School District"]
-    dislist=list(set(df1["name"]))
-    # print(len(dislist))
-    df2=df1[["name","month","active_user_count","practice_count"]]
-    # print(df2)
-    overall=pd.DataFrame(columns=["name","month","active_user_count","practice_count"])
-    # overall
-    result=[]
-    for k in dislist:
-    #     print(k)
-        df45=df2[df2["name"]==k]
-        df45.reset_index()
-    #     print(df45)
-        for i in range(1,13):
-            if i in list(df45["month"]):
-                pass
-            else:
-                a=max(list(df45.index))
-                df45.loc[a+i] = [k] +[i]+[0]+[0]
-  
-        sorted_df =df45.sort_values(by=['month'], ascending=True)
-    #     sorted_df1=sorted_df.reset_index()
-        result.append(sorted_df)
-        DF = pd.concat(result)
-    data = [['Aug', 8], ['Sep', 9], ['Oct', 10],['Nov', 11], ['Dec', 12], ['Jan', 1],['Feb', 2], ['Mar', 3], ['Apr', 4],['May', 5], ['Jun', 6], ['Jul', 7]] 
 
-    df9 = pd.DataFrame(data, columns = ['Monthname', 'month']) 
-
-    finaldf=pd.merge(df9,DF, on='month',how='left')
-    #     finaldf=finaldf.sort_values(by=['name'])
+        ids=list(df['_id'])
 
 
-    data={}
-    for i in dislist:
+    #     df3=DataFrame(list(collection.aggregate([
+    # {"$match":
+    #     {'$and': [
 
 
-        schoolname= finaldf[(finaldf.name ==i)].reset_index(drop = True)
-        active_user_count = schoolname['active_user_count'].tolist()
-        practice_count = schoolname['practice_count'].tolist()
+    #         {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
+    # {'USER_ID.schoolId._id':{'$in':ids}},
 
 
-        data[i] =practice_count
-    data=collections.OrderedDict(sorted(data.items()))
-    df['_id']=df['_id'].astype(str)
-    schoolid=  df['_id'].tolist()
-    schoolname=  df['name'].tolist()
-    data={'meanTemp':data,'schoolid':dict(zip(schoolname,schoolid))}
-    return json.dumps(data)
+    # #  {'MODIFIED_DATE':{'$gte':csy_first_date()}},
+    #     {'MODIFIED_DATE':{"$gte": myDatetime1 ,
+    #                              "$lte":myDatetime2}}
+    #     ]}},
+
+
+    #         {'$group':{'_id':'$USER_ID.schoolId._id','uc':{'$addToSet':'$USER_ID._id'},'pc':{'$sum':1},'NAME':{'$first':'$USER_ID.schoolId.NAME'}}},
+    #               {'$project':{'_id':1,'active_user_count':{'$size':'$uc'},'name':'$NAME','practice_count':'$pc'}},
+    #     { '$sort' : { 'active_user_count' : -1} },
+    # #     {'$limit':30}
+    #     ])))
+    #     top=list(df3['_id'])
+    # #     print(df3)
+    # #     df3.to_csv('file1.csv')
+        df22=DataFrame(list(collection.aggregate([
+        {"$match":
+            {'$and': [
+
+    #              {'USER_ID.ROLE_ID._id' :{'$eq':ObjectId("5f155b8a3b6800007900da2b")}},
+                {"USER_ID.INCOMPLETE_SIGNUP":{"$ne":"Y"}},
+        {'USER_ID.schoolId._id':{'$in':ids}},
+        # {'USER_ID.ROLE_ID._id' :{'$eq':ObjectId("5f155b8a3b6800007900da2b")}},
+
+    #      {'MODIFIED_DATE':{'$gte':csy_first_date()}},
+            {'MODIFIED_DATE':{"$gte": myDatetime1 ,
+                                 "$lte":myDatetime2}}]}},
+
+
+                {'$group':{'_id':{'school':'$USER_ID.schoolId._id','month':{'$month':'$MODIFIED_DATE'}},'uc':{'$addToSet':'$USER_ID._id'},'pc':{'$sum':1},'NAME':{'$first':'$USER_ID.schoolId.NAME'}}},
+                      {'$project':{'_id':0,'_id':'$_id.school','month':'$_id.month','active_user_count':{'$size':'$uc'},'school':'$NAME','practice_count':'$pc'}},
+            { '$sort' : { 'name' : 1,'month'  :1} },
+
+
+        # //               {'$count':'count'}
+                      ])))
+        if df22.empty is True:
+            df["month"]=0
+            df["active_user_count"]=0
+            df["practice_count"]=0
+            df1=df
+        else:
+            df2=pd.merge(df,df22, on='_id',how='left')
+            df1=df2
+        print(df1)
+        df1=df1.sort_values(by=['name'], ascending=True)
+        # x=df1[df1['NAME_DISTRICT']=="Belleville School District"]
+        dislist=list(set(df1["name"]))
+        # print(len(dislist))
+        df2=df1[["name","month","active_user_count","practice_count"]]
+        # print(df2)
+        overall=pd.DataFrame(columns=["name","month","active_user_count","practice_count"])
+        # overall
+        result=[]
+        for k in dislist:
+        #     print(k)
+            df45=df2[df2["name"]==k]
+            df45.reset_index()
+        #     print(df45)
+            for i in range(1,13):
+                if i in list(df45["month"]):
+                    pass
+                else:
+                    a=max(list(df45.index))
+                    df45.loc[a+i] = [k] +[i]+[0]+[0]
+
+            sorted_df =df45.sort_values(by=['month'], ascending=True)
+        #     sorted_df1=sorted_df.reset_index()
+            result.append(sorted_df)
+            DF = pd.concat(result)
+            print(DF)
+        data = [['Aug', 8], ['Sep', 9], ['Oct', 10],['Nov', 11], ['Dec', 12], ['Jan', 1],['Feb', 2], ['Mar', 3], ['Apr', 4],['May', 5], ['Jun', 6], ['Jul', 7]] 
+
+        df9 = pd.DataFrame(data, columns = ['Monthname', 'month']) 
+
+        finaldf=pd.merge(df9,DF, on='month',how='left')
+        #     finaldf=finaldf.sort_values(by=['name'])
+
+
+        data={}
+        for i in dislist:
+
+
+            schoolname= finaldf[(finaldf.name ==i)].reset_index(drop = True)
+            active_user_count = schoolname['active_user_count'].tolist()
+            practice_count = schoolname['practice_count'].tolist()
+
+
+            data[i] =practice_count
+        data=collections.OrderedDict(sorted(data.items()))
+        df['_id']=df['_id'].astype(str)
+        schoolid=  df['_id'].tolist()
+        schoolname=  df['name'].tolist()
+        data={'meanTemp':data,'schoolid':dict(zip(schoolname,schoolid))}
+        return json.dumps(data)
 
 
 @app.route('/teachersdistrictheatmap_oct13_/<districtid>/<startdate>/<enddate>')
@@ -21015,12 +21025,10 @@ def heat_district_family_active_(districtid,startdate,enddate):
 
 @app.route('/districtfeedbackrating_csy/<districtid>/<startdate>/<enddate>')
 def dis_schoolrating_csy__(districtid,startdate,enddate):
-
-    username=urllib.parse.quote_plus('adminIE')
-    password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
-    db=client.compass_beta 
-  
+    username = urllib.parse.quote_plus('adminIE')                                     #SwitchedToBeta
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username, password))
+    db=client.compass_beta
     collection = db.audio_feedback
     if districtid in disdic1:
         district=disdic1[districtid]
@@ -21052,6 +21060,9 @@ def dis_schoolrating_csy__(districtid,startdate,enddate):
          }},
         {'$project':{'_id':'$_id','school':'$schoolId._id' }}
         ])))
+
+    if df1.empty:
+        df1=pd.DataFrame({'_id':[],'school':[]})
 
     user=df1['_id'].tolist() 
 
@@ -21086,6 +21097,7 @@ def dis_schoolrating_csy__(districtid,startdate,enddate):
     return json.dumps(temp)
 
 
+
 @app.route('/districtsentimentdonut_csy/<districtid>/<startdate>/<enddate>')
 def dis_sentiment_pie(districtid,startdate,enddate):
     clean_list=[]
@@ -21100,11 +21112,10 @@ def dis_sentiment_pie(districtid,startdate,enddate):
     d1 = today.strftime("%Y-%m-%d")
     # myDatetimestrt = dateutil.parser.parse(date1)
     # myDatetimeend = dateutil.parser.parse(date2)
-    username=urllib.parse.quote_plus('adminIE')
-    password=urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username,password))  #BETA
-    db=client.compass_beta 
-   
+    username = urllib.parse.quote_plus('adminIE')                                     #SwitchedToBeta
+    password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+    client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username, password))
+    db=client.compass_beta
     collection = db.audio_feedback
     if districtid in disdic1:
         district=disdic1[districtid]
@@ -21134,6 +21145,9 @@ def dis_sentiment_pie(districtid,startdate,enddate):
          }},
         {'$project':{'_id':'$_id','school':'$schoolId._id' }}
         ])))
+
+    if df1.empty:
+        df1=pd.DataFrame({'_id':[],'school':[]})
 
     userid=df1['_id'].tolist() 
     x=['NA','N/A','n.a','.\n',"a\\n","a\n","v\n","v\\n","0-",'na\n','na','Write a feedback (optional)','Na','k,n/l','[pppppppppppsz']
