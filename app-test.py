@@ -4213,10 +4213,11 @@ def admin_portal_card_teacher(userid):
     if df0['district_admin'][0]=='Y':
         uemail = df0["EMAIL_ID"].to_list()
 
-        df00 = DataFrame(list(db.district_master.aggregate([
+        df00 = DataFrame(list(db.user_master.aggregate([
         {"$match":{'$and': [
-        {"ADMIN_EMAIL" : {"$in" : uemail}}]}},
-        {'$project':{'_id':1,"ADMIN_EMAIL" : 1}}])))
+        {'IS_DISTRICT_ADMIN' : "Y"},
+        {"EMAIL_ID" : {"$in" : uemail}}]}},
+        {'$project':{'_id':"$DISTRICT_ID._id","EMAIL_ID" : 1}}])))
 #         print(df00)
 
 
@@ -4758,6 +4759,7 @@ def admin_portal_card_teacher(userid):
 #             print('school_data')
             return json.dumps(data)
 
+# admin_portal_card_teacher("62bc6921ecfcab6d7924a28b")
 
 # admin_portal_card_teacher("628b5a6ad991361415a53b66")
 
@@ -17203,6 +17205,10 @@ def district_manage_invites(userid):
         {'$project':{'_id':1,"EMAIL_ID" : 1,'district_admin':'$IS_DISTRICT_ADMIN','school_admin':'$IS_ADMIN'}}])))
 #     print(df0)
 
+    if df0.empty==True:
+        data={"Total_invites":"0","Invite_sent":"0","invite_accepted":"0",'Remaining_invites':"0"}      
+        return json.dumps(data)
+
 
 
     if 'district_admin' not in df0.columns:
@@ -17213,10 +17219,11 @@ def district_manage_invites(userid):
     if df0['district_admin'][0]=='Y':
         uemail = df0["EMAIL_ID"].to_list()
 
-        df00 = DataFrame(list(db.district_master.aggregate([
+        df00 = DataFrame(list(db.user_master.aggregate([
         {"$match":{'$and': [
-        {"ADMIN_EMAIL" : {"$in" : uemail}}]}},
-        {'$project':{'_id':1,"ADMIN_EMAIL" : 1}}])))
+        {'IS_DISTRICT_ADMIN' : "Y"},
+        {"EMAIL_ID" : {"$in" : uemail}}]}},
+        {'$project':{'_id':"$DISTRICT_ID._id","EMAIL_ID" : 1}}])))
 #         print(df00)
 
 

@@ -4195,10 +4195,16 @@ def admin_portal_card_teacher(userid):
         {"$match":{'$and': [{"_id" : ObjectId(""+userid+"")}]}},
         {'$project':{'_id':1,"EMAIL_ID" : 1,'district_admin':'$IS_DISTRICT_ADMIN','school_admin':'$IS_ADMIN'}}])))
 #     print(df0)
+    if df0.empty==True:
+        data={"EMAIL": "", "Invite_sent": "0", "Remaining_invites": "0", "Subscription_expire_date": "0", 
+                  "Subscription_start_date": "0", "Total_invites": "0","Total_teachers": "0",
+                  "invite_accepted": "0", "login_history": "0", "mindful_minutes": "0","payment_Mode": "", 
+                  "practice_count": "0"}        
+        return json.dumps(data)
 
 
 
-    if 'district_admin' not in df0.columns:
+    if 'district_admin' not in df0.columns or df0.empty:
         df0['district_admin']=0
 
     # if df0[df0['district_admin']=='Y']:
@@ -4206,15 +4212,19 @@ def admin_portal_card_teacher(userid):
     if df0['district_admin'][0]=='Y':
         uemail = df0["EMAIL_ID"].to_list()
 
-        df00 = DataFrame(list(db.district_master.aggregate([
+        df00 = DataFrame(list(db.user_master.aggregate([
         {"$match":{'$and': [
-        {"ADMIN_EMAIL" : {"$in" : uemail}}]}},
-        {'$project':{'_id':1,"ADMIN_EMAIL" : 1}}])))
+        {'IS_DISTRICT_ADMIN' : "Y"},
+        {"EMAIL_ID" : {"$in" : uemail}}]}},
+        {'$project':{'_id':"$DISTRICT_ID._id","EMAIL_ID" : 1}}])))
 #         print(df00)
 
 
         if df00.empty==True:
-            data={'Result':0}        
+            data={"EMAIL": "", "Invite_sent": "0", "Remaining_invites": "0", "Subscription_expire_date": "0", 
+                  "Subscription_start_date": "0", "Total_invites": "0","Total_teachers": "0",
+                  "invite_accepted": "0", "login_history": "0", "mindful_minutes": "0","payment_Mode": "", 
+                  "practice_count": "0"}        
             return json.dumps(data)
         else:
             disid = df00["_id"].to_list()
@@ -4245,7 +4255,10 @@ def admin_portal_card_teacher(userid):
 
 #             print(df1)
             if df1.empty==True:
-                data={'Result':0}        
+                data={"EMAIL": "", "Invite_sent": "0", "Remaining_invites": "0", "Subscription_expire_date": "0", 
+                  "Subscription_start_date": "0", "Total_invites": "0","Total_teachers": "0",
+                  "invite_accepted": "0", "login_history": "0", "mindful_minutes": "0","payment_Mode": "", 
+                  "practice_count": "0"}        
                 return json.dumps(data)
 
             df5=DataFrame(list(collection.aggregate([{"$match":
@@ -4504,11 +4517,17 @@ def admin_portal_card_teacher(userid):
                           'State':{'$first':'$schoolId.STATE'},'INIVITES':{'$first':'$INVITES_ASSIGNED'},'EMAIL':{'$first':'$EMAIL_ID'},'admin':{'$first':'$IS_ADMIN'},'ROLE':{'$first':'$ROLE_ID.ROLE_id'}}},
                 {'$project':{'_id':1,'sid':'$sid','ADMIN':'$admin','EMAIL_ID':'$EMAIL','INIVITES':'$INIVITES'}}])))
         if df1.empty==True:
-            data={'Result':0}        
+            data={"EMAIL": "", "Invite_sent": "0", "Remaining_invites": "0", "Subscription_expire_date": "0", 
+                  "Subscription_start_date": "0", "Total_invites": "0","Total_teachers": "0",
+                  "invite_accepted": "0", "login_history": "0", "mindful_minutes": "0","payment_Mode": "", 
+                  "practice_count": "0"}      
             return json.dumps(data)
 
         if df1['_id'][0]==None:
-            data={'Result':0}        
+            data={"EMAIL": "", "Invite_sent": "0", "Remaining_invites": "0", "Subscription_expire_date": "0", 
+                  "Subscription_start_date": "0", "Total_invites": "0","Total_teachers": "0",
+                  "invite_accepted": "0", "login_history": "0", "mindful_minutes": "0","payment_Mode": "", 
+                  "practice_count": "0"}        
             return json.dumps(data)
         else:
             schoolid=str(df1['_id'][0])
@@ -16957,6 +16976,10 @@ def district_manage_invites(userid):
         {'$project':{'_id':1,"EMAIL_ID" : 1,'district_admin':'$IS_DISTRICT_ADMIN','school_admin':'$IS_ADMIN'}}])))
 #     print(df0)
 
+    if df0.empty==True:
+        data={"Total_invites":"0","Invite_sent":"0","invite_accepted":"0",'Remaining_invites':"0"}      
+        return json.dumps(data)
+
 
 
     if 'district_admin' not in df0.columns:
@@ -16967,10 +16990,11 @@ def district_manage_invites(userid):
     if df0['district_admin'][0]=='Y':
         uemail = df0["EMAIL_ID"].to_list()
 
-        df00 = DataFrame(list(db.district_master.aggregate([
+        df00 = DataFrame(list(db.user_master.aggregate([
         {"$match":{'$and': [
-        {"ADMIN_EMAIL" : {"$in" : uemail}}]}},
-        {'$project':{'_id':1,"ADMIN_EMAIL" : 1}}])))
+        {'IS_DISTRICT_ADMIN' : "Y"},
+        {"EMAIL_ID" : {"$in" : uemail}}]}},
+        {'$project':{'_id':"$DISTRICT_ID._id","EMAIL_ID" : 1}}])))
 #         print(df00)
 
 
