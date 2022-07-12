@@ -1311,9 +1311,213 @@ def mitpracticedatacard():
         key = card_df.columns[j]
         value = [str(card_df[card_df.columns[j]].iloc[0])]
         temp2.update({key:value})
-
-    
     return json.dumps(temp2)
+
+
+
+@app.route('/graph1mit/<daate>')
+def graph1mit_table(daate):
+    reader = geolite2.reader()
+    daate1=int(daate)/1000
+    DATE1 =time.strftime('%y/%m/%d 00:00:00', time.localtime(daate1))
+    #   print(DATE1,"SELECTED DATE")
+    datetime_object = datetime.datetime.strptime(DATE1, '%y/%m/%d %H:%M:%S')
+    minus=datetime_object
+    minus1 = minus.strftime("%d-%b-%Y").replace('-', ' ')
+
+    # mongo_uri = "mongodb://admin:" + urllib.parse.quote('I#L@teST^m0NGO_2o20!') + "@54.184.165.106:27017/"
+    # client = pymongo.MongoClient(mongo_uri)
+
+    username = urllib.parse.quote_plus('admin')
+    password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
+    client = MongoClient("mongodb://%s:%s@35.88.43.45:27017/" % (username, password))
+
+    db = client.compass
+    collection = db.user_master
+    dateStr = "2020-03-17T00:00:00.000Z"
+    myDatetime = dateutil.parser.parse(dateStr)
+    qr1=[{"$match":{'ROLE_ID._id':ObjectId("5f155b8a3b6800007900da2b"), 
+        "IS_DISABLED":{"$ne":"Y"},
+        "INCOMPLETE_SIGNUP":{"$ne":"Y"},
+        "EMAIL_ID":{'$not':{'$regex':'test', '$options':'i'}},
+        'USER_TYPE':{"$regex":'mit','$options':'i'}, 
+        "EMAIL_ID":{"$ne": ""},
+        "EMAIL_ID":{'$not':{'$regex':'1gen', '$options':'i'}},
+        "USER_NAME":{'$not':{'$regex':'test', '$options':'i'}},
+        "CREATED_DATE":{"$gt":myDatetime}}}, 
+    {'$group':{'_id':'$_id','Parents_Id':{'$first':'$_id'},'name':{'$first':'$schoolId.NAME'},'city':{'$first':'$schoolId.CITY'},'state':{'$first':'$schoolId.STATE'},
+    'country':{'$first':'$schoolId.COUNTRY'},
+    'ip_address':{'$first':'$IP_ADDRESS'}, 'Parents_Name':{'$first':'$USER_NAME'}, 'Parents_Email':{'$first':'$EMAIL_ID'}, 
+    'contact_number':{'$first':'$CONTACT_NUMBER'}, 'user_type':{'$first':'$USER_TYPE'}, 'Sign_Up_Date':{'$first':'$CREATED_DATE'}
+    }}
+    ]
+    collection2= db.audio_track_master
+    qr2= [
+        {"$match":
+        {"$and":[
+        {'USER_ID.IS_DISABLED':{"$ne":'Y'}},
+    {'USER_ID.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
+    {'USER_ID.schoolId.NAME':{"$not":{"$regex":'Blocked', '$options':'i'}}}, {'USER_ID.USER_TYPE':{'$regex':'mit', '$options':'i'}}, 
+    {'USER_ID.CREATED_DATE':{'$gt':myDatetime}}, 
+    {'USER_ID.EMAIL_ID':{'$not':{'$regex':'1gen', '$options':'i'}}}, 
+    {'USER_ID.EMAIL_ID':{'$not':{'$regex':'test', '$options':'i'}}}
+    ]}},
+    {"$match":
+    {"$and":[{'USER_ID.USER_NAME':{"$not":{"$regex":"Test",'$options':'i'}}},
+    {'USER_ID.USER_NAME':{"$not":{"$regex":'1gen','$options':'i'}}},
+    {'USER_ID.ROLE_ID._id':{'$eq':ObjectId("5f155b8a3b6800007900da2b")}}
+    ]
+    }}, 
+    {'$group':{'_id':'$USER_ID._id', 
+    'Practice_Count':{'$sum':1},'Last_Practice_Date':{'$max':'$MODIFIED_DATE'},'mindful_minutes':{'$sum':{'$round':[{'$divide':[{'$subtract':['$CURSOR_END','$cursorStart']}, 60]},2]}}
+    }} 
+        ]
+    collection3= db.login_logs
+    qr3=[
+        {"$match":
+        {"$and":[
+        {'USER_ID.IS_DISABLED':{"$ne":'Y'}}, 
+    {'USER_ID.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
+    {'USER_ID.schoolId.NAME':{"$not":{"$regex":'Blocked', '$options':'i'}}}, {'USER_ID.USER_TYPE':{'$regex':'mit', '$options':'i'}}, 
+    {'USER_ID.CREATED_DATE':{'$gt':myDatetime}}, {'USER_ID.EMAIL_ID':{'$not':{'$regex':'1gen', '$options':'i'}}}, 
+    {'USER_ID.EMAIL_ID':{'$not':{'$regex':'test', '$options':'i'}}}
+    ]}},
+    {"$match":
+    {"$and":[{'USER_ID.USER_NAME':{"$not":{"$regex":"Test",'$options':'i'}}},
+    {'USER_ID.USER_NAME':{"$not":{"$regex":'1gen','$options':'i'}}},
+    {'USER_ID.ROLE_ID._id':{'$eq':ObjectId("5f155b8a3b6800007900da2b")}}
+    ]
+    }}, 
+    {'$group':{'_id':'$USER_ID._id', 'Last_Login_Date':{'$max':'$LAST_LOGGED_IN'},
+    }}     
+        ]
+    um= list(collection.aggregate(qr1))
+    df_um= pd.DataFrame(um)
+    atd= list(collection2.aggregate(qr2))
+    df_atd= pd.DataFrame(atd)
+    ll= list(collection3.aggregate(qr3))
+    df_ll=pd.DataFrame(ll)
+    join=pd.merge(df_um, df_atd, how='left', on='_id')
+    df= pd.merge(join, df_ll, how='left', on='_id')
+    df.mindful_minutes=df.mindful_minutes.fillna(0)
+    df.mindful_minutes=df.mindful_minutes.astype('int64')
+    df['Last_Practice_Date']=pd.to_datetime(df['Last_Practice_Date'])
+    df['Last_Practice_Date'].fillna("NO PRACTICE", inplace=True)
+    df['Last_Login_Date']=pd.to_datetime(df['Last_Login_Date'])
+    df['Last_Login_Date'].fillna("NO LOGIN", inplace=True)
+    df['Sign_Up_Date']=pd.to_datetime(df['Sign_Up_Date'])
+    df['name'].fillna("NO SCHOOL INFO", inplace=True)
+    def country1(i):
+        location = reader.get(i)
+        c=(location['country']['names']['en'])
+        return c
+    def state1(i):
+        location = reader.get(i)
+        s=(location['subdivisions'][0]['names']['en'])
+        return s
+
+    def city1(i):
+        location = reader.get(i)
+        city=location['city']['names']['en']
+        return city
+
+    def pn_country(i):
+        import phonenumbers
+        import pycountry
+        from phonenumbers.phonenumberutil import (
+        region_code_for_country_code,
+        region_code_for_number,)
+        pn = phonenumbers.parse('+'+i)   
+        country = pycountry.countries.get(alpha_2=region_code_for_number(pn))
+        con=country.name
+        return con
+
+    ip=df['ip_address'].tolist()
+    phone_number=df['contact_number'].tolist()
+    Parents_Name=df['Parents_Name'].tolist()
+    Parents_Email=df.Parents_Email.tolist()
+    School_Name=df['name'].tolist()
+    state=df['state'].tolist()
+    country=df['country'].tolist()
+    city=df['city'].tolist()
+    sign_up_date=df['Sign_Up_Date'].tolist()
+    last_prac_date=df['Last_Practice_Date'].tolist()
+    last_login_date=df['Last_Login_Date'].tolist()
+    practice_count=df['Practice_Count'].tolist()
+    mindful_minutes=df['mindful_minutes'].tolist()
+
+    for i in range(len(ip)):
+
+        if country[i] is None:
+            try:
+                country[i]=country1(ip[i])
+            except:
+                pass
+        elif country[i]=='null':
+            try:
+                country[i]=country1(ip[i])
+            except:
+                pass
+        if city[i] is None:
+            try:
+                city[i]=city1(ip[i])
+            except:
+                pass
+        elif city[i]=='null':
+            try:
+                city[i]=city1(ip[i])
+            except:
+                pass
+        if state[i] is None:
+
+            try:
+                state[i]=state1(ip[i])
+            except:
+                pass
+        elif state[i] =='NO state info':
+
+            try:
+                state[i]=state1(ip[i])
+            except:
+                pass    
+        if country[i] is None:
+            try:
+                country[i]=pn_country(phone_number[i])
+            except:
+                pass
+        if country[i] is None:
+            country[i]=''
+        if state[i] is None:
+            state[i]=''
+        if  last_prac_date[i] != 'NO PRACTICE' :
+
+            last_prac_date[i]=(last_prac_date[i]).strftime('%d %b %Y')
+        else:
+
+            last_prac_date[i]="NO PRACTICE"
+
+        if  last_login_date[i] != 'NO LOGIN' :
+
+            last_login_date[i]=(last_login_date[i]).strftime('%d %b %Y')
+
+        else:
+
+            last_login_date[i]="NO LOGIN"
+
+        if sign_up_date[i] is not None:
+
+            sign_up_date[i]=(sign_up_date[i]).strftime('%d %b %Y')
+    #             print(sign_up_date[i])
+    #             print(sign_up_date[i])
+
+    state12 =  [each_string.lower() for each_string in state]
+    cv={'pnn':Parents_Name,'pe':Parents_Email,'co':country,'pn':phone_number,'sn':School_Name,'ct':city,
+                            'st':state12,'sp':sign_up_date,
+                            'll':last_login_date,'lp':last_prac_date,'pc':practice_count}
+    dftry = pd.DataFrame.from_dict(cv).fillna(0)
+    dftry= dftry.drop("co", axis=1) 
+    dftry1=dftry[dftry["sp"].str.contains(minus1, na=False)]
+    return json.dumps({"data":dftry1.values.tolist()})
 
 
 
