@@ -23631,6 +23631,48 @@ def ukraine_campaign():
 
 
 
+@app.route('/districschooldetails/<trackid>')
+def district_schools(trackid):
+    client = MongoClient('mongodb://admin:F5tMazRj47cYqm33e@35.88.43.45:27017/')
+    db=client.compass
+    if len(list(db.district_master.find({'_id':ObjectId(str(trackid))})))>0:
+        district_id=trackid
+        districtinfo={
+            '5f2609807a1c0000950bb45a':'LAUSD',
+            '5f2609807a1c0000950bb45c':'Comox Valley School District'
+        }
+
+
+        if district_id in list(districtinfo):        
+            district_name=districtinfo[district_id]
+        else:
+            districtname=list(db.district_master.find({'_id':ObjectId(district_id)}))
+            district_name=districtname[0].get('DISTRICT_NAME')
+
+        #         districtname=list(db.district_master.find({'_id':ObjectId(district_id)}))
+
+        school_details=pd.DataFrame(list(db.school_master.aggregate([{'$match':{'$and':[
+            {'CATEGORY':{'$regex':district_name,'$options':'i'}},
+            {'IS_PORTAL':'Y'}]}},{'$project':{
+            '_id':0,
+            'SCHOOL_ID':'$_id',
+            'SCHOOL_NAME':'$NAME',
+            "ADDRESS":'$ADDRESS',
+            'CITY':'$CITY',
+            'STATE':'$STATE',
+            'COUNTRY':'$COUNTRY'}}])))
+        
+        school_details['SCHOOL_ID']=school_details['SCHOOL_ID'].astype('str')
+        
+        temp=school_details.to_dict('records')
+        
+        return json.dumps(temp,sort_keys=False)
+    
+    else:
+        return json.dumps({'Status':0})
+
+
+
 @app.route('/School_Search')
 def Practice_streak():
     return render_template('School_Search.html')
