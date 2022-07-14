@@ -5295,6 +5295,9 @@ def admin_portal_table(userid):
         {"$match":{'$and': [{"_id" : ObjectId(""+userid+"")}]}},
         {'$project':{'_id':1,"EMAIL_ID" : 1,'district_admin':'$IS_DISTRICT_ADMIN'}}])))
 #     print(df0)
+    if df0.empty==True:
+        data={"INVITE_SENT" : [], "INVITE_ACCEPTED" : []}        
+        return json.dumps(data)
 
 
 
@@ -5315,7 +5318,7 @@ def admin_portal_table(userid):
 #         print(df00)
 
         if df00.empty==True:
-            temp={'Result':0}
+            temp={"INVITE_SENT" : [], "INVITE_ACCEPTED" : []}
             return json.dumps(temp, default=str)
         else:
             disid = df00["_id"].to_list()
@@ -5351,7 +5354,7 @@ def admin_portal_table(userid):
             {'$project':{'_id':1}}])))
 
             if df1.empty==True:
-                temp={'Result':0}
+                temp={"INVITE_SENT" : [], "INVITE_ACCEPTED" : []}
                 return json.dumps(temp, default=str)
             else:
                 userid = df1["_id"].to_list()
@@ -5411,6 +5414,11 @@ def admin_portal_table(userid):
             {'$project':{'_id':'$INVITED_USER_ID._id',"User_Name" : "$INVITED_USER_ID.USER_NAME",
                          "EMAIL_ID" : '$INVITED_USER_ID.EMAIL_ID','accepted':'$STATUS'}}
             ])))
+    
+            print(df2)
+            if df2.empty==True:
+                temp={"INVITE_SENT" : [], "INVITE_ACCEPTED" : []}
+                return json.dumps(temp, default=str)
 
             df2_Y = df2[df2["accepted"] == "Y"]
             df2_N = df2[df2["accepted"] == "N"]
@@ -5561,12 +5569,15 @@ def admin_portal_table(userid):
             return json.dumps(temp, default=str)
     
     else:
-      
+        username = urllib.parse.quote_plus('admin')
+        password = urllib.parse.quote_plus('F5tMazRj47cYqm33e')
+        client = MongoClient("mongodb://%s:%s@35.88.43.45:27017/" % (username, password))
+        db=client.compass
 
-        username = urllib.parse.quote_plus('adminIE')                                     #SwitchedToBeta
-        password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
-        client = MongoClient("mongodb://%s:%s@35.87.63.194:27017/" % (username, password))
-        db=client.compass_beta
+        # username = urllib.parse.quote_plus('adminIE')                                     #SwitchedToBeta
+        # password = urllib.parse.quote_plus('CtZh5Nqp8Qn9LHUDx2GH')
+        # client = MongoClient("mongodb://%s:%s@54.184.165.106:27017/" % (username, password))
+        # db=client.compass_beta
 
         from datetime import datetime
 
@@ -5598,13 +5609,13 @@ def admin_portal_table(userid):
         {'$project':{'_id':'$schoolId._id'}}])))
 
         if df1.empty==True:
-            temp={'Result':0}
+            temp={"INVITE_SENT" : [], "INVITE_ACCEPTED" : []}
             return json.dumps(temp, default=str)
 
         else:
             schoolid=str(df1['_id'][0])
 
-        #     print(schoolid)
+#             print(schoolid)
             df5=DataFrame(list(db.user_master.aggregate([{"$match":
             {'$and': [
             {'ROLE_ID._id' :{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
@@ -5630,6 +5641,7 @@ def admin_portal_table(userid):
             {'$project':{'_id': "$_id",'ADMIN':'$IS_ADMIN','INIVITES':'$INVITES_ASSIGNED'}}])))
 
             user_id = list(df5["_id"])
+#             print(df5)
 
 
             df2=DataFrame(list(db.invite_master.aggregate([
@@ -5661,7 +5673,12 @@ def admin_portal_table(userid):
             {'$project':{'_id':'$INVITED_USER_ID._id',"User_Name" : "$INVITED_USER_ID.USER_NAME",
                          "EMAIL_ID" : '$INVITED_USER_ID.EMAIL_ID','accepted':'$STATUS'}}
             ])))
-
+            
+#             print(df2)
+            if df2.empty==True:
+                temp={"INVITE_SENT" : [], "INVITE_ACCEPTED" : []}
+                return json.dumps(temp, default=str)
+            
             df2_Y = df2[df2["accepted"] == "Y"]
             df2_N = df2[df2["accepted"] == "N"]
             user_id1 = list(df2["_id"])
@@ -5807,8 +5824,9 @@ def admin_portal_table(userid):
             temp = {"INVITE_SENT" : final_df.to_numpy().tolist(), "INVITE_ACCEPTED" : final_df1.to_numpy().tolist()}
 #             print('school_data',len(final_df),len(final_df1))
             return json.dumps(temp, default=str)
+
         
-# admin_portal_table("5f33c1c3418467201938f2e3")
+# admin_portal_table("62863021a015d865b4a02287")
 
 #############################################################33333
 
