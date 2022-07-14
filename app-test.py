@@ -4906,10 +4906,11 @@ def admin_table(userid):
 
         uemail = df0["EMAIL_ID"].to_list()
 
-        df00 = DataFrame(list(db.district_master.aggregate([
+        df00 = DataFrame(list(db.user_master.aggregate([
         {"$match":{'$and': [
-        {"ADMIN_EMAIL" : {"$in" : uemail}}]}},
-        {'$project':{'_id':1,"ADMIN_EMAIL" : 1}}])))
+        {'IS_DISTRICT_ADMIN' : "Y"},
+        {"EMAIL_ID" : {"$in" : uemail}}]}},
+        {'$project':{'_id':"$DISTRICT_ID._id","EMAIL_ID" : 1}}])))
 #         print(df00)
 
         if df00.empty==True:
@@ -5507,10 +5508,11 @@ def admin_portal_table(userid):
 
         uemail = df0["EMAIL_ID"].to_list()
 
-        df00 = DataFrame(list(db.district_master.aggregate([
+        df00 = DataFrame(list(db.user_master.aggregate([
         {"$match":{'$and': [
-        {"ADMIN_EMAIL" : {"$in" : uemail}}]}},
-        {'$project':{'_id':1,"ADMIN_EMAIL" : 1}}])))
+        {'IS_DISTRICT_ADMIN' : "Y"},
+        {"EMAIL_ID" : {"$in" : uemail}}]}},
+        {'$project':{'_id':"$DISTRICT_ID._id","EMAIL_ID" : 1}}])))
 #         print(df00)
 
         if df00.empty==True:
