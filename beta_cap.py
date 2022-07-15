@@ -23379,7 +23379,8 @@ def district_schools(trackid):
         district_id=trackid
         districtinfo={
             '5f2609807a1c0000950bb45a':'LAUSD',
-            '5f2609807a1c0000950bb45c':'Comox Valley School District'
+            '5f2609807a1c0000950bb45c':'Comox Valley School District',
+            '5fe318b14d0ca68d7baf889e':'BLUE'
         }
 
 
@@ -23398,15 +23399,26 @@ def district_schools(trackid):
             'SCHOOL_ID':'$_id',
             'SCHOOL_NAME':'$NAME',
             "ADDRESS":'$ADDRESS',
+            'ZIP_CODE':'$ZIPCODE',
             'CITY':'$CITY',
             'STATE':'$STATE',
             'COUNTRY':'$COUNTRY'}}])))
         
-        school_details['SCHOOL_ID']=school_details['SCHOOL_ID'].astype('str')
-        
-        temp=school_details.to_dict('records')
-        
-        return json.dumps(temp,sort_keys=False)
+        if school_details.empty:
+            return json.dumps({'Status':0})
+        else:
+            if 'ZIP_CODE' not in list(school_details.columns):
+                school_details['ZIP_CODE']=''
+            else:
+                school_details['ZIP_CODE']=school_details['ZIP_CODE'].fillna('')
+
+
+
+            school_details['SCHOOL_ID']=school_details['SCHOOL_ID'].astype('str')
+
+            temp=school_details.to_dict('records')
+
+            return json.dumps(temp,sort_keys=False)
     
     else:
         return json.dumps({'Status':0})
