@@ -23409,10 +23409,18 @@ def district_schools(trackid):
         else:
             if 'ZIP_CODE' not in list(school_details.columns):
                 school_details['ZIP_CODE']=''
-            else:
-                school_details['ZIP_CODE']=school_details['ZIP_CODE'].fillna('')
+            if 'SCHOOL_NAME' not in list(school_details.columns):
+                school_details['SCHOOL_NAME']=''
+            if 'ADDRESS' not in list(school_details.columns):
+                school_details['ADDRESS']=''
+            if 'CITY' not in list(school_details.columns):
+                school_details['CITY']=''
+            if 'STATE' not in list(school_details.columns):
+                school_details['STATE']=''
+            if 'COUNTRY' not in list(school_details.columns):
+                school_details['COUNTRY']=''
 
-
+            school_details=school_details.fillna('')
 
             school_details['SCHOOL_ID']=school_details['SCHOOL_ID'].astype('str')
 
