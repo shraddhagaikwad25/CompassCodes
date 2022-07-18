@@ -12067,12 +12067,15 @@ def user_activity_feed(userid,lower,upper):
                             #  { "$sort" : { 'MODIFIED_DATE' : -1}}
                              ])
                 df2= DataFrame(list(collection2)).fillna(0)
-                df2=df2.sort_values(by=['MODIFIED_DATE'],ascending=False).reset_index(drop=True)
-                print(df2,'df2')
+                print("DF2 /n/n", df2)
+                
+
                 if df2.empty == True:
                     feedback_detail="NO INFO"
-                    print(feedback_detail,'feedback_detail')
+#                     print(feedback_detail,'feedback_detail')
+                    print("DF2 /n/n", df2)
                 else:
+                    df2=df2.sort_values(by=['MODIFIED_DATE'],ascending=False).reset_index(drop=True)
                     feedback_detail=df2[["USER_NAME","RATING","COMMENT","AUDIO_NAME","NARRATOR","MODIFIED_DATE"]]
     #                     [int(lower):int(upper)].values.tolist()
                     feedback_detail=feedback_detail[(feedback_detail['MODIFIED_DATE'] >= lower) & 
