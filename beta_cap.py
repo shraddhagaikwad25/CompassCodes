@@ -11062,32 +11062,27 @@ def user_activity_feed(userid,lower,upper):
         {'IS_DISABLED':{"$ne":'Y'}},
     {'IS_BLOCKED':{"$ne":'Y'}}, 
     {'INCOMPLETE_SIGNUP':{"$ne":'Y'}},
-    {'schoolId.NAME':{"$not":{"$regex":'Blocked', '$options':'i'}}}]}},
-    # {"$match":
-    # {"$and":[{'USER_NAME':{"$not":{"$regex":"Test",'$options':'i'}}},
-    # {'USER_NAME':{"$not":{"$regex":'1gen','$options':'i'}}}]}},
+    {'schoolId.NAME':{"$not":{"$regex":'Blocked', '$options':'i'}}},
+    {'USER_NAME':{"$not":{"$regex":"Test",'$options':'i'}}},
+    {'USER_NAME':{"$not":{"$regex":'1gen','$options':'i'}}}]}},
     {"$project":{"_id":0,"USER_ID":"$_id","ID":"$schoolId._id","DID":"$DISTRICT_ID._id",
                  "school_name":"$schoolId.NAME","USER_NAME":"$USER_NAME","email_id":"$EMAIL_ID",
-                 "district_name":"$DISTRICT_ID.DISTRICT_NAME",'district_admin':'$IS_DISTRICT_ADMIN'}}
-
-    ])
+                 "district_name":"$DISTRICT_ID.DISTRICT_NAME",'district_admin':'$IS_DISTRICT_ADMIN'}}])
     df= DataFrame(list(collection)).fillna(0)
-    print(df)
-    
+  
     # query for program_audio
     collectionpa = db.programs_audio.aggregate([
         {"$project":{"_id":0,"program_name":"$AUDIO_TITLE","NARRATOR":"$NARRATOR_ID.NARRATOR_NAME","IMAGE_URL":1}}
 
         ])
     dfpa= DataFrame(list(collectionpa)).fillna(0)
-#     print(dfpa,'dfpa')
     
     if df.empty == True:
         temp="NO INFO"
         return json.dumps({'data':temp})
     else:
         user_email=df["email_id"]
-    ####
+
     if 'district_admin' not in df.columns:
         df['district_admin']=0
 
@@ -11108,10 +11103,9 @@ def user_activity_feed(userid,lower,upper):
                     {"EMAIL_ID":{"$ne":user_email[0]}},
                 {'IS_DISABLED':{"$ne":'Y'}},
             {'INCOMPLETE_SIGNUP':{"$ne":'Y'}},
-            {'schoolId.NAME':{"$not":{"$regex":'Blocked', '$options':'i'}}}]}},
-            # {"$match":
-            # {"$and":[{'USER_NAME':{"$not":{"$regex":"Test",'$options':'i'}}},
-            # {'USER_NAME':{"$not":{"$regex":'1gen','$options':'i'}}}]}},
+            {'schoolId.NAME':{"$not":{"$regex":'Blocked', '$options':'i'}}},
+            {'USER_NAME':{"$not":{"$regex":"Test",'$options':'i'}}},
+            {'USER_NAME':{"$not":{"$regex":'1gen','$options':'i'}}}]}},
             {"$project":{"_id":0,"USER_ID":"$_id","USER_NAME":"$USER_NAME","email_id":"$EMAIL_ID"}}
 
             ])
@@ -11122,17 +11116,15 @@ def user_activity_feed(userid,lower,upper):
             else:
                 EMAIL_list=dfTU["email_id"].tolist()
                 USER_ID_list=dfTU["USER_ID"].tolist()
-                2##########
                 collectionTU2 = db.user_master.aggregate([
                 {"$match":
                     {"$and":[
                     {"DISTRICT_ID._id":{"$in":DISTRICT_ID}},
                     {'IS_DISABLED':{"$ne":'Y'}},
                 {'INCOMPLETE_SIGNUP':{"$ne":'Y'}},
-                {'schoolId.NAME':{"$not":{"$regex":'Blocked', '$options':'i'}}}]}},
-                # {"$match":
-                # {"$and":[{'USER_NAME':{"$not":{"$regex":"Test",'$options':'i'}}},
-                # {'USER_NAME':{"$not":{"$regex":'1gen','$options':'i'}}}]}},
+                {'schoolId.NAME':{"$not":{"$regex":'Blocked', '$options':'i'}}},
+                {'USER_NAME':{"$not":{"$regex":"Test",'$options':'i'}}},
+                {'USER_NAME':{"$not":{"$regex":'1gen','$options':'i'}}}]}},
                 {"$project":{"_id":0,"USER_ID":"$_id","USER_NAME":"$USER_NAME","email_id":"$EMAIL_ID"}}
 
                 ])
@@ -11141,16 +11133,15 @@ def user_activity_feed(userid,lower,upper):
                 ##########################Practice_info##################################
                 collection1 = db.audio_track_master.aggregate([{"$match":{
                          '$and':[ {"USER_ID.EMAIL_ID":{"$in":EMAIL_list}},
-                                #  { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                                #    {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                                #      {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
+                                 { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                                   {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                                     {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
                           {'USER_ID.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
                           {'USER_ID.IS_DISABLED':{"$ne":'Y'}},
-                #           {'USER_ID.IS_BLOCKED':{"$ne":'Y'}},
+                          {'USER_ID.IS_BLOCKED':{"$ne":'Y'}},
                           {'USER_ID.schoolId.NAME':{'$not':{"$regex":'Blocked','$options':'i'}}},
                           {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':0}},
-                        #   {'USER_ID.schoolId.NAME':{'$not':{"$regex":'test','$options':'i'}}},
-        #                  {'MODIFIED_DATE':{'$gte':Ddate}}       
+                          {'USER_ID.schoolId.NAME':{'$not':{"$regex":'test','$options':'i'}}},
                           ]}},
                          {"$project":{"USER_ID":'$USER_ID._id',"PROGRAM":"$PROGRAM_AUDIO_ID._id","program_name":"$PROGRAM_AUDIO_ID.AUDIO_TITLE",
                                      "NARRATOR":"$PROGRAM_AUDIO_ID.NARRATEDBY",'Last_Prac_Date':'$MODIFIED_DATE',"DISTRICT_NAME":"$DISTRICT_ID.DISTRICT_NAME",
@@ -11184,21 +11175,19 @@ def user_activity_feed(userid,lower,upper):
                              { "$sort" : { 'Last_Practice_Date' : -1}}
                                                               ])
                 df1= DataFrame(list(collection1)).fillna(0)
-                print(df1)
+               
                 if df1.empty == True:
                     practice_detail="NO INFO"
                 else:
                     df11=pd.merge(dfpa,df1,on=["program_name","NARRATOR"],how="right")
-                    practice_detail=df11[["USER_NAME","program_name","NARRATOR","Last_Practice_Date","IMAGE_URL"]]
-    #                     [int(lower):int(upper)].values.tolist()
-                    practice_detail=practice_detail[(practice_detail['Last_Practice_Date'] >= lower) & 
-                                (practice_detail['Last_Practice_Date'] < upper)].values.tolist()
+                    practice_detail=df11[["USER_NAME","program_name","NARRATOR","Last_Practice_Date","IMAGE_URL"]][int(lower):int(upper)].values.tolist()
+                    
                 ########################Feedback_Rating_detail##############################
                 collection2=db.audio_feedback.aggregate([{"$match":{'$and':[
                     {"USER.EMAIL_ID":{"$in":EMAIL_list}},
-                        # { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                        # {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                        #  {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
+                        { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                        {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                         {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
                           {'USER.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
                           {'USER.IS_DISABLED':{"$ne":'Y'}}, 
                          ]}},
@@ -11207,24 +11196,19 @@ def user_activity_feed(userid,lower,upper):
                                       'MODIFIED_DATE':{ "$dateToString": { "format": "%Y-%m-%d", "date":"$MODIFIED_DATE"}}, 
                                       "RATING":'$RATING',"COMMENT":'$COMMENT',
                                       "AUDIO_NAME":"$AUDIO_ID.AUDIO_TITLE","NARRATOR":"$AUDIO_ID.NARRATEDBY"}},
-                            #  { "$sort" : { 'MODIFIED_DATE' : -1}}
                             ])
                 df2= DataFrame(list(collection2)).fillna(0)
                 df2=df2.sort_values(by=['MODIFIED_DATE'],ascending=False).reset_index(drop=True)
                 if df2.empty == True:
                     feedback_detail="NO INFO"
                 else:
-                    feedback_detail=df2[["USER_NAME","RATING","COMMENT","AUDIO_NAME","NARRATOR","MODIFIED_DATE"]]
-    #                     [int(lower):int(upper)].values.tolist()
-                    feedback_detail=feedback_detail[(feedback_detail['MODIFIED_DATE'] >= lower) & 
-                                (feedback_detail['MODIFIED_DATE'] < upper)].values.tolist()
-                ########################Comment_detail##############################
+                    feedback_detail=df2[["USER_NAME","RATING","COMMENT","AUDIO_NAME","NARRATOR","MODIFIED_DATE"]][int(lower):int(upper)].values.tolist()
+                    ########################Comment_detail##############################
                 collection3=db.story_comments.aggregate([{"$match":{'$and':[
                             {"EMAIL":{"$in":EMAIL_list}},
                             {'COMMENT_TEXT':{'$ne': " "}},
                             {'COMMENT_TEXT':{'$ne': ""}},
                             {'COMMENT_TEXT':{'$exists':1}},
-        #                     {'CREATED_DATE':{'$gte':Ddate}}  
                             ]}},
 
                          {"$project":{"_id":0,"EMAIL":1,'CREATED_DATE':{ "$dateToString": { "format": "%Y-%m-%d", "date":"$CREATED_DATE"}},"COMMENT_TEXT":1}}
@@ -11235,10 +11219,8 @@ def user_activity_feed(userid,lower,upper):
                     comments_detail="NO INFO"
                 else:
                     df3=pd.merge(df3,dfTU,how="left",left_on="EMAIL",right_on="email_id")
-                    comments_detail=df3[["USER_NAME","COMMENT_TEXT",'CREATED_DATE']]
-    #                     [int(lower):int(upper)].values.tolist()
-                    comments_detail=comments_detail[(comments_detail['CREATED_DATE'] >= lower) & 
-                                (comments_detail['CREATED_DATE'] < upper)].values.tolist()
+                    comments_detail=df3[["USER_NAME","COMMENT_TEXT",'CREATED_DATE']][int(lower):int(upper)].values.tolist()
+                    
                 #################teacher_signup#####################
                 collection4 = db.user_master.aggregate([
                 {"$match":
@@ -11247,12 +11229,10 @@ def user_activity_feed(userid,lower,upper):
                          {'ROLE_ID._id':{'$ne':ObjectId("5f155b8a3b6800007900da2b")}},
                     {'IS_DISABLED':{"$ne":'Y'}},
                 {'IS_BLOCKED':{"$ne":'Y'}}, 
-                {'INCOMPLETE_SIGNUP':{"$ne":'Y'}},
-        #         {'CREATED_DATE':{'$gte':Ddate}},          
-                {'schoolId.NAME':{"$not":{"$regex":'Blocked', '$options':'i'}}}]}},
-                # {"$match":
-                # {"$and":[{'USER_NAME':{"$not":{"$regex":"Test",'$options':'i'}}},
-                # {'USER_NAME':{"$not":{"$regex":'1gen','$options':'i'}}}]}},
+                {'INCOMPLETE_SIGNUP':{"$ne":'Y'}},          
+                {'schoolId.NAME':{"$not":{"$regex":'Blocked', '$options':'i'}}},
+                {'USER_NAME':{"$not":{"$regex":"Test",'$options':'i'}}},
+                {'USER_NAME':{"$not":{"$regex":'1gen','$options':'i'}}}]}},
                 {"$project":{"_id":0,"USER_ID":"$_id","ID":"$DISTRICT_ID._id","USER_NAME":"$USER_NAME",
                              'CREATED_DATE':{ "$dateToString": { "format": "%Y-%m-%d", "date":"$CREATED_DATE"}},
                             "email_id":"$EMAIL_ID"}},
@@ -11263,10 +11243,8 @@ def user_activity_feed(userid,lower,upper):
                 if df5.empty == True:
                     teacher_signup="NO INFO"
                 else:
-                    teacher_signup=df5[["USER_NAME",'CREATED_DATE']]
-    #                     [int(lower):int(upper)].values.tolist()
-                    teacher_signup=teacher_signup[(teacher_signup['CREATED_DATE'] >= lower) & 
-                                (teacher_signup['CREATED_DATE'] < upper)].values.tolist()
+                    teacher_signup=df5[["USER_NAME",'CREATED_DATE']][int(lower):int(upper)].values.tolist()
+                    
                 #################parent_signup#####################
                 collection5 = db.user_master.aggregate([
                 {"$match":
@@ -11274,12 +11252,10 @@ def user_activity_feed(userid,lower,upper):
                     {"DISTRICT_ID._id":{"$in":DISTRICT_ID}},
                          {'ROLE_ID._id':{'$eq':ObjectId("5f155b8a3b6800007900da2b")}},
                     {'IS_DISABLED':{"$ne":'Y'}},
-                {'INCOMPLETE_SIGNUP':{"$ne":'Y'}},
-        #         {'CREATED_DATE':{'$gte':Ddate}},          
-                {'schoolId.NAME':{"$not":{"$regex":'Blocked', '$options':'i'}}}]}},
-                # {"$match":
-                # {"$and":[{'USER_NAME':{"$not":{"$regex":"Test",'$options':'i'}}},
-                # {'USER_NAME':{"$not":{"$regex":'1gen','$options':'i'}}}]}},
+                {'INCOMPLETE_SIGNUP':{"$ne":'Y'}},        
+                {'schoolId.NAME':{"$not":{"$regex":'Blocked', '$options':'i'}}},
+                {'USER_NAME':{"$not":{"$regex":"Test",'$options':'i'}}},
+                {'USER_NAME':{"$not":{"$regex":'1gen','$options':'i'}}}]}},
                 {"$project":{"_id":0,"USER_ID":"$_id","ID":"$DISTRICT_ID._id","USER_NAME":"$USER_NAME",
                              'CREATED_DATE':{ "$dateToString": { "format": "%Y-%m-%d", "date":"$CREATED_DATE"}},
                             "email_id":"$EMAIL_ID"}},
@@ -11290,26 +11266,24 @@ def user_activity_feed(userid,lower,upper):
                 if df6.empty == True:
                     parent_signup="NO INFO"
                 else:
-                    parent_signup=df6[["USER_NAME",'CREATED_DATE']]
-    #                     [int(lower):int(upper)].values.tolist()
-                    parent_signup=parent_signup[(parent_signup['CREATED_DATE'] >= lower) & 
-                                (parent_signup['CREATED_DATE'] < upper)].values.tolist()
+                    parent_signup=df6[["USER_NAME",'CREATED_DATE']][int(lower):int(upper)].values.tolist()
+                    
                 ################tunein_signup####################
                 collection6 = db.tune_in_master.aggregate([
                        {"$match":{
                                  '$and':[
-                                    #  { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                                    #        {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                                    #          {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
+                                     { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                                           {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                                             {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
                                           {"USER_ID.EMAIL_ID":{"$in":EMAIL_list1}},
                                   {'USER_ID.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
                                   {'USER_ID.IS_DISABLED':{"$ne":'Y'}},
-        #                         {'CREATED_DATE':{'$gte':Ddate}}, 
+       
                                 {'IS_OPTED_OUT':"N"},
                                   {'USER_ID.schoolId.NAME':{'$not':{"$regex":'Blocked','$options':'i'}}},
                                   {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':0}},
-                                #   {'EMAIL':{"$not":{"$regex":"test",'$options':'i'}}},
-                                #   {'EMAIL':{"$not":{"$regex":"1gen",'$options':'i'}}}
+                                  {'EMAIL':{"$not":{"$regex":"test",'$options':'i'}}},
+                                  {'EMAIL':{"$not":{"$regex":"1gen",'$options':'i'}}}
                                   ]}},
                     {"$group":{"_id":{"NAME":"$NAME","EMAIL":"$EMAIL",'CREATED_DATE':'$CREATED_DATE'},
                               'IS_OPTED_OUT':{"$first":'$IS_OPTED_OUT'},
@@ -11335,28 +11309,23 @@ def user_activity_feed(userid,lower,upper):
                 else:
                     if 'Parent_NAME' not in df7.columns:
                         df7["Parent_NAME"]="Parent"
-                        tunein_signup=df7[["Parent_NAME",'CREATED_DATE']]
-    #                         [int(lower):int(upper)].values.tolist()
-                        tunein_signup=tunein_signup[(tunein_signup['CREATED_DATE'] >= lower) & 
-                                    (tunein_signup['CREATED_DATE'] < upper)].values.tolist()
+                        tunein_signup=df7[["Parent_NAME",'CREATED_DATE']][int(lower):int(upper)].values.tolist()
+                        
                     else:
                         df7.loc[df7["Parent_NAME"] == 0, "Parent_NAME"] = "Parent"
-                        tunein_signup=df7[["Parent_NAME",'CREATED_DATE']]
-    #                         [int(lower):int(upper)].values.tolist()
-                        tunein_signup=tunein_signup[(tunein_signup['CREATED_DATE'] >= lower) & 
-                                    (tunein_signup['CREATED_DATE'] < upper)].values.tolist()
+                        tunein_signup=df7[["Parent_NAME",'CREATED_DATE']][int(lower):int(upper)].values.tolist()
+                        
                 ################tunein_audio_track####################
                 collection7 = db.tune_in_audio_track_detail.aggregate([{"$match":{
                          '$and':[ {"USER_ID.EMAIL_ID":{"$in":EMAIL_list1}},
-                                #  { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                                #    {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                                #      {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
+                                 { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                                   {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                                     {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
                           {'USER_ID.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
                           {'USER_ID.IS_DISABLED':{"$ne":'Y'}},
                           {'USER_ID.schoolId.NAME':{'$not':{"$regex":'Blocked','$options':'i'}}},
                           {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':0}},
                           {'USER_ID.schoolId.NAME':{'$not':{"$regex":'test','$options':'i'}}},
-        #                  {'CREATED_DATE':{'$gte':Ddate}}       
                           ]}},
                             {"$project":{"INVITEE_EMAIL":'$INVITEE_EMAIL',"PROGRAM":"$PROGRAM_AUDIO_ID._id","program_name":"$PROGRAM_AUDIO_ID.AUDIO_TITLE",
                             "NARRATOR":"$PROGRAM_AUDIO_ID.NARRATEDBY",'Last_Prac_Date':'$CREATED_DATE',"DISTRICT_NAME":"$DISTRICT_ID.DISTRICT_NAME",
@@ -11391,28 +11360,19 @@ def user_activity_feed(userid,lower,upper):
                     if 'Parent_NAME' not in df8.columns:
                         df8["Parent_NAME"]="Parent"
                         df18=pd.merge(dfpa,df8,on=["program_name","NARRATOR"],how="right")
-                        tunein_audio_track=df18[["Parent_NAME","program_name","NARRATOR",'Last_Practice_Date',"IMAGE_URL"]]
-    #                         [int(lower):int(upper)].values.tolist()
-                        tunein_audio_track=tunein_audio_track[(tunein_audio_track['Last_Practice_Date'] >= lower) & 
-                                    (tunein_audio_track['Last_Practice_Date'] < upper)].values.tolist()
+                        tunein_audio_track=df18[["Parent_NAME","program_name","NARRATOR",'Last_Practice_Date',"IMAGE_URL"]][int(lower):int(upper)].values.tolist()
+                        
                     else:
                         df8.loc[df8["Parent_NAME"] == 0, "Parent_NAME"] = "Parent"
                         df18=pd.merge(dfpa,df8,on=["program_name","NARRATOR"],how="right")
-                        tunein_audio_track=df18[["Parent_NAME","program_name","NARRATOR",'Last_Practice_Date',"IMAGE_URL"]]
-    #                         [int(lower):int(upper)].values.tolist()
-                        tunein_audio_track=tunein_audio_track[(tunein_audio_track['Last_Practice_Date'] >= lower) & 
-                                    (tunein_audio_track['Last_Practice_Date'] < upper)].values.tolist()
+                        tunein_audio_track=df18[["Parent_NAME","program_name","NARRATOR",'Last_Practice_Date',"IMAGE_URL"]][int(lower):int(upper)].values.tolist()
 
                 temp={"practice_detail":practice_detail,"comments_detail":comments_detail,"feedback_detail":feedback_detail,"teacher_signup":teacher_signup,
                      "parent_signup":parent_signup,"tunein_signup":tunein_signup,"tunein_audio_track":tunein_audio_track}
-                print(len(practice_detail),len(comments_detail),len(feedback_detail),len(teacher_signup),
-                      len(parent_signup),len(tunein_signup),len(tunein_audio_track))
-                print('district')
             return json.dumps(temp)
     
     ################################# 
-    else:
-        
+    else:        
         if 'ID' not in list(df.columns):
             channel=['schoology_master','clever_master']
             cat=[]
@@ -11420,7 +11380,6 @@ def user_activity_feed(userid,lower,upper):
                 mycollection = db[channel[i]]
                 output = mycollection.find({'USER_ID._id':ObjectId(""+userid+"")})
                 df_check= DataFrame(list(output))
-#                 print(df_check)
                 if df_check.empty:
                     pass        
                 else:
@@ -11433,7 +11392,6 @@ def user_activity_feed(userid,lower,upper):
                     channel_userids=db.schoology_master.distinct('USER_ID._id')
                 else:
                     channel_userids=db.clever_master.distinct('USER_ID._id')
-#                 print(channel_userids,'channel_userids')
 
                 collectionTU = db.user_master.aggregate([
 
@@ -11443,10 +11401,9 @@ def user_activity_feed(userid,lower,upper):
                         {"EMAIL_ID":{"$ne":user_email[0]}},
                     {'IS_DISABLED':{"$ne":'Y'}},
                 {'INCOMPLETE_SIGNUP':{"$ne":'Y'}},
-                {'schoolId.NAME':{"$not":{"$regex":'Blocked', '$options':'i'}}}]}},
-                # {"$match":
-                # {"$and":[{'USER_NAME':{"$not":{"$regex":"Test",'$options':'i'}}},
-                # {'USER_NAME':{"$not":{"$regex":'1gen','$options':'i'}}}]}},
+                {'schoolId.NAME':{"$not":{"$regex":'Blocked', '$options':'i'}}},
+                {'USER_NAME':{"$not":{"$regex":"Test",'$options':'i'}}},
+                {'USER_NAME':{"$not":{"$regex":'1gen','$options':'i'}}}]}},
                 {"$project":{"_id":0,"USER_ID":"$_id","USER_NAME":"$USER_NAME","email_id":"$EMAIL_ID"}}
 
                 ])
@@ -11458,17 +11415,15 @@ def user_activity_feed(userid,lower,upper):
                 else:
                     EMAIL_list=dfTU["email_id"].tolist()
                     USER_ID_list=dfTU["USER_ID"].tolist()
-                    2##########
                     collectionTU2 = db.user_master.aggregate([
                     {"$match":
                         {"$and":[
                         {"_id":{"$in":channel_userids}},#schoolid removed
                         {'IS_DISABLED':{"$ne":'Y'}},
                     {'INCOMPLETE_SIGNUP':{"$ne":'Y'}},
-                    {'schoolId.NAME':{"$not":{"$regex":'Blocked', '$options':'i'}}}]}},
-                    # {"$match":
-                    # {"$and":[{'USER_NAME':{"$not":{"$regex":"Test",'$options':'i'}}},
-                    # {'USER_NAME':{"$not":{"$regex":'1gen','$options':'i'}}}]}},
+                    {'schoolId.NAME':{"$not":{"$regex":'Blocked', '$options':'i'}}},
+                    {'USER_NAME':{"$not":{"$regex":"Test",'$options':'i'}}},
+                    {'USER_NAME':{"$not":{"$regex":'1gen','$options':'i'}}}]}},
                     {"$project":{"_id":0,"USER_ID":"$_id","USER_NAME":"$USER_NAME","email_id":"$EMAIL_ID"}}
 
                     ])
@@ -11477,16 +11432,15 @@ def user_activity_feed(userid,lower,upper):
                     ##########################Practice_info##################################
                     collection1 = db.audio_track_master.aggregate([{"$match":{
                              '$and':[ {"USER_ID.EMAIL_ID":{"$in":EMAIL_list}},
-                                    #  { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                                    #    {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                                    #      {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
+                                     { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                                       {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                                         {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
                               {'USER_ID.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
                               {'USER_ID.IS_DISABLED':{"$ne":'Y'}},
-                    #           {'USER_ID.IS_BLOCKED':{"$ne":'Y'}},
+                              {'USER_ID.IS_BLOCKED':{"$ne":'Y'}},
                               {'USER_ID.schoolId.NAME':{'$not':{"$regex":'Blocked','$options':'i'}}},
                               {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':0}},
-                            #   {'USER_ID.schoolId.NAME':{'$not':{"$regex":'test','$options':'i'}}},
-            #                  {'MODIFIED_DATE':{'$gte':Ddate}}       
+                              {'USER_ID.schoolId.NAME':{'$not':{"$regex":'test','$options':'i'}}},
                               ]}},
                              {"$project":{"USER_ID":'$USER_ID._id',"PROGRAM":"$PROGRAM_AUDIO_ID._id","program_name":"$PROGRAM_AUDIO_ID.AUDIO_TITLE",
                                          "NARRATOR":"$PROGRAM_AUDIO_ID.NARRATEDBY",'Last_Prac_Date':'$MODIFIED_DATE',"school_name":"$USER_ID.schoolId.NAME",
@@ -11524,16 +11478,14 @@ def user_activity_feed(userid,lower,upper):
                         practice_detail="NO INFO"
                     else:
                         df11=pd.merge(dfpa,df1,on=["program_name","NARRATOR"],how="right")
-                        practice_detail=df11[["USER_NAME","program_name","NARRATOR","Last_Practice_Date","IMAGE_URL"]]
-        #                     [int(lower):int(upper)].values.tolist()
-                        practice_detail=practice_detail[(practice_detail['Last_Practice_Date'] >= lower) & 
-                                    (practice_detail['Last_Practice_Date'] < upper)].values.tolist()
+                        practice_detail=df11[["USER_NAME","program_name","NARRATOR","Last_Practice_Date","IMAGE_URL"]][int(lower):int(upper)].values.tolist()
+                        
                     ########################Feedback_Rating_detail##############################
                     collection2=db.audio_feedback.aggregate([{"$match":{'$and':[
                         {"USER.EMAIL_ID":{"$in":EMAIL_list}},
-                            # { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                            # {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                            #  {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
+                            { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                            {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                             {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
                               {'USER.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
                               {'USER.IS_DISABLED':{"$ne":'Y'}}, 
                              ]}},
@@ -11542,24 +11494,20 @@ def user_activity_feed(userid,lower,upper):
                                           'MODIFIED_DATE':{ "$dateToString": { "format": "%Y-%m-%d", "date":"$MODIFIED_DATE"}}, 
                                           "RATING":'$RATING',"COMMENT":'$COMMENT',
                                           "AUDIO_NAME":"$AUDIO_ID.AUDIO_TITLE","NARRATOR":"$AUDIO_ID.NARRATEDBY"}},
-                                #  { "$sort" : { 'MODIFIED_DATE' : -1}}
                                  ])
                     df2= DataFrame(list(collection2)).fillna(0)
                     df2=df2.sort_values(by=['MODIFIED_DATE'],ascending=False).reset_index(drop=True)
                     if df2.empty == True:
                         feedback_detail="NO INFO"
                     else:
-                        feedback_detail=df2[["USER_NAME","RATING","COMMENT","AUDIO_NAME","NARRATOR","MODIFIED_DATE"]]
-        #                     [int(lower):int(upper)].values.tolist()
-                        feedback_detail=feedback_detail[(feedback_detail['MODIFIED_DATE'] >= lower) & 
-                                    (feedback_detail['MODIFIED_DATE'] < upper)].values.tolist()
+                        feedback_detail=df2[["USER_NAME","RATING","COMMENT","AUDIO_NAME","NARRATOR","MODIFIED_DATE"]][int(lower):int(upper)].values.tolist()
+                        
                     ########################Comment_detail##############################
                     collection3=db.story_comments.aggregate([{"$match":{'$and':[
                                 {"EMAIL":{"$in":EMAIL_list}},
                                 {'COMMENT_TEXT':{'$ne': " "}},
                                 {'COMMENT_TEXT':{'$ne': ""}},
                                 {'COMMENT_TEXT':{'$exists':1}},
-            #                     {'CREATED_DATE':{'$gte':Ddate}}  
                                 ]}},
 
                              {"$project":{"_id":0,"EMAIL":1,'CREATED_DATE':{ "$dateToString": { "format": "%Y-%m-%d", "date":"$CREATED_DATE"}},"COMMENT_TEXT":1}}
@@ -11570,10 +11518,8 @@ def user_activity_feed(userid,lower,upper):
                         comments_detail="NO INFO"
                     else:
                         df3=pd.merge(df3,dfTU,how="left",left_on="EMAIL",right_on="email_id")
-                        comments_detail=df3[["USER_NAME","COMMENT_TEXT",'CREATED_DATE']]
-        #                     [int(lower):int(upper)].values.tolist()
-                        comments_detail=comments_detail[(comments_detail['CREATED_DATE'] >= lower) & 
-                                    (comments_detail['CREATED_DATE'] < upper)].values.tolist()
+                        comments_detail=df3[["USER_NAME","COMMENT_TEXT",'CREATED_DATE']][int(lower):int(upper)].values.tolist()
+                        
                     #################teacher_signup#####################
                     collection4 = db.user_master.aggregate([
                     {"$match":
@@ -11583,11 +11529,10 @@ def user_activity_feed(userid,lower,upper):
                         {'IS_DISABLED':{"$ne":'Y'}},
                     {'IS_BLOCKED':{"$ne":'Y'}}, 
                     {'INCOMPLETE_SIGNUP':{"$ne":'Y'}},
-            #         {'CREATED_DATE':{'$gte':Ddate}},          
-                    {'schoolId.NAME':{"$not":{"$regex":'Blocked', '$options':'i'}}}]}},
-                    # {"$match":
-                    # {"$and":[{'USER_NAME':{"$not":{"$regex":"Test",'$options':'i'}}},
-                    # {'USER_NAME':{"$not":{"$regex":'1gen','$options':'i'}}}]}},
+            
+                    {'schoolId.NAME':{"$not":{"$regex":'Blocked', '$options':'i'}}},
+                    {'USER_NAME':{"$not":{"$regex":"Test",'$options':'i'}}},
+                    {'USER_NAME':{"$not":{"$regex":'1gen','$options':'i'}}}]}},
                     {"$project":{"_id":0,"USER_ID":"$_id","ID":"$schoolId._id","USER_NAME":"$USER_NAME",
                                  'CREATED_DATE':{ "$dateToString": { "format": "%Y-%m-%d", "date":"$CREATED_DATE"}},
                                 "email_id":"$EMAIL_ID"}},
@@ -11598,10 +11543,8 @@ def user_activity_feed(userid,lower,upper):
                     if df5.empty == True:
                         teacher_signup="NO INFO"
                     else:
-                        teacher_signup=df5[["USER_NAME",'CREATED_DATE']]
-        #                     [int(lower):int(upper)].values.tolist()
-                        teacher_signup=teacher_signup[(teacher_signup['CREATED_DATE'] >= lower) & 
-                                    (teacher_signup['CREATED_DATE'] < upper)].values.tolist()
+                        teacher_signup=df5[["USER_NAME",'CREATED_DATE']][int(lower):int(upper)].values.tolist()
+                        
                     #################parent_signup#####################
                     collection5 = db.user_master.aggregate([
                     {"$match":
@@ -11610,11 +11553,10 @@ def user_activity_feed(userid,lower,upper):
                              {'ROLE_ID._id':{'$eq':ObjectId("5f155b8a3b6800007900da2b")}},
                         {'IS_DISABLED':{"$ne":'Y'}},
                     {'INCOMPLETE_SIGNUP':{"$ne":'Y'}},
-            #         {'CREATED_DATE':{'$gte':Ddate}},          
-                    {'schoolId.NAME':{"$not":{"$regex":'Blocked', '$options':'i'}}}]}},
-                    # {"$match":
-                    # {"$and":[{'USER_NAME':{"$not":{"$regex":"Test",'$options':'i'}}},
-                    # {'USER_NAME':{"$not":{"$regex":'1gen','$options':'i'}}}]}},
+                     
+                    {'schoolId.NAME':{"$not":{"$regex":'Blocked', '$options':'i'}}},
+                   {'USER_NAME':{"$not":{"$regex":"Test",'$options':'i'}}},
+                    {'USER_NAME':{"$not":{"$regex":'1gen','$options':'i'}}}]}},
                     {"$project":{"_id":0,"USER_ID":"$_id","ID":"$schoolId._id","USER_NAME":"$USER_NAME",
                                  'CREATED_DATE':{ "$dateToString": { "format": "%Y-%m-%d", "date":"$CREATED_DATE"}},
                                 "email_id":"$EMAIL_ID"}},
@@ -11625,26 +11567,24 @@ def user_activity_feed(userid,lower,upper):
                     if df6.empty == True:
                         parent_signup="NO INFO"
                     else:
-                        parent_signup=df6[["USER_NAME",'CREATED_DATE']]
-        #                     [int(lower):int(upper)].values.tolist()
-                        parent_signup=parent_signup[(parent_signup['CREATED_DATE'] >= lower) & 
-                                    (parent_signup['CREATED_DATE'] < upper)].values.tolist()
+                        parent_signup=df6[["USER_NAME",'CREATED_DATE']][int(lower):int(upper)].values.tolist()
+                        
                     ################tunein_signup####################
                     collection6 = db.tune_in_master.aggregate([
                            {"$match":{
                                      '$and':[
-                                        #  { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                                        #        {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                                        #          {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
+                                         { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                                               {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                                                 {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
                                               {"USER_ID.EMAIL_ID":{"$in":EMAIL_list1}},
                                       {'USER_ID.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
                                       {'USER_ID.IS_DISABLED':{"$ne":'Y'}},
-            #                         {'CREATED_DATE':{'$gte':Ddate}}, 
+            
                                     {'IS_OPTED_OUT':"N"},
                                       {'USER_ID.schoolId.NAME':{'$not':{"$regex":'Blocked','$options':'i'}}},
                                       {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':0}},
-                                    #   {'EMAIL':{"$not":{"$regex":"test",'$options':'i'}}},
-                                    #   {'EMAIL':{"$not":{"$regex":"1gen",'$options':'i'}}}
+                                      {'EMAIL':{"$not":{"$regex":"test",'$options':'i'}}},
+                                      {'EMAIL':{"$not":{"$regex":"1gen",'$options':'i'}}}
                                       ]}},
                         {"$group":{"_id":{"NAME":"$NAME","EMAIL":"$EMAIL",'CREATED_DATE':'$CREATED_DATE'},
                                   'IS_OPTED_OUT':{"$first":'$IS_OPTED_OUT'},
@@ -11670,28 +11610,23 @@ def user_activity_feed(userid,lower,upper):
                     else:
                         if 'Parent_NAME' not in df7.columns:
                             df7["Parent_NAME"]="Parent"
-                            tunein_signup=df7[["Parent_NAME",'CREATED_DATE']]
-        #                         [int(lower):int(upper)].values.tolist()
-                            tunein_signup=tunein_signup[(tunein_signup['CREATED_DATE'] >= lower) & 
-                                        (tunein_signup['CREATED_DATE'] < upper)].values.tolist()
+                            tunein_signup=df7[["Parent_NAME",'CREATED_DATE']][int(lower):int(upper)].values.tolist()
+                            
                         else:
                             df7.loc[df7["Parent_NAME"] == 0, "Parent_NAME"] = "Parent"
-                            tunein_signup=df7[["Parent_NAME",'CREATED_DATE']]
-        #                         [int(lower):int(upper)].values.tolist()
-                            tunein_signup=tunein_signup[(tunein_signup['CREATED_DATE'] >= lower) & 
-                                        (tunein_signup['CREATED_DATE'] < upper)].values.tolist()
+                            tunein_signup=df7[["Parent_NAME",'CREATED_DATE']][int(lower):int(upper)].values.tolist()
+                            
                     ################tunein_audio_track####################
                     collection7 = db.tune_in_audio_track_detail.aggregate([{"$match":{
                              '$and':[ {"USER_ID.EMAIL_ID":{"$in":EMAIL_list1}},
-                                    #  { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                                    #    {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                                    #      {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
+                                     { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                                       {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                                         {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
                               {'USER_ID.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
                               {'USER_ID.IS_DISABLED':{"$ne":'Y'}},
                               {'USER_ID.schoolId.NAME':{'$not':{"$regex":'Blocked','$options':'i'}}},
                               {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':0}},
-                              {'USER_ID.schoolId.NAME':{'$not':{"$regex":'test','$options':'i'}}},
-            #                  {'CREATED_DATE':{'$gte':Ddate}}       
+                              {'USER_ID.schoolId.NAME':{'$not':{"$regex":'test','$options':'i'}}},  
                               ]}},
                                 {"$project":{"INVITEE_EMAIL":'$INVITEE_EMAIL',"PROGRAM":"$PROGRAM_AUDIO_ID._id","program_name":"$PROGRAM_AUDIO_ID.AUDIO_TITLE",
                                 "NARRATOR":"$PROGRAM_AUDIO_ID.NARRATEDBY",'Last_Prac_Date':'$CREATED_DATE',"school_name":"$USER_ID.schoolId.NAME",
@@ -11726,22 +11661,16 @@ def user_activity_feed(userid,lower,upper):
                         if 'Parent_NAME' not in df8.columns:
                             df8["Parent_NAME"]="Parent"
                             df18=pd.merge(dfpa,df8,on=["program_name","NARRATOR"],how="right")
-                            tunein_audio_track=df18[["Parent_NAME","program_name","NARRATOR",'Last_Practice_Date',"IMAGE_URL"]]
-        #                         [int(lower):int(upper)].values.tolist()
-                            tunein_audio_track=tunein_audio_track[(tunein_audio_track['Last_Practice_Date'] >= lower) & 
-                                        (tunein_audio_track['Last_Practice_Date'] < upper)].values.tolist()
+                            tunein_audio_track=df18[["Parent_NAME","program_name","NARRATOR",'Last_Practice_Date',"IMAGE_URL"]][int(lower):int(upper)].values.tolist()
+                            
                         else:
                             df8.loc[df8["Parent_NAME"] == 0, "Parent_NAME"] = "Parent"
                             df18=pd.merge(dfpa,df8,on=["program_name","NARRATOR"],how="right")
-                            tunein_audio_track=df18[["Parent_NAME","program_name","NARRATOR",'Last_Practice_Date',"IMAGE_URL"]]
-        #                         [int(lower):int(upper)].values.tolist()
-                            tunein_audio_track=tunein_audio_track[(tunein_audio_track['Last_Practice_Date'] >= lower) & 
-                                        (tunein_audio_track['Last_Practice_Date'] < upper)].values.tolist()
+                            tunein_audio_track=df18[["Parent_NAME","program_name","NARRATOR",'Last_Practice_Date',"IMAGE_URL"]][int(lower):int(upper)].values.tolist()
+                            
                     temp={"practice_detail":practice_detail,"comments_detail":comments_detail,"feedback_detail":feedback_detail,"teacher_signup":teacher_signup,
                          "parent_signup":parent_signup,"tunein_signup":tunein_signup,"tunein_audio_track":tunein_audio_track}
-                    print(len(practice_detail),len(comments_detail),len(feedback_detail),len(teacher_signup),
-                              len(parent_signup),len(tunein_signup),len(tunein_audio_track))
-                    print('schoology,clever')
+                    
                 return json.dumps(temp)
 
             else:
@@ -11759,10 +11688,9 @@ def user_activity_feed(userid,lower,upper):
                     {"EMAIL_ID":{"$ne":user_email[0]}},
                 {'IS_DISABLED':{"$ne":'Y'}},
             {'INCOMPLETE_SIGNUP':{"$ne":'Y'}},
-            {'schoolId.NAME':{"$not":{"$regex":'Blocked', '$options':'i'}}}]}},
-            # {"$match":
-            # {"$and":[{'USER_NAME':{"$not":{"$regex":"Test",'$options':'i'}}},
-            # {'USER_NAME':{"$not":{"$regex":'1gen','$options':'i'}}}]}},
+            {'schoolId.NAME':{"$not":{"$regex":'Blocked', '$options':'i'}}},
+            {'USER_NAME':{"$not":{"$regex":"Test",'$options':'i'}}},
+            {'USER_NAME':{"$not":{"$regex":'1gen','$options':'i'}}}]}},
             {"$project":{"_id":0,"USER_ID":"$_id","USER_NAME":"$USER_NAME","email_id":"$EMAIL_ID"}}
 
             ])
@@ -11772,7 +11700,7 @@ def user_activity_feed(userid,lower,upper):
                 temp="NO INFO"
             else:
                 EMAIL_list=dfTU["email_id"].tolist()
-                print(EMAIL_list)
+                # print(EMAIL_list)
                 USER_ID_list=dfTU["USER_ID"].tolist()
                 ##########
                 collectionTU2 = db.user_master.aggregate([
@@ -11781,10 +11709,9 @@ def user_activity_feed(userid,lower,upper):
                     {"schoolId._id":{"$in":school_list}},
                     {'IS_DISABLED':{"$ne":'Y'}},
                 {'INCOMPLETE_SIGNUP':{"$ne":'Y'}},
-                {'schoolId.NAME':{"$not":{"$regex":'Blocked', '$options':'i'}}}]}},
-                # {"$match":
-                # {"$and":[{'USER_NAME':{"$not":{"$regex":"Test",'$options':'i'}}},
-                # {'USER_NAME':{"$not":{"$regex":'1gen','$options':'i'}}}]}},
+                {'schoolId.NAME':{"$not":{"$regex":'Blocked', '$options':'i'}}},
+                {'USER_NAME':{"$not":{"$regex":"Test",'$options':'i'}}},
+                {'USER_NAME':{"$not":{"$regex":'1gen','$options':'i'}}}]}},
                 {"$project":{"_id":0,"USER_ID":"$_id","USER_NAME":"$USER_NAME","email_id":"$EMAIL_ID"}}
 
                 ])
@@ -11793,16 +11720,16 @@ def user_activity_feed(userid,lower,upper):
                 ##########################Practice_info##################################
                 collection1 = db.audio_track_master.aggregate([{"$match":{
                          '$and':[ {"USER_ID.EMAIL_ID":{"$in":EMAIL_list}},
-                                #  { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                                #    {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                                #      {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
+                                 { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                                   {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                                     {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
                           {'USER_ID.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
                           {'USER_ID.IS_DISABLED':{"$ne":'Y'}},
-                #           {'USER_ID.IS_BLOCKED':{"$ne":'Y'}},
+                          {'USER_ID.IS_BLOCKED':{"$ne":'Y'}},
                           {'USER_ID.schoolId.NAME':{'$not':{"$regex":'Blocked','$options':'i'}}},
                           {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':0}},
-                        #   {'USER_ID.schoolId.NAME':{'$not':{"$regex":'test','$options':'i'}}},
-        #                  {'MODIFIED_DATE':{'$gte':Ddate}}       
+                          {'USER_ID.schoolId.NAME':{'$not':{"$regex":'test','$options':'i'}}},
+            
                           ]}},
                          {"$project":{"USER_ID":'$USER_ID._id',"PROGRAM":"$PROGRAM_AUDIO_ID._id","program_name":"$PROGRAM_AUDIO_ID.AUDIO_TITLE",
                                      "NARRATOR":"$PROGRAM_AUDIO_ID.NARRATEDBY",'Last_Prac_Date':'$MODIFIED_DATE',"school_name":"$USER_ID.schoolId.NAME",
@@ -11841,17 +11768,14 @@ def user_activity_feed(userid,lower,upper):
                     practice_detail="NO INFO"
                 else:
                     df11=pd.merge(dfpa,df1,on=["program_name","NARRATOR"],how="right")
-                    practice_detail=df11[["USER_NAME","program_name","NARRATOR","Last_Practice_Date","IMAGE_URL"]]
-        #             [int(lower):int(upper)].values.tolist()
-                    practice_detail=practice_detail[(practice_detail['Last_Practice_Date'] >= lower) & 
-                                (practice_detail['Last_Practice_Date'] < upper)].values.tolist()
-        #             print(practice_detail,'practice_detail')
+                    practice_detail=df11[["USER_NAME","program_name","NARRATOR","Last_Practice_Date","IMAGE_URL"]][int(lower):int(upper)].values.tolist()
+                    
                 ########################Feedback_Rating_detail##############################
                 collection2=db.audio_feedback.aggregate([{"$match":{'$and':[
                     {"USER.EMAIL_ID":{"$in":EMAIL_list}},
-                        # { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                        # {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                        #  {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
+                        { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                        {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                         {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
                           {'USER.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
                           {'USER.IS_DISABLED':{"$ne":'Y'}}, 
                          ]}},
@@ -11860,27 +11784,23 @@ def user_activity_feed(userid,lower,upper):
                                       'MODIFIED_DATE':{ "$dateToString": { "format": "%Y-%m-%d", "date":"$MODIFIED_DATE"}}, 
                                       "RATING":'$RATING',"COMMENT":'$COMMENT',
                                       "AUDIO_NAME":"$AUDIO_ID.AUDIO_TITLE","NARRATOR":"$AUDIO_ID.NARRATEDBY"}},
-                            #  { "$sort" : { 'MODIFIED_DATE' : -1}}
+                           
                              ])
                 df2= DataFrame(list(collection2)).fillna(0)
-                df2=df2.sort_values(by=['MODIFIED_DATE'],ascending=False).reset_index(drop=True)
-                print(df2,'df2')
+                # print("DF2 /n/n", df2)
+                
+
                 if df2.empty == True:
                     feedback_detail="NO INFO"
-                    print(feedback_detail,'feedback_detail')
                 else:
-                    feedback_detail=df2[["USER_NAME","RATING","COMMENT","AUDIO_NAME","NARRATOR","MODIFIED_DATE"]]
-    #                     [int(lower):int(upper)].values.tolist()
-                    feedback_detail=feedback_detail[(feedback_detail['MODIFIED_DATE'] >= lower) & 
-                                (feedback_detail['MODIFIED_DATE'] < upper)].values.tolist()
-                    print(feedback_detail,'feedback_detail')
+                    df2=df2.sort_values(by=['MODIFIED_DATE'],ascending=False).reset_index(drop=True)
+                    feedback_detail=df2[["USER_NAME","RATING","COMMENT","AUDIO_NAME","NARRATOR","MODIFIED_DATE"]][int(lower):int(upper)].values.tolist()
                 ########################Comment_detail##############################
                 collection3=db.story_comments.aggregate([{"$match":{'$and':[
                             {"EMAIL":{"$in":EMAIL_list}},
                             {'COMMENT_TEXT':{'$ne': " "}},
                             {'COMMENT_TEXT':{'$ne': ""}},
-                            {'COMMENT_TEXT':{'$exists':1}},
-        #                     {'CREATED_DATE':{'$gte':Ddate}}  
+                            {'COMMENT_TEXT':{'$exists':1}},                      
                             ]}},
 
                          {"$project":{"_id":0,"EMAIL":1,'CREATED_DATE':{ "$dateToString": { "format": "%Y-%m-%d", "date":"$CREATED_DATE"}},"COMMENT_TEXT":1}}
@@ -11891,10 +11811,7 @@ def user_activity_feed(userid,lower,upper):
                     comments_detail="NO INFO"
                 else:
                     df3=pd.merge(df3,dfTU,how="left",left_on="EMAIL",right_on="email_id")
-                    comments_detail=df3[["USER_NAME","COMMENT_TEXT",'CREATED_DATE']]
-        #                 [int(lower):int(upper)].values.tolist()
-                    comments_detail=comments_detail[(comments_detail['CREATED_DATE'] >= lower) & 
-                                (comments_detail['CREATED_DATE'] < upper)].values.tolist()
+                    comments_detail=df3[["USER_NAME","COMMENT_TEXT",'CREATED_DATE']][int(lower):int(upper)].values.tolist()
                 #################teacher_signup#####################
                 collection4 = db.user_master.aggregate([
                 {"$match":
@@ -11904,11 +11821,10 @@ def user_activity_feed(userid,lower,upper):
                     {'IS_DISABLED':{"$ne":'Y'}},
                 {'IS_BLOCKED':{"$ne":'Y'}}, 
                 {'INCOMPLETE_SIGNUP':{"$ne":'Y'}},
-        #         {'CREATED_DATE':{'$gte':Ddate}},          
-                {'schoolId.NAME':{"$not":{"$regex":'Blocked', '$options':'i'}}}]}},
-                # {"$match":
-                # {"$and":[{'USER_NAME':{"$not":{"$regex":"Test",'$options':'i'}}},
-                # {'USER_NAME':{"$not":{"$regex":'1gen','$options':'i'}}}]}},
+            
+                {'schoolId.NAME':{"$not":{"$regex":'Blocked', '$options':'i'}}},
+                {'USER_NAME':{"$not":{"$regex":"Test",'$options':'i'}}},
+                {'USER_NAME':{"$not":{"$regex":'1gen','$options':'i'}}}]}},
                 {"$project":{"_id":0,"USER_ID":"$_id","ID":"$schoolId._id","USER_NAME":"$USER_NAME",
                              'CREATED_DATE':{ "$dateToString": { "format": "%Y-%m-%d", "date":"$CREATED_DATE"}},
                             "email_id":"$EMAIL_ID"}},
@@ -11919,11 +11835,7 @@ def user_activity_feed(userid,lower,upper):
                 if df5.empty == True:
                     teacher_signup="NO INFO"
                 else:
-                    teacher_signup=df5[["USER_NAME",'CREATED_DATE']]
-        #                 [int(lower):int(upper)].values.tolist()
-                    teacher_signup=teacher_signup[(teacher_signup['CREATED_DATE'] >= lower) & 
-                                (teacher_signup['CREATED_DATE'] < upper)].values.tolist()
-#                     print(teacher_signup,'teacher_signup')
+                    teacher_signup=df5[["USER_NAME",'CREATED_DATE']][int(lower):int(upper)].values.tolist()
                 #################parent_signup#####################
                 collection5 = db.user_master.aggregate([
                 {"$match":
@@ -11932,11 +11844,10 @@ def user_activity_feed(userid,lower,upper):
                          {'ROLE_ID._id':{'$eq':ObjectId("5f155b8a3b6800007900da2b")}},
                     {'IS_DISABLED':{"$ne":'Y'}},
                 {'INCOMPLETE_SIGNUP':{"$ne":'Y'}},
-                #         {'CREATED_DATE':{'$gte':Ddate}},          
-                {'schoolId.NAME':{"$not":{"$regex":'Blocked', '$options':'i'}}}]}},
-                # {"$match":
-                # {"$and":[{'USER_NAME':{"$not":{"$regex":"Test",'$options':'i'}}},
-                # {'USER_NAME':{"$not":{"$regex":'1gen','$options':'i'}}}]}},
+                       
+                {'schoolId.NAME':{"$not":{"$regex":'Blocked', '$options':'i'}}},
+                {'USER_NAME':{"$not":{"$regex":"Test",'$options':'i'}}},
+                {'USER_NAME':{"$not":{"$regex":'1gen','$options':'i'}}}]}},
                 {"$project":{"_id":0,"USER_ID":"$_id","ID":"$schoolId._id","USER_NAME":"$USER_NAME",
                              'CREATED_DATE':{ "$dateToString": { "format": "%Y-%m-%d", "date":"$CREATED_DATE"}},
                             "email_id":"$EMAIL_ID"}},
@@ -11948,27 +11859,22 @@ def user_activity_feed(userid,lower,upper):
                 if df6.empty == True:
                     parent_signup="NO INFO"
                 else:
-                    parent_signup=df6[["USER_NAME",'CREATED_DATE']]
-                #                 [int(lower):int(upper)].values.tolist()
-                    parent_signup=parent_signup[(parent_signup['CREATED_DATE'] >= lower) & 
-                                (parent_signup['CREATED_DATE'] < upper)].values.tolist()
-#                     print(parent_signup,'parent_signup')
+                    parent_signup=df6[["USER_NAME",'CREATED_DATE']][int(lower):int(upper)].values.tolist()
                 ################tunein_signup####################
                 collection6 = db.tune_in_master.aggregate([
                        {"$match":{
                                  '$and':[
-                                    #  { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                                    #        {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                                    #          {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
+                                     { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                                           {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                                             {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
                                           {"USER_ID.EMAIL_ID":{"$in":EMAIL_list1}},
                                   {'USER_ID.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
                                   {'USER_ID.IS_DISABLED':{"$ne":'Y'}},
-        #                         {'CREATED_DATE':{'$gte':Ddate}}, 
                                 {'IS_OPTED_OUT':"N"},
                                   {'USER_ID.schoolId.NAME':{'$not':{"$regex":'Blocked','$options':'i'}}},
                                   {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':0}},
-                                #   {'EMAIL':{"$not":{"$regex":"test",'$options':'i'}}},
-                                #   {'EMAIL':{"$not":{"$regex":"1gen",'$options':'i'}}}
+                                  {'EMAIL':{"$not":{"$regex":"test",'$options':'i'}}},
+                                  {'EMAIL':{"$not":{"$regex":"1gen",'$options':'i'}}}
                                   ]}},
                     {"$group":{"_id":{"NAME":"$NAME","EMAIL":"$EMAIL",'CREATED_DATE':'$CREATED_DATE'},
                               'IS_OPTED_OUT':{"$first":'$IS_OPTED_OUT'},
@@ -11994,28 +11900,22 @@ def user_activity_feed(userid,lower,upper):
                 else:
                     if 'Parent_NAME' not in df7.columns:
                         df7["Parent_NAME"]="Parent"
-                        tunein_signup=df7[["Parent_NAME",'CREATED_DATE']]
-        #                     [int(lower):int(upper)].values.tolist()
-                        tunein_signup=tunein_signup[(tunein_signup['CREATED_DATE'] >= lower) & 
-                                    (tunein_signup['CREATED_DATE'] < upper)].values.tolist()
+                        tunein_signup=df7[["Parent_NAME",'CREATED_DATE']][int(lower):int(upper)].values.tolist()
                     else:
                         df7.loc[df7["Parent_NAME"] == 0, "Parent_NAME"] = "Parent"
-                        tunein_signup=df7[["Parent_NAME",'CREATED_DATE']]
-        #                     [int(lower):int(upper)].values.tolist()
-                        tunein_signup=tunein_signup[(tunein_signup['CREATED_DATE'] >= lower) & 
-                                    (tunein_signup['CREATED_DATE'] < upper)].values.tolist()
+                        tunein_signup=df7[["Parent_NAME",'CREATED_DATE']][int(lower):int(upper)].values.tolist()
+                        
                 ################tunein_audio_track####################
                 collection7 = db.tune_in_audio_track_detail.aggregate([{"$match":{
                          '$and':[ {"USER_ID.EMAIL_ID":{"$in":EMAIL_list1}},
-                                #  { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
-                                #    {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
-                                #      {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
+                                 { 'USER_ID.USER_NAME':{"$not":{"$regex":"test",'$options':'i'}}},
+                                   {'USER_ID.EMAIL_ID':{"$not":{"$regex":"test",'$options':'i'}}},
+                                     {'USER_ID.EMAIL_ID':{"$not":{"$regex":"1gen",'$options':'i'}}},
                           {'USER_ID.INCOMPLETE_SIGNUP':{"$ne":'Y'}},
                           {'USER_ID.IS_DISABLED':{"$ne":'Y'}},
                           {'USER_ID.schoolId.NAME':{'$not':{"$regex":'Blocked','$options':'i'}}},
                           {'USER_ID.schoolId.BLOCKED_BY_CAP':{'$exists':0}},
-                          {'USER_ID.schoolId.NAME':{'$not':{"$regex":'test','$options':'i'}}},
-        #                  {'CREATED_DATE':{'$gte':Ddate}}       
+                          {'USER_ID.schoolId.NAME':{'$not':{"$regex":'test','$options':'i'}}}, 
                           ]}},
                             {"$project":{"INVITEE_EMAIL":'$INVITEE_EMAIL',"PROGRAM":"$PROGRAM_AUDIO_ID._id","program_name":"$PROGRAM_AUDIO_ID.AUDIO_TITLE",
                             "NARRATOR":"$PROGRAM_AUDIO_ID.NARRATEDBY",'Last_Prac_Date':'$CREATED_DATE',"school_name":"$USER_ID.schoolId.NAME",
@@ -12050,22 +11950,13 @@ def user_activity_feed(userid,lower,upper):
                     if 'Parent_NAME' not in df8.columns:
                         df8["Parent_NAME"]="Parent"
                         df18=pd.merge(dfpa,df8,on=["program_name","NARRATOR"],how="right")
-                        tunein_audio_track=df18[["Parent_NAME","program_name","NARRATOR",'Last_Practice_Date',"IMAGE_URL"]]
-        #                     [int(lower):int(upper)].values.tolist()
-                        tunein_audio_track=tunein_audio_track[(tunein_audio_track['Last_Practice_Date'] >= lower) & 
-                                    (tunein_audio_track['Last_Practice_Date'] < upper)].values.tolist()
+                        tunein_audio_track=df18[["Parent_NAME","program_name","NARRATOR",'Last_Practice_Date',"IMAGE_URL"]][int(lower):int(upper)].values.tolist()
                     else:
                         df8.loc[df8["Parent_NAME"] == 0, "Parent_NAME"] = "Parent"
                         df18=pd.merge(dfpa,df8,on=["program_name","NARRATOR"],how="right")
-                        tunein_audio_track=df18[["Parent_NAME","program_name","NARRATOR",'Last_Practice_Date',"IMAGE_URL"]]
-        #                     [int(lower):int(upper)].values.tolist()
-                        tunein_audio_track=tunein_audio_track[(tunein_audio_track['Last_Practice_Date'] >= lower) & 
-                                    (tunein_audio_track['Last_Practice_Date'] < upper)].values.tolist()
+                        tunein_audio_track=df18[["Parent_NAME","program_name","NARRATOR",'Last_Practice_Date',"IMAGE_URL"]][int(lower):int(upper)].values.tolist()
                 temp={"practice_detail":practice_detail,"comments_detail":comments_detail,"feedback_detail":feedback_detail,"teacher_signup":teacher_signup,
                      "parent_signup":parent_signup,"tunein_signup":tunein_signup,"tunein_audio_track":tunein_audio_track}
-                print(len(practice_detail),len(comments_detail),len(feedback_detail),len(teacher_signup),
-                      len(parent_signup),len(tunein_signup),len(tunein_audio_track))
-                print('other_school')
             return json.dumps(temp)
 
 
